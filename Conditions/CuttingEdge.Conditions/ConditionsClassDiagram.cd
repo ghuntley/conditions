@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CuttingEdge.Conditions.Validator&lt;T&gt;">
+    <Position X="5.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="Equals" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="GetType" Hidden="true" />
+      <Method Name="ThrowInvalidOperationException" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+      <Property Name="ValidatorType" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAgEgCAAAAAAAAAAAIkAAQAgAAAAAAA=</HashCode>
+      <FileName>Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CuttingEdge.Conditions.EnsuresValidator&lt;T&gt;">
+    <Position X="4.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAA=</HashCode>
+      <FileName>EnsuresValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CuttingEdge.Conditions.RequiresValidator&lt;T&gt;">
+    <Position X="6.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>RequiresValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CuttingEdge.Conditions.ValidatorExtensions">
+    <Position X="0.5" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AFDSAAgCAIAwAgQCCAIQgwAAGgQAAJxIgBBAHFAagAg=</HashCode>
+      <FileName>ValidatorExtensions.Collection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CuttingEdge.Conditions.Throw">
+    <Position X="9" Y="0.5" Width="3.5" />
+    <Members>
+      <Method Name="Format" Hidden="true" />
+      <Method Name="GetActualValueLengthMessage" Hidden="true" />
+      <Method Name="GetActualValueMessage" Hidden="true" />
+      <Method Name="GetElementCount" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ACQwAcwlEJowAUAAAQgAEAAEQCoEKAAQIAgCEAAAQJQ=</HashCode>
+      <FileName>Throw.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CuttingEdge.Conditions.PostconditionException" Collapsed="true">
+    <Position X="4.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PostconditionException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.ArgumentException" Collapsed="true">
+    <Position X="6.75" Y="5" Width="2" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.ArgumentNullException" Collapsed="true">
+    <Position X="4.5" Y="6.25" Width="2.5" />
+    <InheritanceLine Type="System.ArgumentException" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="5.63" />
+        <Point X="7.75" Y="6.562" />
+        <Point X="7" Y="6.562" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.ArgumentOutOfRangeException" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="2.5" />
+    <InheritanceLine Type="System.ArgumentException" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="5.63" />
+        <Point X="7.75" Y="7.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="System.ComponentModel.InvalidEnumArgumentException" Collapsed="true">
+    <Position X="5" Y="7" Width="2.5" />
+    <InheritanceLine Type="System.ArgumentException" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="5.63" />
+        <Point X="7.75" Y="7.312" />
+        <Point X="7.5" Y="7.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

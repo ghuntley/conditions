@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions", "CuttingEdge.Conditions\CuttingEdge.Conditions.csproj", "{914B3EA8-2D78-4B1D-BA98-575817EB20F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.UnitTests", "CuttingEdge.Conditions.UnitTests\CuttingEdge.Conditions.UnitTests.csproj", "{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.TestCoverage", "CuttingEdge.Conditions.TestCoverage\CuttingEdge.Conditions.TestCoverage.csproj", "{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs02.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CuttingEdge.Conditions.TestCoverage\\CuttingEdge.Conditions.TestCoverage.csproj
+		SccProjectName1 = CuttingEdge.Conditions.TestCoverage
+		SccLocalPath1 = CuttingEdge.Conditions.TestCoverage
+		SccProjectUniqueName2 = CuttingEdge.Conditions.UnitTests\\CuttingEdge.Conditions.UnitTests.csproj
+		SccProjectName2 = CuttingEdge.Conditions.UnitTests
+		SccLocalPath2 = CuttingEdge.Conditions.UnitTests
+		SccProjectUniqueName3 = CuttingEdge.Conditions\\CuttingEdge.Conditions.csproj
+		SccProjectName3 = CuttingEdge.Conditions
+		SccLocalPath3 = CuttingEdge.Conditions
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
