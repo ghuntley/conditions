@@ -78,6 +78,7 @@
     <Compile Include="ValidatorExtensions.Type.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="conditions.FxCop" />
     <None Include="ConditionsClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
