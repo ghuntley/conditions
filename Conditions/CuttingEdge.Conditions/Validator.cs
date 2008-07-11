@@ -25,8 +25,52 @@ using System.Globalization;
 namespace CuttingEdge.Conditions
 {
     /// <summary>
-    /// Validates a pre- or postcondition.
+    /// Enables validation of pre- and postconditions. This class isn't used directly by developers. Instead 
+    /// the class should be created by the <see cref="ValidatorExtensions.Requires{T}(T)">Requires</see> and
+    /// <see cref="ValidatorExtensions.Ensures{T}(T)">Ensures</see> extension methods.
     /// </summary>
+    /// <remarks>
+    /// This class is abstract and has an internal constructor. It can't be created or inherited from.
+    /// </remarks>
+    /// <example>
+    /// The following example shows how to use <b>CuttingEdge.Conditions</b>.
+    /// <code>
+    /// using CuttingEdge.Conditions;
+    /// 
+    /// public class ExampleClass
+    /// {
+    ///     public ICollection GetData(Nullable&lt;int&gt; id, string xml, ICollection col)
+    ///     {
+    ///         // Check all preconditions:
+    ///         id.Requires("id")
+    ///             .IsNotNull()          // throws ArgumentNullException on failure
+    ///             .IsInRange(1, 999)    // ArgumentOutOfRangeException on failure
+    ///             .IsNotEqualTo(128);   // throws ArgumentException on failure
+    /// 
+    ///         xml.Requires("xml")
+    ///             .StartsWith("&lt;data&gt;") // throws ArgumentException on failure
+    ///             .EndsWith("&lt;data&gt;");  // throws ArgumentException on failure
+    /// 
+    ///         col.Requires("col")
+    ///             .IsNotNull()          // throws ArgumentNullException on failure
+    ///             .IsEmpty();           // throws ArgumentException on failure
+    /// 
+    ///         // Dom some work
+    /// 
+    ///         // Example: Call a method that should return a not null ICollection
+    ///         object result = BuildResults(xml, collection);
+    /// 
+    ///         // Check all postconditions:
+    ///         // A PostconditionException will be thrown at failure.
+    ///         result.Ensures("result")
+    ///             .IsNotNull()
+    ///             .IsOfType(typeof(ICollection));
+    /// 
+    ///         return (ICollection)result;
+    ///     }
+    /// }
+    /// </code>
+    /// </example>
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
     [DebuggerDisplay("Validator (Type: {GetType().Name.Substring(0, GetType().Name.IndexOf(\"Validator\"))}, ArgumentName: {ArgumentName}, Value: {Value} )")]
     public abstract class Validator<T>
@@ -75,12 +119,13 @@ namespace CuttingEdge.Conditions
             throw this.BuildException(condition);
         }
 
-        #region Methods Inherited from Object
-
-        /// <summary>This method is not supported by the <see cref="Validator{T}"/>.</summary>
-        /// <param name="obj">The object to be compared.</param>
-        /// <returns>This method will throw an exception.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when this method is called.</exception>
+        /// <summary>
+        /// Determines whether the specified System.Object is equal to the current System.Object.
+        /// </summary>
+        /// <param name="obj">The System.Object to compare with the current System.Object.</param>
+        /// <returns>
+        /// true if the specified System.Object is equal to the current System.Object; otherwise, false.
+        /// </returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
         public override bool Equals(object obj)
         {
@@ -115,8 +160,6 @@ namespace CuttingEdge.Conditions
         {
             return base.GetType();
         }
-
-        #endregion Methods Inherited from Object
 
         // This method will get overridden by the RequiresValidator and EnsuresValidator descendants.
         // This allows us to throw a different Exception type when using .Ensures() instead of .Requires().

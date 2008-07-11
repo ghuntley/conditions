@@ -196,7 +196,7 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Checks whether the given value is null or an <see cref="System.String.Empty"/> string.
+        /// Checks whether the given value is null or an <see cref="String.Empty"/> string.
         /// An exception is thrown otherwise.
         /// </summary>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -214,7 +214,7 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Checks whether the given value is not null and not an <see cref="System.String.Empty"/> string.
+        /// Checks whether the given value is not null and not an <see cref="String.Empty"/> string.
         /// An exception is thrown otherwise.
         /// </summary>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -235,8 +235,8 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Checks whether the given value is an <see cref="System.String.Empty"/> string.
-        /// An exception is thrown otherwise.
+        /// Checks whether the given value is an <see cref="String.Empty"/> string. An exception is thrown 
+        /// otherwise.
         /// </summary>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -254,8 +254,8 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Checks whether the given value is not an <see cref="System.String.Empty"/> string.
-        /// An exception is thrown otherwise.
+        /// Checks whether the given value is not an <see cref="String.Empty"/> string. An exception is thrown
+        /// otherwise.
         /// </summary>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
