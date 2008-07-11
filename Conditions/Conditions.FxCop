@@ -22,7 +22,7 @@
   <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
  </ProjectOptions>
  <Targets>
-  <Target Name="$(ProjectDir)/bin/Release/CuttingEdge.Conditions.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/CuttingEdge.Conditions/bin/Release/CuttingEdge.Conditions.dll" Analyze="True" AnalyzeAllChildren="True" />
  </Targets>
  <Rules>
   <RuleFiles>
@@ -118,7 +118,7 @@
    </Namespace>
   </Namespaces>
   <Targets>
-   <Target Name="$(ProjectDir)/bin/Release/CuttingEdge.Conditions.dll">
+   <Target Name="$(ProjectDir)/CuttingEdge.Conditions/bin/Release/CuttingEdge.Conditions.dll">
     <Modules>
      <Module Name="cuttingedge.conditions.dll">
       <Namespaces>
