@@ -42,7 +42,7 @@ namespace CuttingEdge.Conditions
         public override Exception BuildException(string condition, string additionalMessage,
             ConstraintViolationType type)
         {
-            string message = condition + ".";
+            string message;
 
             if (!String.IsNullOrEmpty(additionalMessage))
             {
