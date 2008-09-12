@@ -21,7 +21,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Reflection;
 
 namespace CuttingEdge.Conditions.UnitTests
 {
