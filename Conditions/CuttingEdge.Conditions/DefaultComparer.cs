@@ -1,4 +1,5 @@
-﻿/* The CuttingEdge.Conditions library enables developers to validate pre- and postconditions in a fluent 
+﻿#region Copyright (c) 2008 S. van Deursen
+/* The CuttingEdge.Conditions library enables developers to validate pre- and postconditions in a fluent 
  * manner.
  * 
  * Copyright (C) 2008 S. van Deursen
@@ -13,6 +14,7 @@
  * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
  * License for more details.
 */
+#endregion
 
 using System;
 using System.Collections.Generic;

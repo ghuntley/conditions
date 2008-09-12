@@ -1,4 +1,5 @@
-﻿/* The CuttingEdge.Conditions library enables developers to validate pre- and postconditions in a fluent 
+﻿#region Copyright (c) 2008 S. van Deursen
+/* The CuttingEdge.Conditions library enables developers to validate pre- and postconditions in a fluent 
  * manner.
  * 
  * Copyright (C) 2008 S. van Deursen
@@ -13,6 +14,7 @@
  * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
  * License for more details.
 */
+#endregion
 
 // NOTE: Some methods and properties are decorated with the EditorBrowsableAttribute to prevent those methods
 // and properties from showing up in IntelliSense. These members will not be used by users that try to 
