@@ -87,7 +87,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlinedAttribute]
+        [MethodTooBigToBeInlinedAttribute]
         public static Validator<TCollection> Contains<TCollection, TElement>(
             this Validator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
@@ -112,7 +112,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlinedAttribute]
+        [MethodTooBigToBeInlinedAttribute]
         public static Validator<TCollection> Contains<TCollection>(this Validator<TCollection> validator,
             object element)
             where TCollection : IEnumerable
@@ -137,7 +137,7 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlinedAttribute]
+        [MethodTooBigToBeInlinedAttribute]
         public static Validator<TCollection> DoesNotContain<TCollection, TElement>(
             this Validator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
@@ -161,7 +161,7 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlinedAttribute]
+        [MethodTooBigToBeInlinedAttribute]
         public static Validator<TCollection> DoesNotContain<TCollection>(
             this Validator<TCollection> validator, object element)
             where TCollection : IEnumerable

@@ -47,7 +47,7 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is <b>false</b> or null, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is <b>false</b> or null, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlined]
+        [MethodTooBigToBeInlined]
         public static Validator<bool?> IsTrue(this Validator<bool?> validator)
         {
             if (!(validator.Value == true))
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is <b>true</b> or null, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is <b>true</b> or null, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlined]
+        [MethodTooBigToBeInlined]
         public static Validator<bool?> IsFalse(this Validator<bool?> validator)
         {
             if (!(validator.Value == false))

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{914B3EA8-2D78-4B1D-BA98-575817EB20F6}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -53,6 +53,7 @@
     <Compile Include="ConstraintViolationType.enum.cs" />
     <Compile Include="DefaultComparer.cs" />
     <Compile Include="EnsuresValidator.cs" />
+    <Compile Include="MethodTooBigToBeInlinedAttribute.cs" />
     <Compile Include="OtherwiseValidator.cs" />
     <Compile Include="StringificationExtensions.cs" />
     <Compile Include="RequiresValidator.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="ValidatorExtensions.EntryPoints.cs" />
     <Compile Include="PostconditionException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MethodToBigToBeInlinedAttribute.cs" />
     <Compile Include="Throw.cs" />
     <Compile Include="ValidatorExtensions.String.cs" />
     <Compile Include="ValidatorExtensions.Type.cs" />

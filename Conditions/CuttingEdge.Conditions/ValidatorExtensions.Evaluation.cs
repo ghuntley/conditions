@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentNullException">Thrown when the <paramref name="expression"/> evaluated false or is a null reference and the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="InvalidEnumArgumentException">Thrown when the <paramref name="expression"/> evaluated false or is a null reference and the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is an <see cref="System.Enum"/> type, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <paramref name="expression"/> evaluated false or is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodToBigToBeInlined]
+        [MethodTooBigToBeInlined]
         public static Validator<T> Evaluate<T>(this Validator<T> validator,
             Expression<Func<T, bool>> expression)
         {
