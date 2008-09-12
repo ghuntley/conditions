@@ -37,7 +37,17 @@ namespace CuttingEdge.Conditions
                 return is2.Contains(value);
             }
 
-            return CollectionHelpers.Contains<TSource>(source, value, null);
+            IEqualityComparer<TSource> comparer = EqualityComparer<TSource>.Default;
+
+            foreach (TSource local in source)
+            {
+                if (comparer.Equals(local, value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         // NOTE: HashSet<T> is a strange class that only implements generic interfaces. It doesn't implement
@@ -517,31 +527,6 @@ namespace CuttingEdge.Conditions
                     disposable.Dispose();
                 }
             }
-        }
-
-        // This method mimics the behavior of the System.Linq.Enumerable.Contains method.
-        private static bool Contains<TSource>(IEnumerable<TSource> source, TSource value,
-            IEqualityComparer<TSource> comparer)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<TSource>.Default;
-            }
-
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            foreach (TSource local in source)
-            {
-                if (comparer.Equals(local, value))
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

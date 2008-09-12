@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Reflection;
 
 namespace CuttingEdge.Conditions.UnitTests
 {
@@ -228,6 +229,23 @@ namespace CuttingEdge.Conditions.UnitTests
             IEnumerable c = Enumerable.Range(1, 1000);
             c.Requires().Contains((object)1001);
         }
+
+        [TestMethod]
+        [Description("Calling Contains on a type that implements IEnumerable<T> but no ICollection<T>, but contains the tested value should pass.")]
+        public void CollectionContainsTest09()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 10);
+            c.Requires().Contains(10);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        [Description("Calling Contains on a type that implements IEnumerable<T> but no ICollection<T>, but doesn't contain the tested value should fail.")]
+        public void CollectionContainsTest10()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 10);
+            c.Requires().Contains(11);
+        }       
 
         #endregion // Contains
 
