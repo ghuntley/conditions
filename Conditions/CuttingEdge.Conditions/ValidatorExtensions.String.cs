@@ -31,8 +31,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="maxLength"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal <paramref name="maxLength"/> to, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> IsShorterThan(this Validator<string> validator,
-            int maxLength)
+        public static Validator<string> IsShorterThan(this Validator<string> validator, int maxLength)
         {
             string value = validator.Value;
 
@@ -60,8 +59,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="maxLength"/> is smaller than 0, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> IsShorterOrEqual(this Validator<string> validator,
-            int maxLength)
+        public static Validator<string> IsShorterOrEqual(this Validator<string> validator, int maxLength)
         {
             string value = validator.Value;
 
@@ -89,8 +87,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="maxLength"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> IsLongerThan(this Validator<string> validator,
-            int minLength)
+        public static Validator<string> IsLongerThan(this Validator<string> validator, int minLength)
         {
             string value = validator.Value;
 
@@ -118,8 +115,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="maxLength"/> is greater than 0, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the length of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="maxLength"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> IsLongerOrEqual(this Validator<string> validator,
-            int minLength)
+        public static Validator<string> IsLongerOrEqual(this Validator<string> validator, int minLength)
         {
             string value = validator.Value;
 
@@ -147,8 +143,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the length of <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> unequals <paramref name="length"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="length"/> unequals 0, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the length of <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> unequals <paramref name="length"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> HasLength(this Validator<string> validator,
-            int length)
+        public static Validator<string> HasLength(this Validator<string> validator, int length)
         {
             string value = validator.Value;
 
@@ -176,8 +171,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the length of <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> equals <paramref name="length"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="length"/> unequals 0, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the length of <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> equals <paramref name="length"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> DoesNotHaveLength(this Validator<string> validator,
-            int length)
+        public static Validator<string> DoesNotHaveLength(this Validator<string> validator, int length)
         {
             string value = validator.Value;
 
@@ -327,8 +321,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> start with <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="value"/> is not a null rerefence, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> start with <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<string> DoesNotStartWith(this Validator<string> validator,
-            string value)
+        public static Validator<string> DoesNotStartWith(this Validator<string> validator, string value)
         {
             return validator.DoesNotStartWith(value, StringComparison.CurrentCulture);
         }
@@ -347,8 +340,8 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="value"/> is not a null rerefence, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> start with <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
         [MethodToBigToBeInlined]
-        public static Validator<string> DoesNotStartWith(this Validator<string> validator,
-            string value, StringComparison comparisonType)
+        public static Validator<string> DoesNotStartWith(this Validator<string> validator, string value, 
+            StringComparison comparisonType)
         {
             string validatorValue = validator.Value;
 
@@ -375,8 +368,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="value"/> contains no null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
         [MethodToBigToBeInlined]
-        public static Validator<string> Contains(this Validator<string> validator,
-            string value)
+        public static Validator<string> Contains(this Validator<string> validator, string value)
         {
             string validatorValue = validator.Value;
 
@@ -403,8 +395,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> and <paramref name="value"/> are both null references, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
         [MethodToBigToBeInlined]
-        public static Validator<string> DoesNotContain(this Validator<string> validator,
-            string value)
+        public static Validator<string> DoesNotContain(this Validator<string> validator, string value)
         {
             string validatorValue = validator.Value;
 

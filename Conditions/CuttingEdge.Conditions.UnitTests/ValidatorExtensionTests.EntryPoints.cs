@@ -98,7 +98,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void RequiresTest01()
         {
             int a = 3;
-            a.Requires().Throw("");
+            a.Requires().Throw(String.Empty);
         }
 
         [TestMethod]
@@ -108,7 +108,7 @@ namespace CuttingEdge.Conditions.UnitTests
             int a = 3;
             try
             {
-                a.Requires("foobar").Throw("");
+                a.Requires("foobar").Throw(String.Empty);
             }
             catch (Exception ex)
             {
@@ -122,7 +122,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void EnsuresTest03()
         {
             int a = 3;
-            a.Ensures().Throw("");
+            a.Ensures().Throw(String.Empty);
         }
 
         [TestMethod]
@@ -147,7 +147,7 @@ namespace CuttingEdge.Conditions.UnitTests
             int a = 3;
             try
             {
-                a.Ensures("foobar", "errormessage").Throw("");
+                a.Ensures("foobar", "errormessage").Throw(String.Empty);
             }
             catch (Exception ex)
             {
@@ -213,11 +213,11 @@ namespace CuttingEdge.Conditions.UnitTests
         private static string BuildMethodDefinition(MethodInfo method)
         {
             return method.ToString()
-                .Replace(method.DeclaringType.Namespace + ".", "")
+                .Replace(method.DeclaringType.Namespace + ".", String.Empty)
                 .Replace('[', '<')
                 .Replace(']', '>')
-                .Replace("`1", "")
-                .Replace("`2", "");
+                .Replace("`1", String.Empty)
+                .Replace("`2", String.Empty);
         }
 
         #endregion // Private Helper Methods

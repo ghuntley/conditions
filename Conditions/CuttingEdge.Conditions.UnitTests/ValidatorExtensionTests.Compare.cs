@@ -26,49 +26,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #region IsInRange
 
         [TestMethod]
-        [Description("Calling IsInRange on integer x with 'lower bound < x < upper bound' should pass.")]
-        public void IsInRangeTest1()
-        {
-            int a = 3;
-            a.Requires().IsInRange(1, 5);
-        }
-
-        [TestMethod]
-        [Description("Calling IsInRange a integer x with 'lower bound = x = upper bound' should pass.")]
-        public void IsInRangeTest2()
-        {
-            int a = 3;
-            a.Requires().IsInRange(3, 3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsInRange on integer x with 'lower bound > x > upper bound' should fail.")]
-        public void IsInRangeTest3()
-        {
-            int a = 3;
-            a.Requires().IsInRange(4, 100);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsInRange on double x with 'lower bound < x < upper bound' should fail.")]
-        public void IsInRangeTest4()
-        {
-            double a = 3.0001;
-            a.Requires().IsInRange(-100, 3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsInRange on integer x with 'lower bound > x < upper bound' should fail.")]
-        public void IsInRangeTest5()
-        {
-            decimal a = 3;
-            a.Requires().IsInRange(10, 1);
-        }
-
-        [TestMethod]
         [Description("Calling IsInRange on IComparable<T> object x with 'lower bound < x < upper bound' should pass.")]
         public void IsInRangeTest6()
         {
@@ -219,52 +176,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #endregion // IsInRange
 
         #region IsNotInRange
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotInRange on integer x with 'lower bound < x < upper bound' should fail.")]
-        public void IsNotInRangeTest1()
-        {
-            int a = 3;
-            a.Requires().IsNotInRange(1, 5);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotInRange on integer x with 'lower bound = x = upper bound' should fail.")]
-        public void IsNotInRangeTest2()
-        {
-            int a = 3;
-            a.Requires().IsNotInRange(a, a);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotInRange on integer x with 'lower bound > x < upper bound' should pass.")]
-        public void IsNotInRangeTest3()
-        {
-            int a = 3;
-            a.Requires().IsNotInRange(4, 100);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotInRange on double x with 'lower bound < x > upper bound' should pass.")]
-        public void IsNotInRangeTest4()
-        {
-            double a = 3.0001;
-            a.Requires().IsNotInRange(-100, 3);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotInRange on decimal x with 'lower bound < x > upper bound' should pass.")]
-        public void IsNotInRangeTest5()
-        {
-            decimal a = 3;
-            // The range is always invalid and will always pass. We don't want argument checks in the
-            // IsNotInRange method to check whether min <= max. This will slow down and the user could end
-            // up do extra checks on these input values. The user would then end up with more code than coding
-            // the check by hand.
-            a.Requires().IsNotInRange(10, 1);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
@@ -419,39 +330,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #region IsGreaterThan
 
         [TestMethod]
-        [Description("Calling IsGreaterThan on integer x with 'lower bound < x' should pass.")]
-        public void IsGreaterThanTest01()
-        {
-            int a = 3;
-            a.Requires().IsGreaterThan(2);
-        }
-
-        [TestMethod]
-        [Description("Calling IsGreaterThan on integer x with 'negetive lower bound < x' should pass.")]
-        public void IsGreaterThanTest02()
-        {
-            int a = 0;
-            a.Requires().IsGreaterThan(-1);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsGreaterThan on integer x with 'lower bound = x' should fail.")]
-        public void IsGreaterThanTest03()
-        {
-            int a = 3;
-            a.Requires().IsGreaterThan(3);
-        }
-
-        [TestMethod]
-        [Description("Calling IsGreaterThan on integer x with 'lower bound > x' should fail.")]
-        public void IsGreaterThanTest04()
-        {
-            decimal a = 3;
-            a.Requires().IsGreaterThan(2);
-        }
-
-        [TestMethod]
         [Description("Calling IsGreaterThan on IComparable<T> object x with 'lower bound < x' should pass.")]
         public void IsGreaterThanTest05()
         {
@@ -570,39 +448,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #region IsNotGreaterThan
 
         [TestMethod]
-        [Description("Calling IsNotGreaterThan on integer x with 'x < upper bound' should pass.")]
-        public void IsNotGreaterThanTest01()
-        {
-            int a = 3;
-            a.Requires().IsNotGreaterThan(4);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotGreaterThan on integer x with 'x < negative upper bound' should pass.")]
-        public void IsNotGreaterThanTest02()
-        {
-            int a = -2;
-            a.Requires().IsNotGreaterThan(-1);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotGreaterThan on integer x with 'lower bound = x' should pass.")]
-        public void IsNotGreaterThanTest03()
-        {
-            int a = 3;
-            a.Requires().IsNotGreaterThan(3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsNotGreaterThan on integer x with 'x > upper bound' should fail.")]
-        public void IsNotGreaterThanTest04()
-        {
-            decimal a = 3;
-            a.Requires().IsNotGreaterThan(2);
-        }
-
-        [TestMethod]
         [Description("Calling IsNotGreaterThan on IComparable<T> object x with 'x < upper bound' should pass.")]
         public void IsNotGreaterThanTest05()
         {
@@ -717,39 +562,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #endregion // IsNotGreaterThan
 
         #region IsGreaterOrEqual
-
-        [TestMethod]
-        [Description("Calling IsGreaterOrEqual on integer x with 'lower bound = x' should pass.")]
-        public void IsGreaterOrEqualTest01()
-        {
-            int a = 3;
-            a.Requires().IsGreaterOrEqual(3);
-        }
-
-        [TestMethod]
-        [Description("Calling IsGreaterOrEqual on integer x with 'lower bound < x' should pass.")]
-        public void IsGreaterOrEqualTest02()
-        {
-            int a = 3;
-            a.Requires().IsGreaterOrEqual(2);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsGreaterOrEqual on integer x with 'lower bound > x' should fail.")]
-        public void IsGreaterOrEqualTest03()
-        {
-            int a = 3;
-            a.Requires().IsGreaterOrEqual(4);
-        }
-
-        [TestMethod]
-        [Description("Calling IsGreaterOrEqual on decimal x with 'lower bound = x' should pass.")]
-        public void IsGreaterOrEqualTest04()
-        {
-            decimal a = 3;
-            a.Requires().IsGreaterOrEqual(3);
-        }
 
         [TestMethod]
         [Description("Calling IsGreaterOrEqual on IComparable<T> object x with 'lower bound < x' should pass.")]
@@ -872,40 +684,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #endregion // IsGreaterOrEqual
 
         #region IsNotGreaterOrEqual
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsNotGreaterOrEqual on integer x with 'x = upper bound' should fail.")]
-        public void IsNotGreaterOrEqualTest01()
-        {
-            int a = 3;
-            a.Requires().IsNotGreaterOrEqual(3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsNotGreaterOrEqual on integer x with 'x > upper bound' should fail.")]
-        public void IsNotGreaterOrEqualTest02()
-        {
-            int a = 3;
-            a.Requires().IsNotGreaterOrEqual(2);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotGreaterOrEqual on integer x with 'x < upper bound' should pass.")]
-        public void IsNotGreaterOrEqualTest03()
-        {
-            int a = 3;
-            a.Requires().IsNotGreaterOrEqual(4);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotGreaterOrEqual on decimal x with 'x < upper bound' should pass.")]
-        public void IsNotGreaterOrEqualTest04()
-        {
-            decimal a = 3;
-            a.Requires().IsNotGreaterOrEqual(4);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -1033,32 +811,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #region IsLessThan
 
         [TestMethod]
-        [Description("Calling IsLessThan on integer x with 'x < upper bound' should pass.")]
-        public void IsLessThanTest01()
-        {
-            int a = 3;
-            a.Requires().IsLessThan(4);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsLessThan on integer x with 'x = upper bound' should fail.")]
-        public void IsLessThanTest02()
-        {
-            int a = 3;
-            a.Requires().IsLessThan(3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsLessThan on integer x with 'x > upper bound' should fail.")]
-        public void IsLessThanTest03()
-        {
-            int a = 3;
-            a.Requires().IsLessThan(2);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Description("Calling IsLessThan on IComparable<T> object x with 'x > upper bound' should fail.")]
         public void IsLessThanTest05()
@@ -1165,31 +917,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #region IsNotLessThan
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsNotLessThan on integer x with 'lower bound > x' should fail.")]
-        public void IsNotLessThanTest01()
-        {
-            int a = 3;
-            a.Requires().IsNotLessThan(4);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotLessThan on integer x with 'lower bound = x' should pass.")]
-        public void IsNotLessThanTest02()
-        {
-            int a = 3;
-            a.Requires().IsNotLessThan(3);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotLessThan on integer x with 'lower bound < x' should pass.")]
-        public void IsNotLessThanTest03()
-        {
-            int a = 3;
-            a.Requires().IsNotLessThan(2);
-        }
-
-        [TestMethod]
         [Description("Calling IsNotLessThan on IComparable<T> object x with 'lower bound < x' should pass.")]
         public void IsNotLessThanTest05()
         {
@@ -1291,31 +1018,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #endregion // IsNotLessThan
 
         #region IsLessOrEqual
-
-        [TestMethod]
-        [Description("Calling IsLessOrEqual on integer x with 'x = upper bound' should pass.")]
-        public void IsLessOrEqualTest01()
-        {
-            int a = 3;
-            a.Requires().IsLessOrEqual(3);
-        }
-
-        [TestMethod]
-        [Description("Calling IsLessOrEqual on integer x with 'x < upper bound' should pass.")]
-        public void IsLessOrEqualTest02()
-        {
-            int a = 3;
-            a.Requires().IsLessOrEqual(4);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsLessOrEqual on integer x with 'x > upper bound' should fail.")]
-        public void IsLessOrEqualTest03()
-        {
-            int a = 3;
-            a.Requires().IsLessOrEqual(2);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -1439,32 +1141,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #endregion // IsLessOrEqual
 
         #region IsNotLessOrEqual
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsNotLessOrEqual on integer x with 'lower bound = x' should fail.")]
-        public void IsNotLessOrEqualTest01()
-        {
-            int a = 3;
-            a.Requires().IsNotLessOrEqual(3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsNotLessOrEqual on integer x with 'lower bound > x' should fail.")]
-        public void IsNotLessOrEqualTest02()
-        {
-            int a = 3;
-            a.Requires().IsNotLessOrEqual(4);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotLessOrEqual on integer x with 'lower bound < x' should pass.")]
-        public void IsNotLessOrEqualTest03()
-        {
-            int a = 3;
-            a.Requires().IsNotLessOrEqual(2);
-        }
 
         [TestMethod]
         [Description("Calling IsNotLessOrEqual on IComparable<T> object x with 'lower bound < x' should pass.")]
@@ -1591,40 +1267,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #region IsEqualTo
 
         [TestMethod]
-        [Description("Calling IsEqualTo on integer x with 'x = other' should pass.")]
-        public void IsEqualToTest1()
-        {
-            int a = 3;
-            a.Requires().IsEqualTo(3);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsEqualTo on integer x with 'x != other' should fail.")]
-        public void IsEqualToTest2()
-        {
-            int a = 3;
-            a.Requires().IsEqualTo(4);
-        }
-
-        [TestMethod]
-        [Description("Calling IsEqualTo on double x with 'x = other' should pass.")]
-        public void IsEqualToTest3()
-        {
-            double a = 3.0;
-            a.Requires().IsEqualTo(a);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsEqualTo on double x with 'x != other' should fail.")]
-        public void IsEqualToTest4()
-        {
-            double a = 3;
-            a.Requires().IsEqualTo(4);
-        }
-
-        [TestMethod]
         [Description("Calling IsEqualTo on IComparable<T> object x with 'x = other' should pass.")]
         public void IsEqualToTest5()
         {
@@ -1719,40 +1361,6 @@ namespace CuttingEdge.Conditions.UnitTests
         #endregion // IsEqualTo
 
         #region IsNotEqualTo
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotEqualTo on integer x with 'x = other' should fail.")]
-        public void IsNotEqualToTest1()
-        {
-            int a = 3;
-            a.Requires().IsNotEqualTo(3);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotEqualTo on integer x with 'x != other' should pass.")]
-        public void IsNotEqualToTest2()
-        {
-            int a = 3;
-            a.Requires().IsNotEqualTo(4);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotEqualTo on double x with 'x = other' should fail.")]
-        public void IsNotEqualToTest3()
-        {
-            double a = 3.0;
-            a.Requires().IsNotEqualTo(a);
-        }
-
-        [TestMethod]
-        [Description("Calling IsNotEqualTo on integer x with 'x != other' should pass.")]
-        public void IsNotEqualToTest4()
-        {
-            double a = 3;
-            a.Requires().IsNotEqualTo(4);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]

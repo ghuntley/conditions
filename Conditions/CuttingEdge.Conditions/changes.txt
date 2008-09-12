@@ -1,0 +1,62 @@
+﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
+
+Version 1.0.?.? (???) ????-??-??
+	General description:
+		This release has several breaking changes. Therefore, the old release can not be swapped with this 
+		release, without a recompilation. Users should not expect any behavior changes and source code won't 
+		have to be changed.
+
+	Bugfixes:
+		-RequiresValidator didn't generate correct exception messages.
+		 When the exception message didn't contain additional information, the 'condition' was used, but
+		 wasn't concatenated with a dot. This resulted in a sentence without a dot.
+		 
+		-Several string methods threw an exception with an invalid exception message.
+		 Methods 'StartsWith', 'DoesNotStartWith', 'Contains', 'DoesNotContain', 'EndsWith' and 
+		 'DoesNotEndWith' threw an exception message like this: 
+			"value does not contain {'h', 'e', 'l', 'l', 'o'}"
+		 The message should have been formed as follows:
+			"value does not contain 'hello'"
+	
+	Code changes:
+		-[BREAKING CHANGE] The public Validator<T>.ArgumentName field is changed to a readonly property.
+		 This property was designed as field to ensure the best performance. However, the value is exclusively
+		 used in exceptional cases (when exceptions are thrown). Therefore, violating the Framework Design
+		 Guidelines wasn't a valid excuse.
+		 
+		-Extra 'IsTrue' and 'IsFalse' methods added according to work item 7143.
+		 These method overloads allow validating Boolean and Nullable<Boolean> values.
+		 see http://www.codeplex.com/conditions/WorkItem/View.aspx?WorkItemId=7143 for this work item.		 
+		 
+		-Extra method overloads added for most primitive CLR types to increase performance.
+		 Method overloads for Byte, DateTime, Decimal, Double, Int16, Int32, Int64 and Single added for the
+		 methods in the 'Compare' group. You could expect a 50% performance improvement on average, when
+		 the new overloads are used (no code has to be changed, just recompile).
+		 
+		-Validation<T> class is now extendable.
+		 Developers can now inherit from Validator<T>. This allows them to define other entry point methods
+		 (like Requires() and Ensures()) that integrate with the existing extension methods.
+		 
+		-Otherwise<TException> method overloads added.
+		 The Validation<T> class now has two instance methods that return an internal 
+		 OtherwiseValidator<T, TUncheckedException> class. These two overloads allow the user to specify
+		 a custom exception to be thrown, because Requires and Ensures only allow ArgumentException and
+		 PostconditionException to be thrown.
+		 
+		-Evaluate(bool condition, string description) overload added according to work item 7469.
+		 see: http://www.codeplex.com/conditions/WorkItem/View.aspx?WorkItemId=7469
+		 [TODO] description
+		 
+	Changes to project and solutions:
+		-Unused references removed from CuttingEdge.Conditions project.
+		 The only references that are used by the project are System and System.Core. Others are removed.
+		 
+		-Release build of CuttingEdge.Conditions project doesn't build a .pdb file anymore.
+		 Loosing the .pdb file enables developers to have a local copy of the project on their machine, and
+		 include the release build of CuttingEdge.Conditions.dll to their own project, without jumping into
+		 CuttingEdge.Conditions' source code every time a precondition validation failed.
+
+
+Version 1.0.1.0 (v1.0 beta 1) 2008-07-11
+	General description:
+		Initial release.

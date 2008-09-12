@@ -20,9 +20,26 @@ using System.Collections.Generic;
 
 namespace CuttingEdge.Conditions
 {
-    // Helper methods for the Collection validation methods of the <see cref="ValidatorExtension"/> methods.
+    /// <summary>
+    /// Helper methods for the Collection validation methods of the <see cref="ValidatorExtensions"/> methods.
+    /// </summary>
     internal static class CollectionHelpers
     {
+        // This method mimics the behavior of the System.Linq.Enumerable.Contains method.
+        // By not using Enumerable.Contains, we are more independant of System.Core.dll and we increase the
+        // possibility for users to use this library on machines that don't have .NET 3.5 installed.
+        internal static bool Contains<TSource>(IEnumerable<TSource> source, TSource value)
+        {
+            ICollection<TSource> is2 = source as ICollection<TSource>;
+            
+            if (is2 != null)
+            {
+                return is2.Contains(value);
+            }
+
+            return CollectionHelpers.Contains<TSource>(source, value, null);
+        }
+
         // NOTE: HashSet<T> is a strange class that only implements generic interfaces. It doesn't implement
         // IList and therefore the cost of calling this method on HashSet<T> is O(n), and not O(1).
         internal static bool Contains(IEnumerable sequence, object value)
@@ -500,6 +517,31 @@ namespace CuttingEdge.Conditions
                     disposable.Dispose();
                 }
             }
+        }
+
+        // This method mimics the behavior of the System.Linq.Enumerable.Contains method.
+        private static bool Contains<TSource>(IEnumerable<TSource> source, TSource value,
+            IEqualityComparer<TSource> comparer)
+        {
+            if (comparer == null)
+            {
+                comparer = EqualityComparer<TSource>.Default;
+            }
+
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            foreach (TSource local in source)
+            {
+                if (comparer.Equals(local, value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

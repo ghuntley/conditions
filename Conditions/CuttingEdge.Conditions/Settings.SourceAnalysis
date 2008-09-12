@@ -1,6 +1,6 @@
-<SourceAnalysisSettings Version="4.2">
+<StyleCopSettings Version="4.3">
   <Analyzers>
-    <Analyzer AnalyzerId="Microsoft.SourceAnalysis.CSharp.DocumentationRules">
+    <Analyzer AnalyzerId="Microsoft.StyleCop.CSharp.DocumentationRules">
       <Rules>
         <Rule Name="PartialElementsMustBeDocumented">
           <RuleSettings>
@@ -37,12 +37,18 @@
             <BooleanProperty Name="Enabled">False</BooleanProperty>
           </RuleSettings>
         </Rule>
+        <Rule Name="DocumentationHeadersMustNotContainBlankLines">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
       </Rules>
       <AnalyzerSettings>
-        <BooleanProperty Name="PublicAndProtectedOnly">True</BooleanProperty>
+        <BooleanProperty Name="IgnorePrivates">True</BooleanProperty>
+        <BooleanProperty Name="IgnoreInternals">True</BooleanProperty>
       </AnalyzerSettings>
     </Analyzer>
-    <Analyzer AnalyzerId="Microsoft.SourceAnalysis.CSharp.ReadabilityRules">
+    <Analyzer AnalyzerId="Microsoft.StyleCop.CSharp.ReadabilityRules">
       <Rules>
         <Rule Name="ParameterMustFollowComma">
           <RuleSettings>
@@ -62,7 +68,7 @@
       </Rules>
       <AnalyzerSettings />
     </Analyzer>
-    <Analyzer AnalyzerId="Microsoft.SourceAnalysis.CSharp.OrderingRules">
+    <Analyzer AnalyzerId="Microsoft.StyleCop.CSharp.OrderingRules">
       <Rules>
         <Rule Name="UsingDirectivesMustBePlacedWithinNamespace">
           <RuleSettings>
@@ -73,4 +79,4 @@
       <AnalyzerSettings />
     </Analyzer>
   </Analyzers>
-</SourceAnalysisSettings>
+</StyleCopSettings>

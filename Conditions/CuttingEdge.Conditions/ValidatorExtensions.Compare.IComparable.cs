@@ -20,7 +20,7 @@ using System.ComponentModel;
 
 namespace CuttingEdge.Conditions
 {
-    // Checks for comparable types
+    // Fallback checks for all IComparable types that don't have an explicit overload
     public static partial class ValidatorExtensions
     {
         /// <summary>
@@ -36,8 +36,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="InvalidEnumArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range and is an <see cref="System.Enum">Enum</see> type, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
         [MethodToBigToBeInlined]
-        public static Validator<T> IsInRange<T>(this Validator<T> validator,
-            T minValue, T maxValue)
+        public static Validator<T> IsInRange<T>(this Validator<T> validator, T minValue, T maxValue)
             where T : IComparable
         {
             Comparer<T> defaultComparer = DefaultComparer<T>.Default;
@@ -133,8 +132,7 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range and a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
         [MethodToBigToBeInlined]
-        public static Validator<T> IsNotInRange<T>(this Validator<T> validator,
-            T minValue, T maxValue)
+        public static Validator<T> IsNotInRange<T>(this Validator<T> validator, T minValue, T maxValue)
             where T : IComparable
         {
             Comparer<T> defaultComparer = DefaultComparer<T>.Default;

@@ -33,7 +33,7 @@
     <WarningsAsErrors>108, 114, 162, 168, 169, 219, 472, 649, 665</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -47,26 +47,28 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionHelpers.cs" />
     <Compile Include="ConstraintViolationType.enum.cs" />
     <Compile Include="DefaultComparer.cs" />
     <Compile Include="EnsuresValidator.cs" />
+    <Compile Include="OtherwiseValidator.cs" />
     <Compile Include="StringificationExtensions.cs" />
     <Compile Include="RequiresValidator.cs" />
     <Compile Include="SR.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="ValidatorExtensions.Collection.cs" />
-    <Compile Include="ValidatorExtensions.Compare.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Boolean.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Byte.cs" />
+    <Compile Include="ValidatorExtensions.Compare.IComparable.cs" />
+    <Compile Include="ValidatorExtensions.Compare.DateTime.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Decimal.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Double.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Int16.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Int32.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Int64.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Single.cs" />
     <Compile Include="ValidatorExtensions.Evaluation.cs" />
     <Compile Include="ValidatorExtensions.Null.cs" />
     <Compile Include="ValidatorExtensions.EntryPoints.cs" />
@@ -81,6 +83,7 @@
     <None Include="ConditionsClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="changes.txt" />
     <Content Include="license.txt" />
     <Content Include="readme.txt" />
   </ItemGroup>

@@ -14,17 +14,26 @@
  * License for more details.
 */
 
+using System.ComponentModel;
+
 namespace CuttingEdge.Conditions
 {
-    // This enumeration is used to determine the type of exception the validator should throw.
-    internal enum ConstraintViolationType
+    /// <summary>
+    /// This enumeration is used to determine the type of exception the validator should throw.
+    /// </summary>
+    public enum ConstraintViolationType
     {
-        // Lets the Validator to throw the default exception for that instance.
+        /// <summary>Lets the Validator to throw the default exception for that instance.</summary>
         Default = 0,
 
-        // Lets the Validator optionaly throw an exception type appropriate for values that are out of range.
+        /// <summary>
+        /// Lets the Validator optionaly throw an exception type appropriate for values that are out of range.
+        /// </summary>
         OutOfRangeViolation,
 
+        /// <summary>
+        /// Lets the Validator optionaly throw an <see cref="InvalidEnumArgumentException"/>.
+        /// </summary>
         InvalidEnumViolation,
     }
 }

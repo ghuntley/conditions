@@ -20,7 +20,6 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 
 namespace CuttingEdge.Conditions
 {
@@ -55,7 +54,13 @@ namespace CuttingEdge.Conditions
     ///             .IsNotNull()          // throws ArgumentNullException on failure
     ///             .IsEmpty();           // throws ArgumentException on failure
     /// 
-    ///         // Dom some work
+    ///         this._disposed.Requires().Otherwise&lt;ObjectDisposedException>(this.GetType().Name)
+    ///             .IsEqualsTo(false);
+    ///             
+    ///         this.currentState.Requires().Otherwise&lt;InvalidOperationException>("Current state is invalid")
+    ///             .IsGreaterThan(StateType.Uninitialized);
+    /// 
+    ///         // Do some work
     /// 
     ///         // Example: Call a method that should return a not null ICollection
     ///         object result = BuildResults(xml, collection);
@@ -75,26 +80,30 @@ namespace CuttingEdge.Conditions
     [DebuggerDisplay("Validator (Type: {GetType().Name.Substring(0, GetType().Name.IndexOf(\"Validator\"))}, ArgumentName: {ArgumentName}, Value: {Value} )")]
     public abstract class Validator<T>
     {
-        // NOTE: We choice to make these two fields public, so the Extension methods can use it, without we
-        // have to worry about extra method calls.
-
-        /// <summary>Gets the name of the argument</summary>
+        /// <summary>Gets the value of the argument.</summary>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
-        public readonly string ArgumentName;
-
-        /// <summary>Gets the value of the argument</summary>
-        [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
+        // NOTE: We choice to make the Value a public field, so the Extension methods can use it, 
+        // without we have to worry about extra method calls.
         public readonly T Value;
+
+        private readonly string argumentName;
 
         /// <summary>Initializes a new instance of the <see cref="Validator{T}"/> class.</summary>
         /// <param name="argumentName">The name of the argument to be validated</param>
         /// <param name="value">The value of the argument to be validated</param>
-        internal Validator(string argumentName, T value)
+        protected Validator(string argumentName, T value)
         {
             // This constructor is internal. It is not usefull for a user to inherit from this class.
             // When this ctor is made protected, so should be the BuildException method.
             this.Value = value;
-            this.ArgumentName = argumentName;
+            this.argumentName = argumentName;
+        }
+
+        /// <summary>Gets the name of the argument.</summary>
+        [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
+        public string ArgumentName
+        {
+            get { return this.argumentName; }
         }
 
         /// <summary>
@@ -116,7 +125,56 @@ namespace CuttingEdge.Conditions
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
         public void Throw(string condition)
         {
-            throw this.BuildException(condition);
+            throw this.BuildException(condition, null, ConstraintViolationType.Default);
+        }
+
+        /// <summary>
+        /// Allows a user to specify the type of exception that has to be thrown and the 
+        /// <paramref name="message"/> that comes with it. The current <see cref="Validator{T}">Validator</see>
+        /// is used to generate an exception message.
+        /// </summary>
+        /// <remarks>
+        /// This otherwise method is ment to throw unchecked exceptions. Unchecked exceptions are exceptions
+        /// that aren't ment to be caught by a program. For instance, An <see cref="ArgumentException"/> and
+        /// <see cref="ObjectDisposedException"/> shouldn't be caught. They should bring the program to a
+        /// hold. But because the .NET framework doesn't differentiate between checked and unchecked 
+        /// exceptions, we can't enforce this.
+        /// </remarks>
+        /// <typeparam name="TUncheckedException">The exception type that will be thrown by the returned
+        /// <see cref="Validator{T}"/> on failure.</typeparam>
+        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <see cref="Value"/> 
+        /// and <see cref="ArgumentName"/> of this validator instance.</returns>
+        /// <exception cref="TypeInitializationException">Thrown when the specified 
+        /// <typeparamref name="TUncheckedException"/> type doesn't contain a public constructor with a single
+        /// string argument.</exception>
+        public Validator<T> Otherwise<TUncheckedException>() where TUncheckedException : Exception
+        {
+            return new OtherwiseValidator<T, TUncheckedException>(this);
+        }
+
+        /// <summary>
+        /// Allows a user to specify the type of exception that has to be thrown and the 
+        /// <paramref name="message"/> that comes with it.
+        /// </summary>
+        /// <remarks>
+        /// This otherwise method is ment to throw unchecked exceptions. Unchecked exceptions are exceptions
+        /// that aren't ment to be caught by a program. For instance, An <see cref="ArgumentException"/> and
+        /// <see cref="ObjectDisposedException"/> shouldn't be caught. They should bring the program to a
+        /// hold. But because the .NET framework doesn't differentiate between checked and unchecked 
+        /// exceptions, we can't enforce this.
+        /// </remarks>
+        /// <typeparam name="TUncheckedException">The exception type that will be thrown by the returned
+        /// <see cref="Validator{T}"/> on failure.</typeparam>
+        /// <param name="exceptionMessage">The message of the exception to be thrown.</param>
+        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <see cref="Value"/> 
+        /// and <see cref="ArgumentName"/> of this validator instance.</returns>
+        /// <exception cref="TypeInitializationException">Thrown when the specified 
+        /// <typeparamref name="TUncheckedException"/> type doesn't contain a public constructor with a single
+        /// string argument.</exception>
+        public Validator<T> Otherwise<TUncheckedException>(string exceptionMessage)
+            where TUncheckedException : Exception
+        {
+            return new OtherwiseValidator<T, TUncheckedException>(this, exceptionMessage);
         }
 
         /// <summary>
@@ -161,9 +219,16 @@ namespace CuttingEdge.Conditions
             return base.GetType();
         }
 
-        // This method will get overridden by the RequiresValidator and EnsuresValidator descendants.
-        // This allows us to throw a different Exception type when using .Ensures() instead of .Requires().
-        internal abstract Exception BuildException(string condition, string additionalMessage,
+        /// <summary>Builds an exception, that has to be thrown.</summary>
+        /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
+        /// null".</param>
+        /// <param name="additionalMessage">An aditional message that will be appended to the exception
+        /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
+        /// <param name="type">Gives extra information on the exception type that must be build. The actual
+        /// implementation of the validator may ignore some or all values.</param>
+        /// <returns>A newly created <see cref="Exception"/>.</returns>
+        [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
+        public abstract Exception BuildException(string condition, string additionalMessage,
             ConstraintViolationType type);
 
         // Builds an Exception with the specified condition
@@ -173,15 +238,15 @@ namespace CuttingEdge.Conditions
         }
 
         // Builds an Exception with the specified condition
-        internal Exception BuildException(string condition)
-        {
-            return this.BuildException(condition, null, ConstraintViolationType.Default);
-        }
-
-        // Builds an Exception with the specified condition
         internal Exception BuildException(string condition, ConstraintViolationType type)
         {
             return this.BuildException(condition, null, type);
+        }
+
+        // Builds an Exception with the specified condition
+        internal Exception BuildException(string condition)
+        {
+            return this.BuildException(condition, null, ConstraintViolationType.Default);
         }
     }
 }

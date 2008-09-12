@@ -15,11 +15,14 @@
 */
 
 using System;
-using System.Globalization;
+using System.ComponentModel;
 
 namespace CuttingEdge.Conditions
 {
-    // The RequiresValidator can be used for postcondition checks.
+    /// <summary>
+    /// The RequiresValidator can be used for precondition checks.
+    /// </summary>
+    /// <typeparam name="T">The type of the argument to be validated</typeparam>
     internal sealed class RequiresValidator<T> : Validator<T>
     {
         // Initializes a new instance of the <see cref="EnsuresValidator{T}"/> class.
@@ -28,23 +31,37 @@ namespace CuttingEdge.Conditions
         {
         }
 
-        internal override Exception BuildException(string condition, string additionalMessage,
+        /// <summary>Builds an exception and it's message, that has to be thrown.</summary>
+        /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
+        /// null".</param>
+        /// <param name="additionalMessage">An aditional message that will be appended to the exception
+        /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
+        /// <param name="type">Gives extra information on the exception type that must be build. The actual
+        /// implementation of the validator may ignore some or all values.</param>
+        /// <returns>A newly created <see cref="Exception"/>.</returns>
+        public override Exception BuildException(string condition, string additionalMessage,
             ConstraintViolationType type)
         {
-            string message = condition;
+            string message = condition + ".";
 
             if (!String.IsNullOrEmpty(additionalMessage))
             {
                 message = condition + ". " + additionalMessage;
+            }
+            else
+            {
+                message = condition + ".";
             }
 
             switch (type)
             {
                 case ConstraintViolationType.OutOfRangeViolation:
                     return new ArgumentOutOfRangeException(this.ArgumentName, message);
+
                 case ConstraintViolationType.InvalidEnumViolation:
-                    return new System.ComponentModel.InvalidEnumArgumentException(message + 
-                        Environment.NewLine + "Parameter name: " + this.ArgumentName);
+                    string enumMessage = BuildInvalidEnumArgumentExceptionMessage(message, this.ArgumentName);
+                    return new InvalidEnumArgumentException(enumMessage);
+
                 default:
                     if (this.Value != null)
                     {
@@ -55,6 +72,15 @@ namespace CuttingEdge.Conditions
                         return new ArgumentNullException(this.ArgumentName, message);
                     }
             }
+        }
+
+        private static string BuildInvalidEnumArgumentExceptionMessage(string message, string argumentName)
+        {
+            ArgumentException argumentException = new ArgumentException(message, argumentName);
+
+            // Returns the message formatted according to the current culture.
+            // Note that the 'Parameter name' part of the message is culture sensitive.
+            return argumentException.Message;
         }
     }
 }

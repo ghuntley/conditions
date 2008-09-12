@@ -20,9 +20,13 @@ using System.Resources;
 
 namespace CuttingEdge.Conditions
 {
-    // String Resource helper class
+    /// <summary>
+    /// String Resource helper class
+    /// </summary>
     internal static class SR
     {
+        internal const string OtherwiseSpecifiedTypeXIsNotSupported = "OtherwiseSpecifiedTypeXIsNotSupported";
+
         internal const string CollectionContainsCurrentlyXElements = "CollectionContainsCurrentlyXElements";
         internal const string CollectionIsCurrentlyANullReference = "CollectionIsCurrentlyANullReference";
         
@@ -48,6 +52,7 @@ namespace CuttingEdge.Conditions
         internal const string LambdaXShouldHoldForValue = "LambdaXShouldHoldForValue";
 
         internal const string PostconditionFailed = "PostconditionFailed";
+        internal const string PostconditionXFailed = "PostconditionXFailed";
 
         internal const string StringShouldBeEmpty = "StringShouldBeEmpty";
         internal const string StringShouldBeLongerOrEqualToXCharacters = "StringShouldBeLongerOrEqualToXCharacters";
@@ -71,12 +76,14 @@ namespace CuttingEdge.Conditions
 
         internal const string ValueShouldBeBetweenXAndY = "ValueShouldBeBetweenXAndY";
         internal const string ValueShouldBeEqualToX = "ValueShouldBeEqualToX";
+        internal const string ValueShouldBeFalse = "ValueShouldBeFalse";
         internal const string ValueShouldBeGreaterThanOrEqualToX = "ValueShouldBeGreaterThanOrEqualToX";
         internal const string ValueShouldBeGreaterThanX = "ValueShouldBeGreaterThanX";
         internal const string ValueShouldBeNull = "ValueShouldBeNull";
         internal const string ValueShouldBeOfTypeX = "ValueShouldBeOfTypeX";
         internal const string ValueShouldBeSmallerThanOrEqualToX = "ValueShouldBeSmallerThanOrEqualToX";
         internal const string ValueShouldBeSmallerThanX = "ValueShouldBeSmallerThanX";
+        internal const string ValueShouldBeTrue = "ValueShouldBeTrue";
         internal const string ValueShouldBeUnequalToX = "ValueShouldBeUnequalToX";
         internal const string ValueShouldBeValid = "ValueShouldBeValid";
         internal const string ValueShouldNotBeBetweenXAndY = "ValueShouldNotBeBetweenXAndY";
@@ -88,7 +95,7 @@ namespace CuttingEdge.Conditions
         internal const string ValueShouldNotBeOfTypeX = "ValueShouldNotBeOfTypeX";
 
         private static readonly ResourceManager resource =
-            new ResourceManager("CuttingEdge.Conditions.ExceptionMessages", typeof(SR).Assembly);
+            new ResourceManager(typeof(SR).Namespace + ".ExceptionMessages", typeof(SR).Assembly);
 
         // Returns a string from the resource.
         internal static string GetString(string name)

@@ -82,12 +82,12 @@ namespace CuttingEdge.Conditions
         /// <typeparam name="T">The type of the object to validate.</typeparam>
         /// <param name="value">The object to validate.</param>
         /// <param name="argumentName">The name of the argument to validate</param>
-        /// <param name="message">A message that will be appended to generated exception message.</param>
+        /// <param name="additionalMessage">A message that will be appended to generated exception message.</param>
         /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/> 
         /// and <paramref name="argumentName"/>.</returns>
-        public static Validator<T> Ensures<T>(this T value, string argumentName, string message)
+        public static Validator<T> Ensures<T>(this T value, string argumentName, string additionalMessage)
         {
-            return new EnsuresValidator<T>(argumentName, value, message);
+            return new EnsuresValidator<T>(argumentName, value, additionalMessage);
         }
     }
 }

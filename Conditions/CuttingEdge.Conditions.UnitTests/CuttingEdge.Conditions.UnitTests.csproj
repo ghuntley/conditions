@@ -50,12 +50,23 @@
     <Compile Include="PostConditionExceptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorExtensionTests.Collection.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Boolean.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Byte.cs" />
     <Compile Include="ValidatorExtensionTests.Compare.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.DateTime.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Decimal.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Double.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Int16.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Int32.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Int64.cs" />
+    <Compile Include="ValidatorExtensionTests.Compare.Single.cs" />
     <Compile Include="ValidatorExtensionTests.Evaluation.cs" />
     <Compile Include="ValidatorExtensionTests.Null.cs" />
     <Compile Include="ValidatorExtensionTests.EntryPoints.cs" />
     <Compile Include="ValidatorExtensionTests.String.cs" />
     <Compile Include="ValidatorExtensionTests.Type.cs" />
+    <None Include="ValidatorExtensionTests.Compare.Base.cs" />
+    <Compile Include="ValidatorOtherwiseTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CuttingEdge.Conditions\CuttingEdge.Conditions.csproj">

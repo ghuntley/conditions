@@ -90,7 +90,7 @@ namespace CuttingEdge.Conditions
             this Validator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
         {
-            if (validator.Value == null || !Enumerable.Contains(validator.Value, element))
+            if (validator.Value == null || !CollectionHelpers.Contains<TElement>(validator.Value, element))
             {
                 Throw.CollectionShouldContain(validator, element);
             }
@@ -140,7 +140,7 @@ namespace CuttingEdge.Conditions
             this Validator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
         {
-            if (validator.Value != null && validator.Value.Contains(element))
+            if (validator.Value != null && Enumerable.Contains(validator.Value, element))
             {
                 Throw.CollectionShouldNotContain(validator, element);
             }

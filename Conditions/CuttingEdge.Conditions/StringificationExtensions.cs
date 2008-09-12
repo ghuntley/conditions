@@ -20,7 +20,9 @@ using System.Collections.Generic;
 
 namespace CuttingEdge.Conditions
 {
-    // An internal helper class with extension methods for converting an object to a string representation.
+    /// <summary>
+    /// An internal helper class with extension methods for converting an object to a string representation.
+    /// </summary>
     internal static class StringificationExtensions
     {
         // Transforms an object into it's string representation. When the value is a null reference, the 
@@ -39,6 +41,12 @@ namespace CuttingEdge.Conditions
             }
 
             return value.ToString();
+        }
+
+        // Transforms an collection into string showing the elements of the collection.
+        internal static string Stringify(this string value)
+        {
+            return Stringify((object)value);
         }
 
         // Transforms an collection into string showing the elements of the collection.

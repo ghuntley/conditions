@@ -15,7 +15,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             try
             {
-                throw new PostconditionException("");
+                throw new PostconditionException(String.Empty);
             }
             catch (PostconditionException pex)
             {
@@ -63,7 +63,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                throw new PostconditionException("", ex);
+                throw new PostconditionException(String.Empty, ex);
             }
         }
     }

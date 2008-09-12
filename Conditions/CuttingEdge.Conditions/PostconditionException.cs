@@ -51,7 +51,7 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Initializes a new instance of the System.Exception class with serialized data.
+        /// Initializes a new instance of the PostconditionException class with serialized data.
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo"/> that holds the serialized object data about
         /// the exception being thrown.</param>

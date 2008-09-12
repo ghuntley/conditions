@@ -15,14 +15,18 @@
 */
 
 using System;
+using System.Collections;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections;
 
 namespace CuttingEdge.Conditions.UnitTests
 {
     public sealed partial class ValidatorExtensionTests
     {
+        // Cache the language dependent 'Parameter name' string.
+        private static readonly string argumentExceptionParameterName =
+            (new ArgumentException(String.Empty, "x")).Message.Replace(": x", String.Empty).Trim();
+
         #region IsShorterThan
 
         [TestMethod]
@@ -46,7 +50,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsShorterThan on string x with 'x.Length > upped bound' should fail.")]
         public void IsShorterThan3()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsShorterThan(1);
         }
 
@@ -55,7 +59,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsShorterThan on string x with 'x.Length > upped bound' should fail.")]
         public void IsShorterThan4()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsShorterThan(0);
         }
 
@@ -110,7 +114,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsShorterOrEqual on string x with 'x.Length < upped bound' should pass.")]
         public void IsShorterOrEqual3()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsShorterOrEqual(1);
         }
 
@@ -118,7 +122,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsShorterOrEqual on string x with 'x.Length = upped bound' should pass.")]
         public void IsShorterOrEqual4()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsShorterOrEqual(0);
         }
 
@@ -127,7 +131,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsShorterOrEqual on string x with 'x.Length > upped bound' should fail.")]
         public void IsShorterOrEqual5()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsShorterOrEqual(-1);
         }
 
@@ -174,7 +178,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsLongerThan on string x with '-1 < x.Length' should pass.")]
         public void IsLongerThan3()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsLongerThan(-1);
         }
 
@@ -183,7 +187,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsLongerThan on string x with 'lower bound = x.Length' should fail.")]
         public void IsLongerThan4()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsLongerThan(0);
         }
 
@@ -237,7 +241,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsLongerOrEqual on string x with '-1 < x.Length' should pass.")]
         public void IsLongerOrEqualTest3()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsLongerOrEqual(-1);
         }
 
@@ -245,7 +249,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsLongerOrEqual on string x with 'lower bound = x.Length' should pass.")]
         public void IsLongerOrEqualTest4()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsLongerOrEqual(0);
         }
 
@@ -254,7 +258,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsLongerOrEqual on string x with 'lower bound > x.Length' should fail.")]
         public void IsLongerOrEqualTest5()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsLongerOrEqual(1);
         }
 
@@ -301,7 +305,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling HasLength on string x with 'x.Length = expected length' should pass.")]
         public void HasLengthTest3()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().HasLength(0);
         }
 
@@ -310,7 +314,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling HasLength on string x with 'x.Length != expected length' should fail.")]
         public void HasLengthTest4()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().HasLength(1);
         }
 
@@ -359,7 +363,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotHaveLength on string x with 'x.Length = expected length' should fail.")]
         public void DoesNotHaveLengthTest3()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().DoesNotHaveLength(0);
         }
 
@@ -367,7 +371,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotHaveLength on string x with 'x.Length != expected length' should pass.")]
         public void DoesNotHaveLengthTest4()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().DoesNotHaveLength(1);
         }
 
@@ -407,7 +411,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsNullOrEmpty on string (\"\") should pass.")]
         public void IsNullOrEmptyTest2()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsNullOrEmpty();
         }
 
@@ -437,7 +441,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsNullOrEmpty on string (\"\") should fail.")]
         public void IsNotNullOrEmptyTest2()
         {
-            string a = "";
+            string a = String.Empty;
             a.Requires().IsNotNullOrEmpty();
         }
 
@@ -459,7 +463,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsEmpty on string x with 'x == String.Empty' should pass.")]
         public void IsStringEmptyTest1()
         {
-            string s = "";
+            string s = String.Empty;
             s.Requires().IsEmpty();
         }
 
@@ -490,7 +494,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsNotEmpty on string x with 'x == String.Empty' should fail.")]
         public void IsStringNotEmptyTest1()
         {
-            string s = "";
+            string s = String.Empty;
             s.Requires().IsNotEmpty();
         }
 
@@ -546,7 +550,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().StartsWith("");
+            a.Requires().StartsWith(String.Empty);
         }
 
         [TestMethod]
@@ -556,7 +560,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().StartsWith("");
+            a.Requires().StartsWith(String.Empty);
         }
 
         [TestMethod]
@@ -574,6 +578,24 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             a.Requires().StartsWith("test me");
+        }
+
+        [TestMethod]
+        [Description("Calling StartsWith on string x (\"test\") with 'x StartsWith \"test me\"' should fail with a correct exception message.")]
+        public void StartsWithTest8()
+        {
+            string expectedMessage =
+                "a should start with 'test me'." + Environment.NewLine + argumentExceptionParameterName + ": a";
+
+            try
+            {
+                string a = "test";
+                a.Requires("a").StartsWith("test me");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual<string>(expectedMessage, ex.Message);
+            }
         }
 
         #endregion // StartsWith
@@ -614,7 +636,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().DoesNotStartWith("");
+            a.Requires().DoesNotStartWith(String.Empty);
         }
 
         [TestMethod]
@@ -623,7 +645,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().DoesNotStartWith("");
+            a.Requires().DoesNotStartWith(String.Empty);
         }
 
         [TestMethod]
@@ -641,6 +663,24 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             a.Requires().DoesNotStartWith("test me");
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotStartWith on string x (\"test\") with 'x DoesNotStartWith \"test\"' should fail with a correct exception message.")]
+        public void DoesNotStartWithTest8()
+        {
+            string expectedMessage =
+                "a should not start with 'test'." + Environment.NewLine + argumentExceptionParameterName + ": a";
+
+            try
+            {
+                string a = "test";
+                a.Requires("a").DoesNotStartWith("test");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual<string>(expectedMessage, ex.Message);
+            }
         }
 
         #endregion // DoesNotStartWith
@@ -679,7 +719,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().Contains("");
+            a.Requires().Contains(String.Empty);
         }
 
         [TestMethod]
@@ -689,7 +729,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().Contains("");
+            a.Requires().Contains(String.Empty);
         }
 
         [TestMethod]
@@ -707,6 +747,24 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             a.Requires().Contains("test me");
+        }
+
+        [TestMethod]
+        [Description("Calling Contains on string x (\"test\") with 'x Contains \"test me\"' should fail with a correct exception message.")]
+        public void ContainsTest8()
+        {
+            string expectedMessage =
+                "a should contain 'test me'." + Environment.NewLine + argumentExceptionParameterName + ": a";
+
+            try
+            {
+                string a = "test";
+                a.Requires("a").Contains("test me");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual<string>(expectedMessage, ex.Message);
+            }
         }
 
         #endregion // Contains
@@ -747,7 +805,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().DoesNotContain("");
+            a.Requires().DoesNotContain(String.Empty);
         }
 
         [TestMethod]
@@ -756,7 +814,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().DoesNotContain("");
+            a.Requires().DoesNotContain(String.Empty);
         }
 
         [TestMethod]
@@ -774,6 +832,24 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             a.Requires().DoesNotContain("test me");
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain \"test\"' should fail with a correct exception message.")]
+        public void DoesNotContainTest8()
+        {
+            string expectedMessage =
+                "a should not contain 'test'." + Environment.NewLine + argumentExceptionParameterName + ": a";
+
+            try
+            {
+                string a = "test";
+                a.Requires("a").DoesNotContain("test");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual<string>(expectedMessage, ex.Message);
+            }
         }
 
         #endregion // DoesNotContain
@@ -812,7 +888,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().EndsWith("");
+            a.Requires().EndsWith(String.Empty);
         }
 
         [TestMethod]
@@ -822,7 +898,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().EndsWith("");
+            a.Requires().EndsWith(String.Empty);
         }
 
         [TestMethod]
@@ -840,6 +916,24 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             a.Requires().EndsWith("me test");
+        }
+
+        [TestMethod]
+        [Description("Calling EndsWith on string x (\"test\") with 'x EndsWith \"test me\"' should fail with a correct exception message.")]
+        public void EndsWithTest8()
+        {
+            string expectedMessage =
+                "a should end with 'test me'." + Environment.NewLine + argumentExceptionParameterName + ": a";
+
+            try
+            {
+                string a = "test";
+                a.Requires("a").EndsWith("test me");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual<string>(expectedMessage, ex.Message);
+            }
         }
 
         #endregion // EndsWith
@@ -880,7 +974,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().DoesNotEndWith("");
+            a.Requires().DoesNotEndWith(String.Empty);
         }
 
         [TestMethod]
@@ -889,7 +983,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().DoesNotEndWith("");
+            a.Requires().DoesNotEndWith(String.Empty);
         }
 
         [TestMethod]
@@ -907,6 +1001,24 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             string a = "test";
             a.Requires().DoesNotEndWith("me test");
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotEndWith on string x (\"test\") with 'x DoesNotEndWith \"test\"' should fail with a correct exception message.")]
+        public void DoesNotEndWithTest8()
+        {
+            string expectedMessage = 
+                "a should not end with 'test'." + Environment.NewLine + argumentExceptionParameterName + ": a";
+
+            try
+            {
+                string a = "test";
+                a.Requires("a").DoesNotEndWith("test");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual<string>(expectedMessage, ex.Message);
+            }
         }
 
         #endregion // DoesNotEndWith

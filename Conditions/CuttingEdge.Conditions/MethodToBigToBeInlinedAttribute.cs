@@ -18,8 +18,10 @@ using System;
 
 namespace CuttingEdge.Conditions
 {
-    // This attribute is used to indicate that the decorated method is to big to be a candidate to be inlined 
-    // by the JIT compiler and that we don't check the method if it's small enough during unit testing.
+    /// <summary>
+    /// This attribute is used to indicate that the decorated method is to big to be a candidate to be inlined 
+    /// by the JIT compiler and that we don't check the method if it's small enough during unit testing.
+    /// </summary>
     internal sealed class MethodToBigToBeInlinedAttribute : Attribute
     {
     }
