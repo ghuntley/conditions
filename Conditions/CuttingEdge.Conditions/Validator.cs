@@ -50,7 +50,7 @@ namespace CuttingEdge.Conditions
     /// 
     ///         xml.Requires("xml")
     ///             .StartsWith("&lt;data&gt;") // throws ArgumentException on failure
-    ///             .EndsWith("&lt;data&gt;");  // throws ArgumentException on failure
+    ///             .EndsWith("&lt;/data&gt;"); // throws ArgumentException on failure
     /// 
     ///         col.Requires("col")
     ///             .IsNotNull()          // throws ArgumentNullException on failure
@@ -59,7 +59,8 @@ namespace CuttingEdge.Conditions
     ///         this._disposed.Requires().Otherwise&lt;ObjectDisposedException>(this.GetType().Name)
     ///             .IsEqualsTo(false);
     ///             
-    ///         this.currentState.Requires().Otherwise&lt;InvalidOperationException>("Current state is invalid")
+    ///         this.currentState.Requires()
+    ///             .Otherwise&lt;InvalidOperationException>("Current state is invalid")
     ///             .IsGreaterThan(StateType.Uninitialized);
     /// 
     ///         // Do some work
@@ -73,7 +74,84 @@ namespace CuttingEdge.Conditions
     ///             .IsNotNull()
     ///             .IsOfType(typeof(ICollection));
     /// 
-    ///         return (ICollection)result;
+    ///         return result as ICollection;
+    ///     }
+    /// }
+    /// </code>
+    /// The following code examples shows how to extend the library with your own 'Invariant' entry point
+    /// method. The first example shows a class with an Add method that validates the class state (the
+    /// class invariants) before adding the <b>Person</b> object to the internal array and that code should
+    /// throw an <see cref="InvalidOperationException"/>.
+    /// <code>
+    /// using CuttingEdge.Conditions;
+    /// 
+    /// public class Person { }
+    /// 
+    /// public class PersonCollection 
+    /// {
+    ///     public PersonCollection(int capicity)
+    ///     {
+    ///         this.Capacity = capicity;
+    ///     }
+    /// 
+    ///     public void Add(Person person)
+    ///     {
+    ///         // Throws a ArgumentNullException when person == null
+    ///         person.Requires("person").IsNotNull();
+    ///         
+    ///         // Throws an InvalidOperationException on failure
+    ///         this.Count.Invariant("Count").IsLessOrEqual(this.Capacity);
+    ///         
+    ///         this.AddInternal(person);
+    ///     }
+    ///
+    ///     public int Count { get; private set; }
+    ///     public int Capacity { get; private set; }
+    ///     
+    ///     private void AddInternal(Person person)
+    ///     {
+    ///         // some logic here
+    ///     }
+    ///     
+    ///     public bool Contains(Person person)
+    ///     {
+    ///         // some logic here
+    ///         return false;
+    ///     }
+    /// }
+    /// </code>
+    /// The following code example will show the implementation of the <b>Invariant</b> extension method.
+    /// <code>
+    /// using System;
+    /// using CuttingEdge.Conditions;
+    /// 
+    /// namespace MyCompanyRootNamespace
+    /// {
+    ///     public static class InvariantExtensions
+    ///     {
+    ///         public static Validator&lt;T> Invariant&lt;T>(this T value)
+    ///         {
+    ///             return new InvariantValidator&lt;T>("value", value);
+    ///         }
+    /// 
+    ///         public static Validator&lt;T> Invariant&lt;T>(this T value, string argumentName)
+    ///         {
+    ///             return new InvariantValidator&lt;T>(argumentName, value);
+    ///         }
+    /// 
+    ///         // Internal class that inherits from Validator&lt;T>
+    ///         class InvariantValidator&lt;T> : Validator&lt;T>
+    ///         {
+    ///             public InvariantValidator(string argumentName, T value) : base(argumentName, value) { }
+    ///             public override Exception BuildException(string condition, string additionalMessage,
+    ///                 ConstraintViolationType type)
+    ///             {
+    ///                 string message = condition + ".";
+    ///                 if (!String.IsNullOrEmpty(additionalMessage))
+    ///                     message = condition + ". " + additionalMessage;
+    ///                 return new InvalidOperationException(message);
+    ///             }
+    ///         }
     ///     }
     /// }
     /// </code>
