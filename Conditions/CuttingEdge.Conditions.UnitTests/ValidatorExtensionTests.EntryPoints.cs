@@ -203,7 +203,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             int attributeCount =
                 (from attribute in method.GetCustomAttributes(true)
-                 where attribute.GetType().Name == "MethodToBigToBeInlinedAttribute"
+                 where attribute.GetType().Name == "MethodTooBigToBeInlinedAttribute"
                  select attribute)
                  .Count();
 
