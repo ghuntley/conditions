@@ -251,7 +251,17 @@ namespace CuttingEdge.Conditions
 
         internal static void StringShouldHaveLength(Validator<string> validator, int length)
         {
-            string condition = SR.GetString(SR.StringShouldBeXCharactersLong, validator.ArgumentName, length);
+            string condition;
+
+            if (length == 1)
+            {
+                condition = SR.GetString(SR.StringShouldBe1CharacterLong, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.StringShouldBeXCharactersLong, validator.ArgumentName, length);
+            }
+
             string additionalMessage = GetActualStringLengthMessage(validator);
 
             throw validator.BuildException(condition, additionalMessage);
@@ -259,16 +269,33 @@ namespace CuttingEdge.Conditions
 
         internal static void StringShouldNotHaveLength(Validator<string> validator, int length)
         {
-            string condition = SR.GetString(SR.StringShouldNotBeXCharactersLong, validator.ArgumentName, 
-                length);
+            string condition;
+
+            if (length == 1)
+            {
+                condition = SR.GetString(SR.StringShouldNotBe1CharacterLong, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.StringShouldNotBeXCharactersLong, validator.ArgumentName, length);
+            }
 
             throw validator.BuildException(condition);
         }
 
         internal static void StringShouldBeLongerThan(Validator<string> validator, int minLength)
         {
-            string condition = SR.GetString(SR.StringShouldBeLongerThanXCharacters, validator.ArgumentName, 
-                minLength);
+            string condition;
+
+            if (minLength == 1)
+            {
+                condition = SR.GetString(SR.StringShouldBeLongerThan1Character, validator.ArgumentName);
+            }
+            else
+            {
+                condition = 
+                    SR.GetString(SR.StringShouldBeLongerThanXCharacters, validator.ArgumentName, minLength);
+            }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
 
@@ -277,8 +304,17 @@ namespace CuttingEdge.Conditions
 
         internal static void StringShouldBeShorterThan(Validator<string> validator, int maxLength)
         {
-            string condition = SR.GetString(SR.StringShouldBeShorterThanXCharacters, validator.ArgumentName,
-                maxLength);
+            string condition;
+
+            if (maxLength == 1)
+            {
+                condition = SR.GetString(SR.StringShouldBeShorterThan1Character, validator.ArgumentName);
+            }
+            else
+            {
+                condition = 
+                    SR.GetString(SR.StringShouldBeShorterThanXCharacters, validator.ArgumentName, maxLength);
+            }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
 
@@ -287,8 +323,17 @@ namespace CuttingEdge.Conditions
 
         internal static void StringShouldBeShorterOrEqualTo(Validator<string> validator, int maxLength)
         {
-            string condition = SR.GetString(SR.StringShouldBeShorterOrEqualToXCharacters, 
-                validator.ArgumentName, maxLength);
+            string condition;
+
+            if (maxLength == 1)
+            {
+                condition = SR.GetString(SR.StringShouldBeShorterOrEqualTo1Character, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.StringShouldBeShorterOrEqualToXCharacters, validator.ArgumentName, 
+                    maxLength);
+            }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
 
@@ -297,8 +342,17 @@ namespace CuttingEdge.Conditions
 
         internal static void StringShouldBeLongerOrEqualTo(Validator<string> validator, int minLength)
         {
-            string condition = SR.GetString(SR.StringShouldBeLongerOrEqualToXCharacters,
-                validator.ArgumentName, minLength);
+            string condition;
+
+            if (minLength == 1)
+            {
+                condition = SR.GetString(SR.StringShouldBeLongerOrEqualTo1Character, validator.ArgumentName);             
+            }
+            else
+            {
+                condition = SR.GetString(SR.StringShouldBeLongerOrEqualToXCharacters,
+                     validator.ArgumentName, minLength);
+            }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
 
@@ -443,16 +497,34 @@ namespace CuttingEdge.Conditions
         internal static void CollectionShouldContain<T>(Validator<T> validator, int numberOfElements)
             where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldContainXElements, validator.ArgumentName, 
-                numberOfElements);
+            string condition;
+
+            if (numberOfElements == 1)
+            {
+                condition = SR.GetString(SR.CollectionShouldContain1Element, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.CollectionShouldContainXElements, validator.ArgumentName,
+                     numberOfElements);
+            }
             
             throw validator.BuildException(condition, GetCollectionContainsElementsMessage(validator));
         }
 
         internal static void CollectionShouldNotContain<T>(Validator<T> validator, int numberOfElements)
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainXElements, validator.ArgumentName, 
-                numberOfElements);
+            string condition;
+
+            if (numberOfElements == 1)
+            {
+                condition = SR.GetString(SR.CollectionShouldNotContain1Element, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.CollectionShouldNotContainXElements, validator.ArgumentName,
+                     numberOfElements);
+            }
 
             throw validator.BuildException(condition);
         }
@@ -460,8 +532,17 @@ namespace CuttingEdge.Conditions
         internal static void CollectionShouldContainLessThan<T>(Validator<T> validator, int numberOfElements)
             where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldContainLessThanXElements, 
-                validator.ArgumentName, numberOfElements);
+            string condition;
+
+            if (numberOfElements == 1)
+            {
+                condition = SR.GetString(SR.CollectionShouldContainLessThan1Element, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.CollectionShouldContainLessThanXElements,
+                    validator.ArgumentName, numberOfElements);
+            }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
@@ -472,8 +553,18 @@ namespace CuttingEdge.Conditions
             int numberOfElements)
             where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainLessThanXElements, 
-                validator.ArgumentName, numberOfElements);
+            string condition;
+
+            if (numberOfElements == 1)
+            {
+                condition = 
+                    SR.GetString(SR.CollectionShouldNotContainLessThan1Element, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.CollectionShouldNotContainLessThanXElements, 
+                    validator.ArgumentName, numberOfElements);
+            }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
@@ -507,8 +598,17 @@ namespace CuttingEdge.Conditions
         internal static void CollectionShouldContainMoreThan<T>(Validator<T> validator, int numberOfElements)
             where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldContainMoreThanXElements, 
-                validator.ArgumentName, numberOfElements);
+            string condition;
+
+            if (numberOfElements == 1)
+            {
+                condition = SR.GetString(SR.CollectionShouldContainMoreThan1Element, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.CollectionShouldContainMoreThanXElements, validator.ArgumentName, 
+                    numberOfElements);
+            }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
@@ -519,8 +619,18 @@ namespace CuttingEdge.Conditions
             int numberOfElements)
             where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainMoreThanXElements, 
-                validator.ArgumentName, numberOfElements);
+            string condition;
+
+            if (numberOfElements == 1)
+            {
+                condition =
+                    SR.GetString(SR.CollectionShouldNotContainMoreThan1Element, validator.ArgumentName);
+            }
+            else
+            {
+                condition = SR.GetString(SR.CollectionShouldNotContainMoreThanXElements,
+                     validator.ArgumentName, numberOfElements);
+            }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
@@ -571,7 +681,14 @@ namespace CuttingEdge.Conditions
         {
             int length = validator.Value != null ? validator.Value.Length : 0;
 
-            return SR.GetString(SR.TheActualValueIsXCharactersLong, validator.ArgumentName, length);
+            if (length == 1)
+            {
+                return SR.GetString(SR.TheActualValueIs1CharacterLong, validator.ArgumentName);
+            }
+            else
+            {
+                return SR.GetString(SR.TheActualValueIsXCharactersLong, validator.ArgumentName, length);
+            }
         }
 
         private static string GetCollectionContainsElementsMessage<T>(Validator<T> validator)
@@ -584,8 +701,16 @@ namespace CuttingEdge.Conditions
             else
             {
                 int numberOfElements = GetNumberOfElements(validator.Value);
-                return SR.GetString(SR.CollectionContainsCurrentlyXElements, validator.ArgumentName,
-                   numberOfElements);
+
+                if (numberOfElements == 1)
+                {
+                    return SR.GetString(SR.CollectionContainsCurrently1Element, validator.ArgumentName);
+                }
+                else
+                {
+                    return SR.GetString(SR.CollectionContainsCurrentlyXElements, validator.ArgumentName,
+                       numberOfElements);
+                }
             }
         }
 

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CollectionContainsCurrently1Element" xml:space="preserve">
+    <value>{0} contains currently 1 element.</value>
+  </data>
   <data name="CollectionContainsCurrentlyXElements" xml:space="preserve">
     <value>{0} contains currently {1} elements.</value>
   </data>
@@ -126,14 +129,23 @@
   <data name="CollectionShouldBeEmpty" xml:space="preserve">
     <value>{0} should be empty</value>
   </data>
+  <data name="CollectionShouldContain1Element" xml:space="preserve">
+    <value>{0} should contain 1 element</value>
+  </data>
   <data name="CollectionShouldContainAllOfX" xml:space="preserve">
     <value>{0} should contain all of {1}</value>
   </data>
   <data name="CollectionShouldContainAtLeastOneOfX" xml:space="preserve">
     <value>{0} should contain at least one of {1}</value>
   </data>
+  <data name="CollectionShouldContainLessThan1Element" xml:space="preserve">
+    <value>{0} should contain less than 1 element</value>
+  </data>
   <data name="CollectionShouldContainLessThanXElements" xml:space="preserve">
     <value>{0} should contain less than {1} elements</value>
+  </data>
+  <data name="CollectionShouldContainMoreThan1Element" xml:space="preserve">
+    <value>{0} should contain more than 1 element</value>
   </data>
   <data name="CollectionShouldContainMoreThanXElements" xml:space="preserve">
     <value>{0} should contain more than {1} elements</value>
@@ -153,14 +165,23 @@
   <data name="CollectionShouldNotBeEmpty" xml:space="preserve">
     <value>{0} should not be empty</value>
   </data>
+  <data name="CollectionShouldNotContain1Element" xml:space="preserve">
+    <value>{0} should not contain 1 element</value>
+  </data>
   <data name="CollectionShouldNotContainAllOfX" xml:space="preserve">
     <value>{0} should not contain all of {1}</value>
   </data>
   <data name="CollectionShouldNotContainAnyOfX" xml:space="preserve">
     <value>{0} should not contain any of {1}</value>
   </data>
+  <data name="CollectionShouldNotContainLessThan1Element" xml:space="preserve">
+    <value>{0} should not contain more than 1 element</value>
+  </data>
   <data name="CollectionShouldNotContainLessThanXElements" xml:space="preserve">
     <value>{0} should not contain less than {1} elements</value>
+  </data>
+  <data name="CollectionShouldNotContainMoreThan1Element" xml:space="preserve">
+    <value>{0} should not contain more than 1 element</value>
   </data>
   <data name="CollectionShouldNotContainMoreThanXElements" xml:space="preserve">
     <value>{0} should not contain more than {1} elements</value>
@@ -189,11 +210,20 @@
   <data name="PostconditionXFailed" xml:space="preserve">
     <value>Postcondition '{0}' failed.</value>
   </data>
+  <data name="StringShouldBe1CharacterLong" xml:space="preserve">
+    <value>{0} should be 1 character long</value>
+  </data>
   <data name="StringShouldBeEmpty" xml:space="preserve">
     <value>{0} should be an empty string</value>
   </data>
+  <data name="StringShouldBeLongerOrEqualTo1Character" xml:space="preserve">
+    <value>{0} should be longer or equal to 1 character</value>
+  </data>
   <data name="StringShouldBeLongerOrEqualToXCharacters" xml:space="preserve">
     <value>{0} should be longer or equal to {1} characters</value>
+  </data>
+  <data name="StringShouldBeLongerThan1Character" xml:space="preserve">
+    <value>{0} should be longer than 1 character</value>
   </data>
   <data name="StringShouldBeLongerThanXCharacters" xml:space="preserve">
     <value>{0} should be longer than {1} characters</value>
@@ -201,8 +231,14 @@
   <data name="StringShouldBeNullOrEmpty" xml:space="preserve">
     <value>{0} should be null or an empty string</value>
   </data>
+  <data name="StringShouldBeShorterOrEqualTo1Character" xml:space="preserve">
+    <value>{0} should be shorter or equal to 1 character</value>
+  </data>
   <data name="StringShouldBeShorterOrEqualToXCharacters" xml:space="preserve">
     <value>{0} should be shorter or equal to {1} characters</value>
+  </data>
+  <data name="StringShouldBeShorterThan1Character" xml:space="preserve">
+    <value>{0} should be shorter than 1 character</value>
   </data>
   <data name="StringShouldBeShorterThanXCharacters" xml:space="preserve">
     <value>{0} should be shorter than {1} characters</value>
@@ -215,6 +251,9 @@
   </data>
   <data name="StringShouldEndWithX" xml:space="preserve">
     <value>{0} should end with {1}</value>
+  </data>
+  <data name="StringShouldNotBe1CharacterLong" xml:space="preserve">
+    <value>{0} should not be 1 character long</value>
   </data>
   <data name="StringShouldNotBeEmpty" xml:space="preserve">
     <value>{0} should not be an empty string</value>
@@ -236,6 +275,9 @@
   </data>
   <data name="StringShouldStartWithX" xml:space="preserve">
     <value>{0} should start with {1}</value>
+  </data>
+  <data name="TheActualValueIs1CharacterLong" xml:space="preserve">
+    <value>The actual value is 1 character long.</value>
   </data>
   <data name="TheActualValueIsX" xml:space="preserve">
     <value>The actual value is {1}.</value>
