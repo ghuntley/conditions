@@ -117,20 +117,41 @@ namespace CuttingEdge.Conditions
         // Returns a string from the resource.
         internal static string GetString(string name)
         {
-            return GetString(name, null);
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            return GetStringInternal(name, null);
         }
 
         // Returns a string from the resource and formats it with the given args in a culture-specific way.
         internal static string GetString(string name, params object[] args)
         {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            return GetStringInternal(name, args);
+        }
+
+        private static string GetStringInternal(string name, params object[] args)
+        {
             string format = resource.GetString(name, CultureInfo.CurrentUICulture);
+
+            if (format == null)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture,
+                    "The supplied string '{0}' could not be found in the resource.", name), "name");
+            }
 
             if (args == null)
             {
                 return format;
             }
 
-            return string.Format(CultureInfo.CurrentCulture, format, args);
+            return string.Format(CultureInfo.CurrentCulture, format, args);         
         }
     }
 }

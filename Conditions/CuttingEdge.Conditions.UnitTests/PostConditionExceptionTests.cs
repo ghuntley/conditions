@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (PostconditionException pex)
             {
-                Assert.AreEqual<string>("Postcondition failed.", pex.Message);
+                Assert.AreEqual("Postcondition failed.", pex.Message);
             }
         }
 

@@ -112,7 +112,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<bool>(true, ex.Message.Contains("foobar"));
+                Assert.AreEqual(true, ex.Message.Contains("foobar"));
             }
         }
 
@@ -136,7 +136,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<bool>(true, ex.Message.Contains("foobar"));
+                Assert.AreEqual(true, ex.Message.Contains("foobar"));
             }
         }
 
@@ -151,7 +151,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<bool>(true, ex.Message.Contains("errormessage"));
+                Assert.AreEqual(true, ex.Message.Contains("errormessage"));
             }
         }
 
@@ -166,7 +166,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<bool>(true, ex.Message.Contains("5"));
+                Assert.AreEqual(true, ex.Message.Contains("5"));
             }
         }
 
@@ -176,18 +176,19 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             Validator<int> validator = 3.Requires();
 
-            string s = validator.ToString();
+            validator.ToString();
 
-            int hashcode = validator.GetHashCode();
+            validator.GetHashCode();
 
-            Type type = validator.GetType();
+            validator.GetType();
 
-            bool equals = validator.Equals(null);
+            validator.Equals(null);
         }
 
         #region Private Helper Methods
 
-        private static int GetMethodSize(MethodInfo method)
+#if !DEBUG
+        private static int GetMethodSize(MethodBase method)
         {
             var body = method.GetMethodBody();
 
@@ -199,15 +200,14 @@ namespace CuttingEdge.Conditions.UnitTests
             return body.GetILAsByteArray().Length;
         }
 
-        private static bool MethodShouldBeSkippedFromTest(MethodInfo method)
+        private static bool MethodShouldBeSkippedFromTest(ICustomAttributeProvider method)
         {
-            int attributeCount =
-                (from attribute in method.GetCustomAttributes(true)
+            var attributes =
+                from attribute in method.GetCustomAttributes(true)
                  where attribute.GetType().Name == "MethodTooBigToBeInlinedAttribute"
-                 select attribute)
-                 .Count();
+                 select attribute;
 
-            return attributeCount != 0;
+            return attributes.Count() != 0;
         }
 
         private static string BuildMethodDefinition(MethodInfo method)
@@ -219,7 +219,7 @@ namespace CuttingEdge.Conditions.UnitTests
                 .Replace("`1", String.Empty)
                 .Replace("`2", String.Empty);
         }
-
+#endif
         #endregion // Private Helper Methods
     }
 }

@@ -171,7 +171,7 @@ namespace CuttingEdge.Conditions
 
         internal static void ExpressionEvaluatedFalse<T>(Validator<T> validator, string description)
         {
-            string condition = null;
+            string condition;
 
             try
             {
@@ -669,7 +669,7 @@ namespace CuttingEdge.Conditions
             // When the ToString method of the given type isn't overloaded, it returns the Type.FullName.
             // This information isn't very usefull to the user, so in that case, we'll simply return null,
             // meaning: no extra information.
-            if (value == null || (value != null && value.GetType().FullName != value.ToString()))
+            if (value == null || value.GetType().FullName != value.ToString())
             {
                 return SR.GetString(SR.TheActualValueIsX, validator.ArgumentName, validator.Value.Stringify());
             }

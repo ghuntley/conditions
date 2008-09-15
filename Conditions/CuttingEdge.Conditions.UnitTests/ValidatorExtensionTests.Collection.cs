@@ -65,8 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsEmpty on an non empty ICollection should fail.")]
         public void IsEmptyTest5()
         {
-            Collection<int> c = new Collection<int>();
-            c.Add(1);
+            Collection<int> c = new Collection<int> { 1 };
             c.Requires().IsEmpty();
         }
 
@@ -123,8 +122,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling IsNotEmpty on an not empty ICollection should pass.")]
         public void IsNotEmptyTest5()
         {
-            Collection<int> c = new Collection<int>();
-            c.Add(1);
+            Collection<int> c = new Collection<int> { 1 };
             c.Requires().IsNotEmpty();
         }
 
@@ -143,7 +141,7 @@ namespace CuttingEdge.Conditions.UnitTests
         // Calling Contains on an array should compile.
         private void CollectionContainsShouldCompileTest01()
         {
-            int[] c = new int[1] { 1 };
+            int[] c = { 1 };
             c.Requires().Contains(1);
         }
 
@@ -320,7 +318,7 @@ namespace CuttingEdge.Conditions.UnitTests
         // Calling ContainsAny on an array should compile.
         private void CollectionContainsAnyShouldCompileTest01()
         {
-            int[] c = new int[1] { 1 };
+            int[] c = { 1 };
             c.Requires().ContainsAny((IEnumerable<int>)c);
         }
 
@@ -402,8 +400,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with a 'any' collection containing all elements of the tested collection should pass.")]
         public void CollectionContainsAnyTest07()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 1, 2, 3, 4 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 1, 2, 3, 4 };
             c.Requires().ContainsAny(any);
         }
 
@@ -411,8 +409,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with a 'any' collection containing one element of the tested collection should pass.")]
         public void CollectionContainsAnyTest08()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 4, 5, 6, 7 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 4, 5, 6, 7 };
             c.Requires().ContainsAny(any);
         }
 
@@ -421,8 +419,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with a 'any' collection containing no element of the tested collection should fail.")]
         public void CollectionContainsAnyTest09()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 5, 6, 7, 8 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 5, 6, 7, 8 };
             c.Requires().ContainsAny(any);
         }
 
@@ -430,8 +428,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with an untyped 'any' collection containing one element of the tested typed collection should pass.")]
         public void CollectionContainsAnyTest10()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList any = new ArrayList(new int[] { 4, 5, 6, 8 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList any = new ArrayList(new[] { 4, 5, 6, 8 });
             c.Requires().ContainsAny(any);
         }
 
@@ -448,14 +446,9 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with an untyped 'any' collection containing one element of different types of the tested untyped collection should pass.")]
         public void CollectionContainsAnyTest12()
         {
-            ArrayList c = new ArrayList();
-            c.Add(1);
-            c.Add(DayOfWeek.Friday);
-            c.Add(10.8D);
+            ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
 
-            ArrayList any = new ArrayList();
-            any.Add(DayOfWeek.Friday);
-            any.Add(2);
+            ArrayList any = new ArrayList { DayOfWeek.Friday, 2 };
 
             c.Requires().ContainsAny(any);
         }
@@ -465,8 +458,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with an untyped 'any' collection containing no elements of the tested typed collection should fail.")]
         public void CollectionContainsAnyTest13()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList any = new ArrayList(new int[] { 5, 6, 7, 8 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList any = new ArrayList(new[] { 5, 6, 7, 8 });
             c.Requires().ContainsAny(any);
         }
 
@@ -475,8 +468,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with an untyped 'any' collection containing no elements of the tested untyped collection should fail.")]
         public void CollectionContainsAnyTest14()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
-            ArrayList any = new ArrayList(new int[] { 5, 6, 7, 8 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
+            ArrayList any = new ArrayList(new[] { 5, 6, 7, 8 });
             c.Requires().ContainsAny(any);
         }
 
@@ -485,15 +478,9 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAny with an untyped 'any' collection containing no elements of different types of the tested untyped collection should fail.")]
         public void CollectionContainsAnyTest15()
         {
-            ArrayList c = new ArrayList();
-            c.Add(1);
-            c.Add(DayOfWeek.Friday);
-            c.Add(10.8D);
+            ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
 
-            ArrayList any = new ArrayList();
-            any.Add(DayOfWeek.Saturday);
-            any.Add(2);
-            any.Add(new object());
+            ArrayList any = new ArrayList { DayOfWeek.Saturday, 2, new object() };
 
             c.Requires().ContainsAny(any);
         }
@@ -550,7 +537,7 @@ namespace CuttingEdge.Conditions.UnitTests
         private void CollectionDoesNotContainAnyShouldCompileTest03()
         {
             IEnumerable<int> c = new Collection<int> { 1 };
-            int[] any = new int[1] { 2 };
+            int[] any = { 2 };
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -613,8 +600,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with a 'any' collection containing all elements of the tested collection should fail.")]
         public void CollectionDoesNotContainAnyTest07()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 1, 2, 3, 4 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 1, 2, 3, 4 };
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -623,8 +610,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with a 'any' collection containing one element of the tested collection should fail.")]
         public void CollectionDoesNotContainAnyTest08()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 4, 5, 6, 7 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 4, 5, 6, 7 };
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -632,8 +619,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with a 'any' collection containing no element of the tested collection should pass.")]
         public void CollectionDoesNotContainAnyTest09()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 5, 6, 7, 8 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 5, 6, 7, 8 };
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -642,8 +629,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with an untyped 'any' collection containing one element of the tested typed collection should fail.")]
         public void CollectionDoesNotContainAnyTest10()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList any = new ArrayList(new int[] { 4, 5, 6, 8 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList any = new ArrayList(new[] { 4, 5, 6, 8 });
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -662,14 +649,9 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with an untyped 'any' collection containing one element of different types of the tested untyped collection should fail.")]
         public void CollectionDoesNotContainAnyTest12()
         {
-            ArrayList c = new ArrayList();
-            c.Add(1);
-            c.Add(DayOfWeek.Friday);
-            c.Add(10.8D);
+            ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
 
-            ArrayList any = new ArrayList();
-            any.Add(DayOfWeek.Friday);
-            any.Add(2);
+            ArrayList any = new ArrayList { DayOfWeek.Friday, 2 };
 
             c.Requires().DoesNotContainAny(any);
         }
@@ -678,8 +660,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with an untyped 'any' collection containing no elements of the tested typed collection should pass.")]
         public void CollectionDoesNotContainAnyTest13()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList any = new ArrayList(new int[] { 5, 6, 7, 8 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList any = new ArrayList(new[] { 5, 6, 7, 8 });
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -687,8 +669,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with an untyped 'any' collection containing no elements of the tested untyped collection should pass.")]
         public void CollectionDoesNotContainAnyTest14()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
-            ArrayList any = new ArrayList(new int[] { 5, 6, 7, 8 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
+            ArrayList any = new ArrayList(new[] { 5, 6, 7, 8 });
             c.Requires().DoesNotContainAny(any);
         }
 
@@ -696,15 +678,9 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAny with an untyped 'any' collection containing no elements of different types of the tested untyped collection should pass.")]
         public void CollectionDoesNotContainAnyTest15()
         {
-            ArrayList c = new ArrayList();
-            c.Add(1);
-            c.Add(DayOfWeek.Friday);
-            c.Add(10.8D);
+            ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
 
-            ArrayList any = new ArrayList();
-            any.Add(DayOfWeek.Saturday);
-            any.Add(2);
-            any.Add(new object());
+            ArrayList any = new ArrayList { DayOfWeek.Saturday, 2, new object() };
 
             c.Requires().DoesNotContainAny(any);
         }
@@ -792,8 +768,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with a 'all' collection containing all elements of the tested collection should pass.")]
         public void CollectionContainsAllTest07()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] all = new int[] { 1, 2, 3, 4 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] all = { 1, 2, 3, 4 };
             c.Requires().ContainsAll(all);
         }
 
@@ -802,8 +778,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with a 'all' collection containing one element of the tested collection should fail.")]
         public void CollectionContainsAllTest08()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] all = new int[] { 4, 5, 6, 7 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] all = { 4, 5, 6, 7 };
             c.Requires().ContainsAll(all);
         }
 
@@ -812,8 +788,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with a 'all' collection containing no element of the tested collection should fail.")]
         public void CollectionContainsAllTest09()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] all = new int[] { 5, 6, 7, 8 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] all = { 5, 6, 7, 8 };
             c.Requires().ContainsAll(all);
         }
 
@@ -821,8 +797,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of the tested typed collection should pass.")]
         public void CollectionContainsAllTest10()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList all = new ArrayList(new int[] { 1, 2, 3, 4 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
             c.Requires().ContainsAll(all);
         }
 
@@ -830,8 +806,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of the tested untyped collection should pass.")]
         public void CollectionContainsAllTest11()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
-            ArrayList all = new ArrayList(new int[] { 1, 2, 3, 4 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
+            ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
             c.Requires().ContainsAll(all);
         }
 
@@ -856,8 +832,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with an untyped 'all' collection containing not all elements of the tested typed collection should fail.")]
         public void CollectionContainsAllTest13()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList all = new ArrayList(new int[] { 4, 5, 6, 7 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList all = new ArrayList(new[] { 4, 5, 6, 7 });
             c.Requires().ContainsAll(all);
         }
 
@@ -866,8 +842,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of the tested untyped collection should fail.")]
         public void CollectionContainsAllTest14()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
-            ArrayList all = new ArrayList(new int[] { 4, 5, 6, 7 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
+            ArrayList all = new ArrayList(new[] { 4, 5, 6, 7 });
             c.Requires().ContainsAll(all);
         }
 
@@ -895,7 +871,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionContainsAllTest16()
         {
             Collection<int> c = new Collection<int>();
-            int[] all = new int[] { 4, 5, 6, 7 };
+            int[] all = { 4, 5, 6, 7 };
             c.Requires().ContainsAll(all);
         }
 
@@ -903,7 +879,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with an empty untyped 'all' collection should pass.")]
         public void CollectionContainsAllTest17()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
             ArrayList all = new ArrayList();
             c.Requires().ContainsAll(all);
         }
@@ -914,7 +890,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionContainsAllTest18()
         {
             ArrayList c = new ArrayList();
-            ArrayList all = new ArrayList(new int[] { 1, 2, 3, 4 });
+            ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
             c.Requires().ContainsAll(all);
         }
 
@@ -925,46 +901,25 @@ namespace CuttingEdge.Conditions.UnitTests
         // Calling DoesNotContainAll on an array should compile
         private void CollectionDoesNotContainAllShouldCompileTest01()
         {
-            try
-            {
-                int[] c = new int[1] { 1 };
-                IEnumerable<int> all = new int[1] { 2 };
-                c.Requires().DoesNotContainAll(all);
-            }
-            catch
-            {
-                // We're only interested whether this code compiles.
-            }
+            int[] c = new int[1] { 1 };
+            IEnumerable<int> all = new int[1] { 2 };
+            c.Requires().DoesNotContainAll(all);
         }
 
         // Calling DoesNotContainAll on a Collection should compile
         private void CollectionDoesNotContainAllShouldCompileTest02()
         {
-            try
-            {
-                Collection<int> c = new Collection<int> { 1 };
-                Collection<int> all = new Collection<int> { 2 };
-                c.Requires().DoesNotContainAll(all);
-            }
-            catch
-            {
-                // We're only interested whether this code compiles.
-            }
+            Collection<int> c = new Collection<int> { 1 };
+            Collection<int> all = new Collection<int> { 2 };
+            c.Requires().DoesNotContainAll(all);
         }
 
         // Calling DoesNotContainAll on an IEnumerable should compile
         private void CollectionDoesNotContainAllShouldCompileTest03()
         {
-            try
-            {
-                IEnumerable<int> c = new Collection<int> { 1 };
-                Collection<int> all = new Collection<int> { 2 };
-                c.Requires().DoesNotContainAll(all);
-            }
-            catch
-            {
-                // We're only interested whether this code compiles.
-            }
+            IEnumerable<int> c = new Collection<int> { 1 };
+            Collection<int> all = new Collection<int> { 2 };
+            c.Requires().DoesNotContainAll(all);
         }
 
         [TestMethod]
@@ -1032,8 +987,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with a 'any' collection containing all elements of the tested collection should fail.")]
         public void CollectionDoesNotContainAllTest07()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 1, 2, 3, 4 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 1, 2, 3, 4 };
             c.Requires().DoesNotContainAll(any);
         }
 
@@ -1041,8 +996,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with a 'any' collection containing one element of the tested collection should pass.")]
         public void CollectionDoesNotContainAllTest08()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 4, 5, 6, 7 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 4, 5, 6, 7 };
             c.Requires().DoesNotContainAll(any);
         }
 
@@ -1050,8 +1005,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with a 'any' collection containing no element of the tested collection should pass.")]
         public void CollectionDoesNotContainAllTest09()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            int[] any = new int[] { 5, 6, 7, 8 };
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 5, 6, 7, 8 };
             c.Requires().DoesNotContainAll(any);
         }
 
@@ -1060,8 +1015,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with an untyped 'all' collection containing all elements of the tested typed collection should fail.")]
         public void CollectionDoesNotContainAllTest10()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList all = new ArrayList(new int[] { 1, 2, 3, 4 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
             c.Requires().DoesNotContainAll(all);
         }
 
@@ -1070,8 +1025,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with an untyped 'all' collection containing all elements of the tested untyped collection should fail.")]
         public void CollectionDoesNotContainAllTest11()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
-            ArrayList all = new ArrayList(new int[] { 1, 2, 3, 4 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
+            ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
             c.Requires().DoesNotContainAll(all);
         }
 
@@ -1080,14 +1035,9 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with an untyped 'all' collection containing all elements of different types of the tested untyped collection should fail.")]
         public void CollectionDoesNotContainAllTest12()
         {
-            ArrayList c = new ArrayList();
-            c.Add(1);
-            c.Add(DayOfWeek.Friday);
-            c.Add(10.8D);
+            ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
 
-            ArrayList all = new ArrayList();
-            all.Add(DayOfWeek.Friday);
-            all.Add(1);
+            ArrayList all = new ArrayList { DayOfWeek.Friday, 1 };
 
             c.Requires().DoesNotContainAll(all);
         }
@@ -1096,8 +1046,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with an untyped 'all' collection containing not all elements of the tested typed collection should pass.")]
         public void CollectionDoesNotContainAllTest13()
         {
-            int[] c = new int[] { 1, 2, 3, 4 };
-            ArrayList all = new ArrayList(new int[] { 4, 5, 6, 7 });
+            int[] c = { 1, 2, 3, 4 };
+            ArrayList all = new ArrayList(new[] { 4, 5, 6, 7 });
             c.Requires().DoesNotContainAll(all);
         }
 
@@ -1105,8 +1055,8 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling DoesNotContainAll with an untyped 'all' collection containing all elements of the tested untyped collection should pass.")]
         public void CollectionDoesNotContainAllTest14()
         {
-            ArrayList c = new ArrayList(new int[] { 1, 2, 3, 4 });
-            ArrayList all = new ArrayList(new int[] { 4, 5, 6, 7 });
+            ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
+            ArrayList all = new ArrayList(new[] { 4, 5, 6, 7 });
             c.Requires().DoesNotContainAll(all);
         }
 
@@ -1114,15 +1064,9 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Calling ContainsAll with an untyped 'all' collection containing not all elements of different types of the tested untyped collection should pass.")]
         public void CollectionDoesNotContainAllTest15()
         {
-            ArrayList c = new ArrayList();
-            c.Add(1);
-            c.Add(DayOfWeek.Friday);
-            c.Add(10.8D);
+            ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
 
-            ArrayList all = new ArrayList();
-            all.Add(DayOfWeek.Friday);
-            all.Add(1);
-            all.Add(new object());
+            ArrayList all = new ArrayList { DayOfWeek.Friday, 1, new object() };
 
             c.Requires().DoesNotContainAll(all);
         }
@@ -1179,8 +1123,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionHasLengthTest05()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>();
-            set.Add(1);
+            HashSet<int> set = new HashSet<int> { 1 };
 
             set.Requires().HasLength(0);
         }
@@ -1362,7 +1305,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsShorterThanTest06()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsShorterThan(1);
         }
@@ -1437,8 +1380,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotShorterThanTest04()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>();
-            set.Add(1);
+            HashSet<int> set = new HashSet<int> { 1 };
 
             set.Requires().IsNotShorterThan(2);
         }
@@ -1459,7 +1401,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotShorterThanTest06()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsNotShorterThan(1);
         }
@@ -1732,7 +1674,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsLongerThanTest04()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>() { 1, 2 };
+            HashSet<int> set = new HashSet<int> { 1, 2 };
 
             set.Requires().IsLongerThan(1);
         }
@@ -1743,7 +1685,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsLongerThanTest05()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>() { 1, 2 };
+            HashSet<int> set = new HashSet<int> { 1, 2 };
 
             set.Requires().IsLongerThan(2);
         }
@@ -1754,7 +1696,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsLongerThanTest06()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsLongerThan(1);
         }
@@ -1764,7 +1706,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsLongerThanTest07()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsLongerThan(0);
         }
@@ -1829,7 +1771,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerThanTest04()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>() { 1, 2 };
+            HashSet<int> set = new HashSet<int> { 1, 2 };
 
             set.Requires().IsNotLongerThan(1);
         }
@@ -1839,7 +1781,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerThanTest05()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>() { 1, 2 };
+            HashSet<int> set = new HashSet<int> { 1, 2 };
 
             set.Requires().IsNotLongerThan(2);
         }
@@ -1849,7 +1791,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerThanTest06()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsNotLongerThan(1);
         }
@@ -1860,7 +1802,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerThanTest07()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsNotLongerThan(0);
         }
@@ -1946,7 +1888,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsLongerOrEqualTest06()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsLongerOrEqual(1);
         }
@@ -1957,7 +1899,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsLongerOrEqualTest07()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsLongerOrEqual(2);
         }
@@ -2035,8 +1977,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerOrEqualTest05()
         {
             // HashSet only implements generic ICollection<T>, no ICollection.
-            HashSet<int> set = new HashSet<int>();
-            set.Add(1);
+            HashSet<int> set = new HashSet<int> { 1 };
 
             set.Requires().IsNotLongerOrEqual(0);
         }
@@ -2047,7 +1988,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerOrEqualTest06()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsNotLongerOrEqual(1);
         }
@@ -2057,7 +1998,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void CollectionIsNotLongerOrEqualTest07()
         {
             // ArrayList implements ICollection.
-            ArrayList list = new ArrayList() { 1 };
+            ArrayList list = new ArrayList { 1 };
 
             list.Requires().IsNotLongerOrEqual(2);
         }
@@ -2096,7 +2037,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
             public IEnumerator GetEnumerator()
             {
-                if (this.empty == true)
+                if (this.empty)
                 {
                     yield break;
                 }

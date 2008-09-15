@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 
 using CuttingEdge.Conditions.UnitTests;
@@ -15,7 +14,7 @@ namespace CuttingEdge.Conditions.TestCoverage
     // (like http://www.ncover.com/)
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             IEnumerable<Type> unitTestClasses =
                 from t in typeof(ValidatorExtensionTests).Assembly.GetTypes()
@@ -51,7 +50,7 @@ namespace CuttingEdge.Conditions.TestCoverage
             }
         }
 
-        private static void ProcessUnitTestMethod(object testClassInstance, MethodInfo method)
+        private static void ProcessUnitTestMethod(object testClassInstance, MethodBase method)
         {
             try
             {
@@ -60,6 +59,8 @@ namespace CuttingEdge.Conditions.TestCoverage
             }
             catch
             {
+                // A UnitTest method may throw an exception. We are not interested in that exception. We just
+                // want that method to be called.
             }
         }
     }

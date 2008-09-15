@@ -73,21 +73,21 @@ namespace CuttingEdge.Conditions
         public override Exception BuildException(string condition, string additionalMessage,
             ConstraintViolationType type)
         {
-            string exceptionMessage;
+            string message;
             
             if (this.exceptionMessage == null)
             {
                 // When no message is supplied, we let the baseValidator generate the message. This way the 
                 // exception message is determined by the supplied base validator.
                 Exception exception = this.baseValidator.BuildException(condition, additionalMessage, type);
-                exceptionMessage = exception.Message;
+                message = exception.Message;
             }
             else
             {
-                exceptionMessage = this.exceptionMessage;
+                message = this.exceptionMessage;
             }
 
-            return (Exception)uncheckedExceptionConstructor.Invoke(new object[] { exceptionMessage });
+            return (Exception)uncheckedExceptionConstructor.Invoke(new object[] { message });
         }
 
         private static ConstructorInfo GetUncheckExceptionConstructor()
@@ -95,7 +95,7 @@ namespace CuttingEdge.Conditions
             Type uncheckedExceptionType = typeof(TUncheckedException);
 
             ConstructorInfo constructor =
-                uncheckedExceptionType.GetConstructor(new Type[] { typeof(string) });
+                uncheckedExceptionType.GetConstructor(new[] { typeof(string) });
 
             // When the TUncheckedException lacks a ctor(string), the TUncheckedException is invalid and we 
             // will throw an exception.

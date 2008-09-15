@@ -64,7 +64,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void EvaluateTest05()
         {
             int a = 3;
-            Expression<Func<int, bool>> expression = (x) => (x == 3);
+            Expression<Func<int, bool>> expression = x => (x == 3);
             a.Requires().Evaluate(expression);
         }
 
@@ -86,11 +86,11 @@ namespace CuttingEdge.Conditions.UnitTests
         }
 
         [TestMethod]
-        [Description("Calling Evaluate on object x with expression '(x) => (x is object)' should pass.")]
+        [Description("Calling Evaluate on object x with expression 'x => true' should pass.")]
         public void EvaluateTest08()
         {
             object a = new object();
-            a.Requires().Evaluate(x => x is object);
+            a.Requires().Evaluate(x => true);
         }
 
         [TestMethod]
@@ -152,7 +152,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -170,7 +170,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 

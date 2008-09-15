@@ -30,7 +30,7 @@ namespace CuttingEdge.Conditions
         /// <typeparam name="T">The type of the argument to validate.</typeparam>
         /// <param name="value">The value of the argument to validate.</param>
         /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/>
-        /// and <paramref name="argumentName"/>.</returns>
+        /// and "value" as argument name.</returns>
         /// <example>
         /// The following example shows how to use the <b>Requires</b> extension method.
         /// <code>
@@ -108,7 +108,7 @@ namespace CuttingEdge.Conditions
         /// <typeparam name="T">The type of the argument to validate.</typeparam>
         /// <param name="value">The value of the argument to validate.</param>
         /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/>
-        /// and <paramref name="argumentName"/>.</returns>
+        /// and "value" as argument name.</returns>
         /// <example>
         /// For an example of the usuage of <b>Ensures</b> see the <see cref="Ensures{T}(T,string)"/> overload.
         /// </example>

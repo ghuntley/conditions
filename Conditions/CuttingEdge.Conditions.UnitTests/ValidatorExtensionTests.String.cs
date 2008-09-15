@@ -15,7 +15,6 @@
 */
 
 using System;
-using System.Collections;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -594,7 +593,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -679,7 +678,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -763,7 +762,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -848,7 +847,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -932,7 +931,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -1017,7 +1016,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 

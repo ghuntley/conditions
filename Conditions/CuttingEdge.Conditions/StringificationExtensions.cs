@@ -39,7 +39,7 @@ namespace CuttingEdge.Conditions
 
             if (value is string || value is char)
             {
-                return "'" + value.ToString() + "'";
+                return "'" + value + "'";
             }
 
             return value.ToString();

@@ -162,7 +162,7 @@ namespace CuttingEdge.Conditions
     {
         /// <summary>Gets the value of the argument.</summary>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
-        // NOTE: We choice to make the Value a public field, so the Extension methods can use it, 
+        // NOTE: We chose to make the Value a public field, so the Extension methods can use it, 
         // without we have to worry about extra method calls.
         public readonly T Value;
 
@@ -209,9 +209,8 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Allows a user to specify the type of exception that has to be thrown and the 
-        /// <paramref name="message"/> that comes with it. The current <see cref="Validator{T}">Validator</see>
-        /// is used to generate an exception message.
+        /// Allows a user to specify the type of exception that has to be thrown. The current 
+        /// <see cref="Validator{T}">Validator</see> is used to generate an exception message.
         /// </summary>
         /// <remarks>
         /// This otherwise method is ment to throw unchecked exceptions. Unchecked exceptions are exceptions
@@ -234,7 +233,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Allows a user to specify the type of exception that has to be thrown and the 
-        /// <paramref name="message"/> that comes with it.
+        /// <paramref name="exceptionMessage"/> that comes with it.
         /// </summary>
         /// <remarks>
         /// This otherwise method is ment to throw unchecked exceptions. Unchecked exceptions are exceptions
