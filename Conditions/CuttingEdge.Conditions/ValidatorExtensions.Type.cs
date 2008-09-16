@@ -26,6 +26,8 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Checks whether the <see cref="Type"/> of the given value is of <paramref name="type"/>.
         /// An exception is thrown otherwise.
+        /// When the given value is a null reference, the check will always pass, regardless of the specified
+        /// <paramref name="type"/>. Please use the <b>IsNotNull</b> method to check for null references).
         /// </summary>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -57,6 +59,8 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Checks whether the <see cref="Type"/> of the given value is not of <paramref name="type"/>.
         /// An exception is thrown otherwise.
+        /// When the given value is a null reference, the check will always pass, regardless of the specified
+        /// <paramref name="type"/>. Please use the <b>IsNotNull</b> method to check for null references).
         /// </summary>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
