@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * CuttingEdge.Conditions
+ *
+ * Title        :   Product.wxs
+ * Project      :   Installer
+ * Created on   :   9.24.08 Matt Valerio
+ * Copyright    :   Copyright © 2008 S. van Deursen
+ * License      :   LGPL
+ *                  This program is free software; you can redistribute it and/or 
+ *                  modify it under the terms of the GNU Lesser General Public
+ *                  License as published by the Free Software Foundation;
+ *                  See the GNU Lesser General Public License 
+ *                  (http://www.gnu.org/copyleft/lesser.html) for more details.
+ */
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="4998FB53-7A44-479C-AFB5-884659279369"
+           Name="CuttingEdge.Conditions"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="CuttingEdge"
+           UpgradeCode="7ecb8a75-21c6-4ce5-b99f-989c29a7a259">
+    <Package Id="*"
+             Description="Description of your product"
+             Comments="This will appear in the file summary stream."
+             InstallerVersion="200"
+             Compressed="yes" />
+
+    <Media Id="1" Cabinet="Conditions.cab" EmbedCab="yes" />
+
+    <!-- Make sure that .NET 3.5 is installed first -->
+    <PropertyRef Id="NETFRAMEWORK35"/>    
+    <Condition Message="This application requires .NET Framework 3.5. Please install the .NET Framework 3.5 and run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK35]]>
+    </Condition>
+    
+    <!--TODO: Make sure all of this information is correct-->
+    <Property Id="ARPCOMMENTS">any comments</Property>
+    <!-- <Property Id="ARPCONTACT">contact info</Property> -->
+    <Property Id="ARPHELPLINK">http://www.codeplex.com/conditions</Property>
+    <Property Id="ARPURLINFOABOUT">http://www.codeplex.com/conditions</Property>
+    <Property Id="ARPURLUPDATEINFO">http://www.codeplex.com/conditions</Property>
+    <!-- <Property Id="ARPREADME">path</Property> -->
+    <!--<Property Id="ARPPRODUCTICON">Icon.App.exe</Property>-->
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir"  Name="CuttingEdge.Conditions">
+          
+          <Component Id="ProgramMenuDirComponent" Guid="180D9CC9-5FD0-49d2-A004-4EB6B0564076">
+            <RemoveFolder Id='RemoveFolderProgramMenuDir' On='uninstall'/>
+            <RegistryValue Id="ProgramMenuDirRegistry"
+                           Root="HKCU" 
+                           Key="Software\CuttingEdge.Conditions\Deployment\180D9CC9-5FD0-49d2-A004-4EB6B0564076"
+                           Type="string"
+                           Value="Hello World"
+                           KeyPath="yes"/>
+          </Component>
+
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR" Name="CuttingEdge.Conditions">
+          <Directory Id="CuttingEdge.Conditions.Bin" Name="bin">
+
+            <Component Id="CuttingEdge.Conditions.dll" Guid="2A97089E-3AF9-4B1F-82D2-747CDEBEA7D9">
+              <File Id="CuttingEdge.Conditions.dll"
+                    Name="$(var.CuttingEdge.Conditions.TargetFileName)"
+                    DiskId="1"
+                    Source="$(var.CuttingEdge.Conditions.TargetPath)"
+                    Vital="yes" />
+            </Component>
+
+          </Directory>
+          
+          <Directory Id="CuttingEdge.Conditions.Doc" Name="doc">
+            
+            <Component Id="CuttingEdge.Conditions.chm" Guid="C9D0FF06-CCD2-4FCB-A667-5B47F99A2398">
+              <File Id="CuttingEdge.Conditions.chm"
+                    Name="CuttingEdge.Conditions.chm"
+                    DiskId="1"
+                    Source="$(var.SolutionDir)\Documentation\CuttingEdge.Conditions.chm"
+                    Vital="yes">
+                <Shortcut Id="Shortcut_CuttingEdge.Conditions.chm"
+                          Directory="ProgramMenuDir"
+                          Name="CuttingEdge.Conditions Help"
+                          Advertise="yes"
+                          /><!-- TODO: Need to set icon here-->
+              </File>
+            </Component>
+
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="Feature_Complete"
+             Title="CuttingEdge.Conditions"
+             Description="The complete CuttingEdge.Conditions package"
+             Display="expand"
+             Level="1"
+             ConfigurableDirectory="INSTALLDIR">
+      <Feature Id="Feature_Binaries"
+               Title="Binaries"
+               Level="1"
+               Description="Installs the CuttingEdge.Conditions binaries."
+               AllowAdvertise="no"
+               InstallDefault="local">
+        <ComponentRef Id="CuttingEdge.Conditions.dll" />
+        <ComponentRef Id="ProgramMenuDirComponent" />
+      </Feature>
+      <Feature Id="Feature_Documentation"
+               Title="Documentation"
+               Level="1"
+               Description="Installs the CuttingEdge.Conditions CHM documentation."
+               AllowAdvertise="no"
+               InstallDefault="local">
+        <ComponentRef Id="CuttingEdge.Conditions.chm" />
+        <ComponentRef Id="ProgramMenuDirComponent" />
+      </Feature>
+      
+    </Feature>
+
+    <!-- TODO: Add Icon elements here -->
+    
+    <!-- Point the UI to the LGPL license file -->
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    
+    <!-- Use the WiX UI with pages for license acceptance and a feature tree -->
+    <UIRef Id="WixUI_FeatureTree"/>
+  </Product>
+</Wix>
