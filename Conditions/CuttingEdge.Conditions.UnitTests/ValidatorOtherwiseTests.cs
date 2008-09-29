@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(Message, ex.Message);
+                Assert.AreEqual(Message, ex.Message);
             }
         }
 
@@ -96,7 +96,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -124,7 +124,7 @@ namespace CuttingEdge.Conditions.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
     }

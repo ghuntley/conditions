@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -45,27 +45,65 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionTests\CollectionContainsAllTests.cs" />
+    <Compile Include="CollectionTests\CollectionContainsAnyTests.cs" />
+    <Compile Include="CollectionTests\CollectionContainsTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotContainAllTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotContainAnyTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotContainTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotHaveLengthTests.cs" />
+    <Compile Include="CollectionTests\CollectionHasLengthTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsEmptyTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsLongerOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsLongerThanTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotEmptyTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotLongerOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotLongerThanTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotShorterOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotShorterThanTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsShorterOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsShorterThanTests.cs" />
+    <Compile Include="CollectionTests\IsEmptyTestEnumerable.cs" />
+    <Compile Include="EntryPointTests\EntryPointEnsuresTests.cs" />
+    <Compile Include="EntryPointTests\EntryPointRequiresTests.cs" />
     <Compile Include="ExtendabilityExtensions.cs" />
     <Compile Include="ExtendabilityTests.cs" />
+    <Compile Include="NullTests\NullIsNotNullTests.cs" />
+    <Compile Include="NullTests\NullIsNullTests.cs" />
     <Compile Include="PostConditionExceptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidatorExtensionTests.Collection.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Boolean.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Byte.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.DateTime.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Decimal.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Double.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Int16.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Int32.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Int64.cs" />
-    <Compile Include="ValidatorExtensionTests.Compare.Single.cs" />
-    <Compile Include="ValidatorExtensionTests.Evaluation.cs" />
-    <Compile Include="ValidatorExtensionTests.Null.cs" />
-    <Compile Include="ValidatorExtensionTests.EntryPoints.cs" />
-    <Compile Include="ValidatorExtensionTests.String.cs" />
-    <Compile Include="ValidatorExtensionTests.Type.cs" />
-    <None Include="ValidatorExtensionTests.Compare.Base.cs" />
+    <Compile Include="StringTests\StringContainsTests.cs" />
+    <Compile Include="StringTests\StringDoesNotContainTests.cs" />
+    <Compile Include="StringTests\StringDoesNotEndWithTests.cs" />
+    <Compile Include="StringTests\StringDoesNotHaveLengthTests.cs" />
+    <Compile Include="StringTests\StringDoesNotStartWithTests.cs" />
+    <Compile Include="StringTests\StringEndsWithTests.cs" />
+    <Compile Include="StringTests\StringHasLengthTests.cs" />
+    <Compile Include="StringTests\StringIsEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsLongerThanTests.cs" />
+    <Compile Include="StringTests\StringIsNotEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNotNullOrEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNullOrEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsShorterOrEqualTests.cs" />
+    <Compile Include="StringTests\StringIsLongerOrEqualTests.cs" />
+    <Compile Include="StringTests\StringIsShorterThanTests.cs" />
+    <Compile Include="StringTests\StringStartsWithTests.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="TypeTests\TypeIsNotOfTypeTests.cs" />
+    <Compile Include="TypeTests\TypeIsOfTypeTests.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Boolean.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Byte.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.DateTime.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Decimal.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Double.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int16.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int32.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int64.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Single.cs" />
+    <Compile Include="EvaluationTests\EvaluationEvaluateTests.cs" />
+    <Compile Include="PerformanceTests.cs" />
+    <None Include="CompareTests\ValidatorExtensionTests.Compare.Base.cs" />
     <Compile Include="ValidatorOtherwiseTests.cs" />
   </ItemGroup>
   <ItemGroup>

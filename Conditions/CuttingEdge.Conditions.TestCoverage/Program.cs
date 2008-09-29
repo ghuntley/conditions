@@ -17,7 +17,7 @@ namespace CuttingEdge.Conditions.TestCoverage
         static void Main()
         {
             IEnumerable<Type> unitTestClasses =
-                from t in typeof(ValidatorExtensionTests).Assembly.GetTypes()
+                from t in typeof(TestHelper).Assembly.GetTypes()
                 where t.GetCustomAttributes(typeof(TestClassAttribute), true).Length > 0
                 select t;
 
