@@ -5,11 +5,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.UnitTests", "CuttingEdge.Conditions.UnitTests\CuttingEdge.Conditions.UnitTests.csproj", "{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.TestCoverage", "CuttingEdge.Conditions.TestCoverage\CuttingEdge.Conditions.TestCoverage.csproj", "{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}"
-EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "Installer\Installer.wixproj", "{6FC08BA1-043F-4529-A5CC-70FF25154953}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs02.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CuttingEdge.Conditions.UnitTests\\CuttingEdge.Conditions.UnitTests.csproj
+		SccProjectName1 = CuttingEdge.Conditions.UnitTests
+		SccLocalPath1 = CuttingEdge.Conditions.UnitTests
+		SccProjectUniqueName2 = CuttingEdge.Conditions\\CuttingEdge.Conditions.csproj
+		SccProjectName2 = CuttingEdge.Conditions
+		SccLocalPath2 = CuttingEdge.Conditions
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -39,16 +49,6 @@ Global
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|x86.ActiveCfg = Release|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{96D6C957-9A08-4CAD-BEFA-BEF8B1C8E6FA}.Release|x86.ActiveCfg = Release|Any CPU
 		{6FC08BA1-043F-4529-A5CC-70FF25154953}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{6FC08BA1-043F-4529-A5CC-70FF25154953}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{6FC08BA1-043F-4529-A5CC-70FF25154953}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -62,20 +62,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs02.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CuttingEdge.Conditions.TestCoverage\\CuttingEdge.Conditions.TestCoverage.csproj
-		SccProjectName1 = CuttingEdge.Conditions.TestCoverage
-		SccLocalPath1 = CuttingEdge.Conditions.TestCoverage
-		SccProjectUniqueName2 = CuttingEdge.Conditions.UnitTests\\CuttingEdge.Conditions.UnitTests.csproj
-		SccProjectName2 = CuttingEdge.Conditions.UnitTests
-		SccLocalPath2 = CuttingEdge.Conditions.UnitTests
-		SccProjectUniqueName3 = CuttingEdge.Conditions\\CuttingEdge.Conditions.csproj
-		SccProjectName3 = CuttingEdge.Conditions
-		SccLocalPath3 = CuttingEdge.Conditions
 	EndGlobalSection
 EndGlobal
