@@ -7,6 +7,17 @@ Version 1.0.?.? (???) ????-??-??
 		have to be changed.
 
 	Bugfixes:
+		-[BREAKING CHANGE] The ValidatorExtensions.IsOfType<T>(Type) method succeeded when the supplied value was
+		 null. The method was actually written for the following typical use case:
+			"if (!(param is Type)) throw new ArgumentException();". The use case would actually throw an
+		 exception when 'param' is a null reference. The IsOfType<T> method now behaves correctly.
+		 
+		 [BREAKING CHANGE] The IsOfType<T>(Type) method succeeded when the supplied value was null. The method
+		 was actually written for the following typical use case:
+		 "if (!(param is Type)) throw new ArgumentException();".
+		 This use case will actually throw an exception when 'param' is a null reference. 
+		 The IsOfType<T> method now behaves in this exact way.
+
 		-RequiresValidator didn't generate correct exception messages.
 		 When the exception message didn't contain additional information, the 'condition' was used, but
 		 wasn't concatenated with a dot. This resulted in a sentence without a dot.

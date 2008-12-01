@@ -29,7 +29,8 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
     public class TypeIsOfTypeTests
     {
         [TestMethod]
-        [Description("Calling IsOfType on null reference should pass.")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        [Description("Calling IsOfType on null reference should fail.")]
         public void IsOfTypeTest0()
         {
             object o = null;

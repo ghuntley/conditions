@@ -43,14 +43,11 @@ namespace CuttingEdge.Conditions
             // significant effect.
             T value = validator.Value;
 
-            if (value != null)
-            {
-                bool valueIsValid = type.IsAssignableFrom(value.GetType());
+            bool valueIsValid = value != null && type.IsAssignableFrom(value.GetType()); 
 
-                if (!valueIsValid)
-                {
-                    Throw.ValueShouldBeOfType(validator, type);
-                }
+            if (!valueIsValid)
+            {
+                Throw.ValueShouldBeOfType(validator, type);
             }
 
             return validator;
