@@ -102,12 +102,13 @@
     <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int64.cs" />
     <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Single.cs" />
     <Compile Include="EvaluationTests\EvaluationEvaluateTests.cs" />
-    <Compile Include="PerformanceTests.cs" />
+    <Compile Include="SelfTests.cs" />
     <None Include="CompareTests\ValidatorExtensionTests.Compare.Base.cs" />
     <Compile Include="UseCases\NullTestUseCases.cs" />
     <Compile Include="UseCases\TypeTestUseCases.cs" />
     <Compile Include="UseCases\UseCaseTestHelper.cs" />
     <Compile Include="ValidatorOtherwiseTests.cs" />
+    <Compile Include="ValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CuttingEdge.Conditions\CuttingEdge.Conditions.csproj">

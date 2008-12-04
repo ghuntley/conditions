@@ -53,7 +53,6 @@
     <Compile Include="ConstraintViolationType.enum.cs" />
     <Compile Include="DefaultComparer.cs" />
     <Compile Include="EnsuresValidator.cs" />
-    <Compile Include="MethodTooBigToBeInlinedAttribute.cs" />
     <Compile Include="OtherwiseValidator.cs" />
     <Compile Include="StringificationExtensions.cs" />
     <Compile Include="RequiresValidator.cs" />

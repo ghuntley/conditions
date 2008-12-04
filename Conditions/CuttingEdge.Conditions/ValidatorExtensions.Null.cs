@@ -26,7 +26,6 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Checks whether the given value is null. An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -46,7 +45,6 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Checks whether the given value is null. An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -66,7 +64,6 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Checks whether the given value is not null. An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -85,7 +82,6 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Checks whether the given value is not null. An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>

@@ -37,7 +37,6 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="InvalidEnumArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range and is an <see cref="System.Enum">Enum</see> type, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<T> IsInRange<T>(this Validator<T> validator, T minValue, T maxValue)
             where T : IComparable
         {
@@ -68,7 +67,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsInRange<T>(this Validator<Nullable<T>> validator,
             Nullable<T> minValue, Nullable<T> maxValue)
             where T : struct
@@ -100,7 +98,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsInRange<T>(this Validator<Nullable<T>> validator,
             T minValue, T maxValue)
             where T : struct
@@ -133,7 +130,6 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range and a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<T> IsNotInRange<T>(this Validator<T> validator, T minValue, T maxValue)
             where T : IComparable
         {
@@ -166,7 +162,6 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range and a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="InvalidEnumArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range and an <see cref="System.Enum">Enum</see> type, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotInRange<T>(this Validator<Nullable<T>> validator,
             Nullable<T> minValue, Nullable<T> maxValue)
             where T : struct
@@ -199,7 +194,6 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range and a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotInRange<T>(this Validator<Nullable<T>> validator,
             T minValue, T maxValue)
             where T : struct
@@ -224,7 +218,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater than the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
@@ -275,7 +268,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsGreaterThan<T>(this Validator<Nullable<T>> validator,
             T minValue)
             where T : struct
@@ -296,7 +288,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater than the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest valid value.</param>
@@ -347,7 +338,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotGreaterThan<T>(this Validator<Nullable<T>> validator,
             T maxValue)
             where T : struct
@@ -368,7 +358,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater or equal to the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
@@ -419,7 +408,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsGreaterOrEqual<T>(this Validator<Nullable<T>> validator,
             T minValue)
             where T : struct
@@ -440,7 +428,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater or equal to the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
@@ -491,7 +478,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotGreaterOrEqual<T>(this Validator<Nullable<T>> validator,
             T maxValue)
             where T : struct
@@ -512,7 +498,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is less than the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
@@ -563,7 +548,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsLessThan<T>(this Validator<Nullable<T>> validator,
             T maxValue)
             where T : struct
@@ -584,7 +568,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not less than the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
@@ -635,7 +618,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotLessThan<T>(this Validator<Nullable<T>> validator,
             T minValue)
             where T : struct
@@ -656,7 +638,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is smaller or equal to the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The highest valid value.</param>
@@ -707,7 +688,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsLessOrEqual<T>(this Validator<Nullable<T>> validator,
             T maxValue)
             where T : struct
@@ -728,7 +708,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not smaller or equal to the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
@@ -779,7 +758,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotLessOrEqual<T>(this Validator<Nullable<T>> validator,
             T minValue)
             where T : struct
@@ -800,7 +778,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is equal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The valid value to compare with.</param>
@@ -858,7 +835,6 @@ namespace CuttingEdge.Conditions
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and <paramref name="value"/> is not a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsEqualTo<T>(this Validator<Nullable<T>> validator,
             T value)
             where T : struct
@@ -879,7 +855,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is unequal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <typeparam name="T">The type of the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/>.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The invalid value to compare with.</param>
@@ -932,7 +907,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<Nullable<T>> IsNotEqualTo<T>(this Validator<Nullable<T>> validator,
             T value)
             where T : struct

@@ -35,7 +35,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not of the specified <paramref name="type"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not of the specified <paramref name="type"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<T> IsOfType<T>(this Validator<T> validator, Type type)
             where T : class
         {
@@ -65,7 +64,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is of the specified <paramref name="type"/>, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is of the specified <paramref name="type"/>, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<T> IsNotOfType<T>(this Validator<T> validator, Type type)
             where T : class
         {

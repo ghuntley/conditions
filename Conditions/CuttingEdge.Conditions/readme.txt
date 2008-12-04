@@ -9,11 +9,16 @@ Below are some notes on the implementation specially for developers.
 Notes:
 	Coding style:
 		Microsoft StyleCop is used as tool to ensure a consistant coding style throughout the library.
-		The project has a Settings.SourceAnalysis xml file containing the settings for StyleCop.
+		The project has a Settings.SourceAnalysis xml file containing the settings for StyleCop. You can 
+		download StyleCop from http://code.msdn.microsoft.com/sourceanalysis. It will integrate in Visual 
+		Studio and you can validate your code by pressing Ctrl-Shift-Y. Also check out the great StyleCop
+		For Resharper plugin at http://www.codeplex.com/StyleCopForReSharper.
 		
 	Framework Design Guidelines:
 		Microsoft FxCop is used to validate the .NET Framework Design Guidelines. The solution folder contains
-		a Conditions.FxCop xml file containing the settings for FxCop.	
+		a Conditions.FxCop xml file containing the settings for FxCop. It is integrated with Visual Studio
+		Team System, but you can download the stand allone version of FxCop from
+		http://www.microsoft.com/downloads/details.aspx?FamilyID=9aeaa970-f281-4fb0-aba1-d59d7ed09772.
 
 	Generic type constraint:
 		All compare methods implement the generic type constraint 'where T : IComparable'. While the 
@@ -30,17 +35,6 @@ Optimizations:
 	in compare validations. The primitive overloads are much faster than the generic 'where T : ICompare'
 	compare methods.	
 	
-	The libraries code is optimized in such a way that many methods become a candidate for inlining. For a 
-	method to be able to be inlined, the following conditions must hold:
-	1. Methods must be really short with a maximum of 32 bytes of IL;
-	2. The method must not contain exception logic or loops.
-	(for more information on inlining constraints, please visit David Notario's WebLog:
-	 http://blogs.msdn.com/davidnotario/archive/2004/11/01/250398.aspx)
-
-	To achieve this, the 'throw' logic is moved out of the methods and is replaced by a call to the static 
-	Throw class. All methods that never would be a candidate for inlining (because it was impossible to 
-	reach the 32 bytes limit), but were interesting to optimize, were refactored in such a way that they 
-	only call methods that on their turn would be inlined by the JIT compiler. Methods that can not be
-	inlined are marked with an special attribute. There is a unit test that checks unmarked methods on their
-	size. This way changes to method size will get noticed. Note that this unit test will only run in Release
-	mode, because methods tend to be bigger in debug mode.
+	While the beta 1 release tried to optimize the library in such a way that many methods could become a
+	candidate for inlining, this had no effect. The comments and unit tests that indicate that methods could
+	be inlinable are removed from the beta 2 release.

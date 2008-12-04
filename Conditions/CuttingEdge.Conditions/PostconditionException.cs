@@ -24,9 +24,6 @@ namespace CuttingEdge.Conditions
     /// <summary>
     /// The exception that is thrown when a method's postcondition is not valid.
     /// </summary>
-    /// <remarks>
-    /// Do not catch this exception, ever! (And I will come for you, if I will see you do!! ;-)
-    /// </remarks>
     [Serializable]
     public sealed class PostconditionException : Exception
     {

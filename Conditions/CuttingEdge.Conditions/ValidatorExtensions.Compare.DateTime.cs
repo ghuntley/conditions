@@ -33,7 +33,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<DateTime> IsInRange(this Validator<DateTime> validator, DateTime minValue, DateTime maxValue)
         {
             DateTime value = validator.Value;
@@ -56,7 +55,6 @@ namespace CuttingEdge.Conditions
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
         /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Requires{T}(T,string)">Requires</see> extension method.</exception>
         /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        [MethodTooBigToBeInlined]
         public static Validator<DateTime> IsNotInRange(this Validator<DateTime> validator, DateTime minValue, DateTime maxValue)
         {
             DateTime value = validator.Value;
@@ -73,7 +71,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater than the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -93,7 +90,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater than the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -113,7 +109,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater or equal to the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -133,7 +128,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater or equal to the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -153,7 +147,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is less than the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -173,7 +166,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not less than the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -193,7 +185,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is smaller or equal to the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The highest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -213,7 +204,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not smaller or equal to the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -233,7 +223,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is equal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The valid value to compare with.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
@@ -253,7 +242,6 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is unequal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <remarks>This method will get inlined by the JIT compiler and calling it is therefore very cheap.</remarks>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The invalid value to compare with.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>

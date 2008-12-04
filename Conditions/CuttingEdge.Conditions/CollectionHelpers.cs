@@ -513,7 +513,6 @@ namespace CuttingEdge.Conditions
             }
         }
 
-        // This method is NOT a candidate for inlining because try-catch logic is not inlined.
         private static bool IsEnumerableEmpty(IEnumerable sequence)
         {
             IEnumerator enumerator = sequence.GetEnumerator();
