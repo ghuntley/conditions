@@ -1022,7 +1022,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [Description("Calling IsLessOrEqual on IComparable<T> object x with 'x < upper bound' should pass.")]
+        [Description("Calling IsLessOrEqual on IComparable<T> object x with 'x < upper bound' should fail.")]
         public void IsLessOrEqualTest04()
         {
             ComparableClass value = new ComparableClass(3);

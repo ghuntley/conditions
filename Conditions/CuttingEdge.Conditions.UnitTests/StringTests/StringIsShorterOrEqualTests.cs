@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual2()
         {
             string a = "test";
-            a.Requires().IsShorterOrEqual(3);
+            a.Requires().IsShorterOrEqual(1);
         }
 
         [TestMethod]
@@ -90,8 +90,32 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual7()
         {
             string a = null;
-            // A null value will never be found
+            // A null value is considered to have a length of 0 characters.
             a.Requires().IsShorterOrEqual(-1);
+        }
+
+        [TestMethod]
+        [Description("Calling IsShorterOrEqual with conditionDescription parameter should pass.")]
+        public void IsShorterOrEqual8()
+        {
+            string a = string.Empty;
+            a.Requires().IsShorterOrEqual(0, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsShorterOrEqual should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsShorterOrEqual9()
+        {
+            string a = null;
+            try
+            {
+                a.Requires("a").IsShorterOrEqual(-1, "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
         }
     }
 }

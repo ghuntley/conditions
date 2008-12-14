@@ -82,5 +82,29 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             set.Requires().DoesNotHaveLength(0);
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotHaveLength with the condtionDescription parameter should pass.")]
+        public void CollectionDoesNotHaveLengthTest06()
+        {
+            IEnumerable list = null;
+
+            list.Requires().DoesNotHaveLength(1, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotHaveLength should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionDoesNotHaveLengthTest07()
+        {
+            IEnumerable list = null;
+            try
+            {
+                list.Requires("list").DoesNotHaveLength(0, "the given {0} should not have 0 elements");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("the given list should not have 0 elements"));
+            }
+        }
     }
 }

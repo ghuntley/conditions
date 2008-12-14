@@ -77,5 +77,29 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             // A null string is considered to have a length of 0.
             a.Requires().IsShorterThan(0);
         }
+
+        [TestMethod]
+        [Description("Calling IsShorterThan with conditionDescription parameter should pass.")]
+        public void IsShorterThan7()
+        {
+            string a = string.Empty;
+            a.Requires().IsShorterThan(1, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsShorterThan should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsShorterThan8()
+        {
+            string a = "x";
+            try
+            {
+                a.Requires("a").IsShorterThan(1, "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
+        }
     }
 }

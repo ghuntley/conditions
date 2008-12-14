@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -218,6 +219,52 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList c = new ArrayList();
             ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
             c.Requires().ContainsAll(all);
+        }
+
+        [TestMethod]
+        [Description("Calling ContainsAll on a generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionContainsAllTest19()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            c.Requires().ContainsAll(c, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing ContainsAll with a generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionContainsAllTest20()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            try
+            {
+                c.Requires("c").ContainsAll(Enumerable.Range(3, 2), "{0} must contain all");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c must contain all"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling ContainsAll on a non-generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionContainsAllTest21()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            c.Requires().ContainsAll(c, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing ContainsAll with a non-generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionContainsAllTest22()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            try
+            {
+                c.Requires("c").ContainsAll(new ArrayList { 3, 4 }, "{0} must contain all");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c must contain all"));
+            }
         }
     }
 }

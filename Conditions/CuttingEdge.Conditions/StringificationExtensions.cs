@@ -42,31 +42,23 @@ namespace CuttingEdge.Conditions
                 return "'" + value + "'";
             }
 
+            IEnumerable collection = value as IEnumerable;
+
+            if (collection != null)
+            {
+                List<string> elements = new List<string>();
+
+                foreach (object o in collection)
+                {
+                    string stringifiedElement = o.Stringify();
+                    
+                    elements.Add(stringifiedElement);
+                }
+
+                return "{" + String.Join(",", elements.ToArray()) + "}";
+            }
+
             return value.ToString();
-        }
-
-        // Transforms an collection into string showing the elements of the collection.
-        internal static string Stringify(this string value)
-        {
-            return Stringify((object)value);
-        }
-
-        // Transforms an collection into string showing the elements of the collection.
-        internal static string Stringify(this IEnumerable collection)
-        {
-            if (collection == null)
-            {
-                return "null";
-            }
-
-            List<string> elements = new List<string>();
-
-            foreach (object o in collection)
-            {
-                elements.Add(Stringify(o));
-            }
-
-            return "{" + String.Join(",", elements.ToArray()) + "}";
         }
     }
 }

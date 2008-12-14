@@ -79,5 +79,28 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(false);
             c.Requires().IsNotEmpty();
         }
+
+        [TestMethod]
+        [Description("Calling IsNotEmpty with conditional description parameter on an not empty ICollection should pass.")]
+        public void IsNotEmptyTest7()
+        {
+            IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(false);
+            c.Requires().IsNotEmpty("conditionDescription");
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsNotEmpty with a non generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsNotEmptyTest8()
+        {
+            IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(true);
+            try
+            {
+                c.Requires("c").IsNotEmpty("{0} should have no elements what so ever");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should have no elements what so ever"));
+            }
+        }
     }
 }

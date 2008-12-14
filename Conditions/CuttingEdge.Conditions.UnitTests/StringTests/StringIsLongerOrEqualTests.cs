@@ -90,8 +90,32 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerOrEqualTest7()
         {
             string a = null;
-            // A null value will never be found
+            // A null string is considered to have the length of 0.
             a.Requires().IsLongerOrEqual(1);
+        }
+
+        [TestMethod]
+        [Description("Calling IsLongerOrEqual with conditionDescription parameter should pass.")]
+        public void IsLongerOrEqualTest8()
+        {
+            string a = string.Empty;
+            a.Requires().IsLongerOrEqual(0, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsLongerOrEqual should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsLongerOrEqualTest9()
+        {
+            string a = null;
+            try
+            {
+                a.Requires("a").IsLongerOrEqual(1, "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
         }
     }
 }

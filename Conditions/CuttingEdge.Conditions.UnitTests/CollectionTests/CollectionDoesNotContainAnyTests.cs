@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -195,6 +196,52 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList any = new ArrayList { DayOfWeek.Saturday, 2, new object() };
 
             c.Requires().DoesNotContainAny(any);
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotContainAny on a generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionDoesNotContainAnyTest16()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            c.Requires().DoesNotContainAny(Enumerable.Range(3, 2), string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotContainAny with a generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionDoesNotContainAnyTest17()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            try
+            {
+                c.Requires("c").DoesNotContainAny(c, "{0} should contain some");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should contain some"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotContainAny on a non-generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionDoesNotContainAnyTest18()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            c.Requires().DoesNotContainAny(new ArrayList { 3, 4 }, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotContainAny with a non-generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionDoesNotContainAnyTest19()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            try
+            {
+                c.Requires("c").DoesNotContainAny(c, "{0} should contain some");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should contain some"));
+            }
         }
     }
 }

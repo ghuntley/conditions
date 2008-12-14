@@ -29,7 +29,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain x' should fail.")]
-        public void DoesNotContainTest1()
+        public void DoesNotContainTest01()
         {
             string a = "test";
             a.Requires().DoesNotContain(a);
@@ -38,7 +38,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain \"es\"' should fail.")]
-        public void DoesNotContainTest2()
+        public void DoesNotContainTest02()
         {
             string a = "test";
             a.Requires().DoesNotContain("es");
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain null' should pass.")]
-        public void DoesNotContainTest3()
+        public void DoesNotContainTest03()
         {
             string a = "test";
             // A null value will never be found
@@ -56,7 +56,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain \"\"' should fail.")]
-        public void DoesNotContainTest4()
+        public void DoesNotContainTest04()
         {
             string a = "test";
             // An empty string will always be found
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotContain on string x (null) with 'x DoesNotContain \"\"' should pass.")]
-        public void DoesNotContainTest5()
+        public void DoesNotContainTest05()
         {
             string a = null;
             // A null string only contains other null strings.
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling DoesNotContain on string x (null) with 'x DoesNotContain null' should fail.")]
-        public void DoesNotContainTest6()
+        public void DoesNotContainTest06()
         {
             string a = null;
             a.Requires().DoesNotContain(null);
@@ -83,7 +83,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain \"test me\"' should pass.")]
-        public void DoesNotContainTest7()
+        public void DoesNotContainTest07()
         {
             string a = "test";
             a.Requires().DoesNotContain("test me");
@@ -91,7 +91,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotContain on string x (\"test\") with 'x DoesNotContain \"test\"' should fail with a correct exception message.")]
-        public void DoesNotContainTest8()
+        public void DoesNotContainTest08()
         {
             string expectedMessage =
                 "a should not contain 'test'." + Environment.NewLine +
@@ -105,6 +105,30 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             catch (Exception ex)
             {
                 Assert.AreEqual(expectedMessage, ex.Message);
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotContain with conditionDescription parameter should pass.")]
+        public void DoesNotContainTest09()
+        {
+            string a = "test";
+            a.Requires().DoesNotContain("test me", string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotContain should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void DoesNotContainTest10()
+        {
+            string a = "test me";
+            try
+            {
+                a.Requires("a").DoesNotContain("test", "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
         }
     }

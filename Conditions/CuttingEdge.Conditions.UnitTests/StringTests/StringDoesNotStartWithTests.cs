@@ -15,6 +15,8 @@
 */
 
 using System;
+using System.Globalization;
+using System.Threading;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -29,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotStartWith on string x with 'x DoesNotStartWith x' should fail.")]
-        public void DoesNotStartWithTest1()
+        public void DoesNotStartWithTest01()
         {
             string a = "test";
             a.Requires().DoesNotStartWith(a);
@@ -38,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotStartWith on string x (\"test\") with 'x DoesNotStartWith \"tes\"' should fail.")]
-        public void DoesNotStartWithTest2()
+        public void DoesNotStartWithTest02()
         {
             string a = "test";
             a.Requires().DoesNotStartWith("tes");
@@ -46,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotStartWith on string x (\"test\") with 'x DoesNotStartWith null' should pass.")]
-        public void DoesNotStartWithTest3()
+        public void DoesNotStartWithTest03()
         {
             string a = "test";
             // A null value will never be found
@@ -56,7 +58,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotStartWith on string x (\"test\") with 'x DoesNotStartWith \"\"' should fail.")]
-        public void DoesNotStartWithTest4()
+        public void DoesNotStartWithTest04()
         {
             string a = "test";
             // An empty string will always be found
@@ -65,7 +67,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotStartWith on string x (null) with 'x DoesNotStartWith \"\"' should pass.")]
-        public void DoesNotStartWithTest5()
+        public void DoesNotStartWithTest05()
         {
             string a = null;
             // A null string only contains other null strings.
@@ -75,7 +77,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling DoesNotStartWith on string x (null) with 'x DoesNotStartWith null' should fail.")]
-        public void DoesNotStartWithTest6()
+        public void DoesNotStartWithTest06()
         {
             string a = null;
             a.Requires().DoesNotStartWith(null);
@@ -83,7 +85,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotStartWith on string x (\"test\") with 'x DoesNotStartWith \"test me\"' should pass.")]
-        public void DoesNotStartWithTest7()
+        public void DoesNotStartWithTest07()
         {
             string a = "test";
             a.Requires().DoesNotStartWith("test me");
@@ -91,7 +93,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotStartWith on string x (\"test\") with 'x DoesNotStartWith \"test\"' should fail with a correct exception message.")]
-        public void DoesNotStartWithTest8()
+        public void DoesNotStartWithTest08()
         {
             string expectedMessage =
                 "a should not start with 'test'." + Environment.NewLine +
@@ -105,6 +107,54 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             catch (Exception ex)
             {
                 Assert.AreEqual(expectedMessage, ex.Message);
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotStartWith with conditionDescription parameter should pass.")]
+        public void DoesNotStartWithTest09()
+        {
+            string a = "test";
+            a.Requires().DoesNotStartWith("test me", string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotStartWith should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void DoesNotStartWithTest10()
+        {
+            string a = "test";
+            try
+            {
+                a.Requires("a").DoesNotStartWith("test", "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotStartWith should be language dependent.")]
+        public void DoesNotStartWithTest11()
+        {
+            CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
+
+            string a = "hi ya'all";
+
+            try
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("tr-TR");
+
+                // We check this using the Turkish-I problem.
+                // see: http://msdn.microsoft.com/en-us/library/ms973919.aspx#stringsinnet20_topic5
+                string turkishUpperCase = "HI";
+
+                a.Requires().DoesNotStartWith(turkishUpperCase, StringComparison.CurrentCultureIgnoreCase);
+            }
+            finally
+            {
+                Thread.CurrentThread.CurrentCulture = originalCulture;
             }
         }
     }

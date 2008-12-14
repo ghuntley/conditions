@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(PostconditionException))]
-        [Description("Okay, I admit: This test is simply to get 100% code coverage :-)")]
+        [Description("Okay, I admit: This test is simply to get 100% code coverage :-). This method should fail.")]
         public void PostConditionExceptionTest03()
         {
             try

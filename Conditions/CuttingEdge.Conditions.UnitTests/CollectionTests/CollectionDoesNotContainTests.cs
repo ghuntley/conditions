@@ -91,5 +91,51 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList c = new ArrayList { 1, 2, 3, 4 };
             c.Requires().DoesNotContain((object)4);
         }
+
+        [TestMethod]
+        [Description("Calling the generic DoesNotContain with an optional condition description parameter should pass.")]
+        public void CollectionDoesNotContainTest06()
+        {
+            Collection<int> c = new Collection<int>();
+            c.Requires().DoesNotContain(1, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing generic DoesNotContain should throw an exception with an exception message containing the supplied parameterized condition description.")]
+        public void CollectionDoesNotContainTest07()
+        {
+            Collection<int> c = new Collection<int> { 1 };
+            try
+            {
+                c.Requires("c").DoesNotContain(1, "{0} contains the value 1 while it shouldn't");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c contains the value 1 while it shouldn't"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling the non-generic DoesNotContain with an optional condition description parameter should pass.")]
+        public void CollectionDoesNotContainTest08()
+        {
+            ArrayList c = new ArrayList { 1, 2, 3, 4 };
+            c.Requires().DoesNotContain((object)5, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing non-generic DoesNotContain should throw an exception with an exception message containing the supplied parameterized condition description.")]
+        public void CollectionDoesNotContainTest09()
+        {
+            ArrayList c = new ArrayList { 1, 2, 3, 4 };
+            try
+            {
+                c.Requires("c").DoesNotContain((object)1, "{0} contains the value 1 while it shouldn't");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c contains the value 1 while it shouldn't"));
+            }
+        }
     }
 }

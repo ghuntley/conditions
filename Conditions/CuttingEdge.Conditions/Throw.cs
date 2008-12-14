@@ -29,16 +29,19 @@ namespace CuttingEdge.Conditions
     /// </summary>
     internal static class Throw
     {
-        internal static void ValueShouldNotBeNull<T>(Validator<T> validator)
+        internal static void ValueShouldNotBeNull<T>(Validator<T> validator, string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldNotBeNull, validator.ArgumentName);
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeNull,
+                conditionDescription, validator.ArgumentName);
+                
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldBeBetween<T>(Validator<T> validator, T minValue, T maxValue)
+        internal static void ValueShouldBeBetween<T>(Validator<T> validator, T minValue, T maxValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeBetweenXAndY, validator.ArgumentName,
-                minValue.Stringify(), maxValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeBetweenXAndY,
+                conditionDescription, validator.ArgumentName, minValue.Stringify(), maxValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType = 
@@ -47,10 +50,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldBeEqualTo<T>(Validator<T> validator, T value)
+        internal static void ValueShouldBeEqualTo<T>(Validator<T> validator, T value, 
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeEqualToX, validator.ArgumentName, 
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeEqualToX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();
@@ -58,16 +62,19 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldBeNull<T>(Validator<T> validator)
+        internal static void ValueShouldBeNull<T>(Validator<T> validator, string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeNull, validator.ArgumentName);
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeNull,
+                conditionDescription, validator.ArgumentName);
+
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldBeGreaterThan<T>(Validator<T> validator, T minValue)
+        internal static void ValueShouldBeGreaterThan<T>(Validator<T> validator, T minValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeGreaterThanX, validator.ArgumentName, 
-                minValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeGreaterThanX,
+                conditionDescription, validator.ArgumentName, minValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType =
@@ -76,10 +83,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldNotBeGreaterThan<T>(Validator<T> validator, T minValue)
+        internal static void ValueShouldNotBeGreaterThan<T>(Validator<T> validator, T minValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldNotBeGreaterThanX, validator.ArgumentName,
-                minValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeGreaterThanX,
+                conditionDescription, validator.ArgumentName, minValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType =
@@ -88,10 +96,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldBeGreaterThanOrEqualTo<T>(Validator<T> validator, T minValue)
+        internal static void ValueShouldBeGreaterThanOrEqualTo<T>(Validator<T> validator, T minValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeGreaterThanOrEqualToX, validator.ArgumentName,
-                minValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeGreaterThanOrEqualToX,
+               conditionDescription, validator.ArgumentName, minValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType type =
@@ -100,10 +109,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, type);
         }
 
-        internal static void ValueShouldNotBeGreaterThanOrEqualTo<T>(Validator<T> validator, T maxValue)
+        internal static void ValueShouldNotBeGreaterThanOrEqualTo<T>(Validator<T> validator, T maxValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldNotBeGreaterThanOrEqualToX, validator.ArgumentName,
-                maxValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeGreaterThanOrEqualToX,
+               conditionDescription, validator.ArgumentName, maxValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType type =
@@ -112,10 +122,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, type);
         }
 
-        internal static void ValueShouldBeSmallerThan<T>(Validator<T> validator, T maxValue)
+        internal static void ValueShouldBeSmallerThan<T>(Validator<T> validator, T maxValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeSmallerThanX, validator.ArgumentName,
-                maxValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeSmallerThanX,
+               conditionDescription, validator.ArgumentName, maxValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType =
@@ -124,10 +135,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldNotBeSmallerThan<T>(Validator<T> validator, T minValue)
+        internal static void ValueShouldNotBeSmallerThan<T>(Validator<T> validator, T minValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldNotBeSmallerThanX, validator.ArgumentName,
-                minValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeSmallerThanX,
+               conditionDescription, validator.ArgumentName, minValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType =
@@ -136,10 +148,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldBeSmallerThanOrEqualTo<T>(Validator<T> validator, T maxValue)
+        internal static void ValueShouldBeSmallerThanOrEqualTo<T>(Validator<T> validator, T maxValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeSmallerThanOrEqualToX, validator.ArgumentName,
-                maxValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeSmallerThanOrEqualToX,
+               conditionDescription, validator.ArgumentName, maxValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType =
@@ -148,10 +161,11 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ValueShouldNotBeSmallerThanOrEqualTo<T>(Validator<T> validator, T minValue)
+        internal static void ValueShouldNotBeSmallerThanOrEqualTo<T>(Validator<T> validator, T minValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldNotBeSmallerThanOrEqualToX, validator.ArgumentName,
-                minValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeSmallerThanOrEqualToX,
+               conditionDescription, validator.ArgumentName, minValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType =
@@ -160,32 +174,10 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void ExpressionEvaluatedFalse<T>(Validator<T> validator)
+        internal static void ExpressionEvaluatedFalse<T>(Validator<T> validator, string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeValid, validator.ArgumentName);
-            string additionalMessage = GetActualValueMessage(validator);
-            ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();
-            
-            throw validator.BuildException(condition, additionalMessage, violationType);
-        }
-
-        internal static void ExpressionEvaluatedFalse<T>(Validator<T> validator, string description)
-        {
-            string condition;
-
-            try
-            {
-                condition = String.Format(CultureInfo.CurrentCulture, description ?? String.Empty, 
-                    validator.ArgumentName);
-            }
-            catch (FormatException)
-            {
-                // We catch a FormatException. This code should only throw exceptions generated by the
-                // validator.BuildException method. Throwing another exception would confuse the user and
-                // would make debugging harder. When the user supplied an unformattable description, we simply
-                // use the unformatted description as condition.
-                condition = description;
-            }
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeValid,
+                conditionDescription, validator.ArgumentName);
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();
@@ -193,55 +185,70 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void LambdaXShouldHoldForValue<T>(Validator<T> validator, LambdaExpression lambda)
+        internal static void LambdaXShouldHoldForValue<T>(Validator<T> validator, LambdaExpression lambda,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.LambdaXShouldHoldForValue, validator.ArgumentName, 
-                lambda.Body.ToString());
+            string condition = GetFormattedConditionMessage(validator, SR.LambdaXShouldHoldForValue,
+                conditionDescription, validator.ArgumentName, lambda.Body.ToString());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();
 
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
-
-        internal static void ValueShouldBeNullOrAnEmptyString(Validator<string> validator)
+        
+        internal static void ValueShouldBeNullOrAnEmptyString(Validator<string> validator,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldBeNullOrEmpty, validator.ArgumentName);
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldBeNullOrEmpty,
+                conditionDescription, validator.ArgumentName);
+
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldBeAnEmptyString(Validator<string> validator)
+        internal static void ValueShouldBeAnEmptyString(Validator<string> validator, 
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldBeEmpty, validator.ArgumentName);
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldBeEmpty,
+                conditionDescription, validator.ArgumentName);
+
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldNotBeAnEmptyString(Validator<string> validator)
+        internal static void ValueShouldNotBeAnEmptyString(Validator<string> validator,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldNotBeEmpty, validator.ArgumentName);
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldNotBeEmpty,
+                conditionDescription, validator.ArgumentName);
+
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldNotBeNullOrAnEmptyString(Validator<string> validator)
+        internal static void ValueShouldNotBeNullOrAnEmptyString(Validator<string> validator,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldNotBeNullOrEmpty, validator.ArgumentName);
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldNotBeNullOrEmpty,
+                conditionDescription, validator.ArgumentName);
+
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldBeUnequalTo<T>(Validator<T> validator, T value)
+        internal static void ValueShouldBeUnequalTo<T>(Validator<T> validator, T value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeUnequalToX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeUnequalToX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();
 
             throw validator.BuildException(condition, violationType);
         }
 
-        internal static void ValueShouldNotBeBetween<T>(Validator<T> validator, T minValue, T maxValue)
+        internal static void ValueShouldNotBeBetween<T>(Validator<T> validator, T minValue, T maxValue,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldNotBeBetweenXAndY, validator.ArgumentName,
-                minValue.Stringify(), maxValue.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeBetweenXAndY,
+                conditionDescription, validator.ArgumentName, minValue.Stringify(), maxValue.Stringify());
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();
@@ -249,17 +256,20 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage, violationType);
         }
 
-        internal static void StringShouldHaveLength(Validator<string> validator, int length)
+        internal static void StringShouldHaveLength(Validator<string> validator, int length,
+            string conditionDescription)
         {
             string condition;
 
             if (length == 1)
             {
-                condition = SR.GetString(SR.StringShouldBe1CharacterLong, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldBe1CharacterLong,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.StringShouldBeXCharactersLong, validator.ArgumentName, length);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldBeXCharactersLong,
+                    conditionDescription, validator.ArgumentName, length);
             }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
@@ -267,34 +277,39 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void StringShouldNotHaveLength(Validator<string> validator, int length)
+        internal static void StringShouldNotHaveLength(Validator<string> validator, int length,
+            string conditionDescription)
         {
             string condition;
 
             if (length == 1)
             {
-                condition = SR.GetString(SR.StringShouldNotBe1CharacterLong, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldNotBe1CharacterLong,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.StringShouldNotBeXCharactersLong, validator.ArgumentName, length);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldNotBeXCharactersLong,
+                    conditionDescription, validator.ArgumentName, length);
             }
 
             throw validator.BuildException(condition);
         }
 
-        internal static void StringShouldBeLongerThan(Validator<string> validator, int minLength)
+        internal static void StringShouldBeLongerThan(Validator<string> validator, int minLength,
+            string conditionDescription)
         {
             string condition;
 
             if (minLength == 1)
             {
-                condition = SR.GetString(SR.StringShouldBeLongerThan1Character, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldBeLongerThan1Character,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = 
-                    SR.GetString(SR.StringShouldBeLongerThanXCharacters, validator.ArgumentName, minLength);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldBeLongerThanXCharacters,
+                    conditionDescription, validator.ArgumentName, minLength);
             }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
@@ -302,18 +317,20 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void StringShouldBeShorterThan(Validator<string> validator, int maxLength)
+        internal static void StringShouldBeShorterThan(Validator<string> validator, int maxLength,
+            string conditionDescription)
         {
             string condition;
 
             if (maxLength == 1)
             {
-                condition = SR.GetString(SR.StringShouldBeShorterThan1Character, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldBeShorterThan1Character,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = 
-                    SR.GetString(SR.StringShouldBeShorterThanXCharacters, validator.ArgumentName, maxLength);
+                condition = GetFormattedConditionMessage(validator, SR.StringShouldBeShorterThanXCharacters,
+                    conditionDescription, validator.ArgumentName, maxLength);
             }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
@@ -321,18 +338,22 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void StringShouldBeShorterOrEqualTo(Validator<string> validator, int maxLength)
+        internal static void StringShouldBeShorterOrEqualTo(Validator<string> validator, int maxLength,
+            string conditionDescription)
         {
             string condition;
 
             if (maxLength == 1)
             {
-                condition = SR.GetString(SR.StringShouldBeShorterOrEqualTo1Character, validator.ArgumentName);
+                condition = 
+                    GetFormattedConditionMessage(validator, SR.StringShouldBeShorterOrEqualTo1Character,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.StringShouldBeShorterOrEqualToXCharacters, validator.ArgumentName, 
-                    maxLength);
+                condition = 
+                    GetFormattedConditionMessage(validator, SR.StringShouldBeShorterOrEqualToXCharacters,
+                    conditionDescription, validator.ArgumentName, maxLength);
             }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
@@ -340,18 +361,22 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void StringShouldBeLongerOrEqualTo(Validator<string> validator, int minLength)
+        internal static void StringShouldBeLongerOrEqualTo(Validator<string> validator, int minLength,
+            string conditionDescription)
         {
             string condition;
 
             if (minLength == 1)
             {
-                condition = SR.GetString(SR.StringShouldBeLongerOrEqualTo1Character, validator.ArgumentName);             
+                condition =
+                    GetFormattedConditionMessage(validator, SR.StringShouldBeLongerOrEqualTo1Character,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.StringShouldBeLongerOrEqualToXCharacters,
-                     validator.ArgumentName, minLength);
+                condition =
+                    GetFormattedConditionMessage(validator, SR.StringShouldBeLongerOrEqualToXCharacters,
+                    conditionDescription, validator.ArgumentName, minLength);
             }
 
             string additionalMessage = GetActualStringLengthMessage(validator);
@@ -359,189 +384,217 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void StringShouldContain(Validator<string> validator, string value)
+        internal static void StringShouldContain(Validator<string> validator, string value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldContainX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldContainX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void StringShouldNotContain(Validator<string> validator, string value)
+        internal static void StringShouldNotContain(Validator<string> validator, string value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldNotContainX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldNotContainX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void StringShouldNotEndWith(Validator<string> validator, string value)
+        internal static void StringShouldNotEndWith(Validator<string> validator, string value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldNotEndWithX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldNotEndWithX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void StringShouldNotStartWith(Validator<string> validator, string value)
+        internal static void StringShouldNotStartWith(Validator<string> validator, string value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldNotStartWithX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldNotStartWithX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void StringShouldEndWith(Validator<string> validator, string value)
+        internal static void StringShouldEndWith(Validator<string> validator, string value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldEndWithX, validator.ArgumentName, 
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldEndWithX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void StringShouldStartWith(Validator<string> validator, string value)
+        internal static void StringShouldStartWith(Validator<string> validator, string value,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.StringShouldStartWithX, validator.ArgumentName, 
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldStartWithX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void ValueShouldBeOfType<T>(Validator<T> validator, Type type)
+        internal static void ValueShouldBeOfType<T>(Validator<T> validator, Type type,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.ValueShouldBeOfTypeX, validator.ArgumentName, type.Name);
-            throw validator.BuildException(condition);
-        }
-
-        internal static void ValueShouldNotBeOfType<T>(Validator<T> validator, Type type)
-        {
-            string condition = SR.GetString(SR.ValueShouldNotBeOfTypeX, validator.ArgumentName, type.Name);
-            throw validator.BuildException(condition);
-        }
-
-        internal static void ValueShouldBeTrue<T>(Validator<T> validator)
-        {
-            string condition = SR.GetString(SR.ValueShouldBeTrue, validator.ArgumentName);
-            throw validator.BuildException(condition);
-        }
-
-        internal static void ValueShouldBeFalse<T>(Validator<T> validator)
-        {
-            string condition = SR.GetString(SR.ValueShouldBeFalse, validator.ArgumentName);
-            throw validator.BuildException(condition);
-        }
-
-        internal static void CollectionShouldBeEmpty<T>(Validator<T> validator)
-        {
-            string condition = SR.GetString(SR.CollectionShouldBeEmpty, validator.ArgumentName);
-            throw validator.BuildException(condition);
-        }
-
-        internal static void CollectionShouldNotBeEmpty<T>(Validator<T> validator) where T : IEnumerable
-        {
-            string condition = SR.GetString(SR.CollectionShouldNotBeEmpty, validator.ArgumentName);
-            throw validator.BuildException(condition);
-        }
-
-        internal static void CollectionShouldContain<T>(Validator<T> validator, object value) 
-            where T : IEnumerable
-        {
-            string condition = SR.GetString(SR.CollectionShouldContainX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeOfTypeX,
+                conditionDescription, validator.ArgumentName, type.Name);
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldNotContain<T>(Validator<T> validator, object value)
+        internal static void ValueShouldNotBeOfType<T>(Validator<T> validator, Type type,
+            string conditionDescription)
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainX, validator.ArgumentName,
-                value.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeOfTypeX,
+                conditionDescription, validator.ArgumentName, type.Name);
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldContainAtLeastOneOf<T>(Validator<T> validator, 
-            IEnumerable values)
+        internal static void ValueShouldBeTrue<T>(Validator<T> validator, string conditionDescription)
         {
-            string condition = SR.GetString(SR.CollectionShouldContainAtLeastOneOfX, validator.ArgumentName,
-                values.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeTrue,
+                conditionDescription, validator.ArgumentName);
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldNotContainAnyOf<T>(Validator<T> validator, IEnumerable values)
+        internal static void ValueShouldBeFalse<T>(Validator<T> validator, string conditionDescription)
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainAnyOfX, validator.ArgumentName,
-                values.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeFalse,
+                conditionDescription, validator.ArgumentName);
+            
+            throw validator.BuildException(condition);
+        }
+
+        internal static void CollectionShouldBeEmpty<T>(Validator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldBeEmpty,
+                conditionDescription, validator.ArgumentName);
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldContainAllOf<T>(Validator<T> validator, IEnumerable values)
-            where T : IEnumerable
+        internal static void CollectionShouldNotBeEmpty<T>(Validator<T> validator,
+            string conditionDescription) where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldContainAllOfX, validator.ArgumentName,
-                values.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldNotBeEmpty,
+                conditionDescription, validator.ArgumentName);
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldNotContainAllOf<T>(Validator<T> validator, IEnumerable values)
+        internal static void CollectionShouldContain<T>(Validator<T> validator, object value,
+            string conditionDescription) where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainAllOfX, validator.ArgumentName,
-                values.Stringify());
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldContain<T>(Validator<T> validator, int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldNotContain<T>(Validator<T> validator, object value,
+            string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainX,
+                conditionDescription, validator.ArgumentName, value.Stringify());
+
+            throw validator.BuildException(condition);
+        }
+
+        internal static void CollectionShouldContainAtLeastOneOf<T>(Validator<T> validator,
+            IEnumerable values, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainAtLeastOneOfX,
+                conditionDescription, validator.ArgumentName, values.Stringify());
+
+            throw validator.BuildException(condition);
+        }
+
+        internal static void CollectionShouldNotContainAnyOf<T>(Validator<T> validator, IEnumerable values,
+            string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainAnyOfX,
+               conditionDescription, validator.ArgumentName, values.Stringify());
+
+            throw validator.BuildException(condition);
+        }
+
+        internal static void CollectionShouldContainAllOf<T>(Validator<T> validator, IEnumerable values,
+            string conditionDescription) where T : IEnumerable
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainAllOfX,
+               conditionDescription, validator.ArgumentName, values.Stringify());
+
+            throw validator.BuildException(condition);
+        }
+
+        internal static void CollectionShouldNotContainAllOf<T>(Validator<T> validator, IEnumerable values,
+            string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainAllOfX,
+               conditionDescription, validator.ArgumentName, values.Stringify());
+
+            throw validator.BuildException(condition);
+        }
+
+        internal static void CollectionShouldContainNumberOfElements<T>(Validator<T> validator, 
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
             string condition;
 
             if (numberOfElements == 1)
             {
-                condition = SR.GetString(SR.CollectionShouldContain1Element, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContain1Element,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.CollectionShouldContainXElements, validator.ArgumentName,
-                     numberOfElements);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainXElements,
+                    conditionDescription, validator.ArgumentName, numberOfElements);
             }
             
             throw validator.BuildException(condition, GetCollectionContainsElementsMessage(validator));
         }
 
-        internal static void CollectionShouldNotContain<T>(Validator<T> validator, int numberOfElements)
+        internal static void CollectionShouldNotContainNumberOfElements<T>(Validator<T> validator, 
+            int numberOfElements, string conditionDescription)
         {
             string condition;
 
             if (numberOfElements == 1)
             {
-                condition = SR.GetString(SR.CollectionShouldNotContain1Element, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldNotContain1Element,
+                   conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.CollectionShouldNotContainXElements, validator.ArgumentName,
-                     numberOfElements);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainXElements,
+                   conditionDescription, validator.ArgumentName, numberOfElements);
             }
 
             throw validator.BuildException(condition);
         }
 
-        internal static void CollectionShouldContainLessThan<T>(Validator<T> validator, int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldContainLessThan<T>(Validator<T> validator, int numberOfElements,
+            string conditionDescription) where T : IEnumerable
         {
             string condition;
 
             if (numberOfElements == 1)
             {
-                condition = SR.GetString(SR.CollectionShouldContainLessThan1Element, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainLessThan1Element,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.CollectionShouldContainLessThanXElements,
-                    validator.ArgumentName, numberOfElements);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainLessThanXElements,
+                    conditionDescription, validator.ArgumentName, numberOfElements);
             }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
@@ -549,21 +602,22 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldNotContainLessThan<T>(Validator<T> validator, 
-            int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldNotContainLessThan<T>(Validator<T> validator,
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
             string condition;
 
             if (numberOfElements == 1)
             {
                 condition = 
-                    SR.GetString(SR.CollectionShouldNotContainLessThan1Element, validator.ArgumentName);
+                    GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainLessThan1Element,
+                        conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.CollectionShouldNotContainLessThanXElements, 
-                    validator.ArgumentName, numberOfElements);
+                condition = 
+                    GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainLessThanXElements,
+                        conditionDescription, validator.ArgumentName, numberOfElements);
             }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
@@ -571,43 +625,44 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldContainLessOrEqual<T>(Validator<T> validator, 
-            int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldContainLessOrEqual<T>(Validator<T> validator,
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldContainXOrLessElements, validator.ArgumentName, 
-                numberOfElements);
+            string condition =
+                GetFormattedConditionMessage(validator, SR.CollectionShouldContainXOrLessElements, 
+                conditionDescription, validator.ArgumentName, numberOfElements);
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldNotContainLessOrEqual<T>(Validator<T> validator, 
-            int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldNotContainLessOrEqual<T>(Validator<T> validator,
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainXOrLessElements, 
-                validator.ArgumentName, numberOfElements);
+            string condition =
+               GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainXOrLessElements,
+               conditionDescription, validator.ArgumentName, numberOfElements);
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldContainMoreThan<T>(Validator<T> validator, int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldContainMoreThan<T>(Validator<T> validator, int numberOfElements,
+            string conditionDescription) where T : IEnumerable
         {
             string condition;
 
             if (numberOfElements == 1)
             {
-                condition = SR.GetString(SR.CollectionShouldContainMoreThan1Element, validator.ArgumentName);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainMoreThan1Element,
+                    conditionDescription, validator.ArgumentName);
             }
             else
             {
-                condition = SR.GetString(SR.CollectionShouldContainMoreThanXElements, validator.ArgumentName, 
-                    numberOfElements);
+                condition = GetFormattedConditionMessage(validator, SR.CollectionShouldContainMoreThanXElements,
+                    conditionDescription, validator.ArgumentName, numberOfElements);
             }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
@@ -615,21 +670,22 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldNotContainMoreThan<T>(Validator<T> validator, 
-            int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldNotContainMoreThan<T>(Validator<T> validator,
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
             string condition;
 
             if (numberOfElements == 1)
+            {
+                condition = 
+                    GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainMoreThan1Element,
+                    conditionDescription, validator.ArgumentName);
+            }
+            else
             {
                 condition =
-                    SR.GetString(SR.CollectionShouldNotContainMoreThan1Element, validator.ArgumentName);
-            }
-            else
-            {
-                condition = SR.GetString(SR.CollectionShouldNotContainMoreThanXElements,
-                     validator.ArgumentName, numberOfElements);
+                    GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainMoreThanXElements,
+                    conditionDescription, validator.ArgumentName, numberOfElements);
             }
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
@@ -637,24 +693,24 @@ namespace CuttingEdge.Conditions
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldContainMoreOrEqual<T>(Validator<T> validator, 
-            int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldContainMoreOrEqual<T>(Validator<T> validator,
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldContainXOrMoreElements, validator.ArgumentName,
-                numberOfElements);
-
+            string condition = 
+                GetFormattedConditionMessage(validator, SR.CollectionShouldContainXOrMoreElements,
+                    conditionDescription, validator.ArgumentName, numberOfElements);
+            
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
             throw validator.BuildException(condition, additionalMessage);
         }
 
-        internal static void CollectionShouldNotContainMoreOrEqual<T>(Validator<T> validator, 
-            int numberOfElements)
-            where T : IEnumerable
+        internal static void CollectionShouldNotContainMoreOrEqual<T>(Validator<T> validator,
+            int numberOfElements, string conditionDescription) where T : IEnumerable
         {
-            string condition = SR.GetString(SR.CollectionShouldNotContainXOrMoreElements, 
-                validator.ArgumentName, numberOfElements);
+            string condition =
+                GetFormattedConditionMessage(validator, SR.CollectionShouldNotContainXOrMoreElements,
+                    conditionDescription, validator.ArgumentName, numberOfElements);
 
             string additionalMessage = GetCollectionContainsElementsMessage(validator);
 
@@ -762,6 +818,37 @@ namespace CuttingEdge.Conditions
             else
             {
                 return defaultValue;
+            }
+        }
+
+        private static string GetFormattedConditionMessage<T>(Validator<T> validator, string resourceKey,
+            string conditionDescription, params object[] resourceFormatArguments)
+        {
+            if (conditionDescription != null)
+            {
+                return FormatConditionDescription(validator, conditionDescription);
+            }
+            else
+            {
+                return SR.GetString(resourceKey, resourceFormatArguments);
+            }
+        }
+
+        private static string FormatConditionDescription<T>(Validator<T> validator, 
+            string conditionDescription)
+        {
+            try
+            {
+                return String.Format(CultureInfo.CurrentCulture, conditionDescription ?? String.Empty,
+                    validator.ArgumentName);
+            }
+            catch (FormatException)
+            {
+                // We catch a FormatException. This code should only throw exceptions generated by the
+                // validator.BuildException method. Throwing another exception would confuse the user and
+                // would make debugging harder. When the user supplied an unformattable description, we simply
+                // use the unformatted description as condition.
+                return conditionDescription;
             }
         }
     }

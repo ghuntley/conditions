@@ -78,5 +78,29 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             // A null value will never be found
             a.Requires().HasLength(1);
         }
+
+        [TestMethod]
+        [Description("Calling HasLength with conditionDescription parameter should pass.")]
+        public void HasLengthTest7()
+        {
+            string a = string.Empty;
+            a.Requires().HasLength(0, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing HasLength should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void HasLengthTest8()
+        {
+            string a = null;
+            try
+            {
+                a.Requires("a").HasLength(1, "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
+        }
     }
 }

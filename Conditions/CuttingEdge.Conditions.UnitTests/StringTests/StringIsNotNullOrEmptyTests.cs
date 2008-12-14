@@ -52,5 +52,29 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             // A null value will never be found
             a.Requires().IsNotNullOrEmpty();
         }
+
+        [TestMethod]
+        [Description("Calling IsNotNullOrEmpty with conditionDescription parameter should pass.")]
+        public void IsNotNullOrEmptyTest4()
+        {
+            string a = "test";
+            a.Requires().IsNotNullOrEmpty(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsNotNullOrEmpty should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsNotNullOrEmptyTest5()
+        {
+            string a = string.Empty;
+            try
+            {
+                a.Requires("a").IsNotNullOrEmpty("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
+        }
     }
 }

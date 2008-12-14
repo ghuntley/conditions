@@ -50,5 +50,29 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string s = "test";
             s.Requires().IsNotEmpty();
         }
+
+        [TestMethod]
+        [Description("Calling IsNotEmpty with conditionDescription parameter should pass.")]
+        public void IsStringNotEmptyTest4()
+        {
+            string a = "test";
+            a.Requires().IsNotEmpty(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsNotEmpty should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsStringNotEmptyTest5()
+        {
+            string a = string.Empty;
+            try
+            {
+                a.Requires("a").IsNotEmpty("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
+        }
     }
 }

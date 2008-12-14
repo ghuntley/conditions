@@ -29,15 +29,24 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotHaveLength on string x with 'x.Length = expected length' should fail.")]
-        public void DoesNotHaveLengthTest1()
+        public void DoesNotHaveLengthTest01()
         {
             string a = "test";
             a.Requires().DoesNotHaveLength(4);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        [Description("Calling DoesNotHaveLength on string x with 'x.Length = expected length = 1' should fail.")]
+        public void DoesNotHaveLengthTest02()
+        {
+            string a = "t";
+            a.Requires().DoesNotHaveLength(1);
+        }
+
+        [TestMethod]
         [Description("Calling DoesNotHaveLength on string x with 'x.Length != expected length' should pass.")]
-        public void DoesNotHaveLengthTest2()
+        public void DoesNotHaveLengthTest03()
         {
             string a = "test";
             a.Requires().DoesNotHaveLength(3);
@@ -46,7 +55,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling DoesNotHaveLength on string x with 'x.Length = expected length' should fail.")]
-        public void DoesNotHaveLengthTest3()
+        public void DoesNotHaveLengthTest04()
         {
             string a = String.Empty;
             a.Requires().DoesNotHaveLength(0);
@@ -54,7 +63,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotHaveLength on string x with 'x.Length != expected length' should pass.")]
-        public void DoesNotHaveLengthTest4()
+        public void DoesNotHaveLengthTest05()
         {
             string a = String.Empty;
             a.Requires().DoesNotHaveLength(1);
@@ -63,7 +72,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling DoesNotHaveLength on string x with 'null = expected length' should fail.")]
-        public void DoesNotHaveLengthTest5()
+        public void DoesNotHaveLengthTest06()
         {
             string a = null;
             // A null string is considered to have the length of 0.
@@ -72,11 +81,35 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling DoesNotHaveLength on string x with 'x.Length != expected length' should pass.")]
-        public void DoesNotHaveLengthTest6()
+        public void DoesNotHaveLengthTest07()
         {
             string a = null;
-            // A null value will never be found
+            // A null string is considered to have the length of 0.
             a.Requires().DoesNotHaveLength(1);
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotHaveLength with conditionDescription parameter should pass.")]
+        public void DoesNotHaveLengthTest08()
+        {
+            string a = string.Empty;
+            a.Requires().DoesNotHaveLength(1, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotHaveLength should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void DoesNotHaveLengthTest09()
+        {
+            string a = null;
+            try
+            {
+                a.Requires("a").DoesNotHaveLength(0, "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
         }
     }
 }

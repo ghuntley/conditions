@@ -228,5 +228,51 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable<int> c = Enumerable.Range(1, 2);
             c.Requires().ContainsAny(c);
         }
+
+        [TestMethod]
+        [Description("Calling ContainsAny on a generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionContainsAnyTest19()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            c.Requires().ContainsAny(c, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing ContainsAny with a generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionContainsAnyTest20()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            try
+            {
+                c.Requires("c").ContainsAny(Enumerable.Range(3, 2), "{0} should contain some");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should contain some"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling ContainsAny on a non-generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionContainsAnyTest21()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            c.Requires().ContainsAny(c, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing ContainsAny with a non-generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionContainsAnyTest22()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            try
+            {
+                c.Requires("c").ContainsAny(new ArrayList { 3, 4 }, "{0} should contain some");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should contain some"));
+            }
+        }
     }
 }

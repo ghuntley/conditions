@@ -130,5 +130,29 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             set.Requires().HasLength(1);
         }
+
+        [TestMethod]
+        [Description("Calling HasLength with the condtionDescription parameter should pass.")]
+        public void CollectionHasLengthTest11()
+        {
+            IEnumerable list = null;
+
+            list.Requires().HasLength(0, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing HasLength should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionHasLengthTest12()
+        {
+            IEnumerable list = null;
+            try
+            {
+                list.Requires("list").HasLength(1, "the given {0} should have 1 element");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("the given list should have 1 element"));
+            }
+        }
     }
 }

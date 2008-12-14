@@ -135,5 +135,55 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable<int> c = Enumerable.Range(1, 10);
             c.Requires().Contains(11);
         }
+
+        [TestMethod]
+        [Description("Calling Contains while supplying the optional conditionsDescription should pass.")]
+        public void CollectionContainsTest11()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 10);
+            c.Requires().Contains(10, "{0} should contain the value 10");           
+        }
+
+        [TestMethod]
+        [Description("Calling a failing Contains with a generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionContainsTest12()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 10);
+            try
+            {
+                c.Requires("c").Contains(11, "{0} should contain the integer 11");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should contain the integer 11"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling Contains while supplying the optional conditionsDescription should pass.")]
+        public void CollectionContainsTest13()
+        {
+            ArrayList c = new ArrayList(Enumerable.Range(1, 10).ToArray());
+            object value = 10;
+            c.Requires().Contains(value, "{0} should contain the value 10");
+        }
+
+        [TestMethod]
+        [Description("Calling a failing Contains with a non generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionContainsTest14()
+        {
+            ArrayList c = new ArrayList(Enumerable.Range(1, 10).ToArray());
+            try
+            {
+                object value = 11;
+                c.Requires("c").Contains(value, "{0} should contain the integer 11");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c should contain the integer 11"));
+            }
+        }
     }
 }

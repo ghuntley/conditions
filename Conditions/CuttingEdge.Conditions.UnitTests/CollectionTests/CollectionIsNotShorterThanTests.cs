@@ -119,5 +119,29 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             list.Requires().IsNotShorterThan(1);
         }
+
+        [TestMethod]
+        [Description("Calling IsNotShorterThan with the condtionDescription parameter should pass.")]
+        public void CollectionIsNotShorterThanTest10()
+        {
+            IEnumerable list = null;
+
+            list.Requires().IsNotShorterThan(-1, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsNotShorterThan should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionIsNotShorterThanTest11()
+        {
+            IEnumerable list = null;
+            try
+            {
+                list.Requires("list").IsNotShorterThan(1, "abc {0} def");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("abc list def"));
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Tests whether the framework can be extended.")]
+        [Description("Tests whether the framework can be extended. This method should fail.")]
         public void ExtendabilityTest02()
         {
             int value = 1;
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(PostconditionException))]
-        [Description("Tests whether the framework can be extended.")]
+        [Description("Tests whether the framework can be extended. This method should fail.")]
         public void ExtendabilityTest03()
         {
             int value = 1;

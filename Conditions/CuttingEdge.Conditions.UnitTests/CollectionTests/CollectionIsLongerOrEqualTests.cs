@@ -118,5 +118,29 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             list.Requires().IsLongerOrEqual(1);
         }
+
+        [TestMethod]
+        [Description("Calling IsLongerOrEqual with the condtionDescription parameter should pass.")]
+        public void CollectionIsLongerOrEqualTest10()
+        {
+            IEnumerable list = null;
+
+            list.Requires().IsLongerOrEqual(0, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsLongerOrEqual should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionIsLongerOrEqualTest11()
+        {
+            IEnumerable list = null;
+            try
+            {
+                list.Requires("list").IsLongerOrEqual(1, "abc {0} def");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("abc list def"));
+            }
+        }
     }
 }

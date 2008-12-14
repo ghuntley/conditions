@@ -28,7 +28,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Checks whether the validator returned from Requires() will throw an ArgumentException.")]
+        [Description("Checks whether the validator returned from Requires() will fail with an ArgumentException.")]
         public void RequiresTest01()
         {
             int a = 3;

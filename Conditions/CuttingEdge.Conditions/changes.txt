@@ -30,6 +30,9 @@ Version 1.0.?.? (???) ????-??-??
 			"value does not contain 'hello'"
 	
 	Code changes:
+		-Overload methods added with a 'conditionDescription' parameter of type string for all extension 
+		methods and unit tests added to support these new overloads.
+		
 		-[BREAKING CHANGE] The public Validator<T>.ArgumentName field is changed to a readonly property.
 		 This property was designed as field to ensure the best performance. However, the value is exclusively
 		 used in exceptional cases (when exceptions are thrown). Therefore, violating the Framework Design

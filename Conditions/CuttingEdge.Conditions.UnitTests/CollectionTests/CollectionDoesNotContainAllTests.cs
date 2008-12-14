@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -200,6 +201,54 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList all = new ArrayList { DayOfWeek.Friday, 1, new object() };
 
             c.Requires().DoesNotContainAll(all);
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotContainAll on a generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionDoesNotContainAllTest16()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            IEnumerable<int> elements = new int[] { 1, 2, 3 };
+            c.Requires().DoesNotContainAll(elements, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotContainAll with a generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionDoesNotContainAllTest17()
+        {
+            IEnumerable<int> c = Enumerable.Range(1, 2);
+            try
+            {
+                c.Requires("c").DoesNotContainAll(c, "{0} must not contain all of the supplied elements");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c must not contain all of the supplied elements"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling DoesNotContainAll on a non-generic collection with the condtionDescription parameter should pass.")]
+        public void CollectionDoesNotContainAllTest18()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            ICollection elements = new int[] { 1, 2, 3 };
+            c.Requires().DoesNotContainAll(elements, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing DoesNotContainAll with a non-generic collection should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void CollectionDoesNotContainAllTest19()
+        {
+            ArrayList c = new ArrayList { 1, 2 };
+            try
+            {
+                c.Requires("c").DoesNotContainAll(c, "{0} must not contain all of the supplied elements");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("c must not contain all of the supplied elements"));
+            }
         }
     }
 }

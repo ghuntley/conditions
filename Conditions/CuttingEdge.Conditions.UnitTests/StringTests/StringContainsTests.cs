@@ -28,7 +28,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
     {
         [TestMethod]
         [Description("Calling Contains on string x with 'x Contains x' should pass.")]
-        public void ContainsTest1()
+        public void ContainsTest01()
         {
             string a = "test";
             a.Requires().Contains(a);
@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling Contains on string x (\"test\") with 'x Contains \"es\"' should pass.")]
-        public void ContainsTest2()
+        public void ContainsTest02()
         {
             string a = "test";
             a.Requires().Contains("es");
@@ -45,7 +45,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling Contains on string x (\"test\") with 'x Contains null' should fail.")]
-        public void ContainsTest3()
+        public void ContainsTest03()
         {
             string a = "test";
             // A null value will never be found
@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling Contains on string x (\"test\") with 'x Contains \"\"' should pass.")]
-        public void ContainsTest4()
+        public void ContainsTest04()
         {
             string a = "test";
             // An empty string will always be found
@@ -64,7 +64,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling Contains on string x (null) with 'x Contains \"\"' should fail.")]
-        public void ContainsTest5()
+        public void ContainsTest05()
         {
             string a = null;
             // A null string only contains other null strings.
@@ -73,7 +73,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling Contains on string x (null) with 'x Contains null' should pass.")]
-        public void ContainsTest6()
+        public void ContainsTest06()
         {
             string a = null;
             a.Requires().Contains(null);
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling Contains on string x (\"test\") with 'x Contains \"test me\"' should fail.")]
-        public void ContainsTest7()
+        public void ContainsTest07()
         {
             string a = "test";
             a.Requires().Contains("test me");
@@ -90,7 +90,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling Contains on string x (\"test\") with 'x Contains \"test me\"' should fail with a correct exception message.")]
-        public void ContainsTest8()
+        public void ContainsTest08()
         {
             string expectedMessage =
                 "a should contain 'test me'." + Environment.NewLine + 
@@ -104,6 +104,30 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             catch (Exception ex)
             {
                 Assert.AreEqual(expectedMessage, ex.Message);
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling Contains with conditionDescription parameter should pass.")]
+        public void ContainsTest09()
+        {
+            string a = null;
+            a.Requires().Contains(null, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing Contains should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void ContainsTest10()
+        {
+            string a = "test";
+            try
+            {
+                a.Requires("a").Contains("test me", "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
         }
     }

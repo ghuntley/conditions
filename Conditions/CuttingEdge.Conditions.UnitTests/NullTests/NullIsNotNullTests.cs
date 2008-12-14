@@ -59,5 +59,53 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
             int? i = 3;
             i.Requires().IsNotNull();
         }
+
+        [TestMethod]
+        [Description("Calling IsNotNull with conditionDescription parameter should pass.")]
+        public void IsNotNullTest5()
+        {
+            object o = new object();
+            o.Requires().IsNotNull(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsNotNull should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsNotNullTest6()
+        {
+            object o = null;
+            try
+            {
+                o.Requires("o").IsNotNull("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe o xyz"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotNull on Nullable<T> with conditionDescription parameter should pass.")]
+        public void IsNotNullTest7()
+        {
+            int? i = 4;
+            i.Requires().IsNotNull(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsNotNull on Nullable<T> should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsNotNullTest8()
+        {
+            int? i = null;
+            try
+            {
+                i.Requires("i").IsNotNull("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe i xyz"));
+            }
+        }
     }
 }

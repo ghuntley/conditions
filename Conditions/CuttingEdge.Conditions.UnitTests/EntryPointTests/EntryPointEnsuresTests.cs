@@ -28,7 +28,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
     {
         [TestMethod]
         [ExpectedException(typeof(PostconditionException))]
-        [Description("Checks whether the validator returned from Ensures() will throw an PostconditionException.")]
+        [Description("Checks whether the validator returned from Ensures() will fail with an PostconditionException.")]
         public void EnsuresTest01()
         {
             int a = 3;

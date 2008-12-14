@@ -68,6 +68,54 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             b.Requires().IsTrue();
         }
 
+        [TestMethod]
+        [Description("Calling IsTrue on Boolean x with 'x == true' and conditionDescription should pass.")]
+        public void IsTrueTest6()
+        {
+            bool b = true;
+            b.Requires().IsTrue(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling IsTrue on Boolean? x with 'x == true' and conditionDescription should pass.")]
+        public void IsTrueTest7()
+        {
+            bool? b = true;
+            b.Requires().IsTrue(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsTrue on Boolean should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsTrueTest8()
+        {
+            bool b = false;
+            try
+            {
+                b.Requires("b").IsTrue("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe b xyz"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsTrue on Boolean? should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsTrueTest9()
+        {
+            bool? b = false;
+            try
+            {
+                b.Requires("b").IsTrue("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe b xyz"));
+            }
+        }
+
         #endregion // IsTrue
 
         #region IsFalse
@@ -113,6 +161,54 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             bool? b = null;
             b.Requires().IsFalse();
+        }
+
+        [TestMethod]
+        [Description("Calling IsFalse on Boolean x with 'x == false' and conditionDescription should pass.")]
+        public void IsFalseTest6()
+        {
+            bool b = false;
+            b.Requires().IsFalse(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling IsFalse on Boolean? x with 'x == false' and conditionDescription should pass.")]
+        public void IsFalseTest7()
+        {
+            bool? b = false;
+            b.Requires().IsFalse(string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsFalse on Boolean should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsFalseTest8()
+        {
+            bool b = true;
+            try
+            {
+                b.Requires("b").IsFalse("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe b xyz"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsFalse on Boolean? should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsFalseTest9()
+        {
+            bool? b = true;
+            try
+            {
+                b.Requires("b").IsFalse("qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe b xyz"));
+            }
         }
 
         #endregion // IsFalse

@@ -117,33 +117,27 @@ namespace CuttingEdge.Conditions
         // Returns a string from the resource.
         internal static string GetString(string name)
         {
-            if (name == null)
-            {
-                throw new ArgumentNullException("name");
-            }
-
             return GetStringInternal(name, null);
         }
 
         // Returns a string from the resource and formats it with the given args in a culture-specific way.
         internal static string GetString(string name, params object[] args)
         {
-            if (name == null)
-            {
-                throw new ArgumentNullException("name");
-            }
-
             return GetStringInternal(name, args);
         }
 
         private static string GetStringInternal(string name, params object[] args)
         {
+            // GetString will throw an ArgumentNullException when name is null.
             string format = resource.GetString(name, CultureInfo.CurrentUICulture);
 
             if (format == null)
             {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture,
-                    "The supplied string '{0}' could not be found in the resource.", name), "name");
+                // We throw a very bad exception here on purpose. This method will only get called in a 
+                // exceptional code path (when an exception will be thrown). Therefore throwing a ArgumentEx, 
+                // could disguise the real exception and could get unnoticed by the unit tests.
+                throw new InvalidProgramException(string.Format(CultureInfo.InvariantCulture,
+                    "The supplied string '{0}' could not be found in the resource.", name));
             }
 
             if (args == null)

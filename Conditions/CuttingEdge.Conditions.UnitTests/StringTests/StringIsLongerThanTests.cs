@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsLongerThan on string x with 'lower bound = x.Length' should pass.")]
+        [Description("Calling IsLongerThan on string x with 'lower bound = x.Length' should fail.")]
         public void IsLongerThan2()
         {
             string a = "test";
@@ -70,11 +70,45 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [Description("Calling IsLongerThan on string x with 'lower bound = null' should pass.")]
+        [Description("Calling IsLongerThan on string x with 'lower bound = null' should fail.")]
         public void IsLongerThan6()
         {
             string a = null;
             a.Requires().IsLongerThan(0);
+        }
+
+        [TestMethod]
+        [Description("Calling IsLongerThan with conditionDescription parameter should pass.")]
+        public void IsLongerThan7()
+        {
+            string a = string.Empty;
+            a.Requires().IsLongerThan(-1, string.Empty);
+        }
+
+        [TestMethod]
+        [Description("Calling a failing IsLongerThan should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
+        public void IsLongerThan8()
+        {
+            string a = null;
+            try
+            {
+                a.Requires("a").IsLongerThan(0, "qwe {0} xyz");
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        [Description("Calling IsLongerThan on string x with 'lower bound = 1' should fail.")]
+        public void IsLongerThan9()
+        {
+            // Testing a string with length of one and minLength = 1 to achieve 100% code coverage.
+            string a = "1";
+            a.Requires().IsLongerThan(1);
         }
     }
 }
