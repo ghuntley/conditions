@@ -1,10 +1,11 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
-Version 1.0.?.? (???) ????-??-??
+Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 	General description:
 		This release has several breaking changes. Therefore, the old release can not be swapped with this 
-		release, without a recompilation. Users should not expect any behavior changes and source code won't 
-		have to be changed.
+		release, without a recompilation. However, there is just one change in behavior users should pay
+		attention to: The ValidatorExtension.IsOfType(Type) method now throws an Exception when the given
+		argument is a null reference.
 
 	Bugfixes:
 		-[BREAKING CHANGE] The ValidatorExtensions.IsOfType<T>(Type) method succeeded when the supplied value was
