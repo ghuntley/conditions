@@ -59,7 +59,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void ExtendabilityTest04()
         {
             int value = 1;
-            ValidatorExtensions.IsGreaterOrEqual(ValidatorExtensions.Requires(value, "value"), 0);
+            ValidatorExtensions.IsGreaterOrEqual(Condition.Requires(value, "value"), 0);
         }
     }
 }

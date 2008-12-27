@@ -27,8 +27,8 @@ namespace CuttingEdge.Conditions
 {
     /// <summary>
     /// Enables validation of pre- and postconditions. This class isn't used directly by developers. Instead 
-    /// the class should be created by the <see cref="ValidatorExtensions.Requires{T}(T)">Requires</see> and
-    /// <see cref="ValidatorExtensions.Ensures{T}(T)">Ensures</see> extension methods.
+    /// the class should be created by the <see cref="Condition.Requires{T}(T)">Requires</see> and
+    /// <see cref="Condition.Ensures{T}(T)">Ensures</see> extension methods.
     /// </summary>
     /// <remarks>
     /// This class is abstract and has an internal constructor. It can't be created or inherited from.
@@ -190,9 +190,9 @@ namespace CuttingEdge.Conditions
         /// Throws an <see cref="Exception"/> which explains that the given condition does not hold.
         /// The exact type of <see cref="Exception"/> that will be thrown is determined by the
         /// <see cref="Validator{T}"/> implementation. The <see cref="Validator{T}"/> that is created by
-        /// calling the <see cref="ValidatorExtensions.Requires{T}(T, string)">Requires</see> will always call
+        /// calling the <see cref="Condition.Requires{T}(T, string)">Requires</see> will always call
         /// a <see cref="ArgumentException"/>, while the <see cref="Validator{T}"/> that is created by the 
-        /// <see cref="ValidatorExtensions.Ensures{T}(T, string)">Ensures</see> method will always throw a 
+        /// <see cref="Condition.Ensures{T}(T, string)">Ensures</see> method will always throw a 
         /// <see cref="PostconditionException"/>.
         /// </summary>
         /// <param name="condition">

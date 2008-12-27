@@ -40,9 +40,7 @@ namespace CuttingEdge.Conditions
         {
             // A TypeInitializationException must be thrown when the given TUncheckedException doesn't have
             // a ctor(string). For this reason this static constructor can not be removed.
-            uncheckedExceptionConstructor = GetUncheckExceptionConstructor();
-
-            uncheckedExceptionConstructor.Ensures("uncheckedExceptionConstructor").IsNotNull();
+            uncheckedExceptionConstructor = GetUncheckedExceptionConstructor();
         }
 
         // Initializes a new instance of the <see cref="EnsuresValidator{T}"/> class.
@@ -90,7 +88,7 @@ namespace CuttingEdge.Conditions
             return (Exception)uncheckedExceptionConstructor.Invoke(new object[] { message });
         }
 
-        private static ConstructorInfo GetUncheckExceptionConstructor()
+        private static ConstructorInfo GetUncheckedExceptionConstructor()
         {
             Type uncheckedExceptionType = typeof(TUncheckedException);
 

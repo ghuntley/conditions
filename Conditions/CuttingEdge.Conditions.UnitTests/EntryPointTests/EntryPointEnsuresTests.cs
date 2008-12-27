@@ -21,7 +21,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
 {
     /// <summary>
-    /// Tests the ValidatorExtensions.Ensures method.
+    /// Tests the Condition.Ensures method.
     /// </summary>
     [TestClass]
     public class EntryPointEnsuresTests

@@ -1,5 +1,17 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
+Version 1.?.?.? (???) ????-??-??
+	General description:
+	
+	Bugfixes:
+	
+	Code changes:
+		-[BREAKING CHANGE] Entry point methods 'Requires' and 'Ensures' moved to a more meaningful class,
+		 named 'Condition'. This leads to a more intuitive API for languages that do not support extension
+		 methods on all type of objects such as VB.NET, which does not support extension methods on arguments
+		 of the System.Object.
+
+
 Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 	General description:
 		This release has several breaking changes. Therefore, the old release can not be swapped with this 

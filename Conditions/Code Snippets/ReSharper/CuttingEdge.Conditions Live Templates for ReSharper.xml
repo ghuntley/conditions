@@ -1,5 +1,5 @@
 <TemplatesExport family="Live Templates">
-  <Template uid="ef94acb4-182f-44ff-bb33-b3451eb1eb06" text="$argument$.Requires(&quot;$argument$&quot;)$END$" shortcut="requires" description="Tests a method precondition." reformat="true" shortenQualifiedReferences="true">
+  <Template uid="ef94acb4-182f-44ff-bb33-b3451eb1eb06" text="Condition.Requires($argument$, &quot;$argument$&quot;)$END$" shortcut="requires" description="Tests a method precondition." reformat="true" shortenQualifiedReferences="true">
     <Context>
       <VBContext context="Statement" />
     </Context>
@@ -9,7 +9,7 @@
     </Variables>
     <CustomProperties />
   </Template>
-  <Template uid="9bea7298-983e-435d-b3b1-e1dd0d3ca922" text="$argument$.Ensures(&quot;$argument$&quot;)$END$" shortcut="ensures" description="Tests a postcondition." reformat="true" shortenQualifiedReferences="true">
+  <Template uid="9bea7298-983e-435d-b3b1-e1dd0d3ca922" text="Condition.Ensures($argument$, &quot;$argument$&quot;)$END$" shortcut="ensures" description="Tests a postcondition." reformat="true" shortenQualifiedReferences="true">
     <Context>
       <VBContext context="Statement" />
     </Context>
