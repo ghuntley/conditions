@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <remarks>
         /// This method will display a string representation of the specified <paramref name="expression"/>.
-        /// Although it can threrefore give a lot of useful information in the exception message, it the
+        /// Although it can therefore give a lot of useful information in the exception message, it the
         /// <paramref name="expression"/> has to be <see cref="Expression{T}.Compile">compiled</see> on each
         /// call. Try using the other <see cref="ValidatorExtensions.Evaluate{T}(Validator{T}, Boolean)"/>
         /// overload in performance sensitive parts of your program.
@@ -61,7 +61,7 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <remarks>
         /// This method will display a string representation of the specified <paramref name="expression"/>.
-        /// Although it can threrefore give a lot of useful information in the exception message, it the
+        /// Although it can therefore give a lot of useful information in the exception message, it the
         /// <paramref name="expression"/> has to be <see cref="Expression{T}.Compile">compiled</see> on each
         /// call. Try using the other <see cref="ValidatorExtensions.Evaluate{T}(Validator{T}, Boolean)"/>
         /// overload in performance sensitive parts of your program.

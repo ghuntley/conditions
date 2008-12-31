@@ -29,7 +29,7 @@ namespace CuttingEdge.Conditions
     internal static class CollectionHelpers
     {
         // This method mimics the behavior of the System.Linq.Enumerable.Contains method.
-        // By not using Enumerable.Contains, we are more independant of System.Core.dll and we increase the
+        // By not using Enumerable.Contains, we are more independent of System.Core.dll and we increase the
         // possibility for users to use this library on machines that don't have .NET 3.5 installed.
         internal static bool Contains<TSource>(IEnumerable<TSource> source, TSource value)
         {
@@ -196,7 +196,7 @@ namespace CuttingEdge.Conditions
                 return true;
             }
 
-            // When the values list isn't empty, but the collection is, then there must be atleast one value
+            // When the values list isn't empty, but the collection is, then there must be at least one value
             // that is not in the collection.
             if (IsSequenceNullOrEmpty(collection))
             {
@@ -246,9 +246,9 @@ namespace CuttingEdge.Conditions
             {
                 int lengthOfSequence = 0;
 
-                // Optimization: We use while instead of foreach. Because we don't need a value, we don't have
-                // to call enumerator.Current. Foreach calls Current always and this could lead to boxing of
-                // elements when the enumerator is a IEnumerator<T> and T is a struct.
+                // Optimization: We use the while statement instead of foreach, because we don't need a value, 
+                // we don't have to call enumerator.Current. foreach Calls Current always and this could lead
+                // to boxing of elements when the enumerator is a IEnumerator<T> and T is a struct.
                 while (enumerator.MoveNext())
                 {
                     lengthOfSequence++;
@@ -340,9 +340,9 @@ namespace CuttingEdge.Conditions
             {
                 int lengthOfSequence = 0;
 
-                // Optimization: We use while instead of foreach. Because we don't need a value, we don't have
-                // to call enumerator.Current. Foreach calls Current always and this could lead to boxing of
-                // elements when the enumerator is a IEnumerator<T> and T is a struct.
+                // Optimization: We use the while statement instead of foreach, because we don't need a value, 
+                // we don't have to call enumerator.Current. foreach Calls Current always and this could lead
+                // to boxing of elements when the enumerator is a IEnumerator<T> and T is a struct.
                 while (enumerator.MoveNext())
                 {
                     lengthOfSequence++;
@@ -389,9 +389,9 @@ namespace CuttingEdge.Conditions
             {
                 int lengthOfSequence = 0;
 
-                // Optimization: We use while instead of foreach. Because we don't need a value, we don't have
-                // to call enumerator.Current. Foreach calls Current always and this could lead to boxing of
-                // elements when the enumerator is a IEnumerator<T> and T is a struct.
+                // Optimization: We use the while statement instead of foreach, because we don't need a value, 
+                // we don't have to call enumerator.Current. foreach Calls Current always and this could lead
+                // to boxing of elements when the enumerator is a IEnumerator<T> and T is a struct.
                 while (enumerator.MoveNext())
                 {
                     lengthOfSequence++;
@@ -438,9 +438,9 @@ namespace CuttingEdge.Conditions
             {
                 int lengthOfSequence = 0;
 
-                // Optimization: We use while instead of foreach. Because we don't need a value, we don't have
-                // to call enumerator.Current. Foreach calls Current always and this could lead to boxing of
-                // elements when the enumerator is a IEnumerator<T> and T is a struct.
+                // Optimization: We use the while statement instead of foreach, because we don't need a value, 
+                // we don't have to call enumerator.Current. foreach Calls Current always and this could lead
+                // to boxing of elements when the enumerator is a IEnumerator<T> and T is a struct.
                 while (enumerator.MoveNext())
                 {
                     lengthOfSequence++;
@@ -487,9 +487,9 @@ namespace CuttingEdge.Conditions
             {
                 int lengthOfSequence = 0;
 
-                // Optimization: We use while instead of foreach. Because we don't need a value, we don't have
-                // to call enumerator.Current. Foreach calls Current always and this could lead to boxing of
-                // elements when the enumerator is a IEnumerator<T> and T is a struct.
+                // Optimization: We use the while statement instead of foreach, because we don't need a value, 
+                // we don't have to call enumerator.Current. foreach Calls Current always and this could lead
+                // to boxing of elements when the enumerator is a IEnumerator<T> and T is a struct.
                 while (enumerator.MoveNext())
                 {
                     lengthOfSequence++;

@@ -77,7 +77,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         }
 
         [TestMethod]
-        [Description("Calling Evaluate on sring x (hoi) with expression '(x) => (x == hoi)' should pass.")]
+        [Description("Calling Evaluate on string x (hoi) with expression '(x) => (x == hoi)' should pass.")]
         public void EvaluateTest07()
         {
             string a = "hoi";

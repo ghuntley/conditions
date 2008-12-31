@@ -19,7 +19,7 @@ using System;
 namespace CuttingEdge.Conditions.UnitTests
 {
     /// <summary>
-    /// Heper class for testinh.
+    /// Helper class for testing.
     /// </summary>
     public static class TestHelper
     {

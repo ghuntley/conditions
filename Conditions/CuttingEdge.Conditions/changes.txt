@@ -3,7 +3,7 @@
 Version 1.?.?.? (???) ????-??-??
 	General description:
 	
-	Bugfixes:
+	Bug Fixes:
 	
 	Code changes:
 		-[BREAKING CHANGE] Entry point methods 'Requires' and 'Ensures' moved to a more meaningful class,
@@ -19,7 +19,7 @@ Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 		attention to: The ValidatorExtension.IsOfType(Type) method now throws an Exception when the given
 		argument is a null reference.
 
-	Bugfixes:
+	Bug Fixes:
 		-[BREAKING CHANGE] The ValidatorExtensions.IsOfType<T>(Type) method succeeded when the supplied value was
 		 null. The method was actually written for the following typical use case:
 			"if (!(param is Type)) throw new ArgumentException();". The use case would actually throw an
@@ -40,7 +40,7 @@ Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 		-Overload methods added with a 'conditionDescription' parameter of type string for all extension 
 		methods and unit tests added to support these new overloads.
 		
-		-[BREAKING CHANGE] The public Validator<T>.ArgumentName field is changed to a readonly property.
+		-[BREAKING CHANGE] The public Validator<T>.ArgumentName field is changed to a read only property.
 		 This property was designed as field to ensure the best performance. However, the value is exclusively
 		 used in exceptional cases (when exceptions are thrown). Therefore, violating the Framework Design
 		 Guidelines wasn't a valid excuse.

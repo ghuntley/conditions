@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotOfType on a downcasted object tested to be the downcasted type should fail.")]
+        [Description("Calling IsNotOfType on a down-casted object tested to be the down-casted type should fail.")]
         public void IsNotOfTypeTest1()
         {
             object o = "String";
@@ -50,7 +50,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotOfType on a downcasted object tested to be the real type should fail.")]
+        [Description("Calling IsNotOfType on a down-casted object tested to be the real type should fail.")]
         public void IsNotOfTypeTest2()
         {
             object o = "String";
@@ -70,7 +70,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsNotOfType on a downcasted object tested to be the downcasted type should fail.")]
+        [Description("Calling IsNotOfType on a down-casted object tested to be the down-casted type should fail.")]
         public void IsNotOfTypeTest4()
         {
             string s = "String";
@@ -89,7 +89,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         }
 
         [TestMethod]
-        [Description("Calling IsNotOfType on a downcasted object tested to be an incomparable type should pass.")]
+        [Description("Calling IsNotOfType on a down-casted object tested to be an incomparable type should pass.")]
         public void IsNotOfTypeTest6()
         {
             object o = "String";

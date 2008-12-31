@@ -1,14 +1,14 @@
 ﻿This project contains the CuttingEdge.Conditions library. It enables developers to validate pre- and 
-postconditions in a fluent manner. Following blogposts describe more about the library:
+postconditions in a fluent manner. Following blog posts describe more about the library:
 	Introduction to CuttingEdge.Conditions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=38
-	Requirements and Design descisions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=36
+	Requirements and Design decisions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=36
 	Extending CuttingEdge.Conditions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=39
 
 Below are some notes on the implementation specially for developers.
 
 Notes:
 	Coding style:
-		Microsoft StyleCop is used as tool to ensure a consistant coding style throughout the library.
+		Microsoft StyleCop is used as tool to ensure a consistent coding style throughout the library.
 		The project has a Settings.SourceAnalysis xml file containing the settings for StyleCop. You can 
 		download StyleCop from http://code.msdn.microsoft.com/sourceanalysis. It will integrate in Visual 
 		Studio and you can validate your code by pressing Ctrl-Shift-Y. Also check out the great StyleCop
@@ -17,7 +17,7 @@ Notes:
 	Framework Design Guidelines:
 		Microsoft FxCop is used to validate the .NET Framework Design Guidelines. The solution folder contains
 		a Conditions.FxCop xml file containing the settings for FxCop. It is integrated with Visual Studio
-		Team System, but you can download the stand allone version of FxCop from
+		Team System, but you can download the stand alone version of FxCop from
 		http://www.microsoft.com/downloads/details.aspx?FamilyID=9aeaa970-f281-4fb0-aba1-d59d7ed09772.
 
 	Generic type constraint:

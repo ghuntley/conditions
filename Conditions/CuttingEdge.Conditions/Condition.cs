@@ -97,7 +97,7 @@ namespace CuttingEdge.Conditions
         /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/>
         /// and "value" as argument name.</returns>
         /// <example>
-        /// For an example of the usuage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
+        /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
         /// </example>
         public static Validator<T> Ensures<T>(this /*_*/ T value)
         {
@@ -182,7 +182,7 @@ namespace CuttingEdge.Conditions
         /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/> 
         /// and <paramref name="argumentName"/>.</returns>
         /// <example>
-        /// For an example of the usuage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
+        /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
         /// </example>
         public static Validator<T> Ensures<T>(this /*_*/ T value, string argumentName, string additionalMessage)
         {

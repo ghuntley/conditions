@@ -28,7 +28,7 @@ namespace CuttingEdge.Conditions
     {
         /// <summary>
         /// Checks whether the given value contains no elements. An exception is thrown otherwise. When the 
-        /// value is a null reference it is considerd empty.
+        /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value contains no elements. An exception is thrown otherwise. When the 
-        /// value is a null reference it is considerd empty.
+        /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value does contain elements. An exception is thrown otherwise. When the 
-        /// value is a null reference it is considerd empty.
+        /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -97,7 +97,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value does contain elements. An exception is thrown otherwise. When the 
-        /// value is a null reference it is considerd empty.
+        /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
@@ -123,7 +123,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value contains the specified <paramref name="element"/>. An exception is 
-        /// thrown otherwise. When the value is a null reference it is considerd empty and therefore won't 
+        /// thrown otherwise. When the value is a null reference it is considered empty and therefore won't 
         /// contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -148,7 +148,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value contains the specified <paramref name="element"/>. An exception is 
-        /// thrown otherwise. When the value is a null reference it is considerd empty and therefore won't 
+        /// thrown otherwise. When the value is a null reference it is considered empty and therefore won't 
         /// contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -177,7 +177,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value contains the specified <paramref name="element"/>. An exception is 
-        /// thrown otherwise. When the value is a null reference it is considerd empty and therefore won't 
+        /// thrown otherwise. When the value is a null reference it is considered empty and therefore won't 
         /// contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -201,7 +201,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value contains the specified <paramref name="element"/>. An exception is 
-        /// thrown otherwise. When the value is a null reference it is considerd empty and therefore won't 
+        /// thrown otherwise. When the value is a null reference it is considered empty and therefore won't 
         /// contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -229,7 +229,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value does not contain the specified <paramref name="element"/>. An 
-        /// exception is thrown otherwise. When the value is a null reference it is considerd empty and 
+        /// exception is thrown otherwise. When the value is a null reference it is considered empty and 
         /// therefore won't contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -253,7 +253,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value does not contain the specified <paramref name="element"/>. An 
-        /// exception is thrown otherwise. When the value is a null reference it is considerd empty and 
+        /// exception is thrown otherwise. When the value is a null reference it is considered empty and 
         /// therefore won't contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -281,7 +281,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value does not contain the specified <paramref name="element"/>. An 
-        /// exception is thrown otherwise. When the value is a null reference it is considerd empty and 
+        /// exception is thrown otherwise. When the value is a null reference it is considered empty and 
         /// therefore won't contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -303,7 +303,7 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Checks whether the given value does not contain the specified <paramref name="element"/>. An 
-        /// exception is thrown otherwise. When the value is a null reference it is considerd empty and 
+        /// exception is thrown otherwise. When the value is a null reference it is considered empty and 
         /// therefore won't contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
@@ -494,7 +494,7 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Checks whether the given value does nott contains any of the specified <paramref name="elements"/>.
+        /// Checks whether the given value does not contains any of the specified <paramref name="elements"/>.
         /// An exception is thrown otherwise.
         /// When the value is a null reference or an empty list it won't contain any <paramref name="elements"/>.
         /// When the <paramref name="elements"/> list is null or empty the collection is considered to not 
@@ -519,7 +519,7 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Checks whether the given value does nott contains any of the specified <paramref name="elements"/>.
+        /// Checks whether the given value does not contains any of the specified <paramref name="elements"/>.
         /// An exception is thrown otherwise.
         /// When the value is a null reference or an empty list it won't contain any <paramref name="elements"/>.
         /// When the <paramref name="elements"/> list is null or empty the collection is considered to not 

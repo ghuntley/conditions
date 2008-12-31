@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         }
 
         [TestMethod]
-        [Description("Calling IsOfType on a downcasted object tested to be the downcasted type should pass.")]
+        [Description("Calling IsOfType on a down-casted object tested to be the down-casted type should pass.")]
         public void IsOfTypeTest1()
         {
             object o = "String";
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         }
 
         [TestMethod]
-        [Description("Calling IsOfType on a downcasted object tested to be the real type should pass.")]
+        [Description("Calling IsOfType on a down-casted object tested to be the real type should pass.")]
         public void IsOfTypeTest2()
         {
             object o = "String";
@@ -86,7 +86,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling IsOfType on a downcasted object tested to be a non comparable type should fail.")]
+        [Description("Calling IsOfType on a down-casted object tested to be a non comparable type should fail.")]
         public void IsOfTypeTest6()
         {
             object o = "String";

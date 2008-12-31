@@ -55,7 +55,7 @@ namespace CuttingEdge.Conditions.UnitTests
         }
 
         [TestMethod]
-        [Description("Tests whether the the API works without the use of extension methods.")]
+        [Description("Tests whether the API works without the use of extension methods.")]
         public void ExtendabilityTest04()
         {
             int value = 1;

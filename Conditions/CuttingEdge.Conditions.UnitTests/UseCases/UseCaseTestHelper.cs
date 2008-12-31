@@ -32,13 +32,13 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
                 }
                 
                 Assert.Fail(string.Format("Both cases throw a different type of exception. " +
-                    "The use case threw a {0} and conditions thew a {1}.", useCaseException.GetType().Name,
+                    "The use case threw a {0} and conditions threw a {1}.", useCaseException.GetType().Name,
                     conditionsException.GetType().Name));
             }
 
             if (useCaseException == null)
             {
-                Assert.Fail("The use case action didn't throw an exception, whlie the conditions action did.");
+                Assert.Fail("The use case action didn't throw an exception, while the conditions action did.");
             }
             else
             {

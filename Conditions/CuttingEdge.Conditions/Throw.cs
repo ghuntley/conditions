@@ -723,7 +723,7 @@ namespace CuttingEdge.Conditions
             object value = validator.Value;
 
             // When the ToString method of the given type isn't overloaded, it returns the Type.FullName.
-            // This information isn't very usefull to the user, so in that case, we'll simply return null,
+            // This information isn't very useful to the user, so in that case, we'll simply return null,
             // meaning: no extra information.
             if (value == null || value.GetType().FullName != value.ToString())
             {

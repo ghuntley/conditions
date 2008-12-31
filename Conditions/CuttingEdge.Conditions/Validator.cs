@@ -173,7 +173,7 @@ namespace CuttingEdge.Conditions
         /// <param name="value">The value of the argument to be validated</param>
         protected Validator(string argumentName, T value)
         {
-            // This constructor is internal. It is not usefull for a user to inherit from this class.
+            // This constructor is internal. It is not useful for a user to inherit from this class.
             // When this ctor is made protected, so should be the BuildException method.
             this.Value = value;
             this.argumentName = argumentName;
@@ -213,8 +213,8 @@ namespace CuttingEdge.Conditions
         /// <see cref="Validator{T}">Validator</see> is used to generate an exception message.
         /// </summary>
         /// <remarks>
-        /// This otherwise method is ment to throw unchecked exceptions. Unchecked exceptions are exceptions
-        /// that aren't ment to be caught by a program. For instance, An <see cref="ArgumentException"/> and
+        /// This otherwise method is meant to throw unchecked exceptions. Unchecked exceptions are exceptions
+        /// that aren't meant to be caught by a program. For instance, An <see cref="ArgumentException"/> and
         /// <see cref="ObjectDisposedException"/> shouldn't be caught. They should bring the program to a
         /// hold. But because the .NET framework doesn't differentiate between checked and unchecked 
         /// exceptions, we can't enforce this.
@@ -236,8 +236,8 @@ namespace CuttingEdge.Conditions
         /// <paramref name="exceptionMessage"/> that comes with it.
         /// </summary>
         /// <remarks>
-        /// This otherwise method is ment to throw unchecked exceptions. Unchecked exceptions are exceptions
-        /// that aren't ment to be caught by a program. For instance, An <see cref="ArgumentException"/> and
+        /// This otherwise method is meant to throw unchecked exceptions. Unchecked exceptions are exceptions
+        /// that aren't meant to be caught by a program. For instance, An <see cref="ArgumentException"/> and
         /// <see cref="ObjectDisposedException"/> shouldn't be caught. They should bring the program to a
         /// hold. But because the .NET framework doesn't differentiate between checked and unchecked 
         /// exceptions, we can't enforce this.
@@ -269,8 +269,8 @@ namespace CuttingEdge.Conditions
             return base.Equals(obj);
         }
 
-        /// <summary>Returns the hashcode of the current instance.</summary>
-        /// <returns>The hashcode of the current instance.</returns>
+        /// <summary>Returns the hash code of the current instance.</summary>
+        /// <returns>The hash code of the current instance.</returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
         public override int GetHashCode()
         {
@@ -301,7 +301,7 @@ namespace CuttingEdge.Conditions
         /// <summary>Builds an exception, that has to be thrown.</summary>
         /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
         /// null".</param>
-        /// <param name="additionalMessage">An aditional message that will be appended to the exception
+        /// <param name="additionalMessage">An additional message that will be appended to the exception
         /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
         /// <param name="type">Gives extra information on the exception type that must be build. The actual
         /// implementation of the validator may ignore some or all values.</param>

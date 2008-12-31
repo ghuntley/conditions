@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
         }
 
         [TestMethod]
-        [Description("Checks whether the aditional information about the actual value of the object is added to the exception message.")]
+        [Description("Checks whether the additional information about the actual value of the object is added to the exception message.")]
         public void EnsuresTest04()
         {
             int a = 5;

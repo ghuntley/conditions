@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions
         /// <summary>Builds an exception and it's message, that has to be thrown.</summary>
         /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
         /// null".</param>
-        /// <param name="additionalMessage">An aditional message that will be appended to the exception
+        /// <param name="additionalMessage">An additional message that will be appended to the exception
         /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
         /// <param name="type">Gives extra information on the exception type that must be build. The actual
         /// implementation of the validator may ignore some or all values.</param>

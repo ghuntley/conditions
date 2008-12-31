@@ -29,12 +29,12 @@ namespace CuttingEdge.Conditions
         Default = 0,
 
         /// <summary>
-        /// Lets the Validator optionaly throw an exception type appropriate for values that are out of range.
+        /// Lets the Validator optionally throw an exception type appropriate for values that are out of range.
         /// </summary>
         OutOfRangeViolation,
 
         /// <summary>
-        /// Lets the Validator optionaly throw an <see cref="InvalidEnumArgumentException"/>.
+        /// Lets the Validator optionally throw an <see cref="InvalidEnumArgumentException"/>.
         /// </summary>
         InvalidEnumViolation,
     }
