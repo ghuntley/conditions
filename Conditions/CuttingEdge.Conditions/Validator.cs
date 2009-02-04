@@ -264,7 +264,10 @@ namespace CuttingEdge.Conditions
         /// true if the specified System.Object is equal to the current System.Object; otherwise, false.
         /// </returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
+        [Obsolete("This method is not part of the validation framework. Please use the IsEqualTo method.", true)]
+#pragma warning disable 809 // Remove the Obsolete attribute from the overriding member, or add it to the ...
         public override bool Equals(object obj)
+#pragma warning restore 809
         {
             return base.Equals(obj);
         }
