@@ -1,10 +1,17 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
-Version 1.?.?.? (???) ????-??-??
+Version 1.0.3.0 (v1.0 beta 3) 2009-03-15
 	General description:
+		This released has some breaking changes to allow better support for languages other than C# (VB.NET
+		for instance, wasn't supported well). Therefore, the old release is both binary and code incompatible.
+		Still, C# users shouldn't expect to make any changes to their code.
 	
 	Bug Fixes:
-	
+		-Added an [Obsolete] attribute to the Equals(object) method of the Validator<T> class. The Equals 
+		 method is not meant to be used by framework users and the compiler will now show a warning with the
+		 message ''This method is not part of the validation framework. Please use the IsEqualTo method.' which
+		 indicates clearly that the user should use the IsEqualTo method.	
+
 	Code changes:
 		-[BREAKING CHANGE] Entry point methods 'Requires' and 'Ensures' moved to a more meaningful class,
 		 named 'Condition'. This leads to a more intuitive API for languages that do not support extension
@@ -66,7 +73,6 @@ Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 		 
 		-Evaluate(bool condition, string description) overload added according to work item 7469.
 		 see: http://www.codeplex.com/conditions/WorkItem/View.aspx?WorkItemId=7469
-		 [TODO] description
 		 
 	Changes to project and solutions:
 		-Unused references removed from CuttingEdge.Conditions project.
