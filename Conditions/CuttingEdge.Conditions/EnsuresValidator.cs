@@ -26,17 +26,9 @@ namespace CuttingEdge.Conditions
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
     internal sealed class EnsuresValidator<T> : Validator<T>
     {
-        private readonly string additionalMessage;
-
         internal EnsuresValidator(string argumentName, T value)
             : base(argumentName, value)
         {
-        }
-
-        internal EnsuresValidator(string argumentName, T value, string additionalMessage)
-            : base(argumentName, value)
-        {
-            this.additionalMessage = additionalMessage;
         }
 
         /// <summary>
@@ -60,13 +52,6 @@ namespace CuttingEdge.Conditions
                 // The library can supply some additional information about the value of the validated
                 // argument. This message will be appended to the exception message.
                 exceptionMessage += " " + additionalMessage;
-            }
-
-            if (!String.IsNullOrEmpty(this.additionalMessage))
-            {
-                // The user can also add an additional message using one of the Ensures() method overloads.
-                // If the user supplied such a message, it will be appended to the exception message.
-                exceptionMessage += " " + this.additionalMessage;
             }
 
             return new PostconditionException(exceptionMessage);

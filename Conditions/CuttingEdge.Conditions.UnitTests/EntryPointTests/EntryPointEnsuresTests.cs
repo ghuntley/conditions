@@ -49,35 +49,5 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
                 Assert.AreEqual(true, ex.Message.Contains("foobar"));
             }
         }
-
-        [TestMethod]
-        [Description("Checks whether the additional error message on the Ensures() will be used.")]
-        public void EnsuresTest03()
-        {
-            int a = 3;
-            try
-            {
-                a.Ensures("foobar", "errormessage").Throw(String.Empty);
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(true, ex.Message.Contains("errormessage"));
-            }
-        }
-
-        [TestMethod]
-        [Description("Checks whether the additional information about the actual value of the object is added to the exception message.")]
-        public void EnsuresTest04()
-        {
-            int a = 5;
-            try
-            {
-                a.Ensures("foobar", "errormessage").IsInRange(0, 2);
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(true, ex.Message.Contains("5"));
-            }
-        }
     }
 }

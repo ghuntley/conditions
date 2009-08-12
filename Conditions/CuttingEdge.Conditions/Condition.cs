@@ -170,23 +170,5 @@ namespace CuttingEdge.Conditions
         {
             return new EnsuresValidator<T>(argumentName, value);
         }
-
-        /// <summary>
-        /// Returns a new <see cref="Validator{T}">Validator</see> that allows you to validate the 
-        /// postconditions of the given object.
-        /// </summary>
-        /// <typeparam name="T">The type of the object to validate.</typeparam>
-        /// <param name="value">The object to validate.</param>
-        /// <param name="argumentName">The name of the argument to validate</param>
-        /// <param name="additionalMessage">A message that will be appended to generated exception message.</param>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/> 
-        /// and <paramref name="argumentName"/>.</returns>
-        /// <example>
-        /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
-        /// </example>
-        public static Validator<T> Ensures<T>(this /*_*/ T value, string argumentName, string additionalMessage)
-        {
-            return new EnsuresValidator<T>(argumentName, value, additionalMessage);
-        }
     }
 }

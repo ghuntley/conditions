@@ -35,10 +35,5 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             return CuttingEdge.Conditions.Condition.Ensures<T>(value, argumentName);
         }
-
-        internal static Validator<T> Ensures<T>(this T value, string argumentName, string additionalMessage)
-        {
-            return CuttingEdge.Conditions.Condition.Ensures<T>(value, argumentName, additionalMessage);
-        }
     }
 }

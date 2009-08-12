@@ -1,5 +1,17 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
+Version vNext
+	General description:
+		TODO
+		
+	Code changes:
+		-[BREAKING CHANGE] One overload of entry point method 'Ensures' has been removed.
+		 The overload Condition.Ensures<T>(T value, string argumentName, string additionalMessage) has been
+		 removed. Because of this change, the EnsuresValidator has been adjusted and some unit tests have
+		 been removed. The overload has become redundant in version 1.0.2.0, after overload methods where
+		 added with a 'conditionDescription' parameter of type string for all extension methods.
+	
+
 Version 1.0.3.0 (v1.0 beta 3) 2009-03-15
 	General description:
 		This released has some breaking changes to allow better support for languages other than C# (VB.NET

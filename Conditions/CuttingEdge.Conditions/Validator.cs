@@ -157,7 +157,7 @@ namespace CuttingEdge.Conditions
     /// </code>
     /// </example>
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
-    [DebuggerDisplay("Validator (Type: {GetType().Name.Substring(0, GetType().Name.IndexOf(\"Validator\"))}, ArgumentName: {ArgumentName}, Value: {Value} )")]
+    [DebuggerDisplay("{GetType().Name} (ArgumentName: {ArgumentName}, Value: {Value} )")]
     public abstract class Validator<T>
     {
         /// <summary>Gets the value of the argument.</summary>
