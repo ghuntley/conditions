@@ -4,7 +4,18 @@ Version vNext
 	General description:
 		TODO
 		
+	Bug Fixes:
+		-The internal CollectionHelper class had a dependency on the .NET 3.5 type HashSet<T>. This dependency
+		is removed and it's now more likely that CuttingEdge.Conditions can be used in .NET 2.0 projects.
+		You'd still need C# 3.0 though. The library has now only one method that you can not call without
+		.NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
+		
 	Code changes:
+		-A TraceListener class called ‘UnitTestTraceListener’ has been added to the UnitTest project and 
+		 configured to be the default trace listener in the project's app.config. The trace listener ensures
+		 that calls to Debug.Assert(false), Trace.Assert(false), Debug.Fail(), and Trace.Fail(), from within
+		 the tested assembly are routed to the Microsoft.VisualStudio.TestTools.UnitTesting.Assert.Fail method.
+		 Debug.Assert is now used in the SR.GetStringInternal method.
 		-[BREAKING CHANGE] One overload of entry point method 'Ensures' has been removed.
 		 The overload Condition.Ensures<T>(T value, string argumentName, string additionalMessage) has been
 		 removed. Because of this change, the EnsuresValidator has been adjusted and some unit tests have

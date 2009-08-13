@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions
         }
 
         // TODO: Optimize this method for performance.
-        // Creating a HashSet costs more than calling IEnumerable.Contains when the 'values' collection is 
+        // Creating a Dictionary costs more than calling IEnumerable.Contains when the 'values' collection is 
         // very small.
         internal static bool ContainsAny<T>(IEnumerable<T> sequence, IEnumerable<T> values)
         {
@@ -93,20 +93,30 @@ namespace CuttingEdge.Conditions
                 return false;
             }
 
-            // A HashSet is used to improve performance. Using Contains on a collection would give
-            // a performance characteristic of O(n*m) and with a HashSet it's of O(m).
-            HashSet<T> set = sequence as HashSet<T>;
+            ICollection<T> collection = sequence as ICollection<T>;
 
-            if (set == null)
+            if (collection != null)
             {
-                set = new HashSet<T>(sequence);
-            }
-
-            foreach (T element in values)
-            {
-                if (set.Contains(element))
+                // Determine whether sequence contains one of the values.
+                foreach (T element in values)
                 {
-                    return true;
+                    if (collection.Contains(element))
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                var set = ConvertToSet(sequence);
+
+                // Determine whether sequence contains one of the values.
+                foreach (T element in values)
+                {
+                    if (set.ContainsKey(element))
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -125,20 +135,30 @@ namespace CuttingEdge.Conditions
                 return false;
             }
 
-            // A HashSet is used to improve performance. Using Contains on a collection would give
-            // a performance characteristic of O(n*m) and with a HashSet it's of O(m).
-            HashSet<object> set = new HashSet<object>();
+            IList list = sequence as IList;
 
-            foreach (object element in sequence)
+            if (list != null)
             {
-                set.Add(element);
-            }
-
-            foreach (object element in values)
-            {
-                if (set.Contains(element))
+                // Determine whether sequence contains one of the values.
+                foreach (object element in values)
                 {
-                    return true;
+                    if (list.Contains(element))
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                var set = ConvertToSet(sequence);
+
+                // Determine whether sequence contains one of the values.
+                foreach (object element in values)
+                {
+                    if (set.ContainsKey(element))
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -164,20 +184,29 @@ namespace CuttingEdge.Conditions
                 return false;
             }
 
-            // A HashSet is used to improve performance. Using Contains on a collection would give a 
-            // performance characteristic of O(n*m) and with a HashSet it's of O(m).
-            HashSet<T> set = sequence as HashSet<T>;
+            ICollection<T> collection = sequence as ICollection<T>;
 
-            if (set == null)
+            if (collection != null)
             {
-                set = new HashSet<T>(sequence);
-            }
-
-            foreach (T element in values)
-            {
-                if (!set.Contains(element))
+                foreach (T element in values)
                 {
-                    return false;
+                    if (!collection.Contains(element))
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                var set = ConvertToSet(sequence);
+
+                // Determine whether sequence contains one of the values.                
+                foreach (T element in values)
+                {
+                    if (!set.ContainsKey(element))
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -187,7 +216,7 @@ namespace CuttingEdge.Conditions
         // TODO: Optimize this method for performance.
         // Creating a HashSet costs more than calling IEnumerable.Contains when the values collection is 
         // very small.
-        internal static bool ContainsAll(IEnumerable collection, IEnumerable values)
+        internal static bool ContainsAll(IEnumerable sequence, IEnumerable values)
         {
             // When the values list is empty we consider all of them to be in the collection (even if the
             // collection itself is also empty).
@@ -198,25 +227,33 @@ namespace CuttingEdge.Conditions
 
             // When the values list isn't empty, but the collection is, then there must be at least one value
             // that is not in the collection.
-            if (IsSequenceNullOrEmpty(collection))
+            if (IsSequenceNullOrEmpty(sequence))
             {
                 return false;
             }
 
-            // A HashSet is used to improve performance. Using Contains on a collection would give a 
-            // performance characteristic of O(n*m) and with a HashSet it's of O(m).
-            HashSet<object> set = new HashSet<object>();
+            IList list = sequence as IList;
 
-            foreach (object element in collection)
+            if (list != null)
             {
-                set.Add(element);
-            }
-
-            foreach (object element in values)
-            {
-                if (!set.Contains(element))
+                foreach (object element in values)
                 {
-                    return false;
+                    if (!list.Contains(element))
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                var set = ConvertToSet(sequence);
+
+                foreach (object element in values)
+                {
+                    if (!set.ContainsKey(element))
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -272,7 +309,6 @@ namespace CuttingEdge.Conditions
             }
         }
 
-        // This method a candidate for inlining because it's 32 bytes of IL.
         internal static bool IsSequenceNullOrEmpty<TSource>(IEnumerable<TSource> sequence)
         {
             if (sequence == null)
@@ -295,7 +331,6 @@ namespace CuttingEdge.Conditions
             }
         }
 
-        // This method a candidate for inlining because it's 32 bytes of IL.
         internal static bool IsSequenceNullOrEmpty(IEnumerable sequence)
         {
             if (sequence == null)
@@ -529,6 +564,40 @@ namespace CuttingEdge.Conditions
                     disposable.Dispose();
                 }
             }
+        }
+
+        private static Dictionary<T, byte> ConvertToSet<T>(IEnumerable<T> sequence)
+        {
+            // A Dictionary is used to improve performance. Using 'Contains' on a collection would give a 
+            // performance characteristic of O(n*m) and with a Dictionary it's of O(m).
+            // Using HashSet<T> is slightly more performant, but HashSet<T> is part of .NET 3.5 and we 
+            // don't want to have to reference to 3.5 unless it's really needed.
+            Dictionary<T, byte> set = new Dictionary<T, byte>();
+
+            foreach (T element in sequence)
+            {
+                const byte Dummy = 0;
+                set[element] = Dummy;
+            }
+
+            return set;
+        }
+
+        private static Dictionary<object, byte> ConvertToSet(IEnumerable sequence)
+        {
+            // A Dictionary is used to improve performance. Using 'Contains' on a collection would give a 
+            // performance characteristic of O(n*m) and with a Dictionary it's of O(m).
+            // Using HashSet<T> is slightly more performant, but HashSet<T> is part of .NET 3.5 and we 
+            // don't want to have to reference to 3.5 unless it's really needed.
+            Dictionary<object, byte> set = new Dictionary<object, byte>();
+
+            foreach (object element in sequence)
+            {
+                const byte Dummy = 0;
+                set[element] = Dummy;
+            }
+
+            return set;
         }
     }
 }
