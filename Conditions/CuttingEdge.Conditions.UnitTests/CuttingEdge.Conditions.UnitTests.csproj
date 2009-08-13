@@ -104,7 +104,9 @@
     <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Single.cs" />
     <Compile Include="EvaluationTests\EvaluationEvaluateTests.cs" />
     <Compile Include="SelfTests.cs" />
+    <None Include="App.config" />
     <None Include="CompareTests\ValidatorExtensionTests.Compare.Base.cs" />
+    <Compile Include="UnitTestTraceListener.cs" />
     <Compile Include="UseCases\NullTestUseCases.cs" />
     <Compile Include="UseCases\TypeTestUseCases.cs" />
     <Compile Include="UseCases\UseCaseTestHelper.cs" />

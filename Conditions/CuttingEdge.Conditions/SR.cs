@@ -16,7 +16,7 @@
 */
 #endregion
 
-using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
 
@@ -131,14 +131,7 @@ namespace CuttingEdge.Conditions
             // GetString will throw an ArgumentNullException when name is null.
             string format = resource.GetString(name, CultureInfo.CurrentUICulture);
 
-            if (format == null)
-            {
-                // We throw a very bad exception here on purpose. This method will only get called in a 
-                // exceptional code path (when an exception will be thrown). Therefore throwing a ArgumentEx, 
-                // could disguise the real exception and could get unnoticed by the unit tests.
-                throw new InvalidProgramException(string.Format(CultureInfo.InvariantCulture,
-                    "The supplied string '{0}' could not be found in the resource.", name));
-            }
+            Debug.Assert(format != null, "recourse.GetString() returned null for name=" + name);
 
             if (args == null)
             {
