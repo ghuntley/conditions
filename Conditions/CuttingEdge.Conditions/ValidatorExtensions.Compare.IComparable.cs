@@ -472,7 +472,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsValid = (comparer.Compare(validator.Value, minValue) > 0);
+            bool valueIsValid = comparer.Compare(validator.Value, minValue) > 0;
 
             if (!valueIsValid)
             {
@@ -605,7 +605,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsInvalid = (comparer.Compare(validator.Value, maxValue) > 0);
+            bool valueIsInvalid = comparer.Compare(validator.Value, maxValue) > 0;
 
             if (valueIsInvalid)
             {
@@ -738,7 +738,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsValid = (comparer.Compare(validator.Value, minValue) >= 0);
+            bool valueIsValid = comparer.Compare(validator.Value, minValue) >= 0;
 
             if (!valueIsValid)
             {
@@ -872,7 +872,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsInvalid = (comparer.Compare(validator.Value, maxValue) >= 0);
+            bool valueIsInvalid = comparer.Compare(validator.Value, maxValue) >= 0;
 
             if (valueIsInvalid)
             {
@@ -1006,7 +1006,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsValid = (comparer.Compare(validator.Value, maxValue) < 0);
+            bool valueIsValid = comparer.Compare(validator.Value, maxValue) < 0;
 
             if (!valueIsValid)
             {
@@ -1140,7 +1140,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsInvalid = (comparer.Compare(validator.Value, minValue) < 0);
+            bool valueIsInvalid = comparer.Compare(validator.Value, minValue) < 0;
 
             if (valueIsInvalid)
             {
@@ -1274,7 +1274,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsValid = (comparer.Compare(validator.Value, maxValue) <= 0);
+            bool valueIsValid = comparer.Compare(validator.Value, maxValue) <= 0;
 
             if (!valueIsValid)
             {
@@ -1408,7 +1408,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> comparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsInvalid = (comparer.Compare(validator.Value, minValue) <= 0);
+            bool valueIsInvalid = comparer.Compare(validator.Value, minValue) <= 0;
 
             if (valueIsInvalid)
             {
@@ -1552,7 +1552,7 @@ namespace CuttingEdge.Conditions
         {
             Comparer<Nullable<T>> defaultComparer = DefaultComparer<Nullable<T>>.Default;
 
-            bool valueIsValid = (defaultComparer.Compare(validator.Value, value) == 0);
+            bool valueIsValid = defaultComparer.Compare(validator.Value, value) == 0;
 
             if (!valueIsValid)
             {
