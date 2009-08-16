@@ -30,7 +30,9 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
-    <WarningsAsErrors>108, 114, 162, 168, 169, 219, 472, 649, 665</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -40,7 +42,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\CuttingEdge.Conditions.xml</DocumentationFile>
-    <WarningsAsErrors>108, 114, 162, 168, 169, 219, 472, 649, 665</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
