@@ -136,7 +136,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of the tested typed collection should pass.")]
+        [Description("Calling ContainsAll with an non-generic 'all' collection containing all elements of the tested typed collection should pass.")]
         public void CollectionContainsAllTest10()
         {
             int[] c = { 1, 2, 3, 4 };
@@ -145,7 +145,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of the tested untyped collection should pass.")]
+        [Description("Calling ContainsAll with an non-generic 'all' collection containing all elements of the tested non-generic collection should pass.")]
         public void CollectionContainsAllTest11()
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
@@ -154,7 +154,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of different types of the tested untyped collection should pass.")]
+        [Description("Calling ContainsAll with an non-generic 'all' collection containing all elements of different types of the tested non-generic collection should pass.")]
         public void CollectionContainsAllTest12()
         {
             ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
@@ -164,7 +164,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAll with an untyped 'all' collection containing not all elements of the tested typed collection should fail.")]
+        [Description("Calling ContainsAll with an non-generic 'all' collection containing not all elements of the tested typed collection should fail.")]
         public void CollectionContainsAllTest13()
         {
             int[] c = { 1, 2, 3, 4 };
@@ -174,7 +174,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAll with an untyped 'all' collection containing all elements of the tested untyped collection should fail.")]
+        [Description("Calling ContainsAll with an non-generic 'all' collection containing all elements of the tested non-generic collection should fail.")]
         public void CollectionContainsAllTest14()
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
@@ -184,7 +184,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAll with an untyped 'all' collection containing not all elements of different types of the tested untyped collection should fail.")]
+        [Description("Calling ContainsAll with an non-generic 'all' collection containing not all elements of different types of the tested non-generic collection should fail.")]
         public void CollectionContainsAllTest15()
         {
             ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
@@ -203,7 +203,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAll with an empty untyped 'all' collection should pass.")]
+        [Description("Calling ContainsAll with an empty non-generic 'all' collection should pass.")]
         public void CollectionContainsAllTest17()
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
@@ -213,7 +213,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAll with an untyped 'all' on an empty collection should fail.")]
+        [Description("Calling ContainsAll with an non-generic 'all' on an empty collection should fail.")]
         public void CollectionContainsAllTest18()
         {
             ArrayList c = new ArrayList();
@@ -264,6 +264,81 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             catch (ArgumentException ex)
             {
                 Assert.IsTrue(ex.Message.Contains("c must contain all"));
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        [Description("Calling ContainsAll on non-empty collection that doesn't contain a null value with a 'all' collection that does contain the value null should fail.")]
+        public void CollectionContainsAllTest023()
+        {
+            int?[] c = new int?[] { 1 };
+            int?[] all = new int?[] { null };
+            c.Requires().ContainsAll(all);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        [Description("Calling ContainsAll on non-empty non-generic collection that doesn't contain a null value with a 'all' collection that does contain the value null should fail.")]
+        public void CollectionContainsAllTest024()
+        {
+            ArrayList c = new ArrayList { 1 };
+            ArrayList all = new ArrayList { null };
+            c.Requires().ContainsAll(all);
+        }
+
+        [TestMethod]
+        [Description("Calling the generic ContainsAll with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionContainsAllTest25()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 2, 3, 4 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the values 1 and 2.
+            Assert.IsTrue(set.Count == 2);
+            // Because of the use of OddEqualityComparer, set.Contains(3) should return true.
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            int[] elements = { 3 };
+
+            // ContainsAll should fail, because the value is not in the initial list,
+            // otherwise this behavior would be inconsistent with the non-generic overload of ContainsAll.
+            try
+            {
+                // Call the generic ContainsAll<C, E>(Validator<C>, IEnumerable<E>) overload.
+                set.Requires().ContainsAll(elements);
+                Assert.Fail("ContainsAll did not throw the excepted ArgumentException.");
+            }
+            catch (ArgumentException)
+            {
+                // We expect this exception.
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling the non-generic ContainsAll with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionContainsAllTest26()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 2, 3, 4 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the values 1 and 2.
+            Assert.IsTrue(set.Count == 2);
+            // Because of the use of OddEqualityComparer, set.Contains(3) should return true.
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            ArrayList elements = new ArrayList { 3 };
+
+            // ContainsAll should fail, because the value is not in the initial list.
+            try
+            {
+                // Call the non-generic ContainsAll<T>(Validator<T>, IEnumerable) overload.
+                set.Requires().ContainsAll(elements);
+                Assert.Fail("ContainsAll did not throw the excepted ArgumentException.");
+            }
+            catch (ArgumentException)
+            {
+                // We expect this exception.
             }
         }
     }

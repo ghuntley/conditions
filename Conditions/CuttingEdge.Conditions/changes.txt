@@ -5,17 +5,24 @@ Version vNext
 		TODO
 		
 	Bug Fixes:
+		-Behavior of Contains, ContainsAll, and ContainsAny overloads changed for work item 10480.
+		 The overloads of the Contains, ContainsAll, and ContainsAny methods for collections had inconsistent
+		 behavior. While some overloads used the ICollection<T>.Contains or IList.Contains method of the
+		 validated collection, others iterated the collection itself to determine whether a
+		 collection contained the specified value. This resulted in different behavior on some collections
+		 that did not use default equality. The behavior is now fixed, but it comes with some costs. Using
+		 those methods on ordered sets (like HashSet<T> and SortedList<T>) is now slower than before.
 		-The internal CollectionHelper class had a dependency on the .NET 3.5 type HashSet<T>. This dependency
-		is removed and it's now more likely that CuttingEdge.Conditions can be used in .NET 2.0 projects.
-		You'd still need C# 3.0 though. The library has now only one method that you can not call without
+		 is removed and it's now more likely that CuttingEdge.Conditions can be used in .NET 2.0 projects.
+		 You'd still need C# 3.0 though. The library has now only one method that you can not call without
 		.NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
 		
 	Code changes:
 		-A TraceListener class called ‘UnitTestTraceListener’ has been added to the UnitTest project and 
 		 configured to be the default trace listener in the project's app.config. The trace listener ensures
 		 that calls to Debug.Assert(false), Trace.Assert(false), Debug.Fail(), and Trace.Fail(), from within
-		 the tested assembly are routed to the Microsoft.VisualStudio.TestTools.UnitTesting.Assert.Fail method.
-		 Debug.Assert is now used in the SR.GetStringInternal method.
+		 the tested assembly are routed to the Microsoft.VisualStudio.TestTools.UnitTesting.Assert.Fail
+		 method. Debug.Assert is now used in the SR.GetStringInternal method.
 		-[BREAKING CHANGE] One overload of entry point method 'Ensures' has been removed.
 		 The overload Condition.Ensures<T>(T value, string argumentName, string additionalMessage) has been
 		 removed. Because of this change, the EnsuresValidator has been adjusted and some unit tests have
@@ -32,8 +39,8 @@ Version 1.0.3.0 (v1.0 beta 3) 2009-03-15
 	Bug Fixes:
 		-Added an [Obsolete] attribute to the Equals(object) method of the Validator<T> class. The Equals 
 		 method is not meant to be used by framework users and the compiler will now show a warning with the
-		 message ''This method is not part of the validation framework. Please use the IsEqualTo method.' which
-		 indicates clearly that the user should use the IsEqualTo method.	
+		 message ''This method is not part of the validation framework. Please use the IsEqualTo method.'
+		 which indicates clearly that the user should use the IsEqualTo method.	
 
 	Code changes:
 		-[BREAKING CHANGE] Entry point methods 'Requires' and 'Ensures' moved to a more meaningful class,
@@ -50,8 +57,8 @@ Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 		argument is a null reference.
 
 	Bug Fixes:
-		-[BREAKING CHANGE] The ValidatorExtensions.IsOfType<T>(Type) method succeeded when the supplied value was
-		 null. The method was actually written for the following typical use case:
+		-[BREAKING CHANGE] The ValidatorExtensions.IsOfType<T>(Type) method succeeded when the supplied value
+		 was null. The method was actually written for the following typical use case:
 			"if (!(param is Type)) throw new ArgumentException();". The use case would actually throw an
 		 exception when 'param' is a null reference. The IsOfType<T> method now behaves correctly.
 

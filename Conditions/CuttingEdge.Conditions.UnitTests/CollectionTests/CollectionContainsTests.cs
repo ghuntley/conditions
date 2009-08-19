@@ -78,7 +78,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling Contains on an untyped Collection that contains the tested value should pass.")]
+        [Description("Calling Contains on an non-generic Collection that contains the tested value should pass.")]
         public void CollectionContainsTest04()
         {
             ArrayList c = new ArrayList { 1 };
@@ -86,7 +86,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling Contains on an typed Collection that contains the tested untyped value should pass.")]
+        [Description("Calling Contains on an typed Collection that contains the tested non-generic value should pass.")]
         public void CollectionContainsTest05()
         {
             Collection<int> c = new Collection<int> { 1 };
@@ -95,7 +95,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling Contains on an typed Collection that doesn't contain the tested untyped value should fail.")]
+        [Description("Calling Contains on an typed Collection that doesn't contain the tested non-generic value should fail.")]
         public void CollectionContainsTest06()
         {
             Collection<int> c = new Collection<int> { 1 };
@@ -183,6 +183,57 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             catch (ArgumentException ex)
             {
                 Assert.IsTrue(ex.Message.Contains("c should contain the integer 11"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling the generic Contains with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionContainsTest15()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 2, 3, 4 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the values 1 and 2.
+            Assert.IsTrue(set.Count == 2);
+            // Because of the use of OddEqualityComparer, set.Contains should return true.
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            // Because the value is not in the initial list, Contains should fail.
+            // Otherwise this behavior would be inconsistent with the non-generic overload of Contains.
+            try
+            {
+                // Call the generic Contains<C, E>(Validator<C>, E) overload.
+                set.Requires().Contains(3);
+                Assert.Fail("Contains did not throw the excepted ArgumentException.");
+            }
+            catch (ArgumentException)
+            {
+                // We expect this exception.
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling the non-generic Contains with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionContainsTest16()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 2, 3, 4 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the values 1 and 2.
+            Assert.IsTrue(set.Count == 2);
+            // Because of the use of OddEqualityComparer, set.Contains should return true.
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            // Because the value is not in the initial list, Contains should fail.
+            try
+            {
+                // Call the non-generic Contains<T>(Validator<T>, object) overload.
+                set.Requires().Contains((object)3);
+                Assert.Fail("Contains did not throw the excepted ArgumentException.");
+            }
+            catch (ArgumentException)
+            {
+                // We expect this exception.
             }
         }
     }

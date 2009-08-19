@@ -30,7 +30,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling DoesNotHaveLength(0) with an untyped collection containing no elements should fail.")]
+        [Description("Calling DoesNotHaveLength(0) with an non-generic collection containing no elements should fail.")]
         public void CollectionDoesNotHaveLengthTest01()
         {
             // Queue only implements ICollection, no generic ICollection<T>
@@ -52,7 +52,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling DoesNotHaveLength(1) with an untyped collection containing one element should fail.")]
+        [Description("Calling DoesNotHaveLength(1) with an non-generic collection containing one element should fail.")]
         public void CollectionDoesNotHaveLengthTest03()
         {
             // Queue only implements ICollection, no generic ICollection<T>

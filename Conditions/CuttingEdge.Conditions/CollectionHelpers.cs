@@ -14,7 +14,6 @@
  * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
  * License for more details.
 */
-
 #endregion
 
 using System;
@@ -28,21 +27,16 @@ namespace CuttingEdge.Conditions
     /// </summary>
     internal static class CollectionHelpers
     {
-        // This method mimics the behavior of the System.Linq.Enumerable.Contains method.
-        // By not using Enumerable.Contains, we are more independent of System.Core.dll and we increase the
-        // possibility for users to use this library on machines that don't have .NET 3.5 installed.
-        internal static bool Contains<TSource>(IEnumerable<TSource> source, TSource value)
+        internal static bool Contains<T>(IEnumerable<T> sequence, T value)
         {
-            ICollection<TSource> is2 = source as ICollection<TSource>;
-            
-            if (is2 != null)
-            {
-                return is2.Contains(value);
-            }
+            // NOTE that we don't try to cast sequence to an ICollection<T> and call it's Contains method,
+            // because it is possible that source uses a non-default implementation of equality. Consequence
+            // of this is that we always have to iterate the sequence, with a cost of O(n).
+            // See work item 10480 on CodePlex for more info: 
+            // http://conditions.codeplex.com/WorkItem/View.aspx?WorkItemId=10480.
+            IEqualityComparer<T> comparer = EqualityComparer<T>.Default;
 
-            IEqualityComparer<TSource> comparer = EqualityComparer<TSource>.Default;
-
-            foreach (TSource local in source)
+            foreach (T local in sequence)
             {
                 if (comparer.Equals(local, value))
                 {
@@ -53,21 +47,13 @@ namespace CuttingEdge.Conditions
             return false;
         }
 
-        // NOTE: HashSet<T> is a strange class that only implements generic interfaces. It doesn't implement
-        // IList and therefore the cost of calling this method on HashSet<T> is O(n), and not O(1).
         internal static bool Contains(IEnumerable sequence, object value)
         {
-            // We will first check if the collection is an IList. If this is the case, we could use the
-            // IList.Contains method, which has in the worst case a performance of O(n) and possibly a
-            // performance of O(1).
-            IList list = sequence as IList;
-
-            if (list != null)
-            {
-                return list.Contains(value);
-            }
-
-            // The collection is no IList and we'll have to iterate over it. Cost: O(n).
+            // NOTE that we don't try to cast sequence to an IList and call it's Contains method, because it
+            // is possible that sequence uses a non-default implementation of equality. Consequence of this is
+            // that we always have to iterate the sequence, with a cost of O(n).
+            // See work item 10480 on CodePlex for more info: 
+            // http://conditions.codeplex.com/WorkItem/View.aspx?WorkItemId=10480.
             Comparer<object> comparer = Comparer<object>.Default;
 
             foreach (object element in sequence)
@@ -82,36 +68,44 @@ namespace CuttingEdge.Conditions
         }
 
         // TODO: Optimize this method for performance.
-        // Creating a Dictionary costs more than calling IEnumerable.Contains when the 'values' collection is 
-        // very small.
+        // While creating a O(1) set of the sequence, might reduce the cost of this call to O(m) (where m:
+        // the number of elements in 'values'), copying the sequence might cost a lot, and a different
+        // implementation might improve overall performance.
         internal static bool ContainsAny<T>(IEnumerable<T> sequence, IEnumerable<T> values)
         {
             // When the values list is empty we can say that there is none of them in the collection.
-            // When the collection is empty there can not be a single value in that collection. 
-            if (IsSequenceNullOrEmpty(values) || IsSequenceNullOrEmpty(sequence))
+            if (IsSequenceNullOrEmpty(values))
             {
                 return false;
             }
 
-            ICollection<T> collection = sequence as ICollection<T>;
-
-            if (collection != null)
+            // When the collection is empty there can not be a single value in that collection. 
+            if (IsSequenceNullOrEmpty(sequence))
             {
-                // Determine whether sequence contains one of the values.
-                foreach (T element in values)
+                return false;
+            }
+
+            // NOTE that we don't try to cast sequence to an ICollection<T> and call it's Contains method,
+            // because it is possible that source uses a non-default implementation of equality. Consequence
+            // of this is that we always have to iterate the sequence, with a cost of O(n).
+            // See work item 10480 on CodePlex for more info: 
+            // http://conditions.codeplex.com/WorkItem/View.aspx?WorkItemId=10480.
+            // To prevent a cost of O(n*m) we copy the sequence into a set (copy cost: O(n), using set: O(1)).
+            // Which gives a total cost of: O(n) + O(2m). Note that copying sequence is equal to iterating it.
+            bool sequenceContainsNull;
+            var set = ConvertToSet<T>(sequence, out sequenceContainsNull);
+
+            // Determine whether sequence contains one of the values.
+            foreach (T element in values)
+            {
+                if (element == null)
                 {
-                    if (collection.Contains(element))
+                    if (sequenceContainsNull)
                     {
                         return true;
                     }
                 }
-            }
-            else
-            {
-                var set = ConvertToSet(sequence);
-
-                // Determine whether sequence contains one of the values.
-                foreach (T element in values)
+                else
                 {
                     if (set.ContainsKey(element))
                     {
@@ -124,36 +118,44 @@ namespace CuttingEdge.Conditions
         }
 
         // TODO: Optimize this method for performance.
-        // Creating a HashSet costs more than calling IEnumerable.Contains when the values collection is 
-        // very small.
+        // While creating a O(1) set of the sequence, might reduce the cost of this call to O(m) (where m:
+        // the number of elements in 'values'), copying the sequence might cost a lot, and a different
+        // implementation might improve overall performance.
         internal static bool ContainsAny(IEnumerable sequence, IEnumerable values)
         {
             // When the values list is empty we can say that there is none of them in the collection.
-            // When the collection is empty there can not be a single value in that collection. 
-            if (IsSequenceNullOrEmpty(values) || IsSequenceNullOrEmpty(sequence))
+            if (IsSequenceNullOrEmpty(values))
             {
                 return false;
             }
 
-            IList list = sequence as IList;
-
-            if (list != null)
+            // When the sequence is empty there can not be a single value in that collection. 
+            if (IsSequenceNullOrEmpty(sequence))
             {
-                // Determine whether sequence contains one of the values.
-                foreach (object element in values)
+                return false;
+            }
+
+            // NOTE that we don't try to cast sequence to an IList and call it's Contains method, because it
+            // is possible that source uses a non-default implementation of equality. Consequence of this is
+            // that we always have to iterate the sequence, with a cost of O(n).
+            // See work item 10480 on CodePlex for more info: 
+            // http://conditions.codeplex.com/WorkItem/View.aspx?WorkItemId=10480.
+            // To prevent a cost of O(n*m) we copy the sequence into a set (copy cost: O(n), using set: O(1)).
+            // Which gives a total cost of: O(n) + O(2m). Note that copying sequence is equal to iterating it.
+            bool sequenceContainsNull;
+            var set = ConvertToSet(sequence, out sequenceContainsNull);
+
+            // Determine whether sequence contains one of the values.
+            foreach (object element in values)
+            {
+                if (element == null)
                 {
-                    if (list.Contains(element))
+                    if (sequenceContainsNull)
                     {
                         return true;
                     }
                 }
-            }
-            else
-            {
-                var set = ConvertToSet(sequence);
-
-                // Determine whether sequence contains one of the values.
-                foreach (object element in values)
+                else
                 {
                     if (set.ContainsKey(element))
                     {
@@ -166,8 +168,9 @@ namespace CuttingEdge.Conditions
         }
 
         // TODO: Optimize this method for performance.
-        // Creating a HashSet costs more than calling IEnumerable.Contains when the values collection is 
-        // very small.
+        // While creating a O(1) set of the sequence, might reduce the cost of this call to O(m) (where m:
+        // the number of elements in 'values'), copying the sequence might cost a lot, and a different
+        // implementation might improve overall performance.
         internal static bool ContainsAll<T>(IEnumerable<T> sequence, IEnumerable<T> values)
         {
             // When the values list is empty we consider all of them to be in the collection (even if the
@@ -184,24 +187,27 @@ namespace CuttingEdge.Conditions
                 return false;
             }
 
-            ICollection<T> collection = sequence as ICollection<T>;
+            // NOTE that we don't try to cast sequence to an ICollection<T> and call it's Contains method,
+            // because it is possible that source uses a non-default implementation of equality. Consequence
+            // of this is that we always have to iterate the sequence, with a cost of O(n).
+            // See work item 10480 on CodePlex for more info: 
+            // http://conditions.codeplex.com/WorkItem/View.aspx?WorkItemId=10480.
+            // To prevent a cost of O(n*m) we copy the sequence into a set (copy cost: O(n), using set: O(1)).
+            // Which gives a total cost of: O(n) + O(2m). Note that copying sequence is equal to iterating it.
+            bool sequenceContainsNull;
+            var set = ConvertToSet<T>(sequence, out sequenceContainsNull);
 
-            if (collection != null)
+            // Determine whether sequence contains one of the values.                
+            foreach (T element in values)
             {
-                foreach (T element in values)
+                if (element == null)
                 {
-                    if (!collection.Contains(element))
+                    if (!sequenceContainsNull)
                     {
                         return false;
                     }
                 }
-            }
-            else
-            {
-                var set = ConvertToSet(sequence);
-
-                // Determine whether sequence contains one of the values.                
-                foreach (T element in values)
+                else
                 {
                     if (!set.ContainsKey(element))
                     {
@@ -214,8 +220,9 @@ namespace CuttingEdge.Conditions
         }
 
         // TODO: Optimize this method for performance.
-        // Creating a HashSet costs more than calling IEnumerable.Contains when the values collection is 
-        // very small.
+        // While creating a O(1) set of the sequence, might reduce the cost of this call to O(m) (where m:
+        // the number of elements in 'values'), copying the sequence might cost a lot, and a different
+        // implementation might improve overall performance.
         internal static bool ContainsAll(IEnumerable sequence, IEnumerable values)
         {
             // When the values list is empty we consider all of them to be in the collection (even if the
@@ -232,23 +239,26 @@ namespace CuttingEdge.Conditions
                 return false;
             }
 
-            IList list = sequence as IList;
+            // NOTE that we don't try to cast sequence to an IList and call it's Contains method, because it
+            // is possible that source uses a non-default implementation of equality. Consequence of this is
+            // that we always have to iterate the sequence, with a cost of O(n).
+            // See work item 10480 on CodePlex for more info: 
+            // http://conditions.codeplex.com/WorkItem/View.aspx?WorkItemId=10480.
+            // To prevent a cost of O(n*m) we copy the sequence into a set (copy cost: O(n), using set: O(1)).
+            // Which gives a total cost of: O(n) + O(2m). Note that copying sequence is equal to iterating it.
+            bool sequenceContainsNull;
+            var set = ConvertToSet(sequence, out sequenceContainsNull);
 
-            if (list != null)
+            foreach (object element in values)
             {
-                foreach (object element in values)
+                if (element == null)
                 {
-                    if (!list.Contains(element))
+                    if (!sequenceContainsNull)
                     {
                         return false;
                     }
                 }
-            }
-            else
-            {
-                var set = ConvertToSet(sequence);
-
-                foreach (object element in values)
+                else
                 {
                     if (!set.ContainsKey(element))
                     {
@@ -566,38 +576,90 @@ namespace CuttingEdge.Conditions
             }
         }
 
-        private static Dictionary<T, byte> ConvertToSet<T>(IEnumerable<T> sequence)
+        private static Dictionary<T, byte> ConvertToSet<T>(IEnumerable<T> sequence,
+            out bool sequenceContainsNull)
         {
+            // A dictionary can have null as one of it's keys, therefore we have to communicate whether the
+            // sequence contains null. (HashSet<T> does have this ability).
+            sequenceContainsNull = false;
+
+            int capacity = DetermineInitialCapacity<T>(sequence);
+
             // A Dictionary is used to improve performance. Using 'Contains' on a collection would give a 
             // performance characteristic of O(n*m) and with a Dictionary it's of O(m).
             // Using HashSet<T> is slightly more performant, but HashSet<T> is part of .NET 3.5 and we 
             // don't want to have to reference to 3.5 unless it's really needed.
-            Dictionary<T, byte> set = new Dictionary<T, byte>();
+            Dictionary<T, byte> set = new Dictionary<T, byte>(capacity);
 
             foreach (T element in sequence)
             {
-                const byte Dummy = 0;
-                set[element] = Dummy;
+                if (element != null)
+                {
+                    const byte Dummy = 0;
+                    set[element] = Dummy;
+                }
+                else
+                {
+                    sequenceContainsNull = true;
+                }
             }
 
             return set;
         }
 
-        private static Dictionary<object, byte> ConvertToSet(IEnumerable sequence)
+        private static int DetermineInitialCapacity<T>(IEnumerable<T> sequence)
         {
+            ICollection<T> collection = sequence as ICollection<T>;
+
+            if (collection != null)
+            {
+                return collection.Count;
+            }
+
+            return 0;
+        }
+
+        private static Dictionary<object, byte> ConvertToSet(IEnumerable sequence, 
+            out bool sequenceContainsNull)
+        {
+            // A dictionary can have null as one of it's keys, therefore we have to communicate whether the
+            // sequence contains null.
+            sequenceContainsNull = false;
+
+            int capacity = DetermineInitialCapacity(sequence);
+
             // A Dictionary is used to improve performance. Using 'Contains' on a collection would give a 
             // performance characteristic of O(n*m) and with a Dictionary it's of O(m).
             // Using HashSet<T> is slightly more performant, but HashSet<T> is part of .NET 3.5 and we 
             // don't want to have to reference to 3.5 unless it's really needed.
-            Dictionary<object, byte> set = new Dictionary<object, byte>();
+            Dictionary<object, byte> set = new Dictionary<object, byte>(capacity);
 
             foreach (object element in sequence)
             {
-                const byte Dummy = 0;
-                set[element] = Dummy;
+                if (element != null)
+                {
+                    const byte Dummy = 0;
+                    set[element] = Dummy;
+                }
+                else
+                {
+                    sequenceContainsNull = true;
+                }
             }
 
             return set;
+        }
+
+        private static int DetermineInitialCapacity(IEnumerable sequence)
+        {
+            ICollection collection = sequence as ICollection;
+
+            if (collection != null)
+            {
+                return collection.Count;
+            }
+
+            return 0;
         }
     }
 }

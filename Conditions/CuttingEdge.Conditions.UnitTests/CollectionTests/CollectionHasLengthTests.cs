@@ -29,7 +29,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
     public class CollectionHasLengthTests
     {
         [TestMethod]
-        [Description("Calling HasLength(0) with an untyped collection containing no elements should pass.")]
+        [Description("Calling HasLength(0) with an non-generic collection containing no elements should pass.")]
         public void CollectionHasLengthTest01()
         {
             // Queue only implements ICollection, no generic ICollection<T>
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling HasLength(1) with an untyped collection containing one element should pass.")]
+        [Description("Calling HasLength(1) with an non-generic collection containing one element should pass.")]
         public void CollectionHasLengthTest03()
         {
             // Queue only implements ICollection, no generic ICollection<T>

@@ -137,5 +137,41 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 Assert.IsTrue(ex.Message.Contains("c contains the value 1 while it shouldn't"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling the generic DoesNotContain with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionDoesNotContainTest10()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 3 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the value 1.
+            Assert.IsTrue(set.Count == 1);
+            // Because of the use of OddEqualityComparer, the set contains both 1 and 3.
+            Assert.IsTrue(set.Contains(1), "OddEqualityComparer is implemented incorrectly.");
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            // DoesNotContain should succeed, because 3 should not be in the list while iterating over it.
+            // Call the generic DoesNotContain<T>(Validator<T>, T) overload.
+            set.Requires().DoesNotContain(3);
+        }
+
+        [TestMethod]
+        [Description("Calling the non-generic DoesNotContain with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionDoesNotContainTest11()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 3 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the value 1.
+            Assert.IsTrue(set.Count == 1);
+            // Because of the use of OddEqualityComparer, the set contains both 1 and 3.
+            Assert.IsTrue(set.Contains(1), "OddEqualityComparer is implemented incorrectly.");
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            // DoesNotContain should succeed, because 3 should not be in the list while iterating over it.
+            // Call the non-generic DoesNotContain<T>(Validator<T>, object) overload.
+            set.Requires().DoesNotContain((object)3);
+        }
     }
 }

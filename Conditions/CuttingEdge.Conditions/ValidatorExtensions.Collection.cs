@@ -19,7 +19,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CuttingEdge.Conditions
 {
@@ -138,7 +137,9 @@ namespace CuttingEdge.Conditions
             this Validator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
         {
-            if (validator.Value == null || !CollectionHelpers.Contains<TElement>(validator.Value, element))
+            IEnumerable<TElement> collection = validator.Value;
+
+            if (collection == null || !CollectionHelpers.Contains<TElement>(collection, element))
             {
                 Throw.CollectionShouldContain(validator, element, null);
             }
@@ -167,7 +168,9 @@ namespace CuttingEdge.Conditions
             this Validator<TCollection> validator, TElement element, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
-            if (validator.Value == null || !CollectionHelpers.Contains<TElement>(validator.Value, element))
+            IEnumerable<TElement> collection = validator.Value;
+
+            if (collection == null || !CollectionHelpers.Contains<TElement>(collection, element))
             {
                 Throw.CollectionShouldContain(validator, element, conditionDescription);
             }
@@ -191,7 +194,9 @@ namespace CuttingEdge.Conditions
             object element)
             where TCollection : IEnumerable
         {
-            if (validator.Value == null || !CollectionHelpers.Contains(validator.Value, element))
+            IEnumerable collection = validator.Value;
+
+            if (collection == null || !CollectionHelpers.Contains(collection, element))
             {
                 Throw.CollectionShouldContain(validator, element, null);
             }
@@ -219,7 +224,9 @@ namespace CuttingEdge.Conditions
             object element, string conditionDescription)
             where TCollection : IEnumerable
         {
-            if (validator.Value == null || !CollectionHelpers.Contains(validator.Value, element))
+            IEnumerable collection = validator.Value;
+
+            if (collection == null || !CollectionHelpers.Contains(collection, element))
             {
                 Throw.CollectionShouldContain(validator, element, conditionDescription);
             }
@@ -243,7 +250,9 @@ namespace CuttingEdge.Conditions
             this Validator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
         {
-            if (validator.Value != null && Enumerable.Contains(validator.Value, element))
+            IEnumerable<TElement> collection = validator.Value;
+
+            if (collection != null && CollectionHelpers.Contains(collection, element))
             {
                 Throw.CollectionShouldNotContain(validator, element, null);
             }
@@ -271,7 +280,9 @@ namespace CuttingEdge.Conditions
             this Validator<TCollection> validator, TElement element, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
-            if (validator.Value != null && Enumerable.Contains(validator.Value, element))
+            IEnumerable<TElement> collection = validator.Value;
+
+            if (collection != null && CollectionHelpers.Contains(collection, element))
             {
                 Throw.CollectionShouldNotContain(validator, element, conditionDescription);
             }
@@ -293,7 +304,9 @@ namespace CuttingEdge.Conditions
         public static Validator<TCollection> DoesNotContain<TCollection>(this Validator<TCollection> validator,
             object element) where TCollection : IEnumerable
         {
-            if (validator.Value != null && CollectionHelpers.Contains(validator.Value, element))
+            IEnumerable collection = validator.Value;
+
+            if (collection != null && CollectionHelpers.Contains(collection, element))
             {
                 Throw.CollectionShouldNotContain(validator, element, null);
             }
@@ -319,7 +332,9 @@ namespace CuttingEdge.Conditions
         public static Validator<TCollection> DoesNotContain<TCollection>(this Validator<TCollection> validator,
             object element, string conditionDescription) where TCollection : IEnumerable
         {
-            if (validator.Value != null && CollectionHelpers.Contains(validator.Value, element))
+            IEnumerable collection = validator.Value;
+
+            if (collection != null && CollectionHelpers.Contains(collection, element))
             {
                 Throw.CollectionShouldNotContain(validator, element, conditionDescription);
             }

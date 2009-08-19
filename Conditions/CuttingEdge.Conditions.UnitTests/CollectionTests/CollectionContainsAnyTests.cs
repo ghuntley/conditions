@@ -84,7 +84,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [Description("Calling ContainsAny on a null collection with an empty collection as 'any' collection should fail.")]
+        [Description("Calling ContainsAny on a null collection with an empty 'any' collection should fail.")]
         public void CollectionContainsAnyTest04()
         {
             Collection<int> c = null;
@@ -141,7 +141,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAny with an untyped 'any' collection containing one element of the tested typed collection should pass.")]
+        [Description("Calling ContainsAny with an non-generic 'any' collection containing one element of the tested typed collection should pass.")]
         public void CollectionContainsAnyTest10()
         {
             int[] c = { 1, 2, 3, 4 };
@@ -150,7 +150,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAny with an untyped 'any' collection containing one element of the tested untyped collection should pass.")]
+        [Description("Calling ContainsAny with an non-generic 'any' collection containing one element of the tested non-generic collection should pass.")]
         public void CollectionContainsAnyTest11()
         {
             ArrayList c = new ArrayList(new object[] { 1, 2, 3, null });
@@ -159,7 +159,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         }
 
         [TestMethod]
-        [Description("Calling ContainsAny with an untyped 'any' collection containing one element of different types of the tested untyped collection should pass.")]
+        [Description("Calling ContainsAny with an non-generic 'any' collection containing one element of different types of the tested non-generic collection should pass.")]
         public void CollectionContainsAnyTest12()
         {
             ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
@@ -171,7 +171,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAny with an untyped 'any' collection containing no elements of the tested typed collection should fail.")]
+        [Description("Calling ContainsAny with an non-generic 'any' collection containing no elements of the tested typed collection should fail.")]
         public void CollectionContainsAnyTest13()
         {
             int[] c = { 1, 2, 3, 4 };
@@ -181,7 +181,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAny with an untyped 'any' collection containing no elements of the tested untyped collection should fail.")]
+        [Description("Calling ContainsAny with an non-generic 'any' collection containing no elements of the tested non-generic collection should fail.")]
         public void CollectionContainsAnyTest14()
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
@@ -191,7 +191,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAny with an untyped 'any' collection containing no elements of different types of the tested untyped collection should fail.")]
+        [Description("Calling ContainsAny with an non-generic 'any' collection containing no elements of different types of the tested non-generic collection should fail.")]
         public void CollectionContainsAnyTest15()
         {
             ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
@@ -203,7 +203,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAny with an empty untyped collection should fail.")]
+        [Description("Calling ContainsAny with an empty non-generic collection should fail.")]
         public void CollectionContainsAnyTest16()
         {
             ArrayList c = new ArrayList();
@@ -213,7 +213,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        [Description("Calling ContainsAny with an empy 'any' collection should fail.")]
+        [Description("Calling ContainsAny with an empty 'any' collection should fail.")]
         public void CollectionContainsAnyTest17()
         {
             ArrayList c = new ArrayList(new object[] { 1, 2, 3, null });
@@ -272,6 +272,80 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             catch (ArgumentException ex)
             {
                 Assert.IsTrue(ex.Message.Contains("c should contain some"));
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        [Description("Calling ContainsAny on a null collection with an non-empty 'any' collection should fail.")]
+        public void CollectionContainsAnyTest23()
+        {
+            Collection<int> c = null;
+            int[] elements = new int[] { 1 };
+            c.Requires().ContainsAny(elements);
+        }
+
+        [TestMethod]
+        [Description("Calling ContainsAny on a collection containing a null value with an 'any' collection also containing a null value should succeed.")]
+        public void CollectionContainsAnyTest24()
+        {
+            var collection = new int?[] { null };
+            var elements = new int?[] { null };
+            collection.Requires().ContainsAny(elements);
+        }
+
+        [TestMethod]
+        [Description("Calling the generic ContainsAny with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionContainsAnyTest25()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 2, 3, 4 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the values 1 and 2.
+            Assert.IsTrue(set.Count == 2);
+            // Because of the use of OddEqualityComparer, set.Contains(3) should return true.
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            int[] elements = { 3 };
+
+            // Because the value is not in the initial list, ContainsAny should fail.
+            // Otherwise this behavior would be inconsistent with the non-generic overload of ContainsAny.
+            try
+            {
+                // Call the generic ContainsAny<C, E>(Validator<C>, IEnumerable<E>) overload.
+                set.Requires().ContainsAny(elements);
+                Assert.Fail("ContainsAny did not throw the excepted ArgumentException.");
+            }
+            catch (ArgumentException)
+            {
+                // We expect this exception.
+            }
+        }
+
+        [TestMethod]
+        [Description("Calling the non-generic ContainsAny with an element that's not in the list while enumerating it, should fail.")]
+        public void CollectionContainsAnyTest26()
+        {
+            // Defines a set with a special equality comparer.
+            HashSet<int> set = new HashSet<int>(new[] { 1, 2, 3, 4 }, new OddEqualityComparer());
+
+            // Because of the use of OddEqualityComparer, the collection only contains the values 1 and 2.
+            Assert.IsTrue(set.Count == 2);
+            // Because of the use of OddEqualityComparer, set.Contains(3) should return true.
+            Assert.IsTrue(set.Contains(3), "OddEqualityComparer is implemented incorrectly.");
+
+            ArrayList elements = new ArrayList { 3 };
+
+            // Because the value is not in the initial list, ContainsAny should fail.
+            try
+            {
+                // Call the non-generic ContainsAny<T>(Validator<T>, IEnumerable) overload.
+                set.Requires().ContainsAny(elements);
+                Assert.Fail("ContainsAny did not throw the excepted ArgumentException.");
+            }
+            catch (ArgumentException)
+            {
+                // We expect this exception.
             }
         }
     }
