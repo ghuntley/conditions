@@ -309,9 +309,9 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 set.Requires().ContainsAll(elements);
                 Assert.Fail("ContainsAll did not throw the excepted ArgumentException.");
             }
-            catch (ArgumentException)
+            catch
             {
-                // We expect this exception.
+                // We expect an exception to be thrown.
             }
         }
 
@@ -336,9 +336,9 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 set.Requires().ContainsAll(elements);
                 Assert.Fail("ContainsAll did not throw the excepted ArgumentException.");
             }
-            catch (ArgumentException)
+            catch
             {
-                // We expect this exception.
+                // We expect an exception to be thrown.
             }
         }
     }
