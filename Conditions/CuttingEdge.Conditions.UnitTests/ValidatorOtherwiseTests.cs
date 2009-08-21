@@ -13,12 +13,12 @@ namespace CuttingEdge.Conditions.UnitTests
     public class ValidatorOtherwiseTests
     {
         [TestMethod]
-        [Description("Calling Otherwise with a exception type that doesn't have a 'public ctor(string)' should fail.")]
+        [Description("Calling Otherwise with a exception type that doesn't have a 'public ctor(string)' should fail with a TypeInitializationException.")]
         [ExpectedException(typeof(TypeInitializationException))]
         public void OtherwiseTest01()
         {
             int a = 3;
-            a.Requires().Otherwise<SqlException>(String.Empty);
+            a.Requires().Otherwise<SqlException>();
         }
 
         [TestMethod]
@@ -26,23 +26,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest02()
         {
             int a = 3;
-            a.Requires().Otherwise<Exception>(String.Empty);
-        }
-
-        [TestMethod]
-        [Description("Calling Otherwise must result in an exception with the supplied exception message.")]
-        public void OtherwiseTest03()
-        {
-            const string Message = "[the message to be thrown]";
-            try
-            {
-                int a = 3;
-                a.Requires().Otherwise<Exception>(Message).IsEqualTo(4);
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(Message, ex.Message);
-            }
+            a.Requires().Otherwise<Exception>();
         }
 
         [TestMethod]
@@ -51,7 +35,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest04()
         {
             int a = 3;
-            a.Requires().Otherwise<InvalidOperationException>(String.Empty).IsEqualTo(4);
+            a.Requires().Otherwise<InvalidOperationException>().IsEqualTo(4);
         }
 
         [TestMethod]
@@ -60,7 +44,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest05()
         {
             int a = 3;
-            a.Requires().Otherwise<IOException>(String.Empty).IsEqualTo(4);
+            a.Requires().Otherwise<IOException>().IsEqualTo(4);
         }
 
         [TestMethod]
@@ -69,7 +53,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest06()
         {
             int a = 3;
-            a.Requires().Otherwise<ObjectDisposedException>(String.Empty).IsEqualTo(4);
+            a.Requires().Otherwise<ObjectDisposedException>().IsEqualTo(4);
         }
 
         [TestMethod]

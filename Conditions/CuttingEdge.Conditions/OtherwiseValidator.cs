@@ -33,7 +33,6 @@ namespace CuttingEdge.Conditions
         private static readonly ConstructorInfo uncheckedExceptionConstructor;
 
         private readonly Validator<T> baseValidator;
-        private readonly string exceptionMessage;
 
         /// <summary>Initializes static members of the OtherwiseValidator class.</summary>
         static OtherwiseValidator()
@@ -50,14 +49,6 @@ namespace CuttingEdge.Conditions
             this.baseValidator = validator;
         }
 
-        // Initializes a new instance of the <see cref="EnsuresValidator{T}"/> class.
-        internal OtherwiseValidator(Validator<T> validator, string exceptionMessage)
-            : base(validator.ArgumentName, validator.Value)
-        {
-            this.baseValidator = validator;
-            this.exceptionMessage = exceptionMessage ?? String.Empty;
-        }
-
         /// <summary>
         /// Builds an exception and message, that has to be thrown.
         /// </summary>
@@ -71,21 +62,11 @@ namespace CuttingEdge.Conditions
         public override Exception BuildException(string condition, string additionalMessage,
             ConstraintViolationType type)
         {
-            string message;
-            
-            if (this.exceptionMessage == null)
-            {
-                // When no message is supplied, we let the baseValidator generate the message. This way the 
-                // exception message is determined by the supplied base validator.
-                Exception exception = this.baseValidator.BuildException(condition, additionalMessage, type);
-                message = exception.Message;
-            }
-            else
-            {
-                message = this.exceptionMessage;
-            }
+            // We let the baseValidator generate the message. This way the exception message is determined by 
+            // the supplied base validator.
+            Exception exception = this.baseValidator.BuildException(condition, additionalMessage, type);
 
-            return (Exception)uncheckedExceptionConstructor.Invoke(new object[] { message });
+            return CreateException(exception.Message);
         }
 
         private static ConstructorInfo GetUncheckedExceptionConstructor()
@@ -108,6 +89,12 @@ namespace CuttingEdge.Conditions
             }
 
             return constructor;
+        }
+
+        // Creates a new TUncheckedException instance with the supplied message.
+        private static Exception CreateException(string message)
+        {
+            return (Exception)uncheckedExceptionConstructor.Invoke(new object[] { message });
         }
     }
 }

@@ -15,9 +15,16 @@ Version vNext
 		-The internal CollectionHelper class had a dependency on the .NET 3.5 type HashSet<T>. This dependency
 		 is removed and it's now more likely that CuttingEdge.Conditions can be used in .NET 2.0 projects.
 		 You'd still need C# 3.0 though. The library has now only one method that you can not call without
-		.NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
+		 .NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
 		
 	Code changes:
+		-[BREAKING CHANGE] The overload Validator<T>.Otherwise<TException>(string) has been removed for work
+		 item 10497.
+		 The Otherwise method allows a user to specify the type of exception that has to be thrown. This
+		 second overload allows specifying an alternative exception message, but it's behavior was counter-
+		 intuitive.	It replaced any message that was supplied in a validation method. Best solution was to
+		 completely remove this overload from the library. This makes the library more consistent and easier
+		 to use.		 
 		-A TraceListener class called ‘UnitTestTraceListener’ has been added to the UnitTest project and 
 		 configured to be the default trace listener in the project's app.config. The trace listener ensures
 		 that calls to Debug.Assert(false), Trace.Assert(false), Debug.Fail(), and Trace.Fail(), from within

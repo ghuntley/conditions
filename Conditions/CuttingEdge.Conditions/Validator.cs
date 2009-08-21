@@ -232,31 +232,6 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Allows a user to specify the type of exception that has to be thrown and the 
-        /// <paramref name="exceptionMessage"/> that comes with it.
-        /// </summary>
-        /// <remarks>
-        /// This otherwise method is meant to throw unchecked exceptions. Unchecked exceptions are exceptions
-        /// that aren't meant to be caught by a program. For instance, An <see cref="ArgumentException"/> and
-        /// <see cref="ObjectDisposedException"/> shouldn't be caught. They should bring the program to a
-        /// hold. But because the .NET framework doesn't differentiate between checked and unchecked 
-        /// exceptions, we can't enforce this.
-        /// </remarks>
-        /// <typeparam name="TUncheckedException">The exception type that will be thrown by the returned
-        /// <see cref="Validator{T}"/> on failure.</typeparam>
-        /// <param name="exceptionMessage">The message of the exception to be thrown.</param>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <see cref="Value"/> 
-        /// and <see cref="ArgumentName"/> of this validator instance.</returns>
-        /// <exception cref="TypeInitializationException">Thrown when the specified 
-        /// <typeparamref name="TUncheckedException"/> type doesn't contain a public constructor with a single
-        /// string argument.</exception>
-        public Validator<T> Otherwise<TUncheckedException>(string exceptionMessage)
-            where TUncheckedException : Exception
-        {
-            return new OtherwiseValidator<T, TUncheckedException>(this, exceptionMessage);
-        }
-
-        /// <summary>
         /// Determines whether the specified System.Object is equal to the current System.Object.
         /// </summary>
         /// <param name="obj">The System.Object to compare with the current System.Object.</param>
