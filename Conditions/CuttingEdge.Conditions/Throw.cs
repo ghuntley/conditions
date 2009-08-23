@@ -750,13 +750,15 @@ namespace CuttingEdge.Conditions
         private static string GetCollectionContainsElementsMessage<T>(Validator<T> validator)
             where T : IEnumerable
         {
-            if (validator.Value == null)
+            IEnumerable collection = validator.Value;
+
+            if (collection == null)
             {
                 return SR.GetString(SR.CollectionIsCurrentlyANullReference, validator.ArgumentName);
             }
             else
             {
-                int numberOfElements = GetNumberOfElements(validator.Value);
+                int numberOfElements = CollectionHelpers.GetLength(collection);
 
                 if (numberOfElements == 1)
                 {
@@ -766,37 +768,6 @@ namespace CuttingEdge.Conditions
                 {
                     return SR.GetString(SR.CollectionContainsCurrentlyXElements, validator.ArgumentName,
                        numberOfElements);
-                }
-            }
-        }
-
-        // Returns the number of elements in the sequence.
-        private static int GetNumberOfElements(IEnumerable sequence)
-        {
-            ICollection collection = sequence as ICollection;
-
-            if (collection != null)
-            {
-                return collection.Count;
-            }
-
-            IEnumerator enumerator = sequence.GetEnumerator();
-            try
-            {
-                int count = 0;
-                while (enumerator.MoveNext())
-                {
-                    count++;
-                }
-
-                return count;
-            }
-            finally
-            {
-                IDisposable disposable = enumerator as IDisposable;
-                if (disposable != null)
-                {
-                    disposable.Dispose();
                 }
             }
         }

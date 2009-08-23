@@ -558,6 +558,42 @@ namespace CuttingEdge.Conditions
             }
         }
 
+        // Returns the number of elements in the sequence.
+        internal static int GetLength(IEnumerable sequence)
+        {
+            // When the given enumerable is an ICollection, we can do a simple interface call to determine
+            // it's size.
+            ICollection collection = sequence as ICollection;
+
+            if (collection != null)
+            {
+                return collection.Count;
+            }
+
+            // When we get at this point, we'll have to iterate over the enumerable to find out the size.
+            IEnumerator enumerator = sequence.GetEnumerator();
+            try
+            {
+                int count = 0;
+
+                while (enumerator.MoveNext())
+                {
+                    count++;
+                }
+
+                return count;
+            }
+            finally
+            {
+                IDisposable disposable = enumerator as IDisposable;
+
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                }
+            }
+        }
+
         private static bool IsEnumerableEmpty(IEnumerable sequence)
         {
             IEnumerator enumerator = sequence.GetEnumerator();
@@ -569,6 +605,7 @@ namespace CuttingEdge.Conditions
             finally
             {
                 IDisposable disposable = enumerator as IDisposable;
+
                 if (disposable != null)
                 {
                     disposable.Dispose();
@@ -587,7 +624,7 @@ namespace CuttingEdge.Conditions
 
             // A Dictionary is used to improve performance. Using 'Contains' on a collection would give a 
             // performance characteristic of O(n*m) and with a Dictionary it's of O(m).
-            // Using HashSet<T> is slightly more performant, but HashSet<T> is part of .NET 3.5 and we 
+            // Using HashSet<T> is slightly faster, but HashSet<T> is part of .NET 3.5 and we 
             // don't want to have to reference to 3.5 unless it's really needed.
             Dictionary<T, byte> set = new Dictionary<T, byte>(capacity);
 
@@ -630,7 +667,7 @@ namespace CuttingEdge.Conditions
 
             // A Dictionary is used to improve performance. Using 'Contains' on a collection would give a 
             // performance characteristic of O(n*m) and with a Dictionary it's of O(m).
-            // Using HashSet<T> is slightly more performant, but HashSet<T> is part of .NET 3.5 and we 
+            // Using HashSet<T> is slightly faster, but HashSet<T> is part of .NET 3.5 and we 
             // don't want to have to reference to 3.5 unless it's really needed.
             Dictionary<object, byte> set = new Dictionary<object, byte>(capacity);
 
