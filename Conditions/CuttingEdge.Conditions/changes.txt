@@ -5,6 +5,12 @@ Version vNext
 		TODO
 		
 	Bug Fixes:
+		-StackOverflowException was thrown when self-referencing collections were supplied.
+		 When building an exception message, the library uses the supplied parameters of the validation
+		 methods. The parameter was transformed to a string representation, which uses recursive calls to 
+		 transform collections to it's string representation. Supplying a collection that referenced itself
+		 caused a StackOverflowException. This method now checks it's recursive depth to prevent such an
+		 exception.
 		-Behavior of Contains, ContainsAll, and ContainsAny overloads changed for work item 10480.
 		 The overloads of the Contains, ContainsAll, and ContainsAny methods for collections had inconsistent
 		 behavior. While some overloads used the ICollection<T>.Contains or IList.Contains method of the

@@ -348,5 +348,26 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 // We expect an exception to be thrown.
             }
         }
+
+        [TestMethod]
+        [Description("Calling ContainsAny with an self-referencing collection should not lead to an StackOverflowException.")]
+        public void CollectionContainsAnyTest27()
+        {
+            // Define an array that contains itself.
+            object[] evilArray = new object[1];
+            evilArray[0] = evilArray;
+
+            object[] collection = { 1, 2, 3 };
+
+            try
+            {
+                collection.Requires().ContainsAny(evilArray);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsNotInstanceOfType(ex, typeof(StackOverflowException));
+                // Assert.IsInstanceOfType(ex, typeof(ArgumentException));
+            }
+        }
     }
 }
