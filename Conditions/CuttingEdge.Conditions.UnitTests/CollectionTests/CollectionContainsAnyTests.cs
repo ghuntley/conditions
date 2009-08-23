@@ -365,8 +365,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             }
             catch (Exception ex)
             {
-                Assert.IsNotInstanceOfType(ex, typeof(StackOverflowException));
-                // Assert.IsInstanceOfType(ex, typeof(ArgumentException));
+                Assert.IsInstanceOfType(ex, typeof(ArgumentException));
             }
         }
     }
