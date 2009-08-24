@@ -25,7 +25,7 @@ namespace CuttingEdge.Conditions
     /// The RequiresValidator can be used for precondition checks.
     /// </summary>
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
-    internal sealed class RequiresValidator<T> : Validator<T>
+    internal sealed class RequiresValidator<T> : ConditionValidator<T>
     {
         // Initializes a new instance of the <see cref="EnsuresValidator{T}"/> class.
         internal RequiresValidator(string argumentName, T value)

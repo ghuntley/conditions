@@ -21,8 +21,8 @@ namespace CuttingEdge.Conditions.UnitTests
 {
     internal static class ExtendabilityExtensions
     {
-        public static Validator<T> MyExtension<T>(
-            this Validator<T> validator, IEnumerable<T> collection)
+        public static ConditionValidator<T> MyExtension<T>(
+            this ConditionValidator<T> validator, IEnumerable<T> collection)
         {
             if (collection == null || !collection.Contains(validator.Value))
             {

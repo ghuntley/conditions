@@ -29,13 +29,13 @@ namespace CuttingEdge.Conditions
     public static class Condition
     {
         /// <summary>
-        /// Returns a new <see cref="Validator{T}">Validator</see> that allows you to validate the 
-        /// preconditions of the given argument, given it a default ArgumentName of 'value'.
+        /// Returns a new <see cref="ConditionValidator{T}">ConditionValidator</see> that allows you to
+        /// validate the preconditions of the given argument, given it a default ArgumentName of 'value'.
         /// </summary>
         /// <typeparam name="T">The type of the argument to validate.</typeparam>
         /// <param name="value">The value of the argument to validate.</param>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/>
-        /// and "value" as argument name.</returns>
+        /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
+        /// <paramref name="value"/> and "value" as argument name.</returns>
         /// <example>
         /// The following example shows how to use the <b>Requires</b> extension method.
         /// <code>
@@ -57,22 +57,22 @@ namespace CuttingEdge.Conditions
         ///     }
         /// }
         /// </code>
-        /// See the <see cref="Validator{T}"/> class for more code examples.
+        /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static Validator<T> Requires<T>(this /*_*/ T value)
+        public static ConditionValidator<T> Requires<T>(this /*_*/ T value)
         {
             return new RequiresValidator<T>("value", value);
         }
 
         /// <summary>
-        /// Returns a new <see cref="Validator{T}">Validator</see> that allows you to validate the 
-        /// preconditions of the given argument.
+        /// Returns a new <see cref="ConditionValidator{T}">ConditionValidator</see> that allows you to
+        /// validate the preconditions of the given argument.
         /// </summary>
         /// <typeparam name="T">The type of the argument to validate.</typeparam>
         /// <param name="value">The value of the argument to validate.</param>
         /// <param name="argumentName">The name of the argument to validate</param>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/>
-        /// and <paramref name="argumentName"/>.</returns>
+        /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
+        /// <paramref name="value"/> and <paramref name="argumentName"/>.</returns>
         /// <example>
         /// The following example shows how to use the <b>Requires</b> extension method.
         /// <code>
@@ -99,38 +99,38 @@ namespace CuttingEdge.Conditions
         ///     public int Y { get { return this.y; } }
         /// }
         /// </code>
-        /// See the <see cref="Validator{T}"/> class for more code examples.
+        /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static Validator<T> Requires<T>(this /*_*/ T value, string argumentName)
+        public static ConditionValidator<T> Requires<T>(this /*_*/ T value, string argumentName)
         {
             return new RequiresValidator<T>(argumentName, value);
         }
 
         /// <summary>
-        /// Returns a new <see cref="Validator{T}">Validator</see> that allows you to validate the given 
-        /// argument, given it a default ArgumentName of 'value'.
+        /// Returns a new <see cref="ConditionValidator{T}">ConditionValidator</see> that allows you to 
+        /// validate the given argument, given it a default ArgumentName of 'value'.
         /// </summary>
         /// <typeparam name="T">The type of the argument to validate.</typeparam>
         /// <param name="value">The value of the argument to validate.</param>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/>
-        /// and "value" as argument name.</returns>
+        /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
+        /// <paramref name="value"/> and "value" as argument name.</returns>
         /// <example>
         /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
         /// </example>
-        public static Validator<T> Ensures<T>(this /*_*/ T value)
+        public static ConditionValidator<T> Ensures<T>(this /*_*/ T value)
         {
             return new EnsuresValidator<T>("value", value);
         }
 
         /// <summary>
-        /// Returns a new <see cref="Validator{T}">Validator</see> that allows you to validate the 
-        /// postconditions of the given object.
+        /// Returns a new <see cref="ConditionValidator{T}">ConditionValidator</see> that allows you to 
+        /// validate the postconditions of the given object.
         /// </summary>
         /// <typeparam name="T">The type of the object to validate.</typeparam>
         /// <param name="value">The object to validate.</param>
         /// <param name="argumentName">The name of the argument to validate</param>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <paramref name="value"/> 
-        /// and <paramref name="argumentName"/>.</returns>
+        /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
+        /// <paramref name="value"/> and <paramref name="argumentName"/>.</returns>
         /// <example>
         /// The following example shows a way to use the <b>Ensures</b> extension method. Shown is an 
         /// <b>IObjectBuilder</b> interface which contract states that the <b>BuildObject</b> method should 
@@ -182,9 +182,9 @@ namespace CuttingEdge.Conditions
         ///     }
         /// }
         /// </code>
-        /// See the <see cref="Validator{T}"/> class for more code examples.
+        /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static Validator<T> Ensures<T>(this /*_*/ T value, string argumentName)
+        public static ConditionValidator<T> Ensures<T>(this /*_*/ T value, string argumentName)
         {
             return new EnsuresValidator<T>(argumentName, value);
         }

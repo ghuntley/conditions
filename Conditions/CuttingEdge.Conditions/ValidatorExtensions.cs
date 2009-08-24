@@ -6,7 +6,7 @@ using System.Text;
 namespace CuttingEdge.Conditions
 {
     /// <summary>
-    /// Extension methods for <see cref="Validator{T}"/>.
+    /// Extension methods for <see cref="ConditionValidator{T}"/>.
     /// </summary>
     public static partial class ValidatorExtensions
     {

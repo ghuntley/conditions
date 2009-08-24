@@ -27,13 +27,13 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is between <paramref name="minValue"/> and 
         /// <paramref name="maxValue"/> (including those values). An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <param name="maxValue">The highest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsInRange(this Validator<float> validator, float minValue, float maxValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsInRange(this ConditionValidator<float> validator, float minValue, float maxValue)
         {
             float value = validator.Value;
 
@@ -49,17 +49,17 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is between <paramref name="minValue"/> and 
         /// <paramref name="maxValue"/> (including those values). An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <param name="maxValue">The highest valid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsInRange(this Validator<float> validator, float minValue, float maxValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsInRange(this ConditionValidator<float> validator, float minValue, float maxValue,
             string conditionDescription)
         {
             float value = validator.Value;
@@ -76,13 +76,13 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not between <paramref name="minValue"/> and 
         /// <paramref name="maxValue"/> (including those values). An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest invalid value.</param>
         /// <param name="maxValue">The highest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotInRange(this Validator<float> validator, float minValue, float maxValue)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotInRange(this ConditionValidator<float> validator, float minValue, float maxValue)
         {
             float value = validator.Value;
 
@@ -98,17 +98,17 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not between <paramref name="minValue"/> and 
         /// <paramref name="maxValue"/> (including those values). An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest invalid value.</param>
         /// <param name="maxValue">The highest invalid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotInRange(this Validator<float> validator, float minValue, float maxValue,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is in the specified range, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotInRange(this ConditionValidator<float> validator, float minValue, float maxValue,
              string conditionDescription)
         {
             float value = validator.Value;
@@ -125,12 +125,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater than the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsGreaterThan(this Validator<float> validator, float minValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsGreaterThan(this ConditionValidator<float> validator, float minValue)
         {
             if (!(validator.Value > minValue))
             {
@@ -144,16 +144,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater than the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsGreaterThan(this Validator<float> validator, float minValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsGreaterThan(this ConditionValidator<float> validator, float minValue,
             string conditionDescription)
         {
             if (!(validator.Value > minValue))
@@ -168,12 +168,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater than the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotGreaterThan(this Validator<float> validator, float maxValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotGreaterThan(this ConditionValidator<float> validator, float maxValue)
         {
             if (validator.Value > maxValue)
             {
@@ -187,16 +187,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater than the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest valid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotGreaterThan(this Validator<float> validator, float maxValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotGreaterThan(this ConditionValidator<float> validator, float maxValue,
             string conditionDescription)
         {
             if (validator.Value > maxValue)
@@ -211,12 +211,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater or equal to the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsGreaterOrEqual(this Validator<float> validator, float minValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsGreaterOrEqual(this ConditionValidator<float> validator, float minValue)
         {
             if (!(validator.Value >= minValue))
             {
@@ -230,16 +230,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is greater or equal to the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsGreaterOrEqual(this Validator<float> validator, float minValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsGreaterOrEqual(this ConditionValidator<float> validator, float minValue,
             string conditionDescription)
         {
             if (!(validator.Value >= minValue))
@@ -254,12 +254,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater or equal to the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotGreaterOrEqual(this Validator<float> validator, float maxValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotGreaterOrEqual(this ConditionValidator<float> validator, float maxValue)
         {
             if (validator.Value >= maxValue)
             {
@@ -273,16 +273,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not greater or equal to the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotGreaterOrEqual(this Validator<float> validator, float maxValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotGreaterOrEqual(this ConditionValidator<float> validator, float maxValue,
             string conditionDescription)
         {
             if (validator.Value >= maxValue)
@@ -297,12 +297,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is less than the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsLessThan(this Validator<float> validator, float maxValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsLessThan(this ConditionValidator<float> validator, float maxValue)
         {
             if (!(validator.Value < maxValue))
             {
@@ -316,16 +316,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is less than the specified <paramref name="maxValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The lowest invalid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsLessThan(this Validator<float> validator, float maxValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater or equal to <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsLessThan(this ConditionValidator<float> validator, float maxValue,
             string conditionDescription)
         {
             if (!(validator.Value < maxValue))
@@ -340,12 +340,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not less than the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotLessThan(this Validator<float> validator, float minValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotLessThan(this ConditionValidator<float> validator, float minValue)
         {
             if (validator.Value < minValue)
             {
@@ -359,16 +359,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not less than the specified <paramref name="minValue"/>.
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The lowest valid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotLessThan(this Validator<float> validator, float minValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller than <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotLessThan(this ConditionValidator<float> validator, float minValue,
             string conditionDescription)
         {
             if (validator.Value < minValue)
@@ -383,12 +383,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is smaller or equal to the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The highest valid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsLessOrEqual(this Validator<float> validator, float maxValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsLessOrEqual(this ConditionValidator<float> validator, float maxValue)
         {
             if (!(validator.Value <= maxValue))
             {
@@ -402,16 +402,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is smaller or equal to the specified <paramref name="maxValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="maxValue">The highest valid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsLessOrEqual(this Validator<float> validator, float maxValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is greater than <paramref name="maxValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsLessOrEqual(this ConditionValidator<float> validator, float maxValue,
             string conditionDescription)
         {
             if (!(validator.Value <= maxValue))
@@ -426,12 +426,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not smaller or equal to the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotLessOrEqual(this Validator<float> validator, float minValue)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotLessOrEqual(this ConditionValidator<float> validator, float minValue)
         {
             if (validator.Value <= minValue)
             {
@@ -445,16 +445,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is not smaller or equal to the specified <paramref name="minValue"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="minValue">The highest invalid value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsNotLessOrEqual(this Validator<float> validator, float minValue,
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is smaller or equal to <paramref name="minValue"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsNotLessOrEqual(this ConditionValidator<float> validator, float minValue,
             string conditionDescription)
         {
             if (validator.Value <= minValue)
@@ -469,12 +469,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is equal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The valid value to compare with.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsEqualTo(this Validator<float> validator, float value)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsEqualTo(this ConditionValidator<float> validator, float value)
         {
             if (!(validator.Value == value))
             {
@@ -488,16 +488,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is equal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The valid value to compare with.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<float> IsEqualTo(this Validator<float> validator, float value,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<float> IsEqualTo(this ConditionValidator<float> validator, float value,
             string conditionDescription)
         {
             if (!(validator.Value == value))
@@ -512,12 +512,12 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is unequal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The invalid value to compare with.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>   
-        public static Validator<float> IsNotEqualTo(this Validator<float> validator, float value)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>   
+        public static ConditionValidator<float> IsNotEqualTo(this ConditionValidator<float> validator, float value)
         {
             if (validator.Value == value)
             {
@@ -531,16 +531,16 @@ namespace CuttingEdge.Conditions
         /// Checks whether the given value is unequal to the specified <paramref name="value"/>. 
         /// An exception is thrown otherwise.
         /// </summary>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="value">The invalid value to compare with.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>   
-        public static Validator<float> IsNotEqualTo(this Validator<float> validator, float value,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is equal to <paramref name="value"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>   
+        public static ConditionValidator<float> IsNotEqualTo(this ConditionValidator<float> validator, float value,
             string conditionDescription)
         {
             if (validator.Value == value)

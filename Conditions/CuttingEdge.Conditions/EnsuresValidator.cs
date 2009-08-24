@@ -24,7 +24,7 @@ namespace CuttingEdge.Conditions
     /// The EnsuresValidator can be used for postcondition checks.
     /// </summary>
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
-    internal sealed class EnsuresValidator<T> : Validator<T>
+    internal sealed class EnsuresValidator<T> : ConditionValidator<T>
     {
         internal EnsuresValidator(string argumentName, T value)
             : base(argumentName, value)

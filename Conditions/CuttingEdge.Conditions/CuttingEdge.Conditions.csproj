@@ -64,7 +64,7 @@
     <Compile Include="StringificationExtensions.cs" />
     <Compile Include="RequiresValidator.cs" />
     <Compile Include="SR.cs" />
-    <Compile Include="Validator.cs" />
+    <Compile Include="ConditionValidator.cs" />
     <Compile Include="ValidatorExtensions.Collection.cs" />
     <Compile Include="ValidatorExtensions.Compare.Boolean.cs" />
     <Compile Include="ValidatorExtensions.Compare.Byte.cs" />

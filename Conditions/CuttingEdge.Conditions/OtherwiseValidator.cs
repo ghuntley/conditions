@@ -27,12 +27,12 @@ namespace CuttingEdge.Conditions
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
     /// <typeparam name="TUncheckedException">The type of exception to be thrown when the validation fails.
     /// </typeparam>
-    internal sealed class OtherwiseValidator<T, TUncheckedException> : Validator<T>
+    internal sealed class OtherwiseValidator<T, TUncheckedException> : ConditionValidator<T>
         where TUncheckedException : Exception
     {
         private static readonly ConstructorInfo uncheckedExceptionConstructor;
 
-        private readonly Validator<T> baseValidator;
+        private readonly ConditionValidator<T> baseValidator;
 
         /// <summary>Initializes static members of the OtherwiseValidator class.</summary>
         static OtherwiseValidator()
@@ -43,7 +43,7 @@ namespace CuttingEdge.Conditions
         }
 
         // Initializes a new instance of the <see cref="EnsuresValidator{T}"/> class.
-        internal OtherwiseValidator(Validator<T> validator)
+        internal OtherwiseValidator(ConditionValidator<T> validator)
             : base(validator.ArgumentName, validator.Value)
         {
             this.baseValidator = validator;

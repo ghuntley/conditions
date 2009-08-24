@@ -30,7 +30,7 @@ namespace CuttingEdge.Conditions.UnitTests
         [Description("Checks whether the methods that are overridden from System.Object work as expected.")]
         public void OverriddenMethodsTest()
         {
-            Validator<int> validator = 3.Requires();
+            ConditionValidator<int> validator = 3.Requires();
 
             validator.ToString();
 

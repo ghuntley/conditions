@@ -30,11 +30,11 @@ namespace CuttingEdge.Conditions
         /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsEmpty<TCollection>(this Validator<TCollection> validator)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsEmpty<TCollection>(this ConditionValidator<TCollection> validator)
             where TCollection : IEnumerable
         {
             // We consider null equal to empty.
@@ -51,15 +51,15 @@ namespace CuttingEdge.Conditions
         /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsEmpty<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsEmpty<TCollection>(this ConditionValidator<TCollection> validator,
             string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -77,12 +77,12 @@ namespace CuttingEdge.Conditions
         /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotEmpty<TCollection>(this Validator<TCollection> validator)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotEmpty<TCollection>(this ConditionValidator<TCollection> validator)
             where TCollection : IEnumerable
         {
             // We consider null equal to empty.
@@ -99,16 +99,16 @@ namespace CuttingEdge.Conditions
         /// value is a null reference it is considered empty.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotEmpty<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotEmpty<TCollection>(this ConditionValidator<TCollection> validator,
             string conditionDescription) where TCollection : IEnumerable
         {
             // We consider null equal to empty.
@@ -127,14 +127,14 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> Contains<TCollection, TElement>(
-            this Validator<TCollection> validator, TElement element)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> Contains<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
         {
             IEnumerable<TElement> collection = validator.Value;
@@ -154,18 +154,18 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> Contains<TCollection, TElement>(
-            this Validator<TCollection> validator, TElement element, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> Contains<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, TElement element, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
             IEnumerable<TElement> collection = validator.Value;
@@ -184,13 +184,13 @@ namespace CuttingEdge.Conditions
         /// contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> Contains<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> Contains<TCollection>(this ConditionValidator<TCollection> validator,
             object element)
             where TCollection : IEnumerable
         {
@@ -210,17 +210,17 @@ namespace CuttingEdge.Conditions
         /// contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> Contains<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> Contains<TCollection>(this ConditionValidator<TCollection> validator,
             object element, string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -241,13 +241,13 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContain<TCollection, TElement>(
-            this Validator<TCollection> validator, TElement element)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContain<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, TElement element)
             where TCollection : IEnumerable<TElement>
         {
             IEnumerable<TElement> collection = validator.Value;
@@ -267,17 +267,17 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContain<TCollection, TElement>(
-            this Validator<TCollection> validator, TElement element, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContain<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, TElement element, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
             IEnumerable<TElement> collection = validator.Value;
@@ -296,12 +296,12 @@ namespace CuttingEdge.Conditions
         /// therefore won't contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContain<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContain<TCollection>(this ConditionValidator<TCollection> validator,
             object element) where TCollection : IEnumerable
         {
             IEnumerable collection = validator.Value;
@@ -320,16 +320,16 @@ namespace CuttingEdge.Conditions
         /// therefore won't contain <paramref name="element"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="element">The element that should contain the given value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContain<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain <paramref name="element"/>, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContain<TCollection>(this ConditionValidator<TCollection> validator,
             object element, string conditionDescription) where TCollection : IEnumerable
         {
             IEnumerable collection = validator.Value;
@@ -350,14 +350,14 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAny<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAny<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements)
             where TCollection : IEnumerable<TElement>
         {
             if (!CollectionHelpers.ContainsAny<TElement>(validator.Value, elements))
@@ -376,18 +376,18 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAny<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAny<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
             if (!CollectionHelpers.ContainsAny<TElement>(validator.Value, elements))
@@ -405,13 +405,13 @@ namespace CuttingEdge.Conditions
         /// empty the collection is considered to not contain any element.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAny<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAny<TCollection>(this ConditionValidator<TCollection> validator,
             IEnumerable elements)
             where TCollection : IEnumerable
         {
@@ -430,17 +430,17 @@ namespace CuttingEdge.Conditions
         /// empty the collection is considered to not contain any element.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAny<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain any element of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAny<TCollection>(this ConditionValidator<TCollection> validator,
             IEnumerable elements, string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -461,13 +461,13 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAny<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAny<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements)
             where TCollection : IEnumerable<TElement>
         {
             if (CollectionHelpers.ContainsAny<TElement>(validator.Value, elements))
@@ -487,17 +487,17 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAny<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAny<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
             if (CollectionHelpers.ContainsAny<TElement>(validator.Value, elements))
@@ -516,13 +516,13 @@ namespace CuttingEdge.Conditions
         /// contain any element.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAny<TCollection>(
-            this Validator<TCollection> validator, IEnumerable elements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAny<TCollection>(
+            this ConditionValidator<TCollection> validator, IEnumerable elements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.ContainsAny(validator.Value, elements))
@@ -541,17 +541,17 @@ namespace CuttingEdge.Conditions
         /// contain any element.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAny<TCollection>(
-            this Validator<TCollection> validator, IEnumerable elements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain one or more elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAny<TCollection>(
+            this ConditionValidator<TCollection> validator, IEnumerable elements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.ContainsAny(validator.Value, elements))
@@ -571,14 +571,14 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAll<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAll<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements)
             where TCollection : IEnumerable<TElement>
         {
             if (!CollectionHelpers.ContainsAll<TElement>(validator.Value, elements))
@@ -598,18 +598,18 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAll<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAll<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
             if (!CollectionHelpers.ContainsAll<TElement>(validator.Value, elements))
@@ -628,13 +628,13 @@ namespace CuttingEdge.Conditions
         /// isn't, the collection is considered to not contain all of the specified <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAll<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAll<TCollection>(this ConditionValidator<TCollection> validator,
             IEnumerable elements)
             where TCollection : IEnumerable
         {
@@ -654,17 +654,17 @@ namespace CuttingEdge.Conditions
         /// isn't, the collection is considered to not contain all of the specified <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> ContainsAll<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> ContainsAll<TCollection>(this ConditionValidator<TCollection> validator,
             IEnumerable elements, string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -686,14 +686,14 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAll<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAll<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements)
             where TCollection : IEnumerable<TElement>
         {
             if (CollectionHelpers.ContainsAll<TElement>(validator.Value, elements))
@@ -714,18 +714,18 @@ namespace CuttingEdge.Conditions
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
         /// <typeparam name="TElement">The type that can be considered an element of the <typeparamref name="TCollection"/>.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAll<TCollection, TElement>(
-            this Validator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the specified <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAll<TCollection, TElement>(
+            this ConditionValidator<TCollection> validator, IEnumerable<TElement> elements, string conditionDescription)
             where TCollection : IEnumerable<TElement>
         {
             if (CollectionHelpers.ContainsAll<TElement>(validator.Value, elements))
@@ -745,14 +745,14 @@ namespace CuttingEdge.Conditions
         /// <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAll<TCollection>(
-            this Validator<TCollection> validator, IEnumerable elements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAll<TCollection>(
+            this ConditionValidator<TCollection> validator, IEnumerable elements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.ContainsAll(validator.Value, elements))
@@ -772,18 +772,18 @@ namespace CuttingEdge.Conditions
         /// <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="elements">The list of elements.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotContainAll<TCollection>(
-            this Validator<TCollection> validator, IEnumerable elements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the specified <paramref name="elements"/> list is null or empty, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain all of the elements of the given <paramref name="elements"/> list, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotContainAll<TCollection>(
+            this ConditionValidator<TCollection> validator, IEnumerable elements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.ContainsAll(validator.Value, elements))
@@ -800,13 +800,13 @@ namespace CuttingEdge.Conditions
         /// reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The number of elements the collection should contain.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while <paramref name="numberOfElements"/> is bigger than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> HasLength<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while <paramref name="numberOfElements"/> is bigger than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> HasLength<TCollection>(this ConditionValidator<TCollection> validator,
             int numberOfElements)
             where TCollection : IEnumerable
         {
@@ -824,17 +824,17 @@ namespace CuttingEdge.Conditions
         /// reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The number of elements the collection should contain.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while <paramref name="numberOfElements"/> is bigger than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> HasLength<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while <paramref name="numberOfElements"/> is bigger than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does not contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> HasLength<TCollection>(this ConditionValidator<TCollection> validator,
             int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -852,14 +852,14 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The number of elements the collection should not contain.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> equals 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotHaveLength<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> equals 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotHaveLength<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceHasLength(validator.Value, numberOfElements))
@@ -876,18 +876,18 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The number of elements the collection should not contain.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> equals 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> DoesNotHaveLength<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> equals 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> does contain the number of elements as specified with the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> DoesNotHaveLength<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceHasLength(validator.Value, numberOfElements))
@@ -904,13 +904,13 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain less elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsShorterThan<TCollection>(this Validator<TCollection> validator, 
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsShorterThan<TCollection>(this ConditionValidator<TCollection> validator, 
             int numberOfElements)
             where TCollection : IEnumerable
         {
@@ -928,17 +928,17 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain less elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsShorterThan<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsShorterThan<TCollection>(this ConditionValidator<TCollection> validator,
             int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -956,14 +956,14 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or more elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotShorterThan<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotShorterThan<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsShorterThan(validator.Value, numberOfElements))
@@ -980,18 +980,18 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or more elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotShorterThan<TCollection>(
-             this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotShorterThan<TCollection>(
+             this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
              where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsShorterThan(validator.Value, numberOfElements))
@@ -1008,14 +1008,14 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or less elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is lass than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsShorterOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is lass than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsShorterOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (!CollectionHelpers.SequenceIsShorterOrEqual(validator.Value, numberOfElements))
@@ -1032,18 +1032,18 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or less elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is lass than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception> 
-        public static Validator<TCollection> IsShorterOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is lass than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception> 
+        public static ConditionValidator<TCollection> IsShorterOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (!CollectionHelpers.SequenceIsShorterOrEqual(validator.Value, numberOfElements))
@@ -1060,14 +1060,14 @@ namespace CuttingEdge.Conditions
         /// value is a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain more elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotShorterOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotShorterOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsShorterOrEqual(validator.Value, numberOfElements))
@@ -1084,18 +1084,18 @@ namespace CuttingEdge.Conditions
         /// value is a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain more elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception> 
-        public static Validator<TCollection> IsNotShorterOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception> 
+        public static ConditionValidator<TCollection> IsNotShorterOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsShorterOrEqual(validator.Value, numberOfElements))
@@ -1112,13 +1112,13 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or less elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsLongerThan<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsLongerThan<TCollection>(this ConditionValidator<TCollection> validator,
             int numberOfElements)
             where TCollection : IEnumerable
         {
@@ -1136,17 +1136,17 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or less elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsLongerThan<TCollection>(this Validator<TCollection> validator,
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsLongerThan<TCollection>(this ConditionValidator<TCollection> validator,
             int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
@@ -1164,14 +1164,14 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or less elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotLongerThan<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotLongerThan<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsLongerThan(validator.Value, numberOfElements))
@@ -1188,18 +1188,18 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or less elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotLongerThan<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more elements than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotLongerThan<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsLongerThan(validator.Value, numberOfElements))
@@ -1216,14 +1216,14 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or more elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsLongerOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsLongerOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (!CollectionHelpers.SequenceIsLongerOrEqual(validator.Value, numberOfElements))
@@ -1240,18 +1240,18 @@ namespace CuttingEdge.Conditions
         /// a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain the same amount or more elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsLongerOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is greater than 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains less than specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsLongerOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (!CollectionHelpers.SequenceIsLongerOrEqual(validator.Value, numberOfElements))
@@ -1268,14 +1268,14 @@ namespace CuttingEdge.Conditions
         /// value is a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain less elements than this value.</param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotLongerOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotLongerOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsLongerOrEqual(validator.Value, numberOfElements))
@@ -1292,18 +1292,18 @@ namespace CuttingEdge.Conditions
         /// value is a null reference, it is considered to have 0 elements.
         /// </summary>
         /// <typeparam name="TCollection">The type of the value to check.</typeparam>
-        /// <param name="validator">The <see cref="Validator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
         /// <param name="numberOfElements">The collection must contain less elements than this value.</param>
         /// <param name="conditionDescription">
         /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
-        /// the <see cref="Validator{T}.ArgumentName">ArgumentName</see>.
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
         /// </param>
         /// <returns>The specified <paramref name="validator"/> instance.</returns>
-        /// <exception cref="ArgumentException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
-        /// <exception cref="PostconditionException">Thrown when the <see cref="Validator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
-        public static Validator<TCollection> IsNotLongerOrEqual<TCollection>(
-            this Validator<TCollection> validator, int numberOfElements, string conditionDescription)
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference and the <paramref name="numberOfElements"/> is smaller or equal to 0, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> contains more or the same amount of elements as specified by the <paramref name="numberOfElements"/> argument, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<TCollection> IsNotLongerOrEqual<TCollection>(
+            this ConditionValidator<TCollection> validator, int numberOfElements, string conditionDescription)
             where TCollection : IEnumerable
         {
             if (CollectionHelpers.SequenceIsLongerOrEqual(validator.Value, numberOfElements))

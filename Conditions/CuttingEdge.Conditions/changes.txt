@@ -24,6 +24,11 @@ Version vNext
 		 .NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
 		
 	Code changes:
+		-[BREAKING CHANGE] Validator<T> renamed to ConditionValidator<T>.
+		 The type name Validator<T> was too general and didn't exactly describe the intend of this type. It's 
+		 name conflicted with other frameworks that use this same name, such as Enterprise Library Validation
+		 Application Block and NHibernate. The type is renamed to 'ConditionValidator<T>'. This name better 
+		 describes it's intend and it is less likely to cause naming conflicts with other frameworks.
 		-[BREAKING CHANGE] The overload Validator<T>.Otherwise<TException>(string) has been removed for work
 		 item 10497.
 		 The Otherwise method allows a user to specify the type of exception that has to be thrown. This

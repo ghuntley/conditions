@@ -16,22 +16,22 @@ namespace CuttingEdge.Conditions.UnitTests
     /// </summary>
     internal static class EntryPointExtensionMethodsReplacer
     {
-        internal static Validator<T> Requires<T>(this T value)
+        internal static ConditionValidator<T> Requires<T>(this T value)
         {
             return CuttingEdge.Conditions.Condition.Requires<T>(value);
         }
 
-        internal static Validator<T> Requires<T>(this T value, string argumentName)
+        internal static ConditionValidator<T> Requires<T>(this T value, string argumentName)
         {
             return CuttingEdge.Conditions.Condition.Requires<T>(value, argumentName);
         }
 
-        internal static Validator<T> Ensures<T>(this T value)
+        internal static ConditionValidator<T> Ensures<T>(this T value)
         {
             return CuttingEdge.Conditions.Condition.Ensures<T>(value);
         }
 
-        internal static Validator<T> Ensures<T>(this T value, string argumentName)
+        internal static ConditionValidator<T> Ensures<T>(this T value, string argumentName)
         {
             return CuttingEdge.Conditions.Condition.Ensures<T>(value, argumentName);
         }

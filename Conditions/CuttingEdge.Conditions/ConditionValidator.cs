@@ -129,18 +129,18 @@ namespace CuttingEdge.Conditions
     /// {
     ///     public static class InvariantExtensions
     ///     {
-    ///         public static Validator&lt;T> Invariant&lt;T>(this T value)
+    ///         public static ConditionValidator&lt;T> Invariant&lt;T>(this T value)
     ///         {
     ///             return new InvariantValidator&lt;T>("value", value);
     ///         }
     /// 
-    ///         public static Validator&lt;T> Invariant&lt;T>(this T value, string argumentName)
+    ///         public static ConditionValidator&lt;T> Invariant&lt;T>(this T value, string argumentName)
     ///         {
     ///             return new InvariantValidator&lt;T>(argumentName, value);
     ///         }
     /// 
-    ///         // Internal class that inherits from Validator&lt;T>
-    ///         class InvariantValidator&lt;T> : Validator&lt;T>
+    ///         // Internal class that inherits from ConditionValidator&lt;T>
+    ///         class InvariantValidator&lt;T> : ConditionValidator&lt;T>
     ///         {
     ///             public InvariantValidator(string argumentName, T value) : base(argumentName, value) { }
     ///             public override Exception BuildException(string condition, string additionalMessage,
@@ -158,7 +158,7 @@ namespace CuttingEdge.Conditions
     /// </example>
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
     [DebuggerDisplay("{GetType().Name} (ArgumentName: {ArgumentName}, Value: {Value} )")]
-    public abstract class Validator<T>
+    public abstract class ConditionValidator<T>
     {
         /// <summary>Gets the value of the argument.</summary>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
@@ -168,10 +168,10 @@ namespace CuttingEdge.Conditions
 
         private readonly string argumentName;
 
-        /// <summary>Initializes a new instance of the <see cref="Validator{T}"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ConditionValidator{T}"/> class.</summary>
         /// <param name="argumentName">The name of the argument to be validated</param>
         /// <param name="value">The value of the argument to be validated</param>
-        protected Validator(string argumentName, T value)
+        protected ConditionValidator(string argumentName, T value)
         {
             // This constructor is internal. It is not useful for a user to inherit from this class.
             // When this ctor is made protected, so should be the BuildException method.
@@ -189,11 +189,11 @@ namespace CuttingEdge.Conditions
         /// <summary>
         /// Throws an <see cref="Exception"/> which explains that the given condition does not hold.
         /// The exact type of <see cref="Exception"/> that will be thrown is determined by the
-        /// <see cref="Validator{T}"/> implementation. The <see cref="Validator{T}"/> that is created by
-        /// calling the <see cref="Condition.Requires{T}(T, string)">Requires</see> will always call
-        /// a <see cref="ArgumentException"/>, while the <see cref="Validator{T}"/> that is created by the 
-        /// <see cref="Condition.Ensures{T}(T, string)">Ensures</see> method will always throw a 
-        /// <see cref="PostconditionException"/>.
+        /// <see cref="ConditionValidator{T}"/> implementation. The <see cref="ConditionValidator{T}"/> that
+        /// is created by calling the <see cref="Condition.Requires{T}(T, string)">Requires</see> will always 
+        /// call a <see cref="ArgumentException"/>, while the <see cref="ConditionValidator{T}"/> that is 
+        /// created by the <see cref="Condition.Ensures{T}(T, string)">Ensures</see> method will always throw
+        /// a <see cref="PostconditionException"/>.
         /// </summary>
         /// <param name="condition">
         /// A string describing the condition that does not hold. The condition should be written in the 
@@ -210,7 +210,8 @@ namespace CuttingEdge.Conditions
 
         /// <summary>
         /// Allows a user to specify the type of exception that has to be thrown. The current 
-        /// <see cref="Validator{T}">Validator</see> is used to generate an exception message.
+        /// <see cref="ConditionValidator{T}">ConditionValidator</see> is used to generate an exception 
+        /// message.
         /// </summary>
         /// <remarks>
         /// This otherwise method is meant to throw unchecked exceptions. Unchecked exceptions are exceptions
@@ -220,13 +221,13 @@ namespace CuttingEdge.Conditions
         /// exceptions, we can't enforce this.
         /// </remarks>
         /// <typeparam name="TUncheckedException">The exception type that will be thrown by the returned
-        /// <see cref="Validator{T}"/> on failure.</typeparam>
-        /// <returns>A new <see cref="Validator{T}">Validator</see> containing the <see cref="Value"/> 
-        /// and <see cref="ArgumentName"/> of this validator instance.</returns>
+        /// <see cref="ConditionValidator{T}"/> on failure.</typeparam>
+        /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
+        /// <see cref="Value"/> and <see cref="ArgumentName"/> of this validator instance.</returns>
         /// <exception cref="TypeInitializationException">Thrown when the specified 
         /// <typeparamref name="TUncheckedException"/> type doesn't contain a public constructor with a single
         /// string argument.</exception>
-        public Validator<T> Otherwise<TUncheckedException>() where TUncheckedException : Exception
+        public ConditionValidator<T> Otherwise<TUncheckedException>() where TUncheckedException : Exception
         {
             return new OtherwiseValidator<T, TUncheckedException>(this);
         }
@@ -256,10 +257,10 @@ namespace CuttingEdge.Conditions
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents the <see cref="Validator{T}"/>.
+        /// Returns a <see cref="System.String"/> that represents the <see cref="ConditionValidator{T}"/>.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/> that represents the <see cref="Validator{T}"/>.
+        /// A <see cref="System.String"/> that represents the <see cref="ConditionValidator{T}"/>.
         /// </returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
         public override string ToString()
