@@ -73,6 +73,7 @@
     <Compile Include="NullTests\NullIsNullTests.cs" />
     <Compile Include="PostConditionExceptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringResourcesTests.cs" />
     <Compile Include="StringTests\StringContainsTests.cs" />
     <Compile Include="StringTests\StringDoesNotContainTests.cs" />
     <Compile Include="StringTests\StringDoesNotEndWithTests.cs" />
