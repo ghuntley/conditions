@@ -76,9 +76,9 @@ namespace CuttingEdge.Conditions
             ConstructorInfo constructor =
                 uncheckedExceptionType.GetConstructor(new[] { typeof(string) });
 
-            // When the TUncheckedException lacks a ctor(string), the TUncheckedException is invalid and we 
-            // will throw an exception.
-            if (constructor == null)
+            // When the TUncheckedException lacks a ctor(string) or is an abstract type, the 
+            // TUncheckedException is invalid and we will throw an exception.
+            if (constructor == null || uncheckedExceptionType.IsAbstract)
             {
                 string messsage =
                     SR.GetString(SR.OtherwiseSpecifiedTypeXIsNotSupported, uncheckedExceptionType);

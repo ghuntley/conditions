@@ -111,5 +111,24 @@ namespace CuttingEdge.Conditions.UnitTests
                 Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
+
+        [TestMethod]
+        [Description("Calling Otherwise with a exception type that that is abstract should fail with a TypeInitializationException.")]
+        [ExpectedException(typeof(TypeInitializationException))]
+        public void OtherwiseTest09()
+        {
+            Assert.IsTrue(typeof(AbstractException).IsAbstract);
+
+            int a = 3;
+            a.Requires().Otherwise<AbstractException>();
+        }
+
+        internal abstract class AbstractException : Exception
+        {
+            public AbstractException(string message)
+                : base(message)
+            {
+            }
+        }
     }
 }

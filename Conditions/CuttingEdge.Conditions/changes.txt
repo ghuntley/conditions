@@ -5,6 +5,12 @@ Version vNext
 		TODO
 		
 	Bug Fixes:
+		-Call to Otherwise<TException> succeeded where TException was an abstract type.
+		 There was a special case where a call to Otherwise<TException> would not result in the expected
+		 TypeInitializationException. This was the case when a exception was abstract, but had a public
+		 ctor(string) constructor. This is a corner case, because according to the Framework Design Guidelines
+		 abstract types should have protected constructors. This bug resulted in a MemberAccessException being
+		 thrown only when a validation failed.
 		-StackOverflowException was thrown when self-referencing collections were supplied.
 		 When building an exception message, the library uses the supplied parameters of the validation
 		 methods. The parameter was transformed to a string representation, which uses recursive calls to 
