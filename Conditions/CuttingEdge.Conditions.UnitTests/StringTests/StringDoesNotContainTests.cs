@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotContainTest01()
         {
             string a = "test";
-            a.Requires().DoesNotContain(a);
+            Condition.Requires(a).DoesNotContain(a);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotContainTest02()
         {
             string a = "test";
-            a.Requires().DoesNotContain("es");
+            Condition.Requires(a).DoesNotContain("es");
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = "test";
             // A null value will never be found
-            a.Requires().DoesNotContain(null);
+            Condition.Requires(a).DoesNotContain(null);
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().DoesNotContain(String.Empty);
+            Condition.Requires(a).DoesNotContain(String.Empty);
         }
 
         [TestMethod]
@@ -69,7 +69,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().DoesNotContain(String.Empty);
+            Condition.Requires(a).DoesNotContain(String.Empty);
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotContainTest06()
         {
             string a = null;
-            a.Requires().DoesNotContain(null);
+            Condition.Requires(a).DoesNotContain(null);
         }
 
         [TestMethod]
@@ -86,7 +86,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotContainTest07()
         {
             string a = "test";
-            a.Requires().DoesNotContain("test me");
+            Condition.Requires(a).DoesNotContain("test me");
         }
 
         [TestMethod]
@@ -100,7 +100,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             try
             {
                 string a = "test";
-                a.Requires("a").DoesNotContain("test");
+                Condition.Requires(a, "a").DoesNotContain("test");
             }
             catch (Exception ex)
             {
@@ -113,7 +113,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotContainTest09()
         {
             string a = "test";
-            a.Requires().DoesNotContain("test me", string.Empty);
+            Condition.Requires(a).DoesNotContain("test me", string.Empty);
         }
 
         [TestMethod]
@@ -123,7 +123,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = "test me";
             try
             {
-                a.Requires("a").DoesNotContain("test", "qwe {0} xyz");
+                Condition.Requires(a, "a").DoesNotContain("test", "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

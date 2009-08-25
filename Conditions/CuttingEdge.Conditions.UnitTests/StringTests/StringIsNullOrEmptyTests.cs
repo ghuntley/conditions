@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsNullOrEmptyTest1()
         {
             string a = "test";
-            a.Requires().IsNullOrEmpty();
+            Condition.Requires(a).IsNullOrEmpty();
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsNullOrEmptyTest2()
         {
             string a = String.Empty;
-            a.Requires().IsNullOrEmpty();
+            Condition.Requires(a).IsNullOrEmpty();
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null value will never be found
-            a.Requires().IsNullOrEmpty();
+            Condition.Requires(a).IsNullOrEmpty();
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsNullOrEmptyTest4()
         {
             string a = string.Empty;
-            a.Requires().IsNullOrEmpty(string.Empty);
+            Condition.Requires(a).IsNullOrEmpty(string.Empty);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = "test";
             try
             {
-                a.Requires("a").IsNullOrEmpty("qwe {0} xyz");
+                Condition.Requires(a, "a").IsNullOrEmpty("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

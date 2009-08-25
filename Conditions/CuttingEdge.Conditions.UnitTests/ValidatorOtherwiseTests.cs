@@ -18,7 +18,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest01()
         {
             int a = 3;
-            a.Requires().Otherwise<SqlException>();
+            Condition.Requires(a).Otherwise<SqlException>();
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest02()
         {
             int a = 3;
-            a.Requires().Otherwise<Exception>();
+            Condition.Requires(a).Otherwise<Exception>();
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest04()
         {
             int a = 3;
-            a.Requires().Otherwise<InvalidOperationException>().IsEqualTo(4);
+            Condition.Requires(a).Otherwise<InvalidOperationException>().IsEqualTo(4);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest05()
         {
             int a = 3;
-            a.Requires().Otherwise<IOException>().IsEqualTo(4);
+            Condition.Requires(a).Otherwise<IOException>().IsEqualTo(4);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace CuttingEdge.Conditions.UnitTests
         public void OtherwiseTest06()
         {
             int a = 3;
-            a.Requires().Otherwise<ObjectDisposedException>().IsEqualTo(4);
+            Condition.Requires(a).Otherwise<ObjectDisposedException>().IsEqualTo(4);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
             try
             {
-                a.Requires().IsEqualTo(4);
+                Condition.Requires(a).IsEqualTo(4);
                 Assert.Fail();
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
             try
             {
-                a.Requires().Otherwise<InvalidOperationException>().IsEqualTo(4);
+                Condition.Requires(a).Otherwise<InvalidOperationException>().IsEqualTo(4);
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
             try
             {
-                a.Ensures().IsEqualTo(4);
+                Condition.Ensures(a).IsEqualTo(4);
                 Assert.Fail();
             }
             catch (Exception ex)
@@ -104,7 +104,7 @@ namespace CuttingEdge.Conditions.UnitTests
 
             try
             {
-                a.Ensures().Otherwise<InvalidOperationException>().IsEqualTo(4);
+                Condition.Ensures(a).Otherwise<InvalidOperationException>().IsEqualTo(4);
             }
             catch (Exception ex)
             {
@@ -120,7 +120,7 @@ namespace CuttingEdge.Conditions.UnitTests
             Assert.IsTrue(typeof(AbstractException).IsAbstract);
 
             int a = 3;
-            a.Requires().Otherwise<AbstractException>();
+            Condition.Requires(a).Otherwise<AbstractException>();
         }
 
         internal abstract class AbstractException : Exception

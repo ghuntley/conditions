@@ -29,7 +29,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest01()
         {
             int a = 3;
-            a.Requires().Evaluate(true);
+            Condition.Requires(a).Evaluate(true);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest02()
         {
             int a = 3;
-            a.Requires().Evaluate(true, String.Empty);
+            Condition.Requires(a).Evaluate(true, String.Empty);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest03()
         {
             int a = 3;
-            a.Requires().Evaluate(false);
+            Condition.Requires(a).Evaluate(false);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest04()
         {
             int a = 3;
-            a.Requires().Evaluate(false, String.Empty);
+            Condition.Requires(a).Evaluate(false, String.Empty);
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         {
             int a = 3;
             Expression<Func<int, bool>> expression = x => (x == 3);
-            a.Requires().Evaluate(expression);
+            Condition.Requires(a).Evaluate(expression);
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest06()
         {
             int a = 3;
-            a.Requires().Evaluate(x => x == 4);
+            Condition.Requires(a).Evaluate(x => x == 4);
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest07()
         {
             string a = "hoi";
-            a.Requires().Evaluate(x => x == "hoi");
+            Condition.Requires(a).Evaluate(x => x == "hoi");
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest08()
         {
             object a = new object();
-            a.Requires().Evaluate(x => true);
+            Condition.Requires(a).Evaluate(x => true);
         }
 
         [TestMethod]
@@ -98,7 +98,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest09()
         {
             object a = null;
-            a.Requires().Evaluate(x => x != null);
+            Condition.Requires(a).Evaluate(x => x != null);
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest10()
         {
             int? a = null;
-            a.Requires().Evaluate(x => x == 3);
+            Condition.Requires(a).Evaluate(x => x == 3);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest11()
         {
             object a = null;
-            a.Requires().Evaluate(false);
+            Condition.Requires(a).Evaluate(false);
         }
 
         [TestMethod]
@@ -125,7 +125,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest12()
         {
             DayOfWeek day = DayOfWeek.Thursday;
-            day.Requires().Evaluate(false);
+            Condition.Requires(day).Evaluate(false);
         }
 
         [TestMethod]
@@ -134,7 +134,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest13()
         {
             DayOfWeek day = DayOfWeek.Thursday;
-            day.Requires().Evaluate(x => false);
+            Condition.Requires(day).Evaluate(x => false);
         }
 
         [TestMethod]
@@ -147,7 +147,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
             object a = null;
             try
             {
-                a.Requires().Evaluate(a != null, "{0} should not be null");
+                Condition.Requires(a).Evaluate(a != null, "{0} should not be null");
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
             object a = null;
             try
             {
-                a.Requires().Evaluate(a != null, "{1} should not be null");
+                Condition.Requires(a).Evaluate(a != null, "{1} should not be null");
             }
             catch (Exception ex)
             {

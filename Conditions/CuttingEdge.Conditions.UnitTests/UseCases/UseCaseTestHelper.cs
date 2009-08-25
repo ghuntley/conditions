@@ -8,8 +8,8 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
     {
         public static void Test(Action useCase, Action conditions)
         {
-            useCase.Requires("useCase").IsNotNull();
-            conditions.Requires("conditions").IsNotNull();
+            Condition.Requires(useCase, "useCase").IsNotNull();
+            Condition.Requires(conditions, "conditions").IsNotNull();
 
             Exception useCaseException = ReturnExceptionOrNull(useCase);
             Exception conditionsException = ReturnExceptionOrNull(conditions);

@@ -34,21 +34,21 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         internal static void CollectionContainsShouldCompileTest01()
         {
             int[] c = { 1 };
-            c.Requires().Contains(1);
+            Condition.Requires(c).Contains(1);
         }
 
         // Calling Contains on a Collection should compile.
         internal static void CollectionContainsShouldCompileTest02()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().Contains(1);
+            Condition.Requires(c).Contains(1);
         }
 
         // Calling Contains on an IEnumerable should compile.
         internal static void CollectionContainsShouldCompileTest03()
         {
             IEnumerable<int> c = new Collection<int> { 1 };
-            c.Requires().Contains(1);
+            Condition.Requires(c).Contains(1);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest01()
         {
             Collection<int> c = null;
-            c.Requires().Contains(1);
+            Condition.Requires(c).Contains(1);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest02()
         {
             Collection<int> c = new Collection<int>();
-            c.Requires().Contains(1);
+            Condition.Requires(c).Contains(1);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest03()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().Contains(1);
+            Condition.Requires(c).Contains(1);
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest04()
         {
             ArrayList c = new ArrayList { 1 };
-            c.Requires().Contains((object)1);
+            Condition.Requires(c).Contains((object)1);
         }
 
         [TestMethod]
@@ -90,7 +90,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest05()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().Contains((object)1);
+            Condition.Requires(c).Contains((object)1);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest06()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().Contains(new object());
+            Condition.Requires(c).Contains(new object());
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest07()
         {
             IEnumerable c = Enumerable.Range(1, 1000);
-            c.Requires().Contains((object)1000);
+            Condition.Requires(c).Contains((object)1000);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest08()
         {
             IEnumerable c = Enumerable.Range(1, 1000);
-            c.Requires().Contains((object)1001);
+            Condition.Requires(c).Contains((object)1001);
         }
 
         [TestMethod]
@@ -124,7 +124,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest09()
         {
             IEnumerable<int> c = Enumerable.Range(1, 10);
-            c.Requires().Contains(10);
+            Condition.Requires(c).Contains(10);
         }
 
         [TestMethod]
@@ -133,7 +133,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest10()
         {
             IEnumerable<int> c = Enumerable.Range(1, 10);
-            c.Requires().Contains(11);
+            Condition.Requires(c).Contains(11);
         }
 
         [TestMethod]
@@ -141,7 +141,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsTest11()
         {
             IEnumerable<int> c = Enumerable.Range(1, 10);
-            c.Requires().Contains(10, "{0} should contain the value 10");           
+            Condition.Requires(c).Contains(10, "{0} should contain the value 10");           
         }
 
         [TestMethod]
@@ -151,7 +151,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable<int> c = Enumerable.Range(1, 10);
             try
             {
-                c.Requires("c").Contains(11, "{0} should contain the integer 11");
+                Condition.Requires(c, "c").Contains(11, "{0} should contain the integer 11");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -166,7 +166,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList(Enumerable.Range(1, 10).ToArray());
             object value = 10;
-            c.Requires().Contains(value, "{0} should contain the value 10");
+            Condition.Requires(c).Contains(value, "{0} should contain the value 10");
         }
 
         [TestMethod]
@@ -177,7 +177,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             try
             {
                 object value = 11;
-                c.Requires("c").Contains(value, "{0} should contain the integer 11");
+                Condition.Requires(c, "c").Contains(value, "{0} should contain the integer 11");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -203,7 +203,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             try
             {
                 // Call the generic Contains<C, E>(Validator<C>, E) overload.
-                set.Requires().Contains(3);
+                Condition.Requires(set).Contains(3);
                 Assert.Fail("Contains did not throw the excepted ArgumentException.");
             }
             catch
@@ -228,7 +228,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             try
             {
                 // Call the non-generic Contains<T>(Validator<T>, object) overload.
-                set.Requires().Contains((object)3);
+                Condition.Requires(set).Contains((object)3);
                 Assert.Fail("Contains did not throw the excepted ArgumentException.");
             }
             catch

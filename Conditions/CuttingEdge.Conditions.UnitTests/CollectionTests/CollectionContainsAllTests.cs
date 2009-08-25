@@ -35,21 +35,21 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1 };
             IEnumerable<int> all = c;
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         // Calling ContainsAll on a Collection should compile
         internal static void CollectionContainsAllShouldCompileTest02()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().ContainsAll(c);
+            Condition.Requires(c).ContainsAll(c);
         }
 
         // Calling ContainsAll on an IEnumerable should compile
         internal static void CollectionContainsAllShouldCompileTest03()
         {
             IEnumerable<int> c = new Collection<int> { 1 };
-            c.Requires().ContainsAll(c);
+            Condition.Requires(c).ContainsAll(c);
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = null;
             int[] all = null;
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int>();
             int[] all = null;
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int> { 1, 2, 3 };
             int[] all = null;
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -85,7 +85,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = null;
             int[] all = new int[0];
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int>();
             int[] all = new int[0];
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -103,7 +103,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int> { 1, 2, 3 };
             int[] all = new int[0];
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -112,7 +112,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             int[] all = { 1, 2, 3, 4 };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -122,7 +122,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             int[] all = { 4, 5, 6, 7 };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -132,7 +132,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             int[] all = { 5, 6, 7, 8 };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -141,7 +141,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -150,7 +150,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
             ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -159,7 +159,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
             ArrayList all = new ArrayList { DayOfWeek.Friday, 1 };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -169,7 +169,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             ArrayList all = new ArrayList(new[] { 4, 5, 6, 7 });
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -179,7 +179,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
             ArrayList all = new ArrayList(new[] { 4, 5, 6, 7 });
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -189,7 +189,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList { 1, DayOfWeek.Friday, 10.8D };
             ArrayList all = new ArrayList { DayOfWeek.Friday, 1, new object() };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -199,7 +199,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int>();
             int[] all = { 4, 5, 6, 7 };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -208,7 +208,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
             ArrayList all = new ArrayList();
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -218,7 +218,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList();
             ArrayList all = new ArrayList(new[] { 1, 2, 3, 4 });
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -226,7 +226,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsAllTest19()
         {
             IEnumerable<int> c = Enumerable.Range(1, 2);
-            c.Requires().ContainsAll(c, string.Empty);
+            Condition.Requires(c).ContainsAll(c, string.Empty);
         }
 
         [TestMethod]
@@ -236,7 +236,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable<int> c = Enumerable.Range(1, 2);
             try
             {
-                c.Requires("c").ContainsAll(Enumerable.Range(3, 2), "{0} must contain all");
+                Condition.Requires(c, "c").ContainsAll(Enumerable.Range(3, 2), "{0} must contain all");
             }
             catch (ArgumentException ex)
             {
@@ -249,7 +249,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionContainsAllTest21()
         {
             ArrayList c = new ArrayList { 1, 2 };
-            c.Requires().ContainsAll(c, string.Empty);
+            Condition.Requires(c).ContainsAll(c, string.Empty);
         }
 
         [TestMethod]
@@ -259,7 +259,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList c = new ArrayList { 1, 2 };
             try
             {
-                c.Requires("c").ContainsAll(new ArrayList { 3, 4 }, "{0} must contain all");
+                Condition.Requires(c, "c").ContainsAll(new ArrayList { 3, 4 }, "{0} must contain all");
             }
             catch (ArgumentException ex)
             {
@@ -274,7 +274,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int?[] c = new int?[] { 1 };
             int?[] all = new int?[] { null };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -284,7 +284,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList { 1 };
             ArrayList all = new ArrayList { null };
-            c.Requires().ContainsAll(all);
+            Condition.Requires(c).ContainsAll(all);
         }
 
         [TestMethod]
@@ -306,7 +306,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             try
             {
                 // Call the generic ContainsAll<C, E>(Validator<C>, IEnumerable<E>) overload.
-                set.Requires().ContainsAll(elements);
+                Condition.Requires(set).ContainsAll(elements);
                 Assert.Fail("ContainsAll did not throw the excepted ArgumentException.");
             }
             catch
@@ -333,7 +333,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             try
             {
                 // Call the non-generic ContainsAll<T>(Validator<T>, IEnumerable) overload.
-                set.Requires().ContainsAll(elements);
+                Condition.Requires(set).ContainsAll(elements);
                 Assert.Fail("ContainsAll did not throw the excepted ArgumentException.");
             }
             catch

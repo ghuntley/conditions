@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotHaveLengthTest01()
         {
             string a = "test";
-            a.Requires().DoesNotHaveLength(4);
+            Condition.Requires(a).DoesNotHaveLength(4);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotHaveLengthTest02()
         {
             string a = "t";
-            a.Requires().DoesNotHaveLength(1);
+            Condition.Requires(a).DoesNotHaveLength(1);
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotHaveLengthTest03()
         {
             string a = "test";
-            a.Requires().DoesNotHaveLength(3);
+            Condition.Requires(a).DoesNotHaveLength(3);
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotHaveLengthTest04()
         {
             string a = String.Empty;
-            a.Requires().DoesNotHaveLength(0);
+            Condition.Requires(a).DoesNotHaveLength(0);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotHaveLengthTest05()
         {
             string a = String.Empty;
-            a.Requires().DoesNotHaveLength(1);
+            Condition.Requires(a).DoesNotHaveLength(1);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null string is considered to have the length of 0.
-            a.Requires().DoesNotHaveLength(0);
+            Condition.Requires(a).DoesNotHaveLength(0);
         }
 
         [TestMethod]
@@ -85,7 +85,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null string is considered to have the length of 0.
-            a.Requires().DoesNotHaveLength(1);
+            Condition.Requires(a).DoesNotHaveLength(1);
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotHaveLengthTest08()
         {
             string a = string.Empty;
-            a.Requires().DoesNotHaveLength(1, string.Empty);
+            Condition.Requires(a).DoesNotHaveLength(1, string.Empty);
         }
 
         [TestMethod]
@@ -103,7 +103,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = null;
             try
             {
-                a.Requires("a").DoesNotHaveLength(0, "qwe {0} xyz");
+                Condition.Requires(a, "a").DoesNotHaveLength(0, "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

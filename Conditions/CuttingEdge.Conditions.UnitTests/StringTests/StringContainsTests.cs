@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void ContainsTest01()
         {
             string a = "test";
-            a.Requires().Contains(a);
+            Condition.Requires(a).Contains(a);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void ContainsTest02()
         {
             string a = "test";
-            a.Requires().Contains("es");
+            Condition.Requires(a).Contains("es");
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = "test";
             // A null value will never be found
-            a.Requires().Contains(null);
+            Condition.Requires(a).Contains(null);
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().Contains(String.Empty);
+            Condition.Requires(a).Contains(String.Empty);
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().Contains(String.Empty);
+            Condition.Requires(a).Contains(String.Empty);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void ContainsTest06()
         {
             string a = null;
-            a.Requires().Contains(null);
+            Condition.Requires(a).Contains(null);
         }
 
         [TestMethod]
@@ -85,7 +85,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void ContainsTest07()
         {
             string a = "test";
-            a.Requires().Contains("test me");
+            Condition.Requires(a).Contains("test me");
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             try
             {
                 string a = "test";
-                a.Requires("a").Contains("test me");
+                Condition.Requires(a, "a").Contains("test me");
             }
             catch (Exception ex)
             {
@@ -112,7 +112,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void ContainsTest09()
         {
             string a = null;
-            a.Requires().Contains(null, string.Empty);
+            Condition.Requires(a).Contains(null, string.Empty);
         }
 
         [TestMethod]
@@ -122,7 +122,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = "test";
             try
             {
-                a.Requires("a").Contains("test me", "qwe {0} xyz");
+                Condition.Requires(a, "a").Contains("test me", "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
         public void RequiresTest01()
         {
             int a = 3;
-            a.Requires().Throw(String.Empty);
+            Condition.Requires(a).Throw(String.Empty);
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
             int a = 3;
             try
             {
-                a.Requires("foobar").Throw(String.Empty);
+                Condition.Requires(a, "foobar").Throw(String.Empty);
             }
             catch (Exception ex)
             {

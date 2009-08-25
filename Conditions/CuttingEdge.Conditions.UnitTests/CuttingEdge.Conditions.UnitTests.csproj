@@ -65,7 +65,6 @@
     <Compile Include="CollectionTests\CollectionIsShorterThanTests.cs" />
     <Compile Include="CollectionTests\IsEmptyTestEnumerable.cs" />
     <Compile Include="CollectionTests\OddEqualityComparer.cs" />
-    <Compile Include="EntryPointExtensionMethodsReplacer.cs" />
     <Compile Include="EntryPointTests\EntryPointEnsuresTests.cs" />
     <Compile Include="EntryPointTests\EntryPointRequiresTests.cs" />
     <Compile Include="ExtendabilityExtensions.cs" />
@@ -112,7 +111,7 @@
     <Compile Include="UseCases\TypeTestUseCases.cs" />
     <Compile Include="UseCases\UseCaseTestHelper.cs" />
     <Compile Include="ValidatorOtherwiseTests.cs" />
-    <Compile Include="ValidatorTests.cs" />
+    <Compile Include="ConditionValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CuttingEdge.Conditions\CuttingEdge.Conditions.csproj">

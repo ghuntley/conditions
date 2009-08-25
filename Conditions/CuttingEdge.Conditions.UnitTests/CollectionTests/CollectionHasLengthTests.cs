@@ -35,7 +35,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // Queue only implements ICollection, no generic ICollection<T>
             Queue queue = new Queue();
 
-            queue.Requires().HasLength(0);
+            Condition.Requires(queue).HasLength(0);
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().HasLength(0);
+            Condition.Requires(set).HasLength(0);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             Queue queue = new Queue();
             queue.Enqueue(1);
 
-            queue.Requires().HasLength(1);
+            Condition.Requires(queue).HasLength(1);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().HasLength(1);
+            Condition.Requires(set).HasLength(1);
         }
 
         [TestMethod]
@@ -77,7 +77,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().HasLength(0);
+            Condition.Requires(set).HasLength(0);
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // ArrayList implements ICollection.
             ArrayList list = new ArrayList();
 
-            list.Requires().HasLength(1);
+            Condition.Requires(list).HasLength(1);
         }
 
         [TestMethod]
@@ -98,7 +98,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // ArrayList implements ICollection.
             ArrayList list = new ArrayList();
 
-            list.Requires().HasLength(0);
+            Condition.Requires(list).HasLength(0);
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().HasLength(0);
+            Condition.Requires(list).HasLength(0);
         }
 
         [TestMethod]
@@ -117,7 +117,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().HasLength(1);
+            Condition.Requires(list).HasLength(1);
         }
 
         [TestMethod]
@@ -128,7 +128,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().HasLength(1);
+            Condition.Requires(set).HasLength(1);
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().HasLength(0, string.Empty);
+            Condition.Requires(list).HasLength(0, string.Empty);
         }
 
         [TestMethod]
@@ -147,7 +147,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable list = null;
             try
             {
-                list.Requires("list").HasLength(1, "the given {0} should have 1 element");
+                Condition.Requires(list, "list").HasLength(1, "the given {0} should have 1 element");
             }
             catch (ArgumentException ex)
             {

@@ -35,7 +35,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().IsShorterThan(1);
+            Condition.Requires(set).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().IsShorterThan(0);
+            Condition.Requires(set).IsShorterThan(0);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().IsShorterThan(-1);
+            Condition.Requires(set).IsShorterThan(-1);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().IsShorterThan(2);
+            Condition.Requires(set).IsShorterThan(2);
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().IsShorterThan(1);
+            Condition.Requires(set).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // ArrayList implements ICollection.
             ArrayList list = new ArrayList { 1 };
 
-            list.Requires().IsShorterThan(1);
+            Condition.Requires(list).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // ArrayList implements ICollection.
             ArrayList list = new ArrayList();
 
-            list.Requires().IsShorterThan(1);
+            Condition.Requires(list).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -108,7 +108,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().IsShorterThan(1);
+            Condition.Requires(list).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -118,7 +118,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().IsShorterThan(0);
+            Condition.Requires(list).IsShorterThan(0);
         }
 
         [TestMethod]
@@ -127,7 +127,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().IsShorterThan(1, string.Empty);
+            Condition.Requires(list).IsShorterThan(1, string.Empty);
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable list = null;
             try
             {
-                list.Requires("list").IsShorterThan(0, "abc {0} def");
+                Condition.Requires(list, "list").IsShorterThan(0, "abc {0} def");
             }
             catch (ArgumentException ex)
             {

@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan1()
         {
             string a = "test";
-            a.Requires().IsLongerThan(3);
+            Condition.Requires(a).IsLongerThan(3);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan2()
         {
             string a = "test";
-            a.Requires().IsLongerThan(4);
+            Condition.Requires(a).IsLongerThan(4);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan3()
         {
             string a = String.Empty;
-            a.Requires().IsLongerThan(-1);
+            Condition.Requires(a).IsLongerThan(-1);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan4()
         {
             string a = String.Empty;
-            a.Requires().IsLongerThan(0);
+            Condition.Requires(a).IsLongerThan(0);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan5()
         {
             string a = null;
-            a.Requires().IsLongerThan(-1);
+            Condition.Requires(a).IsLongerThan(-1);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan6()
         {
             string a = null;
-            a.Requires().IsLongerThan(0);
+            Condition.Requires(a).IsLongerThan(0);
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsLongerThan7()
         {
             string a = string.Empty;
-            a.Requires().IsLongerThan(-1, string.Empty);
+            Condition.Requires(a).IsLongerThan(-1, string.Empty);
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = null;
             try
             {
-                a.Requires("a").IsLongerThan(0, "qwe {0} xyz");
+                Condition.Requires(a, "a").IsLongerThan(0, "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -108,7 +108,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             // Testing a string with length of one and minLength = 1 to achieve 100% code coverage.
             string a = "1";
-            a.Requires().IsLongerThan(1);
+            Condition.Requires(a).IsLongerThan(1);
         }
     }
 }

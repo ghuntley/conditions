@@ -27,9 +27,7 @@ namespace CuttingEdge.Conditions
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
     internal sealed class RequiresValidator<T> : ConditionValidator<T>
     {
-        // Initializes a new instance of the <see cref="EnsuresValidator{T}"/> class.
-        internal RequiresValidator(string argumentName, T value)
-            : base(argumentName, value)
+        internal RequiresValidator(string argumentName, T value) : base(argumentName, value)
         {
         }
 

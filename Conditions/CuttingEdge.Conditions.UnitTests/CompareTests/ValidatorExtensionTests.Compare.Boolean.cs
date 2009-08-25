@@ -30,7 +30,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest1()
         {
             bool b = true;
-            b.Requires().IsTrue();
+            Condition.Requires(b).IsTrue();
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest2()
         {
             bool b = false;
-            b.Requires().IsTrue();
+            Condition.Requires(b).IsTrue();
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest3()
         {
             bool? b = true;
-            b.Requires().IsTrue();
+            Condition.Requires(b).IsTrue();
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest4()
         {
             bool? b = false;
-            b.Requires().IsTrue();
+            Condition.Requires(b).IsTrue();
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest5()
         {
             bool? b = null;
-            b.Requires().IsTrue();
+            Condition.Requires(b).IsTrue();
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest6()
         {
             bool b = true;
-            b.Requires().IsTrue(string.Empty);
+            Condition.Requires(b).IsTrue(string.Empty);
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsTrueTest7()
         {
             bool? b = true;
-            b.Requires().IsTrue(string.Empty);
+            Condition.Requires(b).IsTrue(string.Empty);
         }
 
         [TestMethod]
@@ -91,7 +91,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             bool b = false;
             try
             {
-                b.Requires("b").IsTrue("qwe {0} xyz");
+                Condition.Requires(b, "b").IsTrue("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -107,7 +107,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             bool? b = false;
             try
             {
-                b.Requires("b").IsTrue("qwe {0} xyz");
+                Condition.Requires(b, "b").IsTrue("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -125,7 +125,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest1()
         {
             bool b = false;
-            b.Requires().IsFalse();
+            Condition.Requires(b).IsFalse();
         }
 
         [TestMethod]
@@ -134,7 +134,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest2()
         {
             bool b = true;
-            b.Requires().IsFalse();
+            Condition.Requires(b).IsFalse();
         }
 
         [TestMethod]
@@ -142,7 +142,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest3()
         {
             bool? b = false;
-            b.Requires().IsFalse();
+            Condition.Requires(b).IsFalse();
         }
 
         [TestMethod]
@@ -151,7 +151,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest4()
         {
             bool? b = true;
-            b.Requires().IsFalse();
+            Condition.Requires(b).IsFalse();
         }
 
         [TestMethod]
@@ -160,7 +160,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest5()
         {
             bool? b = null;
-            b.Requires().IsFalse();
+            Condition.Requires(b).IsFalse();
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest6()
         {
             bool b = false;
-            b.Requires().IsFalse(string.Empty);
+            Condition.Requires(b).IsFalse(string.Empty);
         }
 
         [TestMethod]
@@ -176,7 +176,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsFalseTest7()
         {
             bool? b = false;
-            b.Requires().IsFalse(string.Empty);
+            Condition.Requires(b).IsFalse(string.Empty);
         }
 
         [TestMethod]
@@ -186,7 +186,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             bool b = true;
             try
             {
-                b.Requires("b").IsFalse("qwe {0} xyz");
+                Condition.Requires(b, "b").IsFalse("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -202,7 +202,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             bool? b = true;
             try
             {
-                b.Requires("b").IsFalse("qwe {0} xyz");
+                Condition.Requires(b, "b").IsFalse("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

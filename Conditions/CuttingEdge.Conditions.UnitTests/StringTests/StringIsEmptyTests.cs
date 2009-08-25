@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsStringEmptyTest1()
         {
             string s = String.Empty;
-            s.Requires().IsEmpty();
+            Condition.Requires(s).IsEmpty();
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsStringEmptyTest2()
         {
             string s = null;
-            s.Requires().IsEmpty();
+            Condition.Requires(s).IsEmpty();
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsStringEmptyTest3()
         {
             string s = "test";
-            s.Requires().IsEmpty();
+            Condition.Requires(s).IsEmpty();
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsStringEmptyTest4()
         {
             string a = String.Empty;
-            a.Requires().IsEmpty(string.Empty);
+            Condition.Requires(a).IsEmpty(string.Empty);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = "test";
             try
             {
-                a.Requires("a").IsEmpty("qwe {0} xyz");
+                Condition.Requires(a, "a").IsEmpty("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             int value = 1;
 
-            value.Requires().MyExtension(new[] { 1 });
+            Condition.Requires(value).MyExtension(new[] { 1 });
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             int value = 1;
 
-            value.Requires().MyExtension(new[] { 2 });
+            Condition.Requires(value).MyExtension(new[] { 2 });
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             int value = 1;
 
-            value.Ensures().MyExtension(new[] { 2 });
+            Condition.Ensures(value).MyExtension(new[] { 2 });
         }
 
         [TestMethod]

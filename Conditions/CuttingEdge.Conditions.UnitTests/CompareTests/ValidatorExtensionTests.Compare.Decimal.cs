@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalInRangeTest01()
         {
             Decimal a = One;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalInRangeTest02()
         {
             Decimal a = Two;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalInRangeTest03()
         {
             Decimal a = Three;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalInRangeTest04()
         {
             Decimal a = Four;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalInRangeTest05()
         {
             Decimal a = Five;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalInRangeTest06()
         {
             Decimal a = Four;
-            a.Requires().IsInRange(Two, Four, string.Empty);
+            Condition.Requires(a).IsInRange(Two, Four, string.Empty);
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Five;
             try
             {
-                a.Requires("a").IsInRange(Two, Four, "abc {0} xyz");
+                Condition.Requires(a, "a").IsInRange(Two, Four, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -110,7 +110,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotInRangeTest01()
         {
             Decimal a = One;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -119,7 +119,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotInRangeTest02()
         {
             Decimal a = Two;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -128,7 +128,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotInRangeTest03()
         {
             Decimal a = Three;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotInRangeTest04()
         {
             Decimal a = Four;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -145,7 +145,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotInRangeTest05()
         {
             Decimal a = Five;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -153,7 +153,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotInRangeTest06()
         {
             Decimal a = Five;
-            a.Requires().IsNotInRange(Two, Four, string.Empty);
+            Condition.Requires(a).IsNotInRange(Two, Four, string.Empty);
         }
 
         [TestMethod]
@@ -163,7 +163,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Four;
             try
             {
-                a.Requires("a").IsNotInRange(Two, Four, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotInRange(Two, Four, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -182,7 +182,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterThanTest01()
         {
             Decimal a = One;
-            a.Requires().IsGreaterThan(Two);
+            Condition.Requires(a).IsGreaterThan(Two);
         }
 
         [TestMethod]
@@ -191,7 +191,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterThanTest02()
         {
             Decimal a = Two;
-            a.Requires().IsGreaterThan(Two);
+            Condition.Requires(a).IsGreaterThan(Two);
         }
 
         [TestMethod]
@@ -199,7 +199,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterThanTest03()
         {
             Decimal a = Three;
-            a.Requires().IsGreaterThan(Two);
+            Condition.Requires(a).IsGreaterThan(Two);
         }
 
         [TestMethod]
@@ -207,7 +207,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterThanTest04()
         {
             Decimal a = Three;
-            a.Requires().IsGreaterThan(Two, string.Empty);
+            Condition.Requires(a).IsGreaterThan(Two, string.Empty);
         }
 
         [TestMethod]
@@ -217,7 +217,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Three;
             try
             {
-                a.Requires("a").IsGreaterThan(Three, "abc {0} xyz");
+                Condition.Requires(a, "a").IsGreaterThan(Three, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -235,7 +235,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterThanTest01()
         {
             Decimal a = One;
-            a.Requires().IsNotGreaterThan(Two);
+            Condition.Requires(a).IsNotGreaterThan(Two);
         }
 
         [TestMethod]
@@ -243,7 +243,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterThanTest02()
         {
             Decimal a = Two;
-            a.Requires().IsNotGreaterThan(Two);
+            Condition.Requires(a).IsNotGreaterThan(Two);
         }
 
         [TestMethod]
@@ -252,7 +252,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterThanTest03()
         {
             Decimal a = Three;
-            a.Requires().IsNotGreaterThan(Two);
+            Condition.Requires(a).IsNotGreaterThan(Two);
         }
 
         [TestMethod]
@@ -260,7 +260,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterThanTest04()
         {
             Decimal a = Two;
-            a.Requires().IsNotGreaterThan(Two, string.Empty);
+            Condition.Requires(a).IsNotGreaterThan(Two, string.Empty);
         }
 
         [TestMethod]
@@ -270,7 +270,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Three;
             try
             {
-                a.Requires("a").IsNotGreaterThan(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotGreaterThan(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -289,7 +289,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterOrEqualTest01()
         {
             Decimal a = One;
-            a.Requires().IsGreaterOrEqual(Two);
+            Condition.Requires(a).IsGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -297,7 +297,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterOrEqualTest02()
         {
             Decimal a = Two;
-            a.Requires().IsGreaterOrEqual(Two);
+            Condition.Requires(a).IsGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -305,7 +305,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterOrEqualTest03()
         {
             Decimal a = Three;
-            a.Requires().IsGreaterOrEqual(Two);
+            Condition.Requires(a).IsGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -313,7 +313,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalGreaterOrEqualTest04()
         {
             Decimal a = Three;
-            a.Requires().IsGreaterOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsGreaterOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -323,7 +323,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = One;
             try
             {
-                a.Requires("a").IsGreaterOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsGreaterOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -341,7 +341,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterOrEqualTest01()
         {
             Decimal a = One;
-            a.Requires().IsNotGreaterOrEqual(Two);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -350,7 +350,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterOrEqualTest02()
         {
             Decimal a = Two;
-            a.Requires().IsNotGreaterOrEqual(Two);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -359,7 +359,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterOrEqualTest03()
         {
             Decimal a = Three;
-            a.Requires().IsNotGreaterOrEqual(Two);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -367,7 +367,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotGreaterOrEqualTest04()
         {
             Decimal a = One;
-            a.Requires().IsNotGreaterOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -377,7 +377,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Three;
             try
             {
-                a.Requires("a").IsNotGreaterOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotGreaterOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -395,7 +395,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessThanTest01()
         {
             Decimal a = One;
-            a.Requires().IsLessThan(Two);
+            Condition.Requires(a).IsLessThan(Two);
         }
 
         [TestMethod]
@@ -404,7 +404,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessThanTest02()
         {
             Decimal a = Two;
-            a.Requires().IsLessThan(Two);
+            Condition.Requires(a).IsLessThan(Two);
         }
 
         [TestMethod]
@@ -413,7 +413,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessThanTest03()
         {
             Decimal a = Three;
-            a.Requires().IsLessThan(Two);
+            Condition.Requires(a).IsLessThan(Two);
         }
 
         [TestMethod]
@@ -421,7 +421,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessThanTest04()
         {
             Decimal a = Two;
-            a.Requires().IsLessThan(Three, string.Empty);
+            Condition.Requires(a).IsLessThan(Three, string.Empty);
         }
 
         [TestMethod]
@@ -431,7 +431,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Three;
             try
             {
-                a.Requires("a").IsLessThan(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsLessThan(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -450,7 +450,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessThanTest01()
         {
             Decimal a = One;
-            a.Requires().IsNotLessThan(Two);
+            Condition.Requires(a).IsNotLessThan(Two);
         }
 
         [TestMethod]
@@ -458,7 +458,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessThanTest02()
         {
             Decimal a = Two;
-            a.Requires().IsNotLessThan(Two);
+            Condition.Requires(a).IsNotLessThan(Two);
         }
 
         [TestMethod]
@@ -466,7 +466,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessThanTest03()
         {
             Decimal a = Three;
-            a.Requires().IsNotLessThan(Two);
+            Condition.Requires(a).IsNotLessThan(Two);
         }
 
         [TestMethod]
@@ -474,7 +474,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessThanTest04()
         {
             Decimal a = Two;
-            a.Requires().IsNotLessThan(Two, string.Empty);
+            Condition.Requires(a).IsNotLessThan(Two, string.Empty);
         }
 
         [TestMethod]
@@ -484,7 +484,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Two;
             try
             {
-                a.Requires("a").IsNotLessThan(Three, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotLessThan(Three, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -502,7 +502,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessOrEqualTest01()
         {
             Decimal a = One;
-            a.Requires().IsLessOrEqual(Two);
+            Condition.Requires(a).IsLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -510,7 +510,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessOrEqualTest02()
         {
             Decimal a = Two;
-            a.Requires().IsLessOrEqual(Two);
+            Condition.Requires(a).IsLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -519,7 +519,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessOrEqualTest03()
         {
             Decimal a = Three;
-            a.Requires().IsLessOrEqual(Two);
+            Condition.Requires(a).IsLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -527,7 +527,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalLessOrEqualTest04()
         {
             Decimal a = Two;
-            a.Requires().IsLessOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsLessOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -537,7 +537,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Three;
             try
             {
-                a.Requires("a").IsLessOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsLessOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -556,7 +556,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessOrEqualTest01()
         {
             Decimal a = One;
-            a.Requires().IsNotLessOrEqual(Two);
+            Condition.Requires(a).IsNotLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -565,7 +565,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessOrEqualTest02()
         {
             Decimal a = Two;
-            a.Requires().IsNotLessOrEqual(Two);
+            Condition.Requires(a).IsNotLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -573,7 +573,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessOrEqualTest03()
         {
             Decimal a = Three;
-            a.Requires().IsNotLessOrEqual(Two);
+            Condition.Requires(a).IsNotLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -581,7 +581,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotLessOrEqualTest04()
         {
             Decimal a = Three;
-            a.Requires().IsNotLessOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsNotLessOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -591,7 +591,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Two;
             try
             {
-                a.Requires("a").IsNotLessOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotLessOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -610,7 +610,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalEqualToTest01()
         {
             Decimal a = One;
-            a.Requires().IsEqualTo(Two);
+            Condition.Requires(a).IsEqualTo(Two);
         }
 
         [TestMethod]
@@ -618,7 +618,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalEqualToTest02()
         {
             Decimal a = Two;
-            a.Requires().IsEqualTo(Two);
+            Condition.Requires(a).IsEqualTo(Two);
         }
 
         [TestMethod]
@@ -627,7 +627,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalEqualToTest03()
         {
             Decimal a = Three;
-            a.Requires().IsEqualTo(Two);
+            Condition.Requires(a).IsEqualTo(Two);
         }
 
         [TestMethod]
@@ -635,7 +635,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalEqualToTest04()
         {
             Decimal a = Two;
-            a.Requires().IsEqualTo(Two, string.Empty);
+            Condition.Requires(a).IsEqualTo(Two, string.Empty);
         }
 
         [TestMethod]
@@ -645,7 +645,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Three;
             try
             {
-                a.Requires("a").IsEqualTo(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsEqualTo(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -663,7 +663,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotEqualToTest01()
         {
             Decimal a = One;
-            a.Requires().IsNotEqualTo(Two);
+            Condition.Requires(a).IsNotEqualTo(Two);
         }
 
         [TestMethod]
@@ -672,7 +672,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotEqualToTest02()
         {
             Decimal a = Two;
-            a.Requires().IsNotEqualTo(Two);
+            Condition.Requires(a).IsNotEqualTo(Two);
         }
 
         [TestMethod]
@@ -680,7 +680,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotEqualToTest03()
         {
             Decimal a = Three;
-            a.Requires().IsNotEqualTo(Two);
+            Condition.Requires(a).IsNotEqualTo(Two);
         }
 
         [TestMethod]
@@ -688,7 +688,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsDecimalNotEqualToTest04()
         {
             Decimal a = Three;
-            a.Requires().IsNotEqualTo(Two, string.Empty);
+            Condition.Requires(a).IsNotEqualTo(Two, string.Empty);
         }
 
         [TestMethod]
@@ -698,7 +698,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Decimal a = Two;
             try
             {
-                a.Requires("a").IsNotEqualTo(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotEqualTo(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

@@ -24,13 +24,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CuttingEdge.Conditions.UnitTests
 {
     [TestClass]
-    public class ValidatorTests
+    public class ConditionValidatorTests
     {
         [TestMethod]
         [Description("Checks whether the methods that are overridden from System.Object work as expected.")]
         public void OverriddenMethodsTest()
         {
-            ConditionValidator<int> validator = 3.Requires();
+            object validator = Condition.Requires(3);
 
             validator.ToString();
 

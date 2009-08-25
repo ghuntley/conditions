@@ -33,7 +33,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest1()
         {
             ICollection c = null;
-            c.Requires().IsEmpty();
+            Condition.Requires(c).IsEmpty();
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest2()
         {
             Collection<int> c = new Collection<int>();
-            c.Requires().IsEmpty();
+            Condition.Requires(c).IsEmpty();
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest3()
         {
             IsEmptyTestEnumerable c = null;
-            c.Requires().IsEmpty();
+            Condition.Requires(c).IsEmpty();
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest4()
         {
             IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(true);
-            c.Requires().IsEmpty();
+            Condition.Requires(c).IsEmpty();
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest5()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().IsEmpty();
+            Condition.Requires(c).IsEmpty();
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest6()
         {
             IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(false);
-            c.Requires().IsEmpty();
+            Condition.Requires(c).IsEmpty();
         }
 
         [TestMethod]
@@ -83,7 +83,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void IsEmptyTest7()
         {
             IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(true);
-            c.Requires().IsEmpty("condition should hold");
+            Condition.Requires(c).IsEmpty("condition should hold");
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IsEmptyTestEnumerable c = new IsEmptyTestEnumerable(false);
             try
             {
-                c.Requires("c").IsEmpty("{0} should have one, two or at least some elements :-)");
+                Condition.Requires(c, "c").IsEmpty("{0} should have one, two or at least some elements :-)");
             }
             catch (ArgumentException ex)
             {

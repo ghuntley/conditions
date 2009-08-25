@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().IsLongerOrEqual(1);
+            Condition.Requires(set).IsLongerOrEqual(1);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().IsLongerOrEqual(0);
+            Condition.Requires(set).IsLongerOrEqual(0);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().IsLongerOrEqual(-1);
+            Condition.Requires(set).IsLongerOrEqual(-1);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().IsLongerOrEqual(1);
+            Condition.Requires(set).IsLongerOrEqual(1);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().IsLongerOrEqual(0);
+            Condition.Requires(set).IsLongerOrEqual(0);
         }
 
         [TestMethod]
@@ -86,7 +86,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // ArrayList implements ICollection.
             ArrayList list = new ArrayList { 1 };
 
-            list.Requires().IsLongerOrEqual(1);
+            Condition.Requires(list).IsLongerOrEqual(1);
         }
 
         [TestMethod]
@@ -97,7 +97,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // ArrayList implements ICollection.
             ArrayList list = new ArrayList { 1 };
 
-            list.Requires().IsLongerOrEqual(2);
+            Condition.Requires(list).IsLongerOrEqual(2);
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().IsLongerOrEqual(0);
+            Condition.Requires(list).IsLongerOrEqual(0);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().IsLongerOrEqual(1);
+            Condition.Requires(list).IsLongerOrEqual(1);
         }
 
         [TestMethod]
@@ -125,7 +125,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().IsLongerOrEqual(0, string.Empty);
+            Condition.Requires(list).IsLongerOrEqual(0, string.Empty);
         }
 
         [TestMethod]
@@ -135,7 +135,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable list = null;
             try
             {
-                list.Requires("list").IsLongerOrEqual(1, "abc {0} def");
+                Condition.Requires(list, "list").IsLongerOrEqual(1, "abc {0} def");
             }
             catch (ArgumentException ex)
             {

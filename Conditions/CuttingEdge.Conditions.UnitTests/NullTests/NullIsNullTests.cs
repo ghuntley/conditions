@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest1()
         {
             object o = null;
-            o.Requires().IsNull();
+            Condition.Requires(o).IsNull();
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest2()
         {
             object o = new object();
-            o.Requires().IsNull();
+            Condition.Requires(o).IsNull();
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest3()
         {
             int? i = null;
-            i.Requires().IsNull();
+            Condition.Requires(i).IsNull();
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest4()
         {
             int? i = 3;
-            i.Requires().IsNull();
+            Condition.Requires(i).IsNull();
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest5()
         {
             object i = DayOfWeek.Sunday;
-            i.Requires().IsNull();
+            Condition.Requires(i).IsNull();
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest6()
         {
             object o = null;
-            o.Requires().IsNull(string.Empty);
+            Condition.Requires(o).IsNull(string.Empty);
         }
 
         [TestMethod]
@@ -84,7 +84,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
             object o = new object();
             try
             {
-                o.Requires("o").IsNull("qwe {0} xyz");
+                Condition.Requires(o, "o").IsNull("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -98,7 +98,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNullTest8()
         {
             int? i = null;
-            i.Requires().IsNull(string.Empty);
+            Condition.Requires(i).IsNull(string.Empty);
         }
 
         [TestMethod]
@@ -108,7 +108,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
             int? i = 4;
             try
             {
-                i.Requires("i").IsNull("qwe {0} xyz");
+                Condition.Requires(i, "i").IsNull("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

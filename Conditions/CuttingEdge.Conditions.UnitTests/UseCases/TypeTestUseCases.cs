@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsOfType(typeof(string));
+                Condition.Requires(param, "param").IsOfType(typeof(string));
             });
         }
 
@@ -61,7 +61,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsNotOfType(typeof(string));
+                Condition.Requires(param, "param").IsNotOfType(typeof(string));
             });
         }
 
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsNotOfType(typeof(string));
+                Condition.Requires(param, "param").IsNotOfType(typeof(string));
             });
         }
 
@@ -110,7 +110,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsOfType(typeof(string));
+                Condition.Requires(param, "param").IsOfType(typeof(string));
             });
         }
     }

@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNotNullTest1()
         {
             object o = null;
-            o.Requires().IsNotNull();
+            Condition.Requires(o).IsNotNull();
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNotNullTest2()
         {
             object o = new object();
-            o.Requires().IsNotNull();
+            Condition.Requires(o).IsNotNull();
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNotNullTest3()
         {
             int? i = null;
-            i.Requires().IsNotNull();
+            Condition.Requires(i).IsNotNull();
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNotNullTest4()
         {
             int? i = 3;
-            i.Requires().IsNotNull();
+            Condition.Requires(i).IsNotNull();
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNotNullTest5()
         {
             object o = new object();
-            o.Requires().IsNotNull(string.Empty);
+            Condition.Requires(o).IsNotNull(string.Empty);
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
             object o = null;
             try
             {
-                o.Requires("o").IsNotNull("qwe {0} xyz");
+                Condition.Requires(o, "o").IsNotNull("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -89,7 +89,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         public void IsNotNullTest7()
         {
             int? i = 4;
-            i.Requires().IsNotNull(string.Empty);
+            Condition.Requires(i).IsNotNull(string.Empty);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
             int? i = null;
             try
             {
-                i.Requires("i").IsNotNull("qwe {0} xyz");
+                Condition.Requires(i, "i").IsNotNull("qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

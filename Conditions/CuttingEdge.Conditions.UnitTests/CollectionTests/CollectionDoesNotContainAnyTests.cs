@@ -35,7 +35,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1 };
             IEnumerable<int> any = new[] { 2 };
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         // Calling DoesNotContainAny on a Collection should compile.
@@ -43,7 +43,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int> { 1 };
             Collection<int> any = new Collection<int> { 2 };
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         // Calling DoesNotContainAny on an IEnumerable should compile.
@@ -51,7 +51,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable<int> c = new Collection<int> { 1 };
             int[] any = { 2 };
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = null;
             int[] elements = null;
-            c.Requires().DoesNotContainAny(elements);
+            Condition.Requires(c).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -69,7 +69,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int>();
             int[] elements = null;
-            c.Requires().DoesNotContainAny(elements);
+            Condition.Requires(c).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int> { 1, 2, 3 };
             int[] elements = null;
-            c.Requires().DoesNotContainAny(elements);
+            Condition.Requires(c).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = null;
             int[] elements = new int[0];
-            c.Requires().DoesNotContainAny(elements);
+            Condition.Requires(c).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int>();
             int[] elements = new int[0];
-            c.Requires().DoesNotContainAny(elements);
+            Condition.Requires(c).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -105,7 +105,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             Collection<int> c = new Collection<int> { 1, 2, 3 };
             int[] elements = new int[0];
-            c.Requires().DoesNotContainAny(elements);
+            Condition.Requires(c).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -115,7 +115,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             int[] any = { 1, 2, 3, 4 };
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -125,7 +125,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             int[] any = { 4, 5, 6, 7 };
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -134,7 +134,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             int[] any = { 5, 6, 7, 8 };
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -144,7 +144,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             ArrayList any = new ArrayList(new[] { 4, 5, 6, 8 });
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -154,7 +154,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList(new object[] { 1, 2, 3, null });
             ArrayList any = new ArrayList(new object[] { null, 5, 6, 8 });
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -166,7 +166,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             ArrayList any = new ArrayList { DayOfWeek.Friday, 2 };
 
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -175,7 +175,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             int[] c = { 1, 2, 3, 4 };
             ArrayList any = new ArrayList(new[] { 5, 6, 7, 8 });
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -184,7 +184,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             ArrayList c = new ArrayList(new[] { 1, 2, 3, 4 });
             ArrayList any = new ArrayList(new[] { 5, 6, 7, 8 });
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -195,7 +195,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             ArrayList any = new ArrayList { DayOfWeek.Saturday, 2, new object() };
 
-            c.Requires().DoesNotContainAny(any);
+            Condition.Requires(c).DoesNotContainAny(any);
         }
 
         [TestMethod]
@@ -203,7 +203,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainAnyTest16()
         {
             IEnumerable<int> c = Enumerable.Range(1, 2);
-            c.Requires().DoesNotContainAny(Enumerable.Range(3, 2), string.Empty);
+            Condition.Requires(c).DoesNotContainAny(Enumerable.Range(3, 2), string.Empty);
         }
 
         [TestMethod]
@@ -213,7 +213,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable<int> c = Enumerable.Range(1, 2);
             try
             {
-                c.Requires("c").DoesNotContainAny(c, "{0} should contain some");
+                Condition.Requires(c, "c").DoesNotContainAny(c, "{0} should contain some");
             }
             catch (ArgumentException ex)
             {
@@ -226,7 +226,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainAnyTest18()
         {
             ArrayList c = new ArrayList { 1, 2 };
-            c.Requires().DoesNotContainAny(new ArrayList { 3, 4 }, string.Empty);
+            Condition.Requires(c).DoesNotContainAny(new ArrayList { 3, 4 }, string.Empty);
         }
 
         [TestMethod]
@@ -236,7 +236,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList c = new ArrayList { 1, 2 };
             try
             {
-                c.Requires("c").DoesNotContainAny(c, "{0} should contain some");
+                Condition.Requires(c, "c").DoesNotContainAny(c, "{0} should contain some");
             }
             catch (ArgumentException ex)
             {
@@ -262,7 +262,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // Call the generic DoesNotContainAny<C, E>(Validator<C>, IEnumerable<E>) overload.
             // DoesNotContainAny should fail, because the value is not in the initial list,
             // otherwise this behavior would be inconsistent with the non-generic overload of DoesNotContainAny.
-            set.Requires().DoesNotContainAny(elements);
+            Condition.Requires(set).DoesNotContainAny(elements);
         }
 
         [TestMethod]
@@ -282,7 +282,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             // Call the non-generic DoesNotContainAny<T>(Validator<T>, IEnumerable) overload.
             // DoesNotContainAny should fail, because the value is not in the initial list.
-            set.Requires().DoesNotContainAny(elements);
+            Condition.Requires(set).DoesNotContainAny(elements);
         }
     }
 }

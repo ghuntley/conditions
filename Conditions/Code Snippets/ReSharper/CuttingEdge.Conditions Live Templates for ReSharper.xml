@@ -19,7 +19,7 @@
     </Variables>
     <CustomProperties />
   </Template>
-  <Template uid="d6993420-e1b6-4710-8f3b-49fe1eb20bb2" text="$argument$.Requires(&quot;$argument$&quot;)$END$" shortcut="requires" description="Tests a method precondition." reformat="true" shortenQualifiedReferences="true">
+  <Template uid="d6993420-e1b6-4710-8f3b-49fe1eb20bb2" text="Condition.Requires($argument$, &quot;$argument$&quot;)$END$" shortcut="requires" description="Tests a method precondition." reformat="true" shortenQualifiedReferences="true">
     <Context>
       <CSharpContext context="Statement" minimumLanguageVersion="3.0" />
     </Context>
@@ -29,7 +29,7 @@
     </Variables>
     <CustomProperties />
   </Template>
-  <Template uid="3094555b-3d0f-4938-bb6a-8bbeb089e607" text="$argument$.Ensures(&quot;$argument$&quot;)$END$" shortcut="ensures" description="Tests a postcondition." reformat="true" shortenQualifiedReferences="true">
+  <Template uid="3094555b-3d0f-4938-bb6a-8bbeb089e607" text="Condition.Ensures($argument$, &quot;$argument$&quot;)$END$" shortcut="ensures" description="Tests a postcondition." reformat="true" shortenQualifiedReferences="true">
     <Context>
       <CSharpContext context="Statement" minimumLanguageVersion="3.0" />
     </Context>

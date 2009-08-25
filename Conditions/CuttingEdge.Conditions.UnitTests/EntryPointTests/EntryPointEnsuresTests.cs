@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
         public void EnsuresTest01()
         {
             int a = 3;
-            a.Ensures().Throw(String.Empty);
+            Condition.Ensures(a).Throw(String.Empty);
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
             int a = 3;
             try
             {
-                a.Ensures("foobar").IsGreaterThan(a);
+                Condition.Ensures(a, "foobar").IsGreaterThan(a);
             }
             catch (Exception ex)
             {

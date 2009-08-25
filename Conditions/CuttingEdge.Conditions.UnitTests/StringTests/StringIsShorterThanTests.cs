@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterThan1()
         {
             string a = "test";
-            a.Requires().IsShorterThan(5);
+            Condition.Requires(a).IsShorterThan(5);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterThan2()
         {
             string a = "test";
-            a.Requires().IsShorterThan(4);
+            Condition.Requires(a).IsShorterThan(4);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterThan3()
         {
             string a = String.Empty;
-            a.Requires().IsShorterThan(1);
+            Condition.Requires(a).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterThan4()
         {
             string a = String.Empty;
-            a.Requires().IsShorterThan(0);
+            Condition.Requires(a).IsShorterThan(0);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterThan5()
         {
             string a = null;
-            a.Requires().IsShorterThan(1);
+            Condition.Requires(a).IsShorterThan(1);
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null string is considered to have a length of 0.
-            a.Requires().IsShorterThan(0);
+            Condition.Requires(a).IsShorterThan(0);
         }
 
         [TestMethod]
@@ -83,7 +83,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterThan7()
         {
             string a = string.Empty;
-            a.Requires().IsShorterThan(1, string.Empty);
+            Condition.Requires(a).IsShorterThan(1, string.Empty);
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = "x";
             try
             {
-                a.Requires("a").IsShorterThan(1, "qwe {0} xyz");
+                Condition.Requires(a, "a").IsShorterThan(1, "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

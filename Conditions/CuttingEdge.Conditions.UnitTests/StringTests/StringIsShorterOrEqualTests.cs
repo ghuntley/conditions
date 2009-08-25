@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual0()
         {
             string a = "test";
-            a.Requires().IsShorterOrEqual(5);
+            Condition.Requires(a).IsShorterOrEqual(5);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual1()
         {
             string a = "test";
-            a.Requires().IsShorterOrEqual(4);
+            Condition.Requires(a).IsShorterOrEqual(4);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual2()
         {
             string a = "test";
-            a.Requires().IsShorterOrEqual(1);
+            Condition.Requires(a).IsShorterOrEqual(1);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual3()
         {
             string a = String.Empty;
-            a.Requires().IsShorterOrEqual(1);
+            Condition.Requires(a).IsShorterOrEqual(1);
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual4()
         {
             string a = String.Empty;
-            a.Requires().IsShorterOrEqual(0);
+            Condition.Requires(a).IsShorterOrEqual(0);
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual5()
         {
             string a = String.Empty;
-            a.Requires().IsShorterOrEqual(-1);
+            Condition.Requires(a).IsShorterOrEqual(-1);
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual6()
         {
             string a = null;
-            a.Requires().IsShorterOrEqual(0);
+            Condition.Requires(a).IsShorterOrEqual(0);
         }
 
         [TestMethod]
@@ -91,7 +91,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null value is considered to have a length of 0 characters.
-            a.Requires().IsShorterOrEqual(-1);
+            Condition.Requires(a).IsShorterOrEqual(-1);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void IsShorterOrEqual8()
         {
             string a = string.Empty;
-            a.Requires().IsShorterOrEqual(0, string.Empty);
+            Condition.Requires(a).IsShorterOrEqual(0, string.Empty);
         }
 
         [TestMethod]
@@ -109,7 +109,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = null;
             try
             {
-                a.Requires("a").IsShorterOrEqual(-1, "qwe {0} xyz");
+                Condition.Requires(a, "a").IsShorterOrEqual(-1, "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

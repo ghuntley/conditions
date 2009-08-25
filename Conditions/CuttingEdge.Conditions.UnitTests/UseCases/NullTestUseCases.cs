@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsNotNull();
+                Condition.Requires(param, "param").IsNotNull();
             });
         }
 
@@ -61,7 +61,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsNotNull();
+                Condition.Requires(param, "param").IsNotNull();
             });
         }
 
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsNull();
+                Condition.Requires(param, "param").IsNull();
             });
         }
 
@@ -103,7 +103,7 @@ namespace CuttingEdge.Conditions.UnitTests.UseCases
             () =>
             {
                 // This is what the user should write with conditions.
-                param.Requires("param").IsNull();
+                Condition.Requires(param, "param").IsNull();
             });
         }
     }

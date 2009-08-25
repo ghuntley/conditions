@@ -9,7 +9,7 @@ Below are some notes on the implementation specially for developers.
 Notes:
 	Coding style:
 		Microsoft StyleCop is used as tool to ensure a consistent coding style throughout the library.
-		The project has a Settings.SourceAnalysis xml file containing the settings for StyleCop. You can 
+		The project has a Settings.StyleCop xml file containing the settings for StyleCop. You can 
 		download StyleCop from http://code.msdn.microsoft.com/sourceanalysis. It will integrate in Visual 
 		Studio and you can validate your code by pressing Ctrl-Shift-Y. Also check out the great StyleCop
 		For Resharper plugin at http://www.codeplex.com/StyleCopForReSharper.

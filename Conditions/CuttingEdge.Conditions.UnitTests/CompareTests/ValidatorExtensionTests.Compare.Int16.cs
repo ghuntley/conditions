@@ -41,7 +41,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16InRangeTest01()
         {
             Int16 a = One;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16InRangeTest02()
         {
             Int16 a = Two;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16InRangeTest03()
         {
             Int16 a = Three;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16InRangeTest04()
         {
             Int16 a = Four;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16InRangeTest05()
         {
             Int16 a = Five;
-            a.Requires().IsInRange(Two, Four);
+            Condition.Requires(a).IsInRange(Two, Four);
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16InRangeTest06()
         {
             Int16 a = Four;
-            a.Requires().IsInRange(Two, Four, string.Empty);
+            Condition.Requires(a).IsInRange(Two, Four, string.Empty);
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Five;
             try
             {
-                a.Requires("a").IsInRange(Two, Four, "abc {0} xyz");
+                Condition.Requires(a, "a").IsInRange(Two, Four, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -110,7 +110,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotInRangeTest01()
         {
             Int16 a = One;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -119,7 +119,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotInRangeTest02()
         {
             Int16 a = Two;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -128,7 +128,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotInRangeTest03()
         {
             Int16 a = Three;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotInRangeTest04()
         {
             Int16 a = Four;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -145,7 +145,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotInRangeTest05()
         {
             Int16 a = Five;
-            a.Requires().IsNotInRange(Two, Four);
+            Condition.Requires(a).IsNotInRange(Two, Four);
         }
 
         [TestMethod]
@@ -153,7 +153,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotInRangeTest06()
         {
             Int16 a = Five;
-            a.Requires().IsNotInRange(Two, Four, string.Empty);
+            Condition.Requires(a).IsNotInRange(Two, Four, string.Empty);
         }
 
         [TestMethod]
@@ -163,7 +163,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Four;
             try
             {
-                a.Requires("a").IsNotInRange(Two, Four, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotInRange(Two, Four, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -182,7 +182,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterThanTest01()
         {
             Int16 a = One;
-            a.Requires().IsGreaterThan(Two);
+            Condition.Requires(a).IsGreaterThan(Two);
         }
 
         [TestMethod]
@@ -191,7 +191,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterThanTest02()
         {
             Int16 a = Two;
-            a.Requires().IsGreaterThan(Two);
+            Condition.Requires(a).IsGreaterThan(Two);
         }
 
         [TestMethod]
@@ -199,7 +199,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterThanTest03()
         {
             Int16 a = Three;
-            a.Requires().IsGreaterThan(Two);
+            Condition.Requires(a).IsGreaterThan(Two);
         }
 
         [TestMethod]
@@ -207,7 +207,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterThanTest04()
         {
             Int16 a = Three;
-            a.Requires().IsGreaterThan(Two, string.Empty);
+            Condition.Requires(a).IsGreaterThan(Two, string.Empty);
         }
 
         [TestMethod]
@@ -217,7 +217,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Three;
             try
             {
-                a.Requires("a").IsGreaterThan(Three, "abc {0} xyz");
+                Condition.Requires(a, "a").IsGreaterThan(Three, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -235,7 +235,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterThanTest01()
         {
             Int16 a = One;
-            a.Requires().IsNotGreaterThan(Two);
+            Condition.Requires(a).IsNotGreaterThan(Two);
         }
 
         [TestMethod]
@@ -243,7 +243,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterThanTest02()
         {
             Int16 a = Two;
-            a.Requires().IsNotGreaterThan(Two);
+            Condition.Requires(a).IsNotGreaterThan(Two);
         }
 
         [TestMethod]
@@ -252,7 +252,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterThanTest03()
         {
             Int16 a = Three;
-            a.Requires().IsNotGreaterThan(Two);
+            Condition.Requires(a).IsNotGreaterThan(Two);
         }
 
         [TestMethod]
@@ -260,7 +260,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterThanTest04()
         {
             Int16 a = Two;
-            a.Requires().IsNotGreaterThan(Two, string.Empty);
+            Condition.Requires(a).IsNotGreaterThan(Two, string.Empty);
         }
 
         [TestMethod]
@@ -270,7 +270,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Three;
             try
             {
-                a.Requires("a").IsNotGreaterThan(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotGreaterThan(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -289,7 +289,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterOrEqualTest01()
         {
             Int16 a = One;
-            a.Requires().IsGreaterOrEqual(Two);
+            Condition.Requires(a).IsGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -297,7 +297,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterOrEqualTest02()
         {
             Int16 a = Two;
-            a.Requires().IsGreaterOrEqual(Two);
+            Condition.Requires(a).IsGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -305,7 +305,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterOrEqualTest03()
         {
             Int16 a = Three;
-            a.Requires().IsGreaterOrEqual(Two);
+            Condition.Requires(a).IsGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -313,7 +313,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16GreaterOrEqualTest04()
         {
             Int16 a = Three;
-            a.Requires().IsGreaterOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsGreaterOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -323,7 +323,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = One;
             try
             {
-                a.Requires("a").IsGreaterOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsGreaterOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -341,7 +341,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterOrEqualTest01()
         {
             Int16 a = One;
-            a.Requires().IsNotGreaterOrEqual(Two);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -350,7 +350,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterOrEqualTest02()
         {
             Int16 a = Two;
-            a.Requires().IsNotGreaterOrEqual(Two);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -359,7 +359,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterOrEqualTest03()
         {
             Int16 a = Three;
-            a.Requires().IsNotGreaterOrEqual(Two);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two);
         }
 
         [TestMethod]
@@ -367,7 +367,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotGreaterOrEqualTest04()
         {
             Int16 a = One;
-            a.Requires().IsNotGreaterOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsNotGreaterOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -377,7 +377,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Three;
             try
             {
-                a.Requires("a").IsNotGreaterOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotGreaterOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -395,7 +395,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessThanTest01()
         {
             Int16 a = One;
-            a.Requires().IsLessThan(Two);
+            Condition.Requires(a).IsLessThan(Two);
         }
 
         [TestMethod]
@@ -404,7 +404,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessThanTest02()
         {
             Int16 a = Two;
-            a.Requires().IsLessThan(Two);
+            Condition.Requires(a).IsLessThan(Two);
         }
 
         [TestMethod]
@@ -413,7 +413,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessThanTest03()
         {
             Int16 a = Three;
-            a.Requires().IsLessThan(Two);
+            Condition.Requires(a).IsLessThan(Two);
         }
 
         [TestMethod]
@@ -421,7 +421,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessThanTest04()
         {
             Int16 a = Two;
-            a.Requires().IsLessThan(Three, string.Empty);
+            Condition.Requires(a).IsLessThan(Three, string.Empty);
         }
 
         [TestMethod]
@@ -431,7 +431,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Three;
             try
             {
-                a.Requires("a").IsLessThan(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsLessThan(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -450,7 +450,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessThanTest01()
         {
             Int16 a = One;
-            a.Requires().IsNotLessThan(Two);
+            Condition.Requires(a).IsNotLessThan(Two);
         }
 
         [TestMethod]
@@ -458,7 +458,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessThanTest02()
         {
             Int16 a = Two;
-            a.Requires().IsNotLessThan(Two);
+            Condition.Requires(a).IsNotLessThan(Two);
         }
 
         [TestMethod]
@@ -466,7 +466,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessThanTest03()
         {
             Int16 a = Three;
-            a.Requires().IsNotLessThan(Two);
+            Condition.Requires(a).IsNotLessThan(Two);
         }
 
         [TestMethod]
@@ -474,7 +474,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessThanTest04()
         {
             Int16 a = Two;
-            a.Requires().IsNotLessThan(Two, string.Empty);
+            Condition.Requires(a).IsNotLessThan(Two, string.Empty);
         }
 
         [TestMethod]
@@ -484,7 +484,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Two;
             try
             {
-                a.Requires("a").IsNotLessThan(Three, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotLessThan(Three, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -502,7 +502,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessOrEqualTest01()
         {
             Int16 a = One;
-            a.Requires().IsLessOrEqual(Two);
+            Condition.Requires(a).IsLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -510,7 +510,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessOrEqualTest02()
         {
             Int16 a = Two;
-            a.Requires().IsLessOrEqual(Two);
+            Condition.Requires(a).IsLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -519,7 +519,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessOrEqualTest03()
         {
             Int16 a = Three;
-            a.Requires().IsLessOrEqual(Two);
+            Condition.Requires(a).IsLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -527,7 +527,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16LessOrEqualTest04()
         {
             Int16 a = Two;
-            a.Requires().IsLessOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsLessOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -537,7 +537,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Three;
             try
             {
-                a.Requires("a").IsLessOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsLessOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -556,7 +556,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessOrEqualTest01()
         {
             Int16 a = One;
-            a.Requires().IsNotLessOrEqual(Two);
+            Condition.Requires(a).IsNotLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -565,7 +565,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessOrEqualTest02()
         {
             Int16 a = Two;
-            a.Requires().IsNotLessOrEqual(Two);
+            Condition.Requires(a).IsNotLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -573,7 +573,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessOrEqualTest03()
         {
             Int16 a = Three;
-            a.Requires().IsNotLessOrEqual(Two);
+            Condition.Requires(a).IsNotLessOrEqual(Two);
         }
 
         [TestMethod]
@@ -581,7 +581,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotLessOrEqualTest04()
         {
             Int16 a = Three;
-            a.Requires().IsNotLessOrEqual(Two, string.Empty);
+            Condition.Requires(a).IsNotLessOrEqual(Two, string.Empty);
         }
 
         [TestMethod]
@@ -591,7 +591,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Two;
             try
             {
-                a.Requires("a").IsNotLessOrEqual(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotLessOrEqual(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -610,7 +610,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16EqualToTest01()
         {
             Int16 a = One;
-            a.Requires().IsEqualTo(Two);
+            Condition.Requires(a).IsEqualTo(Two);
         }
 
         [TestMethod]
@@ -618,7 +618,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16EqualToTest02()
         {
             Int16 a = Two;
-            a.Requires().IsEqualTo(Two);
+            Condition.Requires(a).IsEqualTo(Two);
         }
 
         [TestMethod]
@@ -627,7 +627,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16EqualToTest03()
         {
             Int16 a = Three;
-            a.Requires().IsEqualTo(Two);
+            Condition.Requires(a).IsEqualTo(Two);
         }
 
         [TestMethod]
@@ -635,7 +635,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16EqualToTest04()
         {
             Int16 a = Two;
-            a.Requires().IsEqualTo(Two, string.Empty);
+            Condition.Requires(a).IsEqualTo(Two, string.Empty);
         }
 
         [TestMethod]
@@ -645,7 +645,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Three;
             try
             {
-                a.Requires("a").IsEqualTo(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsEqualTo(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -663,7 +663,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotEqualToTest01()
         {
             Int16 a = One;
-            a.Requires().IsNotEqualTo(Two);
+            Condition.Requires(a).IsNotEqualTo(Two);
         }
 
         [TestMethod]
@@ -672,7 +672,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotEqualToTest02()
         {
             Int16 a = Two;
-            a.Requires().IsNotEqualTo(Two);
+            Condition.Requires(a).IsNotEqualTo(Two);
         }
 
         [TestMethod]
@@ -680,7 +680,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotEqualToTest03()
         {
             Int16 a = Three;
-            a.Requires().IsNotEqualTo(Two);
+            Condition.Requires(a).IsNotEqualTo(Two);
         }
 
         [TestMethod]
@@ -688,7 +688,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInt16NotEqualToTest04()
         {
             Int16 a = Three;
-            a.Requires().IsNotEqualTo(Two, string.Empty);
+            Condition.Requires(a).IsNotEqualTo(Two, string.Empty);
         }
 
         [TestMethod]
@@ -698,7 +698,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             Int16 a = Two;
             try
             {
-                a.Requires("a").IsNotEqualTo(Two, "abc {0} xyz");
+                Condition.Requires(a, "a").IsNotEqualTo(Two, "abc {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)

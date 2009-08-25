@@ -28,16 +28,14 @@ namespace CuttingEdge.Conditions
     public sealed class PostconditionException : Exception
     {
         /// <summary>Initializes a new instance of the <see cref="PostconditionException"/> class.</summary>
-        public PostconditionException()
-            : this(SR.GetString(SR.PostconditionFailed))
+        public PostconditionException() : this(SR.GetString(SR.PostconditionFailed))
         {
         }
 
         /// <summary>Initializes a new instance of the <see cref="PostconditionException"/> class with a
         /// specified error message.</summary>
         /// <param name="message">The message that describes the error.</param>
-        public PostconditionException(string message)
-            : base(message)
+        public PostconditionException(string message) : base(message)
         {
         }
 
@@ -45,8 +43,7 @@ namespace CuttingEdge.Conditions
         /// <param name="message">The message that describes the error.</param>
         /// <param name="inner">The exception that is the cause of the current exception, or a null reference
         /// (Nothing in Visual Basic) if no inner exception is specified.</param>
-        public PostconditionException(string message, Exception inner)
-            : base(message, inner)
+        public PostconditionException(string message, Exception inner) : base(message, inner)
         {
         }
 
@@ -57,8 +54,7 @@ namespace CuttingEdge.Conditions
         /// the exception being thrown.</param>
         /// <param name="context">The <see cref="StreamingContext"/> that contains contextual information 
         /// about the source or destination.</param>
-        private PostconditionException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+        private PostconditionException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

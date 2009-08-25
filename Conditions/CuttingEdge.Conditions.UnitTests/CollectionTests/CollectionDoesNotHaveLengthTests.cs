@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // Queue only implements ICollection, no generic ICollection<T>
             Queue queue = new Queue();
 
-            queue.Requires().DoesNotHaveLength(0);
+            Condition.Requires(queue).DoesNotHaveLength(0);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int>();
 
-            set.Requires().DoesNotHaveLength(0);
+            Condition.Requires(set).DoesNotHaveLength(0);
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             Queue queue = new Queue();
             queue.Enqueue(1);
 
-            queue.Requires().DoesNotHaveLength(1);
+            Condition.Requires(queue).DoesNotHaveLength(1);
         }
 
         [TestMethod]
@@ -70,7 +70,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().DoesNotHaveLength(1);
+            Condition.Requires(set).DoesNotHaveLength(1);
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // HashSet only implements generic ICollection<T>, no ICollection.
             HashSet<int> set = new HashSet<int> { 1 };
 
-            set.Requires().DoesNotHaveLength(0);
+            Condition.Requires(set).DoesNotHaveLength(0);
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         {
             IEnumerable list = null;
 
-            list.Requires().DoesNotHaveLength(1, string.Empty);
+            Condition.Requires(list).DoesNotHaveLength(1, string.Empty);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             IEnumerable list = null;
             try
             {
-                list.Requires("list").DoesNotHaveLength(0, "the given {0} should not have 0 elements");
+                Condition.Requires(list, "list").DoesNotHaveLength(0, "the given {0} should not have 0 elements");
             }
             catch (ArgumentException ex)
             {

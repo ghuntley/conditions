@@ -33,7 +33,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
             ComparableClass max = null;
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = null;
             ComparableClass min = null;
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -85,7 +85,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = null;
             ComparableClass min = null;
             ComparableClass max = null;
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             SqlInt32 value = 3;
             SqlInt32 min = 1;
             SqlInt32 max = 10;
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             string value = "c";
             string min = "a";
             string max = "j";
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             int? value = 3;
             int? min = null;
             int? max = 10;
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -129,7 +129,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInRangeTest17()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsInRange(DayOfWeek.Sunday, DayOfWeek.Saturday);
+            Condition.Requires(friday).IsInRange(DayOfWeek.Sunday, DayOfWeek.Saturday);
         }
 
         [TestMethod]
@@ -148,7 +148,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             int? value = 10;
             int? min = null;
             int? max = 3;
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -162,7 +162,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            value.Requires().IsInRange(min, max);
+            Condition.Requires(value).IsInRange(min, max);
         }
 
         [TestMethod]
@@ -171,7 +171,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsInRangeTest20()
         {
             DayOfWeek weekDay = DayOfWeek.Saturday;
-            weekDay.Requires().IsInRange(DayOfWeek.Monday, DayOfWeek.Friday);
+            Condition.Requires(weekDay).IsInRange(DayOfWeek.Monday, DayOfWeek.Friday);
         }
 
         #endregion // IsInRange
@@ -186,7 +186,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -196,7 +196,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -207,7 +207,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -217,7 +217,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
             ComparableClass max = null;
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -228,7 +228,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = null;
             ComparableClass min = null;
             ComparableClass max = new ComparableClass(10);
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -239,7 +239,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             ComparableClass value = null;
             ComparableClass min = null;
             ComparableClass max = null;
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -251,7 +251,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             SqlInt32 value = 3;
             SqlInt32 min = 1;
             SqlInt32 max = 10;
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -262,7 +262,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             string value = "c";
             string min = "a";
             string max = "j";
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -273,7 +273,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             int? value = 3;
             int? min = null;
             int? max = 10;
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -284,7 +284,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             int min = 10; // min and max are normal integers
             int max = 100;
 
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -292,7 +292,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotInRangeTest18()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotInRange(DayOfWeek.Sunday, DayOfWeek.Thursday);
+            Condition.Requires(friday).IsNotInRange(DayOfWeek.Sunday, DayOfWeek.Thursday);
         }
 
         [TestMethod]
@@ -302,7 +302,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             int? value = 10;
             int? min = null;
             int? max = 3;
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         [TestMethod]
@@ -311,7 +311,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotInRangeTest20()
         {
             DayOfWeek wednesday = DayOfWeek.Wednesday;
-            wednesday.Requires().IsNotInRange(DayOfWeek.Monday, DayOfWeek.Friday);
+            Condition.Requires(wednesday).IsNotInRange(DayOfWeek.Monday, DayOfWeek.Friday);
         }
 
         [TestMethod]
@@ -323,7 +323,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             int min = 10; // min and max are normal integers
             int max = 100;
 
-            value.Requires().IsNotInRange(min, max);
+            Condition.Requires(value).IsNotInRange(min, max);
         }
 
         #endregion // IsNotInRange
@@ -336,7 +336,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsGreaterThan(min);
+            Condition.Requires(value).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -346,7 +346,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsGreaterThan(min);
+            Condition.Requires(value).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -355,7 +355,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
-            value.Requires().IsGreaterThan(min);
+            Condition.Requires(value).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -365,7 +365,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = null;
-            value.Requires().IsGreaterThan(min);
+            Condition.Requires(value).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -374,7 +374,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterThanTest09()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsGreaterThan(value);
+            Condition.Requires(value).IsGreaterThan(value);
         }
 
         [TestMethod]
@@ -382,7 +382,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterThanTest10()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsGreaterThan(DayOfWeek.Sunday);
+            Condition.Requires(friday).IsGreaterThan(DayOfWeek.Sunday);
         }
 
         [TestMethod]
@@ -394,7 +394,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsGreaterThan(min);
+            Condition.Requires(a).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -407,7 +407,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsGreaterThan(min);
+            Condition.Requires(a).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -419,7 +419,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsGreaterThan(min);
+            Condition.Requires(a).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -432,7 +432,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsGreaterThan(min);
+            Condition.Requires(a).IsGreaterThan(min);
         }
 
         [TestMethod]
@@ -441,7 +441,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterThanTest15()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsGreaterThan(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsGreaterThan(DayOfWeek.Saturday);
         }
 
         #endregion // IsGreaterThan
@@ -454,7 +454,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(1);
             ComparableClass min = new ComparableClass(3);
-            value.Requires().IsNotGreaterThan(min);
+            Condition.Requires(value).IsNotGreaterThan(min);
         }
 
         [TestMethod]
@@ -464,7 +464,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
-            value.Requires().IsNotGreaterThan(min);
+            Condition.Requires(value).IsNotGreaterThan(min);
         }
 
         [TestMethod]
@@ -473,7 +473,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsNotGreaterThan(min);
+            Condition.Requires(value).IsNotGreaterThan(min);
         }
 
         [TestMethod]
@@ -482,7 +482,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = null;
-            value.Requires().IsNotGreaterThan(min);
+            Condition.Requires(value).IsNotGreaterThan(min);
         }
 
         [TestMethod]
@@ -490,7 +490,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterThanTest09()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsNotGreaterThan(value);
+            Condition.Requires(value).IsNotGreaterThan(value);
         }
 
         [TestMethod]
@@ -498,7 +498,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterThanTest10()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotGreaterThan(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsNotGreaterThan(DayOfWeek.Saturday);
         }
 
         [TestMethod]
@@ -510,7 +510,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsNotGreaterThan(max);
+            Condition.Requires(a).IsNotGreaterThan(max);
         }
 
         [TestMethod]
@@ -523,7 +523,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsNotGreaterThan(max);
+            Condition.Requires(a).IsNotGreaterThan(max);
         }
 
         [TestMethod]
@@ -535,7 +535,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsNotGreaterThan(max);
+            Condition.Requires(a).IsNotGreaterThan(max);
         }
 
         [TestMethod]
@@ -548,7 +548,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             // There is a special overload that takes T's instead of Nullable<T>'s, because C# type inference
             // doesn't work well with types that can implicitly be converted to types that are arguments in
             // method overloads in the candidate set.
-            a.Requires().IsNotGreaterThan(max);
+            Condition.Requires(a).IsNotGreaterThan(max);
         }
 
         [TestMethod]
@@ -557,7 +557,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterThanTest15()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotGreaterThan(DayOfWeek.Thursday);
+            Condition.Requires(friday).IsNotGreaterThan(DayOfWeek.Thursday);
         }
 
         #endregion // IsNotGreaterThan
@@ -570,7 +570,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(value).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -580,7 +580,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(value).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -589,7 +589,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
-            value.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(value).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -597,7 +597,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterOrEqualTest08()
         {
             ComparableClass value = null;
-            value.Requires().IsGreaterOrEqual(value);
+            Condition.Requires(value).IsGreaterOrEqual(value);
         }
 
         [TestMethod]
@@ -607,7 +607,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(Int32.MinValue);
-            value.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(value).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -616,7 +616,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(Int32.MinValue);
             ComparableClass min = null;
-            value.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(value).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -624,7 +624,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterOrEqualTest11()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsGreaterOrEqual(value);
+            Condition.Requires(value).IsGreaterOrEqual(value);
         }
 
         [TestMethod]
@@ -633,7 +633,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int min = 2; // min is a normal integer
-            a.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(a).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -643,7 +643,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 2;
             int min = 3; // min is a normal integer
-            a.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(a).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -652,7 +652,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int? min = 2;
-            a.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(a).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -662,7 +662,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 2;
             int? min = 3;
-            a.Requires().IsGreaterOrEqual(min);
+            Condition.Requires(a).IsGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -670,7 +670,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterOrEqualTest16()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsGreaterOrEqual(friday);
+            Condition.Requires(friday).IsGreaterOrEqual(friday);
         }
 
         [TestMethod]
@@ -679,7 +679,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsGreaterOrEqualTest17()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsGreaterOrEqual(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsGreaterOrEqual(DayOfWeek.Saturday);
         }
 
         #endregion // IsGreaterOrEqual
@@ -693,7 +693,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass max = new ComparableClass(1);
-            value.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(value).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -702,7 +702,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass max = new ComparableClass(1);
-            value.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(value).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -712,7 +712,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass max = null;
-            value.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(value).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -721,7 +721,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterOrEqualTest08()
         {
             ComparableClass value = null;
-            value.Requires().IsNotGreaterOrEqual(value);
+            Condition.Requires(value).IsNotGreaterOrEqual(value);
         }
 
         [TestMethod]
@@ -730,7 +730,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(Int32.MinValue);
-            value.Requires().IsNotGreaterOrEqual(min);
+            Condition.Requires(value).IsNotGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -740,7 +740,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(Int32.MinValue);
             ComparableClass max = null;
-            value.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(value).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -749,7 +749,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterOrEqualTest11()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsNotGreaterOrEqual(value);
+            Condition.Requires(value).IsNotGreaterOrEqual(value);
         }
 
         [TestMethod]
@@ -759,7 +759,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int max = 2; // max is a normal integer
-            a.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(a).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -768,7 +768,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 2;
             int max = 3; // max is a normal integer
-            a.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(a).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -778,7 +778,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int? min = 2;
-            a.Requires().IsNotGreaterOrEqual(min);
+            Condition.Requires(a).IsNotGreaterOrEqual(min);
         }
 
         [TestMethod]
@@ -787,7 +787,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 2;
             int? max = 3;
-            a.Requires().IsNotGreaterOrEqual(max);
+            Condition.Requires(a).IsNotGreaterOrEqual(max);
         }
 
         [TestMethod]
@@ -796,7 +796,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterOrEqualTest16()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotGreaterOrEqual(friday);
+            Condition.Requires(friday).IsNotGreaterOrEqual(friday);
         }
 
         [TestMethod]
@@ -804,7 +804,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotGreaterOrEqualTest17()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotGreaterOrEqual(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsNotGreaterOrEqual(DayOfWeek.Saturday);
         }
 
         #endregion // IsNotGreaterOrEqual
@@ -818,7 +818,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass max = new ComparableClass(1);
-            value.Requires().IsLessThan(max);
+            Condition.Requires(value).IsLessThan(max);
         }
 
         [TestMethod]
@@ -827,7 +827,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass max = new ComparableClass(1);
-            value.Requires().IsLessThan(max);
+            Condition.Requires(value).IsLessThan(max);
         }
 
         [TestMethod]
@@ -837,7 +837,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass max = null;
-            value.Requires().IsLessThan(max);
+            Condition.Requires(value).IsLessThan(max);
         }
 
         [TestMethod]
@@ -846,7 +846,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessThanTest08()
         {
             ComparableClass value = null;
-            value.Requires().IsLessThan(null);
+            Condition.Requires(value).IsLessThan(null);
         }
 
         [TestMethod]
@@ -855,7 +855,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessThanTest09()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsLessThan(value);
+            Condition.Requires(value).IsLessThan(value);
         }
 
         [TestMethod]
@@ -864,7 +864,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int max = 4; // max is a normal integer
-            a.Requires().IsLessThan(max);
+            Condition.Requires(a).IsLessThan(max);
         }
 
         [TestMethod]
@@ -874,7 +874,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int max = 3; // max is a normal integer
-            a.Requires().IsLessThan(max);
+            Condition.Requires(a).IsLessThan(max);
         }
 
         [TestMethod]
@@ -883,7 +883,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int? max = 4;
-            a.Requires().IsLessThan(max);
+            Condition.Requires(a).IsLessThan(max);
         }
 
         [TestMethod]
@@ -893,7 +893,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int? max = 3;
-            a.Requires().IsLessThan(max);
+            Condition.Requires(a).IsLessThan(max);
         }
 
         [TestMethod]
@@ -901,7 +901,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessThanTest14()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsLessThan(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsLessThan(DayOfWeek.Saturday);
         }
 
         [TestMethod]
@@ -910,7 +910,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessThanTest15()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsLessThan(DayOfWeek.Thursday);
+            Condition.Requires(friday).IsLessThan(DayOfWeek.Thursday);
         }
 
         #endregion // IsLessThan
@@ -923,7 +923,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsNotLessThan(min);
+            Condition.Requires(value).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -933,7 +933,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsNotLessThan(min);
+            Condition.Requires(value).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -942,7 +942,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
-            value.Requires().IsNotLessThan(min);
+            Condition.Requires(value).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -950,7 +950,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessThanTest08()
         {
             ComparableClass value = null;
-            value.Requires().IsNotLessThan(null);
+            Condition.Requires(value).IsNotLessThan(null);
         }
 
         [TestMethod]
@@ -958,7 +958,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessThanTest09()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsNotLessThan(value);
+            Condition.Requires(value).IsNotLessThan(value);
         }
 
         [TestMethod]
@@ -968,7 +968,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int min = 4; // min is a normal integer
-            a.Requires().IsNotLessThan(min);
+            Condition.Requires(a).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -977,7 +977,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int min = 3; // min is a normal integer
-            a.Requires().IsNotLessThan(min);
+            Condition.Requires(a).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -987,7 +987,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int? min = 4;
-            a.Requires().IsNotLessThan(min);
+            Condition.Requires(a).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -996,7 +996,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int? min = 3;
-            a.Requires().IsNotLessThan(min);
+            Condition.Requires(a).IsNotLessThan(min);
         }
 
         [TestMethod]
@@ -1005,7 +1005,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessThanTest14()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotLessThan(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsNotLessThan(DayOfWeek.Saturday);
         }
 
         [TestMethod]
@@ -1013,7 +1013,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessThanTest15()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotLessThan(DayOfWeek.Thursday);
+            Condition.Requires(friday).IsNotLessThan(DayOfWeek.Thursday);
         }
 
         #endregion // IsNotLessThan
@@ -1027,7 +1027,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass max = new ComparableClass(1);
-            value.Requires().IsLessOrEqual(max);
+            Condition.Requires(value).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1036,7 +1036,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass max = new ComparableClass(1);
-            value.Requires().IsLessOrEqual(max);
+            Condition.Requires(value).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1046,7 +1046,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass max = null;
-            value.Requires().IsLessOrEqual(max);
+            Condition.Requires(value).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1054,7 +1054,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessOrEqualTest07()
         {
             ComparableClass value = null;
-            value.Requires().IsLessOrEqual(value);
+            Condition.Requires(value).IsLessOrEqual(value);
         }
 
         [TestMethod]
@@ -1063,7 +1063,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass max = new ComparableClass(Int32.MinValue);
-            value.Requires().IsLessOrEqual(max);
+            Condition.Requires(value).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1073,7 +1073,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(Int32.MinValue);
             ComparableClass max = null;
-            value.Requires().IsLessOrEqual(max);
+            Condition.Requires(value).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1081,7 +1081,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessOrEqualTest10()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsLessOrEqual(value);
+            Condition.Requires(value).IsLessOrEqual(value);
         }
 
         [TestMethod]
@@ -1090,7 +1090,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int max = 4; // max is a normal integer
-            a.Requires().IsLessOrEqual(max);
+            Condition.Requires(a).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1100,7 +1100,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int max = 3; // max is a normal integer
-            a.Requires().IsLessOrEqual(max);
+            Condition.Requires(a).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1109,7 +1109,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int? max = 4;
-            a.Requires().IsLessOrEqual(max);
+            Condition.Requires(a).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1119,7 +1119,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int? max = 3;
-            a.Requires().IsLessOrEqual(max);
+            Condition.Requires(a).IsLessOrEqual(max);
         }
 
         [TestMethod]
@@ -1127,7 +1127,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessOrEqualTest15()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsLessOrEqual(friday);
+            Condition.Requires(friday).IsLessOrEqual(friday);
         }
 
         [TestMethod]
@@ -1136,7 +1136,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsLessOrEqualTest16()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsLessOrEqual(DayOfWeek.Thursday);
+            Condition.Requires(friday).IsLessOrEqual(DayOfWeek.Thursday);
         }
 
         #endregion // IsLessOrEqual
@@ -1149,7 +1149,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(value).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1159,7 +1159,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(1);
-            value.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(value).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1168,7 +1168,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(3);
             ComparableClass min = null;
-            value.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(value).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1177,7 +1177,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessOrEqualTest07()
         {
             ComparableClass value = null;
-            value.Requires().IsNotLessOrEqual(value);
+            Condition.Requires(value).IsNotLessOrEqual(value);
         }
 
         [TestMethod]
@@ -1187,7 +1187,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = null;
             ComparableClass min = new ComparableClass(Int32.MinValue);
-            value.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(value).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1196,7 +1196,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass value = new ComparableClass(Int32.MinValue);
             ComparableClass min = null;
-            value.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(value).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1205,7 +1205,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessOrEqualTest10()
         {
             ComparableClass value = new ComparableClass(0);
-            value.Requires().IsNotLessOrEqual(value);
+            Condition.Requires(value).IsNotLessOrEqual(value);
         }
 
         [TestMethod]
@@ -1215,7 +1215,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int min = 4; // min is a normal integer
-            a.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(a).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1224,7 +1224,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int min = 3; // min is a normal integer
-            a.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(a).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1234,7 +1234,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int? min = 4;
-            a.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(a).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1243,7 +1243,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int? min = 3;
-            a.Requires().IsNotLessOrEqual(min);
+            Condition.Requires(a).IsNotLessOrEqual(min);
         }
 
         [TestMethod]
@@ -1252,7 +1252,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessOrEqualTest15()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotLessOrEqual(friday);
+            Condition.Requires(friday).IsNotLessOrEqual(friday);
         }
 
         [TestMethod]
@@ -1260,7 +1260,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotLessOrEqualTest16()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotLessOrEqual(DayOfWeek.Thursday);
+            Condition.Requires(friday).IsNotLessOrEqual(DayOfWeek.Thursday);
         }
 
         #endregion // IsNotLessOrEqual
@@ -1272,7 +1272,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsEqualToTest5()
         {
             ComparableClass a = new ComparableClass();
-            a.Requires().IsEqualTo(a);
+            Condition.Requires(a).IsEqualTo(a);
         }
 
         [TestMethod]
@@ -1282,7 +1282,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass a = null;
             ComparableClass b = new ComparableClass();
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1292,7 +1292,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass a = new ComparableClass();
             ComparableClass b = null;
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1301,7 +1301,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass a = null;
             ComparableClass b = null;
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1310,7 +1310,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int b = (int)a; // b is a normal integer
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1318,7 +1318,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsEqualToTest10()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsEqualTo(friday);
+            Condition.Requires(friday).IsEqualTo(friday);
         }
 
         [TestMethod]
@@ -1328,7 +1328,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = null;
             int b = 4; // b is a normal integer
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1338,7 +1338,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = null;
             int? b = 4;
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1347,7 +1347,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 6;
             int? b = a;
-            a.Requires().IsEqualTo(b);
+            Condition.Requires(a).IsEqualTo(b);
         }
 
         [TestMethod]
@@ -1356,7 +1356,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsEqualToTest14()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsEqualTo(DayOfWeek.Saturday);
+            Condition.Requires(friday).IsEqualTo(DayOfWeek.Saturday);
         }
 
         #endregion // IsEqualTo
@@ -1369,7 +1369,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotEqualToTest5()
         {
             ComparableClass a = new ComparableClass();
-            a.Requires().IsNotEqualTo(a);
+            Condition.Requires(a).IsNotEqualTo(a);
         }
 
         [TestMethod]
@@ -1378,7 +1378,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass a = null;
             ComparableClass b = new ComparableClass();
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1387,7 +1387,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass a = new ComparableClass();
             ComparableClass b = null;
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1397,7 +1397,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             ComparableClass a = null;
             ComparableClass b = null;
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1406,7 +1406,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 3;
             int b = 4;
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1414,7 +1414,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotEqualToTest10()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotEqualTo(DayOfWeek.Sunday);
+            Condition.Requires(friday).IsNotEqualTo(DayOfWeek.Sunday);
         }
 
         [TestMethod]
@@ -1424,7 +1424,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = null;
             int? b = null;
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1433,7 +1433,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = null;
             int? b = 4;
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1443,7 +1443,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         {
             int? a = 4;
             int b = 4;
-            a.Requires().IsNotEqualTo(b);
+            Condition.Requires(a).IsNotEqualTo(b);
         }
 
         [TestMethod]
@@ -1452,7 +1452,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         public void IsNotEqualToTest14()
         {
             DayOfWeek friday = DayOfWeek.Friday;
-            friday.Requires().IsNotEqualTo(friday);
+            Condition.Requires(friday).IsNotEqualTo(friday);
         }
 
         #endregion // IsNotEqualTo

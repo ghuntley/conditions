@@ -38,7 +38,7 @@ namespace CuttingEdge.Conditions
         /// <paramref name="value"/> and "value" as argument name.</returns>
         /// <example>
         /// The following example shows how to use the <b>Requires</b> extension method.
-        /// <code>
+        /// <code><![CDATA[
         /// using CuttingEdge.Conditions;
         /// 
         /// public class Person
@@ -51,15 +51,15 @@ namespace CuttingEdge.Conditions
         ///         set
         ///         {
         ///             // Throws an ArgumentOutOfRangeException when value is less than 0
-        ///             value.Requires().IsGreaterOrEqual(0);
+        ///             Condition.Requires(value).IsGreaterOrEqual(0);
         ///             this.age = value;
         ///         }
         ///     }
         /// }
-        /// </code>
+        /// ]]></code>
         /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static ConditionValidator<T> Requires<T>(this /*_*/ T value)
+        public static ConditionValidator<T> Requires<T>(T value)
         {
             return new RequiresValidator<T>("value", value);
         }
@@ -75,7 +75,7 @@ namespace CuttingEdge.Conditions
         /// <paramref name="value"/> and <paramref name="argumentName"/>.</returns>
         /// <example>
         /// The following example shows how to use the <b>Requires</b> extension method.
-        /// <code>
+        /// <code><![CDATA[
         /// using CuttingEdge.Conditions;
         /// 
         /// public class Point
@@ -86,10 +86,10 @@ namespace CuttingEdge.Conditions
         ///     public Point(int x, int y)
         ///     {
         ///         // Throws an ArgumentOutOfRangeException when x is less than 0
-        ///         x.Requires("x").IsGreaterOrEqual(0);
+        ///         Condition.Requires(x, "x").IsGreaterOrEqual(0);
         ///         
         ///         // Throws an ArgumentOutOfRangeException when y is less than 0
-        ///         y.Requires("y").IsGreaterOrEqual(0);
+        ///         Condition.Requires(y, "y").IsGreaterOrEqual(0);
         ///         
         ///         this.x = x;
         ///         this.y = y;
@@ -98,10 +98,10 @@ namespace CuttingEdge.Conditions
         ///     public int X { get { return this.x; } }
         ///     public int Y { get { return this.y; } }
         /// }
-        /// </code>
+        /// ]]></code>
         /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static ConditionValidator<T> Requires<T>(this /*_*/ T value, string argumentName)
+        public static ConditionValidator<T> Requires<T>(T value, string argumentName)
         {
             return new RequiresValidator<T>(argumentName, value);
         }
@@ -115,9 +115,10 @@ namespace CuttingEdge.Conditions
         /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
         /// <paramref name="value"/> and "value" as argument name.</returns>
         /// <example>
-        /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> overload.
+        /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> 
+        /// overload.
         /// </example>
-        public static ConditionValidator<T> Ensures<T>(this /*_*/ T value)
+        public static ConditionValidator<T> Ensures<T>(T value)
         {
             return new EnsuresValidator<T>("value", value);
         }
@@ -139,13 +140,13 @@ namespace CuttingEdge.Conditions
         /// objects implementing the <b>IObjectBuilder</b> interface and it <i>ensures</i> that the given
         /// contract is fulfilled, by checking the return value of the called <b>BuildObject</b> of the 
         /// wrapped <b>IObjectBuilder</b>.
-        /// <code>
+        /// <code><![CDATA[
         /// using CuttingEdge.Conditions;
         /// 
         /// public interface IObjectBuilder
         /// {
-        ///     /// &lt;summary>Builds an object.&lt;/summary>
-        ///     /// &lt;returns>Returns a newly built object. Will not return null.&lt;/returns>
+        ///     /// <summary>Builds an object.</summary>
+        ///     /// <returns>Returns a newly built object. Will not return null.</returns>
         ///     object BuildObject();
         /// }
         /// 
@@ -158,7 +159,7 @@ namespace CuttingEdge.Conditions
         ///         // When obj == null, a PostconditionException is thrown, with the following message:
         ///         // "Postcondition 'the value returned by IObjectBuilder.BuildObject() should not be null'
         ///         // failed."
-        ///         obj.Ensures("the value returned by IObjectBuilder.BuildObject()")
+        ///         Conditions.Ensures(obj, "the value returned by IObjectBuilder.BuildObject()")
         ///             .IsNotNull();
         /// 
         ///         return obj;
@@ -166,25 +167,25 @@ namespace CuttingEdge.Conditions
         /// 
         ///     private readonly IObjectBuilder wrappedObjectBuilder;
         ///
-        ///     /// &lt;summary>
-        ///     /// Initializes a new instance of the &lt;see cref="ObjectBuilderValidator"/> class.
-        ///     /// &lt;/summary>
-        ///     /// &lt;param name="objectBuilder">The object builder.&lt;/param>
-        ///     /// &lt;exception cref="ArgumentNullException">
-        ///     /// Thrown when &lt;paramref name="objectBuilder"/> is a null reference.
-        ///     /// &lt;/exception>
+        ///     /// <summary>
+        ///     /// Initializes a new instance of the <see cref="ObjectBuilderValidator"/> class.
+        ///     /// </summary>
+        ///     /// <param name="objectBuilder">The object builder.</param>
+        ///     /// <exception cref="ArgumentNullException">
+        ///     /// Thrown when <paramref name="objectBuilder"/> is a null reference.
+        ///     /// </exception>
         ///     public ObjectBuilderWrapper(IObjectBuilder objectBuilder)
         ///     {
         ///         // Throws a ArgumentNullException when objectBuilder == null.
-        ///         objectBuilder.Requires("objectBuilder").IsNotNull();
+        ///         Condition.Requires(objectBuilder, "objectBuilder").IsNotNull();
         /// 
         ///         this.wrappedObjectBuilder = objectBuilder;
         ///     }
         /// }
-        /// </code>
+        /// ]]></code>
         /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static ConditionValidator<T> Ensures<T>(this /*_*/ T value, string argumentName)
+        public static ConditionValidator<T> Ensures<T>(T value, string argumentName)
         {
             return new EnsuresValidator<T>(argumentName, value);
         }

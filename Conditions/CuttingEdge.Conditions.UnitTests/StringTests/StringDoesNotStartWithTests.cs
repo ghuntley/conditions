@@ -34,7 +34,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotStartWithTest01()
         {
             string a = "test";
-            a.Requires().DoesNotStartWith(a);
+            Condition.Requires(a).DoesNotStartWith(a);
         }
 
         [TestMethod]
@@ -43,7 +43,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotStartWithTest02()
         {
             string a = "test";
-            a.Requires().DoesNotStartWith("tes");
+            Condition.Requires(a).DoesNotStartWith("tes");
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = "test";
             // A null value will never be found
-            a.Requires().DoesNotStartWith(null);
+            Condition.Requires(a).DoesNotStartWith(null);
         }
 
         [TestMethod]
@@ -62,7 +62,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = "test";
             // An empty string will always be found
-            a.Requires().DoesNotStartWith(String.Empty);
+            Condition.Requires(a).DoesNotStartWith(String.Empty);
         }
 
         [TestMethod]
@@ -71,7 +71,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null string only contains other null strings.
-            a.Requires().DoesNotStartWith(String.Empty);
+            Condition.Requires(a).DoesNotStartWith(String.Empty);
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotStartWithTest06()
         {
             string a = null;
-            a.Requires().DoesNotStartWith(null);
+            Condition.Requires(a).DoesNotStartWith(null);
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotStartWithTest07()
         {
             string a = "test";
-            a.Requires().DoesNotStartWith("test me");
+            Condition.Requires(a).DoesNotStartWith("test me");
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             try
             {
                 string a = "test";
-                a.Requires("a").DoesNotStartWith("test");
+                Condition.Requires(a, "a").DoesNotStartWith("test");
             }
             catch (Exception ex)
             {
@@ -115,7 +115,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void DoesNotStartWithTest09()
         {
             string a = "test";
-            a.Requires().DoesNotStartWith("test me", string.Empty);
+            Condition.Requires(a).DoesNotStartWith("test me", string.Empty);
         }
 
         [TestMethod]
@@ -125,7 +125,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = "test";
             try
             {
-                a.Requires("a").DoesNotStartWith("test", "qwe {0} xyz");
+                Condition.Requires(a, "a").DoesNotStartWith("test", "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
@@ -150,7 +150,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
                 // see: http://msdn.microsoft.com/en-us/library/ms973919.aspx#stringsinnet20_topic5
                 string turkishUpperCase = "HI";
 
-                a.Requires().DoesNotStartWith(turkishUpperCase, StringComparison.CurrentCultureIgnoreCase);
+                Condition.Requires(a).DoesNotStartWith(turkishUpperCase, StringComparison.CurrentCultureIgnoreCase);
             }
             finally
             {

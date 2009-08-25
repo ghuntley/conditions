@@ -33,21 +33,21 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         internal static void CollectionDoesNotContainShouldCompileTest01()
         {
             int[] c = new int[0];
-            c.Requires().DoesNotContain(1);
+            Condition.Requires(c).DoesNotContain(1);
         }
 
         // Calling DoesNotContain on a Collection should compile.
         internal static void CollectionDoesNotContainShouldCompileTest02()
         {
             Collection<int> c = new Collection<int>();
-            c.Requires().DoesNotContain(1);
+            Condition.Requires(c).DoesNotContain(1);
         }
 
         // Calling DoesNotContain on an IEnumerable should compile.
         internal static void CollectionDoesNotContainShouldCompileTest03()
         {
             IEnumerable<int> c = new Collection<int>();
-            c.Requires().DoesNotContain(1);
+            Condition.Requires(c).DoesNotContain(1);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest01()
         {
             Collection<int> c = null;
-            c.Requires().DoesNotContain(1);
+            Condition.Requires(c).DoesNotContain(1);
         }
 
         [TestMethod]
@@ -63,7 +63,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest02()
         {
             Collection<int> c = new Collection<int>();
-            c.Requires().DoesNotContain(1);
+            Condition.Requires(c).DoesNotContain(1);
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest03()
         {
             Collection<int> c = new Collection<int> { 1 };
-            c.Requires().DoesNotContain(1);
+            Condition.Requires(c).DoesNotContain(1);
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest04()
         {
             ArrayList c = new ArrayList { 1, 2, 3, 4 };
-            c.Requires().DoesNotContain((object)5);
+            Condition.Requires(c).DoesNotContain((object)5);
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest05()
         {
             ArrayList c = new ArrayList { 1, 2, 3, 4 };
-            c.Requires().DoesNotContain((object)4);
+            Condition.Requires(c).DoesNotContain((object)4);
         }
 
         [TestMethod]
@@ -97,7 +97,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest06()
         {
             Collection<int> c = new Collection<int>();
-            c.Requires().DoesNotContain(1, string.Empty);
+            Condition.Requires(c).DoesNotContain(1, string.Empty);
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             Collection<int> c = new Collection<int> { 1 };
             try
             {
-                c.Requires("c").DoesNotContain(1, "{0} contains the value 1 while it shouldn't");
+                Condition.Requires(c, "c").DoesNotContain(1, "{0} contains the value 1 while it shouldn't");
             }
             catch (ArgumentException ex)
             {
@@ -120,7 +120,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
         public void CollectionDoesNotContainTest08()
         {
             ArrayList c = new ArrayList { 1, 2, 3, 4 };
-            c.Requires().DoesNotContain((object)5, string.Empty);
+            Condition.Requires(c).DoesNotContain((object)5, string.Empty);
         }
 
         [TestMethod]
@@ -130,7 +130,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             ArrayList c = new ArrayList { 1, 2, 3, 4 };
             try
             {
-                c.Requires("c").DoesNotContain((object)1, "{0} contains the value 1 while it shouldn't");
+                Condition.Requires(c, "c").DoesNotContain((object)1, "{0} contains the value 1 while it shouldn't");
             }
             catch (ArgumentException ex)
             {
@@ -153,7 +153,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             // DoesNotContain should succeed, because 3 should not be in the list while iterating over it.
             // Call the generic DoesNotContain<T>(Validator<T>, T) overload.
-            set.Requires().DoesNotContain(3);
+            Condition.Requires(set).DoesNotContain(3);
         }
 
         [TestMethod]
@@ -171,7 +171,7 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 
             // DoesNotContain should succeed, because 3 should not be in the list while iterating over it.
             // Call the non-generic DoesNotContain<T>(Validator<T>, object) overload.
-            set.Requires().DoesNotContain((object)3);
+            Condition.Requires(set).DoesNotContain((object)3);
         }
     }
 }

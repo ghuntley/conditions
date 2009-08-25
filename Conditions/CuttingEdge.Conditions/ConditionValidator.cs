@@ -30,59 +30,60 @@ namespace CuttingEdge.Conditions
     /// the class should be created by the <see cref="Condition.Requires{T}(T)">Requires</see> and
     /// <see cref="Condition.Ensures{T}(T)">Ensures</see> extension methods.
     /// </summary>
-    /// <remarks>
-    /// This class is abstract and has an internal constructor. It can't be created or inherited from.
-    /// </remarks>
+    /// <typeparam name="T">The type of the argument to be validated</typeparam>
     /// <example>
     /// The following example shows how to use <b>CuttingEdge.Conditions</b>.
-    /// <code>
+    /// <code><![CDATA[
+    /// using System.Collections;
+    /// 
     /// using CuttingEdge.Conditions;
     /// 
     /// public class ExampleClass
     /// {
-    ///     public ICollection GetData(Nullable&lt;int&gt; id, string xml, ICollection col)
+    ///     private enum StateType { Uninitialized = 0, Initialized };
+    ///     
+    ///     private StateType currentState;
+    /// 
+    ///     public ICollection GetData(int? id, string xml, IEnumerable col)
     ///     {
     ///         // Check all preconditions:
-    ///         id.Requires("id")
+    ///         Condition.Requires(id, "id")
     ///             .IsNotNull()          // throws ArgumentNullException on failure
     ///             .IsInRange(1, 999)    // ArgumentOutOfRangeException on failure
     ///             .IsNotEqualTo(128);   // throws ArgumentException on failure
     /// 
-    ///         xml.Requires("xml")
-    ///             .StartsWith("&lt;data&gt;") // throws ArgumentException on failure
-    ///             .EndsWith("&lt;/data&gt;"); // throws ArgumentException on failure
+    ///         Condition.Requires(xml, "xml")
+    ///             .StartsWith("<data>") // throws ArgumentException on failure
+    ///             .EndsWith("</data>"); // throws ArgumentException on failure
     /// 
-    ///         col.Requires("col")
+    ///         Condition.Requires(col, "col")
     ///             .IsNotNull()          // throws ArgumentNullException on failure
     ///             .IsEmpty();           // throws ArgumentException on failure
     /// 
-    ///         this._disposed.Requires().Otherwise&lt;ObjectDisposedException>(this.GetType().Name)
-    ///             .IsEqualsTo(false);
-    ///             
-    ///         this.currentState.Requires()
-    ///             .Otherwise&lt;InvalidOperationException>("Current state is invalid")
-    ///             .IsGreaterThan(StateType.Uninitialized);
+    ///         Condition.Requires(this.currentState)
+    ///             .Otherwise<InvalidOperationException>()
+    ///             .IsNotEqualTo(StateType.Uninitialized); // throws InvalidOperationException on failure
     /// 
     ///         // Do some work
     /// 
     ///         // Example: Call a method that should return a not null ICollection
-    ///         object result = BuildResults(xml, collection);
+    ///         object result = BuildResults(xml, col);
     /// 
     ///         // Check all postconditions:
     ///         // A PostconditionException will be thrown at failure.
-    ///         result.Ensures("result")
+    ///         Condition.Ensures(result, "result")
     ///             .IsNotNull()
     ///             .IsOfType(typeof(ICollection));
     /// 
     ///         return result as ICollection;
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// The following code examples shows how to extend the library with your own 'Invariant' entry point
     /// method. The first example shows a class with an Add method that validates the class state (the
     /// class invariants) before adding the <b>Person</b> object to the internal array and that code should
     /// throw an <see cref="InvalidOperationException"/>.
-    /// <code>
+    /// <code><![CDATA[
     /// using CuttingEdge.Conditions;
     /// 
     /// public class Person { }
@@ -97,10 +98,10 @@ namespace CuttingEdge.Conditions
     ///     public void Add(Person person)
     ///     {
     ///         // Throws a ArgumentNullException when person == null
-    ///         person.Requires("person").IsNotNull();
+    ///         Condition.Requires(person, "person").IsNotNull();
     ///         
     ///         // Throws an InvalidOperationException on failure
-    ///         this.Count.Invariant("Count").IsLessOrEqual(this.Capacity);
+    ///         Invariants.Invariant(this.Count, "Count").IsLessOrEqual(this.Capacity);
     ///         
     ///         this.AddInternal(person);
     ///     }
@@ -119,45 +120,51 @@ namespace CuttingEdge.Conditions
     ///         return false;
     ///     }
     /// }
-    /// </code>
-    /// The following code example will show the implementation of the <b>Invariant</b> extension method.
-    /// <code>
+    /// ]]></code>
+    /// The following code example will show the implementation of the <b>Invariants</b> class.
+    /// <code><![CDATA[
     /// using System;
     /// using CuttingEdge.Conditions;
     /// 
     /// namespace MyCompanyRootNamespace
     /// {
-    ///     public static class InvariantExtensions
+    ///     public static class Invariants
     ///     {
-    ///         public static ConditionValidator&lt;T> Invariant&lt;T>(this T value)
+    ///         public static ConditionValidator<T> Invariant<T>(T value)
     ///         {
-    ///             return new InvariantValidator&lt;T>("value", value);
+    ///             return new InvariantValidator<T>("value", value);
     ///         }
     /// 
-    ///         public static ConditionValidator&lt;T> Invariant&lt;T>(this T value, string argumentName)
+    ///         public static ConditionValidator<T> Invariant<T>(T value, string argumentName)
     ///         {
-    ///             return new InvariantValidator&lt;T>(argumentName, value);
+    ///             return new InvariantValidator<T>(argumentName, value);
     ///         }
     /// 
-    ///         // Internal class that inherits from ConditionValidator&lt;T>
-    ///         class InvariantValidator&lt;T> : ConditionValidator&lt;T>
+    ///         // Internal class that inherits from ConditionValidator<T>
+    ///         sealed class InvariantValidator<T> : ConditionValidator<T>
     ///         {
-    ///             public InvariantValidator(string argumentName, T value) : base(argumentName, value) { }
+    ///             public InvariantValidator(string argumentName, T value) : base(argumentName, value)
+    ///             {
+    ///             }
+    ///             
     ///             public override Exception BuildException(string condition, string additionalMessage,
     ///                 ConstraintViolationType type)
     ///             {
     ///                 string message = condition + ".";
+    ///                 
     ///                 if (!String.IsNullOrEmpty(additionalMessage))
+    ///                 {
     ///                     message = condition + ". " + additionalMessage;
+    ///                 }
+    ///                 
     ///                 return new InvalidOperationException(message);
     ///             }
     ///         }
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// </example>
-    /// <typeparam name="T">The type of the argument to be validated</typeparam>
-    [DebuggerDisplay("{GetType().Name} (ArgumentName: {ArgumentName}, Value: {Value} )")]
+    [DebuggerDisplay("{GetType().Name} ( ArgumentName: {ArgumentName}, Value: {Value} )")]
     public abstract class ConditionValidator<T>
     {
         /// <summary>Gets the value of the argument.</summary>
@@ -240,7 +247,7 @@ namespace CuttingEdge.Conditions
         /// true if the specified System.Object is equal to the current System.Object; otherwise, false.
         /// </returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
-        [Obsolete("This method is not part of the validation framework. Please use the IsEqualTo method.", true)]
+        [Obsolete("This method is not part of the conditions framework. Please use the IsEqualTo method.", true)]
 #pragma warning disable 809 // Remove the Obsolete attribute from the overriding member, or add it to the ...
         public override bool Equals(object obj)
 #pragma warning restore 809

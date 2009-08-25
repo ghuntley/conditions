@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
             object o = null;
 
             // Null objects are not checked, so check must always succeed.
-            o.Requires().IsOfType(typeof(EventArgs));
+            Condition.Requires(o).IsOfType(typeof(EventArgs));
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             object o = "String";
 
-            o.Requires().IsOfType(typeof(object));
+            Condition.Requires(o).IsOfType(typeof(object));
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             object o = "String";
 
-            o.Requires().IsOfType(typeof(string));
+            Condition.Requires(o).IsOfType(typeof(string));
         }
 
         [TestMethod]
@@ -63,7 +63,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             string s = "String";
 
-            s.Requires().IsOfType(typeof(object));
+            Condition.Requires(s).IsOfType(typeof(object));
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             string s = "String";
 
-            s.Requires().IsOfType(typeof(string));
+            Condition.Requires(s).IsOfType(typeof(string));
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             object o = new object();
 
-            o.Requires().IsOfType(typeof(object));
+            Condition.Requires(o).IsOfType(typeof(object));
         }
 
         [TestMethod]
@@ -91,7 +91,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             object o = "String";
 
-            o.Requires().IsOfType(typeof(EventArgs));
+            Condition.Requires(o).IsOfType(typeof(EventArgs));
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             string s = "String";
 
-            s.Requires().IsOfType(typeof(EventArgs));
+            Condition.Requires(s).IsOfType(typeof(EventArgs));
         }
 
         [TestMethod]
@@ -110,7 +110,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             ICollection o = new Collection<int>();
 
-            o.Requires().IsOfType(typeof(ICollection));
+            Condition.Requires(o).IsOfType(typeof(ICollection));
         }
 
         [TestMethod]
@@ -120,7 +120,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         {
             object day = DayOfWeek.Monday;
 
-            day.Requires().IsOfType(typeof(ICollection));
+            Condition.Requires(day).IsOfType(typeof(ICollection));
         }
     }
 }

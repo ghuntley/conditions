@@ -31,7 +31,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void HasLengthTest1()
         {
             string a = "test";
-            a.Requires().HasLength(4);
+            Condition.Requires(a).HasLength(4);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void HasLengthTest2()
         {
             string a = "test";
-            a.Requires().HasLength(3);
+            Condition.Requires(a).HasLength(3);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void HasLengthTest3()
         {
             string a = String.Empty;
-            a.Requires().HasLength(0);
+            Condition.Requires(a).HasLength(0);
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void HasLengthTest4()
         {
             string a = String.Empty;
-            a.Requires().HasLength(1);
+            Condition.Requires(a).HasLength(1);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null value will never be found
-            a.Requires().HasLength(0);
+            Condition.Requires(a).HasLength(0);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string a = null;
             // A null value will never be found
-            a.Requires().HasLength(1);
+            Condition.Requires(a).HasLength(1);
         }
 
         [TestMethod]
@@ -84,7 +84,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         public void HasLengthTest7()
         {
             string a = string.Empty;
-            a.Requires().HasLength(0, string.Empty);
+            Condition.Requires(a).HasLength(0, string.Empty);
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             string a = null;
             try
             {
-                a.Requires("a").HasLength(1, "qwe {0} xyz");
+                Condition.Requires(a, "a").HasLength(1, "qwe {0} xyz");
                 Assert.Fail();
             }
             catch (ArgumentException ex)
