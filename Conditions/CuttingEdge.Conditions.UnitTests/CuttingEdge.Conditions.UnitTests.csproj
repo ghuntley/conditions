@@ -111,7 +111,6 @@
     <Compile Include="UseCases\NullTestUseCases.cs" />
     <Compile Include="UseCases\TypeTestUseCases.cs" />
     <Compile Include="UseCases\UseCaseTestHelper.cs" />
-    <Compile Include="ValidatorOtherwiseTests.cs" />
     <Compile Include="ConditionValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>

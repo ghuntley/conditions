@@ -131,24 +131,6 @@
       <Namespaces>
        <Namespace Name="CuttingEdge.Conditions">
         <Types>
-         <Type Name="OtherwiseValidator`2">
-          <Members>
-           <Member Name="#.cctor()">
-            <Messages>
-             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Excluded" Created="2008-08-07 11:33:06Z">
-              <Issue>
-               <Item>'OtherwiseValidator&lt;T, TUncheckedException&gt;'</Item>
-              </Issue>
-              <Notes>
-               <User Name="Steven">
-                <Note Id="7" />
-               </User>
-              </Notes>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="PostconditionException">
           <Messages>
            <Message Id="Postcondition" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2008-07-05 00:00:00Z">
@@ -164,13 +146,13 @@
            </Message>
           </Messages>
          </Type>
-         <Type Name="Validator`1">
+         <Type Name="ConditionValidator`1">
           <Members>
            <Member Name="#ArgumentName">
             <Messages>
              <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Excluded" Created="2008-07-05 00:00:00Z">
               <Issue>
-               <Item>'Validator&lt;T&gt;.ArgumentName'</Item>
+               <Item>'ConditionValidator&lt;T&gt;.ArgumentName'</Item>
               </Issue>
               <Notes>
                <User Name="Steven">
@@ -184,7 +166,7 @@
             <Messages>
              <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2008-07-05 00:00:00Z">
               <Issue Certainty="50">
-               <Item>'Validator&lt;T&gt;.GetType()'</Item>
+               <Item>'ConditionValidator&lt;T&gt;.GetType()'</Item>
               </Issue>
               <Notes>
                <User Name="Steven">
@@ -194,41 +176,11 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#Otherwise`1()">
-            <Messages>
-             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-09-11 13:49:59Z">
-              <Issue>
-               <Item>'Validator&lt;T&gt;.Otherwise&lt;TUncheckedException&gt;()'</Item>
-               <Item>'TUncheckedException'</Item>
-              </Issue>
-              <Notes>
-               <User Name="Steven">
-                <Note Id="9" />
-               </User>
-              </Notes>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Otherwise`1(System.String)">
-            <Messages>
-             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-08-07 11:33:06Z">
-              <Issue>
-               <Item>'Validator&lt;T&gt;.Otherwise&lt;TUncheckedException&gt;(string)'</Item>
-               <Item>'TUncheckedException'</Item>
-              </Issue>
-              <Notes>
-               <User Name="Steven">
-                <Note Id="8" />
-               </User>
-              </Notes>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#Value">
             <Messages>
              <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Status="Excluded" Created="2008-07-05 00:00:00Z">
               <Issue>
-               <Item>'Validator&lt;T&gt;.Value'</Item>
+               <Item>'ConditionValidator&lt;T&gt;.Value'</Item>
                <Item>'T'</Item>
               </Issue>
               <Notes>
@@ -239,7 +191,7 @@
              </Message>
              <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Excluded" Created="2008-07-05 00:00:00Z">
               <Issue>
-               <Item>'Validator&lt;T&gt;.Value'</Item>
+               <Item>'ConditionValidator&lt;T&gt;.Value'</Item>
               </Issue>
               <Notes>
                <User Name="Steven">
@@ -286,10 +238,10 @@
   <Notes>
    <User Name="Steven">
     <Note Id="0" Modified="2008-07-05 00:00:00Z">The CuttingEdge.Conditions is the only namespace of the library and the namespace can therefore not be merged with another namespace.</Note>
-    <Note Id="1" Modified="2008-07-05 00:00:00Z">This check is completely valid, but the 'public new Type GetType()' method is used to be able to attach a EditorBrowsableAttrubute to the GetType method, which will hide the method when the user browses the methods of the Validator class with IntelliSense. The GetType method has no value for the user who will only use this class for validation.</Note>
+    <Note Id="1" Modified="2008-07-05 00:00:00Z">This check is completely valid, but the 'public new Type GetType()' method is used to be able to attach a EditorBrowsableAttrubute to the GetType method, which will hide the method when the user browses the methods of the ConditionValidator class with IntelliSense. The GetType method has no value for the user who will only use this class for validation.</Note>
     <Note Id="2" Modified="2008-07-05 00:00:00Z">We made the field deliberately public. We want to make sure we have the best performance and this field will never be used for data binding.</Note>
     <Note Id="3" Modified="2008-07-05 00:00:00Z">We made the field deliberately public. We want to make sure we have the best performance and this field will never be used for data binding.</Note>
-    <Note Id="4" Modified="2008-07-05 00:00:00Z">The rule is correct. We tried to make Validator&lt;T&gt; immutable, but the validated type T can indeed be mutable (a collection for example). However, for us it's enough to be sure that the value or the reference to the value won't change.</Note>
+    <Note Id="4" Modified="2008-07-05 00:00:00Z">The rule is correct. We tried to make ConditionValidator&lt;T&gt; immutable, but the validated type T can indeed be mutable (a collection for example). However, for us it's enough to be sure that the value or the reference to the value won't change.</Note>
     <Note Id="5" Modified="2008-07-05 00:00:00Z">Postcondition is a single word. See: http://en.wikipedia.org/wiki/Postcondition.</Note>
     <Note Id="6" Modified="2008-07-05 00:00:00Z">Postcondition is a single word. See: http://en.wikipedia.org/wiki/Postcondition.</Note>
     <Note Id="7" Modified="2008-08-07 11:51:26Z">The static constructor is needed because we need an TypeInitializationException to be thrown when the given generic type isn't valid.</Note>

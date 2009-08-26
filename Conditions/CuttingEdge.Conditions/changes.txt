@@ -5,12 +5,6 @@ Version vNext
 		TODO
 		
 	Bug Fixes:
-		-Call to Otherwise<TException> succeeded where TException was an abstract type.
-		 There was a special case where a call to Otherwise<TException> would not result in the expected
-		 TypeInitializationException. This was the case when a exception was abstract, but had a public
-		 ctor(string) constructor. This is a corner case, because according to the Framework Design Guidelines
-		 abstract types should have protected constructors. This bug resulted in a MemberAccessException being
-		 thrown only when a validation failed.
 		-StackOverflowException was thrown when self-referencing collections were supplied for work item 10509.
 		 When building an exception message, the library uses the supplied parameters of the validation
 		 methods. The parameter was transformed to a string representation, which uses recursive calls to 
@@ -30,6 +24,11 @@ Version vNext
 		 .NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
 		
 	Code changes:
+		-[BREAKING CHANGE] Otherwise<T> methods removed from ConditionValidator<T> for work item 10535.
+		 Removed code: OtherwiseValidator, the ConditionsValidator<T>.Otherwise<E> method, exception message
+		 for the OtherwiseValidator removed from the string resources, and unit tests for the Otherwise method.
+		 Usage of the Otherwise method has been removed from the xml comments.
+		 For more information on this change see: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=58.
 		-[BREAKING CHANGE] Remove extension method behavior of Requires() and Ensures() methods for item 10514.
 		 This change meant changes to xml comments, unit tests and code snippets.
 		 For more information on this change see: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=57.

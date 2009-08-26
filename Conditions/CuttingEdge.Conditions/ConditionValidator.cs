@@ -60,10 +60,6 @@ namespace CuttingEdge.Conditions
     ///             .IsNotNull()          // throws ArgumentNullException on failure
     ///             .IsEmpty();           // throws ArgumentException on failure
     /// 
-    ///         Condition.Requires(this.currentState)
-    ///             .Otherwise<InvalidOperationException>()
-    ///             .IsNotEqualTo(StateType.Uninitialized); // throws InvalidOperationException on failure
-    /// 
     ///         // Do some work
     /// 
     ///         // Example: Call a method that should return a not null ICollection
@@ -213,30 +209,6 @@ namespace CuttingEdge.Conditions
         public void Throw(string condition)
         {
             throw this.BuildException(condition, null, ConstraintViolationType.Default);
-        }
-
-        /// <summary>
-        /// Allows a user to specify the type of exception that has to be thrown. The current 
-        /// <see cref="ConditionValidator{T}">ConditionValidator</see> is used to generate an exception 
-        /// message.
-        /// </summary>
-        /// <remarks>
-        /// This otherwise method is meant to throw unchecked exceptions. Unchecked exceptions are exceptions
-        /// that aren't meant to be caught by a program. For instance, An <see cref="ArgumentException"/> and
-        /// <see cref="ObjectDisposedException"/> shouldn't be caught. They should bring the program to a
-        /// hold. But because the .NET framework doesn't differentiate between checked and unchecked 
-        /// exceptions, we can't enforce this.
-        /// </remarks>
-        /// <typeparam name="TUncheckedException">The exception type that will be thrown by the returned
-        /// <see cref="ConditionValidator{T}"/> on failure.</typeparam>
-        /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
-        /// <see cref="Value"/> and <see cref="ArgumentName"/> of this validator instance.</returns>
-        /// <exception cref="TypeInitializationException">Thrown when the specified 
-        /// <typeparamref name="TUncheckedException"/> type doesn't contain a public constructor with a single
-        /// string argument.</exception>
-        public ConditionValidator<T> Otherwise<TUncheckedException>() where TUncheckedException : Exception
-        {
-            return new OtherwiseValidator<T, TUncheckedException>(this);
         }
 
         /// <summary>

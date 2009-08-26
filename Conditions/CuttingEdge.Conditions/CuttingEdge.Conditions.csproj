@@ -60,7 +60,6 @@
     <Compile Include="ConstraintViolationType.enum.cs" />
     <Compile Include="DefaultComparer.cs" />
     <Compile Include="EnsuresValidator.cs" />
-    <Compile Include="OtherwiseValidator.cs" />
     <Compile Include="StringificationExtensions.cs" />
     <Compile Include="RequiresValidator.cs" />
     <Compile Include="SR.cs" />
