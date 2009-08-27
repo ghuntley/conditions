@@ -1,8 +1,12 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
-Version vNext
+Version 1.0.4.0 (v1.0) 2009-08-27
 	General description:
-		TODO: Important change: The license is changed from LGPL to MIT.
+		This first stable release has had a major face lift and several minor bug fixes. The API has changed 
+		considerably and therefore this release is both binary and code incompatible with the previous beta. 
+		Great change is the possibility to run CuttingEdge.Conditions on machines that do not have .NET 3.5 
+		installed. While the assembly itself is still dependent on System.Core (.NET 3.5), users can safely 
+		add it to their .NET 2.0 projects (as long as the C# 3.0 or VB9 compilers are used).
 		
 	Bug Fixes:
 		-Evaluate(null) threw a NullReferenceException for work item 10545.

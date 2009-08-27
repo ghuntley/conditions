@@ -4,7 +4,7 @@ This project contains the CuttingEdge.Conditions library. It enables developers 
 postconditions in a fluent manner. Following blog posts describe more about the library:
 	Introduction to CuttingEdge.Conditions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=38
 	Requirements and Design decisions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=36
-	Extending CuttingEdge.Conditions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=39
+	Extending CuttingEdge.Conditions: http://conditions.codeplex.com/Wiki/View.aspx?title=extending
 
 Below are some notes on the implementation specially for developers.
 
