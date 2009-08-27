@@ -142,7 +142,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest14()
         {
             string expectedMessage = "value should not be null. The actual value is null." +
-                Environment.NewLine + TestHelper.ArgumentExceptionParameterName + ": value";
+                Environment.NewLine + TestHelper.CultureSensitiveArgumentExceptionParameterText + ": value";
 
             object a = null;
             try
@@ -160,7 +160,7 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         public void EvaluateTest15()
         {
             string expectedMessage = "{1} should not be null. The actual value is null." +
-                Environment.NewLine + TestHelper.ArgumentExceptionParameterName + ": value";
+                Environment.NewLine + TestHelper.CultureSensitiveArgumentExceptionParameterText + ": value";
 
             object a = null;
             try

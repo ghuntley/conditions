@@ -31,35 +31,44 @@ namespace CuttingEdge.Conditions
         {
         }
 
-        /// <summary>Builds an exception and it's message, that has to be thrown.</summary>
-        /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
+        /// <summary>Throws an exception.</summary>
+        /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be
         /// null".</param>
         /// <param name="additionalMessage">An additional message that will be appended to the exception
         /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
         /// <param name="type">Gives extra information on the exception type that must be build. The actual
         /// implementation of the validator may ignore some or all values.</param>
-        /// <returns>A newly created <see cref="Exception"/>.</returns>
-        public override Exception BuildException(string condition, string additionalMessage,
+        protected override void ThrowExceptionCore(string condition, string additionalMessage,
             ConstraintViolationType type)
         {
-            string message;
+            string message = BuildExceptionMessage(condition, additionalMessage);
 
+            Exception exceptionToThrow = this.BuildExceptionBasedOnViolationType(type, message);
+
+            throw exceptionToThrow;
+        }
+
+        private static string BuildExceptionMessage(string condition, string additionalMessage)
+        {
             if (!String.IsNullOrEmpty(additionalMessage))
             {
-                message = condition + ". " + additionalMessage;
+                return condition + ". " + additionalMessage;
             }
             else
             {
-                message = condition + ".";
+                return condition + ".";
             }
+        }
 
+        private Exception BuildExceptionBasedOnViolationType(ConstraintViolationType type, string message)
+        {
             switch (type)
             {
                 case ConstraintViolationType.OutOfRangeViolation:
                     return new ArgumentOutOfRangeException(this.ArgumentName, message);
 
                 case ConstraintViolationType.InvalidEnumViolation:
-                    string enumMessage = BuildInvalidEnumArgumentExceptionMessage(message, this.ArgumentName);
+                    string enumMessage = this.BuildInvalidEnumArgumentExceptionMessage(message);
                     return new InvalidEnumArgumentException(enumMessage);
 
                 default:
@@ -74,9 +83,9 @@ namespace CuttingEdge.Conditions
             }
         }
 
-        private static string BuildInvalidEnumArgumentExceptionMessage(string message, string argumentName)
+        private string BuildInvalidEnumArgumentExceptionMessage(string message)
         {
-            ArgumentException argumentException = new ArgumentException(message, argumentName);
+            ArgumentException argumentException = new ArgumentException(message, this.ArgumentName);
 
             // Returns the message formatted according to the current culture.
             // Note that the 'Parameter name' part of the message is culture sensitive.

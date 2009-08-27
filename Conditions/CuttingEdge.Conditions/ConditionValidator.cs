@@ -139,21 +139,24 @@ namespace CuttingEdge.Conditions
     ///         // Internal class that inherits from ConditionValidator<T>
     ///         sealed class InvariantValidator<T> : ConditionValidator<T>
     ///         {
-    ///             public InvariantValidator(string argumentName, T value) : base(argumentName, value)
+    ///             public InvariantValidator(string argumentName, T value)
+    ///                 : base(argumentName, value)
     ///             {
     ///             }
-    ///             
-    ///             public override Exception BuildException(string condition, string additionalMessage,
-    ///                 ConstraintViolationType type)
+    /// 
+    ///             protected override void ThrowExceptionCore(string condition,
+    ///                 string additionalMessage, ConstraintViolationType type)
     ///             {
-    ///                 string message = condition + ".";
-    ///                 
+    ///                 string exceptionMessage = string.Format("Invariant '{0}' failed.", condition);
+    /// 
     ///                 if (!String.IsNullOrEmpty(additionalMessage))
     ///                 {
-    ///                     message = condition + ". " + additionalMessage;
+    ///                     exceptionMessage += " " + additionalMessage;
     ///                 }
-    ///                 
-    ///                 return new InvalidOperationException(message);
+    /// 
+    ///                 // Optionally, the 'type' parameter can be used, but never throw an exception
+    ///                 // when the value of 'type' is unknown or unvalid.
+    ///                 throw new InvalidOperationException(exceptionMessage);
     ///             }
     ///         }
     ///     }
@@ -187,28 +190,6 @@ namespace CuttingEdge.Conditions
         public string ArgumentName
         {
             get { return this.argumentName; }
-        }
-
-        /// <summary>
-        /// Throws an <see cref="Exception"/> which explains that the given condition does not hold.
-        /// The exact type of <see cref="Exception"/> that will be thrown is determined by the
-        /// <see cref="ConditionValidator{T}"/> implementation. The <see cref="ConditionValidator{T}"/> that
-        /// is created by calling the <see cref="Condition.Requires{T}(T, string)">Requires</see> will always 
-        /// call a <see cref="ArgumentException"/>, while the <see cref="ConditionValidator{T}"/> that is 
-        /// created by the <see cref="Condition.Ensures{T}(T, string)">Ensures</see> method will always throw
-        /// a <see cref="PostconditionException"/>.
-        /// </summary>
-        /// <param name="condition">
-        /// A string describing the condition that does not hold. The condition should be written in the 
-        /// following format: "{ArgumentName} should (not) be {check}". i.e. "value should be equal to 10".
-        /// This way the generated exception message will be valid for both the Requires as Ensures 
-        /// validations.
-        /// </param>
-        /// <exception cref="Exception">Will always be thrown.</exception>
-        [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
-        public void Throw(string condition)
-        {
-            throw this.BuildException(condition, null, ConstraintViolationType.Default);
         }
 
         /// <summary>
@@ -256,34 +237,57 @@ namespace CuttingEdge.Conditions
             return base.GetType();
         }
 
-        /// <summary>Builds an exception, that has to be thrown.</summary>
+        /// <summary>Throws an exception.</summary>
         /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
         /// null".</param>
         /// <param name="additionalMessage">An additional message that will be appended to the exception
         /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
         /// <param name="type">Gives extra information on the exception type that must be build. The actual
         /// implementation of the validator may ignore some or all values.</param>
-        /// <returns>A newly created <see cref="Exception"/>.</returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
-        public abstract Exception BuildException(string condition, string additionalMessage,
+        public void ThrowException(string condition, string additionalMessage, ConstraintViolationType type)
+        {
+            this.ThrowExceptionCore(condition, additionalMessage, type);
+        }
+
+        /// <summary>Throws an exception.</summary>
+        /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
+        /// null".</param>
+        [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
+        public void ThrowException(string condition)
+        {
+            this.ThrowExceptionCore(condition, null, ConstraintViolationType.Default);
+        }
+
+        internal void ThrowException(string condition, string additionalMessage)
+        {
+            this.ThrowExceptionCore(condition, additionalMessage, ConstraintViolationType.Default);
+        }
+
+        internal void ThrowException(string condition, ConstraintViolationType type)
+        {
+            this.ThrowExceptionCore(condition, null, type);
+        }
+
+        /// <summary>Throws an exception.</summary>
+        /// <param name="condition">Describes the condition that doesn't hold, e.g., "Value should not be 
+        /// null".</param>
+        /// <param name="additionalMessage">An additional message that will be appended to the exception
+        /// message, e.g. "The actual value is 3.". This value may be null or empty.</param>
+        /// <param name="type">Gives extra information on the exception type that must be build. The actual
+        /// implementation of the validator may ignore some or all values.</param>
+        /// <remarks>
+        /// Implement this method when deriving from <see cref="ConditionValidator{T}"/>.
+        /// The implementation should at least build the exception message from the 
+        /// <paramref name="condition"/> and optional <paramref name="additionalMessage"/>. Usage of the
+        /// <paramref name="type"/> is completely optional, but the implementation should at least be flexible
+        /// and be able to handle unknown <see cref="ConstraintViolationType"/> values. Values may be added
+        /// in future releases.
+        /// </remarks>
+        /// <example>
+        /// For an example see the documentation for <see cref="ConditionValidator{T}"/>.
+        /// </example>
+        protected abstract void ThrowExceptionCore(string condition, string additionalMessage,
             ConstraintViolationType type);
-
-        // Builds an Exception with the specified condition
-        internal Exception BuildException(string condition, string additionalMessage)
-        {
-            return this.BuildException(condition, additionalMessage, ConstraintViolationType.Default);
-        }
-
-        // Builds an Exception with the specified condition
-        internal Exception BuildException(string condition, ConstraintViolationType type)
-        {
-            return this.BuildException(condition, null, type);
-        }
-
-        // Builds an Exception with the specified condition
-        internal Exception BuildException(string condition)
-        {
-            return this.BuildException(condition, null, ConstraintViolationType.Default);
-        }
     }
 }

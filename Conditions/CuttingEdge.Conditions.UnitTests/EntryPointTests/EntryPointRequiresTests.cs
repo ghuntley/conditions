@@ -32,7 +32,7 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
         public void RequiresTest01()
         {
             int a = 3;
-            Condition.Requires(a).Throw(String.Empty);
+            Condition.Requires(a).IsEqualTo(4);
         }
 
         [TestMethod]
@@ -42,11 +42,40 @@ namespace CuttingEdge.Conditions.UnitTests.EntryPointTests
             int a = 3;
             try
             {
-                Condition.Requires(a, "foobar").Throw(String.Empty);
+                Condition.Requires(a, "foobar").IsEqualTo(4);
             }
             catch (Exception ex)
             {
                 Assert.AreEqual(true, ex.Message.Contains("foobar"));
+            }
+        }
+
+        [TestMethod]
+        [Description("Checks whether supplying an invalid ConstraintViolationType results in the return of the default exception.")]
+        public void RequiresTest03()
+        {
+            ConditionValidator<int> requiresValidator = Condition.Requires(3);
+
+            const string ValidCondition = "valid condition";
+            const string ValidAdditionalMessage = "valid additional message";
+            const ConstraintViolationType InvalidConstraintViolationType = (ConstraintViolationType)666;
+
+            const string AssertMessage = "RequiresValidator.ThrowException should throw an " +
+                "ArgumentException when an invalid ConstraintViolationType is supplied.";
+
+            try
+            {
+                requiresValidator.ThrowException(ValidCondition, ValidAdditionalMessage,
+                    InvalidConstraintViolationType);
+
+                Assert.Fail(AssertMessage);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(typeof(ArgumentException), ex.GetType(), AssertMessage);
+
+                Assert.IsTrue(ex.Message.Contains(ValidCondition),
+                    "The exception message does not contain the condition.");
             }
         }
     }

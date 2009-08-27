@@ -24,6 +24,10 @@ Version vNext
 		 .NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
 		
 	Code changes:
+		-[BREAKING CHANGE] Change extensibility of ConditionValidator<T> for work item 10543.
+		 Removed the ConditionValidator<T>.BuildException method overloads and renamed the Throw method
+		 to ThrowExceptions with multiple overloads. The library now calls these overloads, which makes it
+		 extending the library easier and more consistent.
 		-[BREAKING CHANGE] Otherwise<T> methods removed from ConditionValidator<T> for work item 10535.
 		 Removed code: OtherwiseValidator, the ConditionsValidator<T>.Otherwise<E> method, exception message
 		 for the OtherwiseValidator removed from the string resources, and unit tests for the Otherwise method.

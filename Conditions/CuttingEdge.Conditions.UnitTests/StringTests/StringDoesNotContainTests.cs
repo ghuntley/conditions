@@ -95,7 +95,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string expectedMessage =
                 "a should not contain 'test'." + Environment.NewLine +
-                TestHelper.ArgumentExceptionParameterName + ": a";
+                TestHelper.CultureSensitiveArgumentExceptionParameterText + ": a";
 
             try
             {

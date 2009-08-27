@@ -94,7 +94,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         {
             string expectedMessage =
                 "a should contain 'test me'." + Environment.NewLine + 
-                TestHelper.ArgumentExceptionParameterName + ": a";
+                TestHelper.CultureSensitiveArgumentExceptionParameterText + ": a";
 
             try
             {

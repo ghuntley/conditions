@@ -26,7 +26,7 @@ namespace CuttingEdge.Conditions.UnitTests
         {
             if (collection == null || !collection.Contains(validator.Value))
             {
-                validator.Throw(validator.ArgumentName + " should be in the supplied collection");
+                validator.ThrowException(validator.ArgumentName + " should be in the supplied collection");
             }
 
             return validator;
