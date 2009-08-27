@@ -166,5 +166,13 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
                 Thread.CurrentThread.CurrentCulture = originalCulture;
             }
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotStartWith on string x with 'x DoesNotStartWith x' should succeed when exceptions are suppressed.")]
+        public void DoesNotStartWithTest12()
+        {
+            string a = "test";
+            Condition.Requires(a).SuppressExceptionsForTest().DoesNotStartWith(a);
+        }
     }
 }

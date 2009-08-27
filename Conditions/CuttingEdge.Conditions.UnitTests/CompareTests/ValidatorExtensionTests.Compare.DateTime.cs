@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on DateTime x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeInRangeTest08()
+        {
+            DateTime a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsDateTimeInRange
 
         #region IsDateTimeNotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on DateTime x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeNotInRangeTest08()
+        {
+            DateTime a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsDateTimeNotInRange
 
         #region IsDateTimeGreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on DateTime x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeGreaterThanTest06()
+        {
+            DateTime a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsDateTimeGreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on DateTime x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeNotGreaterThanTest06()
+        {
+            DateTime a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsDateTimeNotGreaterThan
 
         #region IsDateTimeGreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on DateTime x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeGreaterOrEqualTest06()
+        {
+            DateTime a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsDateTimeGreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on DateTime x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeNotGreaterOrEqualTest06()
+        {
+            DateTime a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsDateTimeNotGreaterOrEqual
 
         #region IsDateTimeLessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on DateTime x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeLessThanTest06()
+        {
+            DateTime a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsDateTimeLessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on DateTime x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeNotLessThanTest06()
+        {
+            DateTime a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsDateTimeNotLessThan
 
         #region IsDateTimeLessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on DateTime x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeLessOrEqualTest06()
+        {
+            DateTime a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsDateTimeLessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on DateTime x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeNotLessOrEqualTest06()
+        {
+            DateTime a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsDateTimeEqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on DateTime x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeEqualToTest06()
+        {
+            DateTime a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsDateTimeEqualTo
 
         #region IsDateTimeNotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on DateTime x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsDateTimeNotEqualToTest06()
+        {
+            DateTime a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsDateTimeNotEqualTo

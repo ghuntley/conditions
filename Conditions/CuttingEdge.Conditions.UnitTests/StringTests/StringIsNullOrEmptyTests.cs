@@ -84,5 +84,13 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
                 Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling IsNullOrEmpty on string x with 'x.Length > 0' should succeed when exceptions are suppressed.")]
+        public void IsNullOrEmptyTest6()
+        {
+            string a = "test";
+            Condition.Requires(a).SuppressExceptionsForTest().IsNullOrEmpty();
+        }
     }
 }

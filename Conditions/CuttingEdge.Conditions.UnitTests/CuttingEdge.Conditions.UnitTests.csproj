@@ -63,7 +63,8 @@
     <Compile Include="CollectionTests\CollectionIsNotShorterThanTests.cs" />
     <Compile Include="CollectionTests\CollectionIsShorterOrEqualTests.cs" />
     <Compile Include="CollectionTests\CollectionIsShorterThanTests.cs" />
-    <Compile Include="CollectionTests\IsEmptyTestEnumerable.cs" />
+    <Compile Include="CollectionTests\EmptyTestEnumerable.cs" />
+    <Compile Include="CollectionTests\NonEmptyTestEnumerable.cs" />
     <Compile Include="CollectionTests\OddEqualityComparer.cs" />
     <Compile Include="EntryPointTests\EntryPointEnsuresTests.cs" />
     <Compile Include="EntryPointTests\EntryPointRequiresTests.cs" />

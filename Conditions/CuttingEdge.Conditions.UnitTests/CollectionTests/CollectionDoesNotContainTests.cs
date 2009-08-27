@@ -182,5 +182,13 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // Call the non-generic DoesNotContain<T>(Validator<T>, object) overload.
             Condition.Requires(set).DoesNotContain((object)3);
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotContain on an Collection that contains the tested value should succeed when exceptions are suppressed.")]
+        public void CollectionDoesNotContainTest12()
+        {
+            Collection<int> c = new Collection<int> { 1 };
+            Condition.Requires(c).SuppressExceptionsForTest().DoesNotContain(1);
+        }
     }
 }

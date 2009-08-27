@@ -350,5 +350,14 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 // We expect an exception to be thrown.
             }
         }
+
+        [TestMethod]
+        [Description("Calling ContainsAll with a 'all' collection containing no element of the tested collection should succeed when exceptions are suppressed.")]
+        public void CollectionContainsAllTest27()
+        {
+            int[] c = { 1 };
+            int[] all = { 2 };
+            Condition.Requires(c).SuppressExceptionsForTest().ContainsAll(all);
+        }
     }
 }

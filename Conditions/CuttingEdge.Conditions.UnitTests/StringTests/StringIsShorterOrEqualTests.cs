@@ -37,7 +37,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
     {
         [TestMethod]
         [Description("Calling IsShorterOrEqual on string x with 'x.Length < upped bound' should pass.")]
-        public void IsShorterOrEqual0()
+        public void IsShorterOrEqual00()
         {
             string a = "test";
             Condition.Requires(a).IsShorterOrEqual(5);
@@ -45,7 +45,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling IsShorterOrEqual on string x with 'x.Length = upped bound' should pass.")]
-        public void IsShorterOrEqual1()
+        public void IsShorterOrEqual01()
         {
             string a = "test";
             Condition.Requires(a).IsShorterOrEqual(4);
@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsShorterOrEqual on string x with 'x.Length > upped bound' should fail.")]
-        public void IsShorterOrEqual2()
+        public void IsShorterOrEqual02()
         {
             string a = "test";
             Condition.Requires(a).IsShorterOrEqual(1);
@@ -62,7 +62,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling IsShorterOrEqual on string x with 'x.Length < upped bound' should pass.")]
-        public void IsShorterOrEqual3()
+        public void IsShorterOrEqual03()
         {
             string a = String.Empty;
             Condition.Requires(a).IsShorterOrEqual(1);
@@ -70,7 +70,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling IsShorterOrEqual on string x with 'x.Length = upped bound' should pass.")]
-        public void IsShorterOrEqual4()
+        public void IsShorterOrEqual04()
         {
             string a = String.Empty;
             Condition.Requires(a).IsShorterOrEqual(0);
@@ -79,7 +79,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsShorterOrEqual on string x with 'x.Length > upped bound' should fail.")]
-        public void IsShorterOrEqual5()
+        public void IsShorterOrEqual05()
         {
             string a = String.Empty;
             Condition.Requires(a).IsShorterOrEqual(-1);
@@ -87,7 +87,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling IsShorterOrEqual on string x with 'null = upped bound' should pass.")]
-        public void IsShorterOrEqual6()
+        public void IsShorterOrEqual06()
         {
             string a = null;
             Condition.Requires(a).IsShorterOrEqual(0);
@@ -96,7 +96,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling IsShorterOrEqual on string x with 'null > upped bound' should fail.")]
-        public void IsShorterOrEqual7()
+        public void IsShorterOrEqual07()
         {
             string a = null;
             // A null value is considered to have a length of 0 characters.
@@ -105,7 +105,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling IsShorterOrEqual with conditionDescription parameter should pass.")]
-        public void IsShorterOrEqual8()
+        public void IsShorterOrEqual08()
         {
             string a = string.Empty;
             Condition.Requires(a).IsShorterOrEqual(0, string.Empty);
@@ -113,7 +113,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling a failing IsShorterOrEqual should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsShorterOrEqual9()
+        public void IsShorterOrEqual09()
         {
             string a = null;
             try
@@ -125,6 +125,14 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             {
                 Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsShorterOrEqual on string x with 'x.Length > upped bound' should succeed when exceptions are suppressed.")]
+        public void IsShorterOrEqual10()
+        {
+            string a = "test";
+            Condition.Requires(a).SuppressExceptionsForTest().IsShorterOrEqual(1);
         }
     }
 }

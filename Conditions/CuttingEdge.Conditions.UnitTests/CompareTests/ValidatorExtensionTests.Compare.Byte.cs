@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on Byte x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsByteInRangeTest08()
+        {
+            Byte a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsByteInRange
 
         #region IsByteNotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on Byte x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsByteNotInRangeTest08()
+        {
+            Byte a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsByteNotInRange
 
         #region IsByteGreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on Byte x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsByteGreaterThanTest06()
+        {
+            Byte a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsByteGreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on Byte x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsByteNotGreaterThanTest06()
+        {
+            Byte a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsByteNotGreaterThan
 
         #region IsByteGreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on Byte x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsByteGreaterOrEqualTest06()
+        {
+            Byte a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsByteGreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on Byte x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsByteNotGreaterOrEqualTest06()
+        {
+            Byte a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsByteNotGreaterOrEqual
 
         #region IsByteLessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on Byte x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsByteLessThanTest06()
+        {
+            Byte a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsByteLessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on Byte x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsByteNotLessThanTest06()
+        {
+            Byte a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsByteNotLessThan
 
         #region IsByteLessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on Byte x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsByteLessOrEqualTest06()
+        {
+            Byte a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsByteLessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on Byte x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsByteNotLessOrEqualTest06()
+        {
+            Byte a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsByteEqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on Byte x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsByteEqualToTest06()
+        {
+            Byte a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsByteEqualTo
 
         #region IsByteNotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on Byte x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsByteNotEqualToTest06()
+        {
+            Byte a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsByteNotEqualTo

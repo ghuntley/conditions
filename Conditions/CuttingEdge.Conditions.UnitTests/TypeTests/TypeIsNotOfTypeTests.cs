@@ -39,18 +39,18 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
     {
         [TestMethod]
         [Description("Calling IsNotOfType on null reference should pass.")]
-        public void IsNotOfTypeTest0()
+        public void IsNotOfTypeTest00()
         {
             object o = null;
 
-            // Null objects are not checked, so check must always succeed.
+            // Null objects have no type, so check must always succeed.
             Condition.Requires(o).IsNotOfType(typeof(object));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on a down-casted object tested to be the down-casted type should fail.")]
-        public void IsNotOfTypeTest1()
+        public void IsNotOfTypeTest01()
         {
             object o = "String";
 
@@ -60,7 +60,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on a down-casted object tested to be the real type should fail.")]
-        public void IsNotOfTypeTest2()
+        public void IsNotOfTypeTest02()
         {
             object o = "String";
 
@@ -70,7 +70,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on an object tested to be the parent type should fail.")]
-        public void IsNotOfTypeTest3()
+        public void IsNotOfTypeTest03()
         {
             string s = "String";
 
@@ -80,7 +80,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on a down-casted object tested to be the down-casted type should fail.")]
-        public void IsNotOfTypeTest4()
+        public void IsNotOfTypeTest04()
         {
             string s = "String";
 
@@ -90,7 +90,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on a System.Object tested to be System.Object type should fail.")]
-        public void IsNotOfTypeTest5()
+        public void IsNotOfTypeTest05()
         {
             object o = new object();
 
@@ -99,7 +99,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsNotOfType on a down-casted object tested to be an incomparable type should pass.")]
-        public void IsNotOfTypeTest6()
+        public void IsNotOfTypeTest06()
         {
             object o = "String";
 
@@ -108,7 +108,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsNotOfType on an object tested to be an incomparable type should pass.")]
-        public void IsNotOfTypeTest7()
+        public void IsNotOfTypeTest07()
         {
             string s = "String";
 
@@ -118,7 +118,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on an object implementing ICollection tested not to implement ICollection should fail.")]
-        public void IsNotOfTypeTest8()
+        public void IsNotOfTypeTest08()
         {
             ICollection o = new Collection<int>();
 
@@ -128,11 +128,20 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNotOfType on a DayOfWeek tested to implement DayOfWeek should fail with an ArgumentException.")]
-        public void IsNotOfTypeTest9()
+        public void IsNotOfTypeTest09()
         {
             object day = DayOfWeek.Monday;
 
             Condition.Requires(day).IsNotOfType(typeof(DayOfWeek));
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotOfType on a down-casted object tested to be the down-casted type should succed when exceptions are suppressed.")]
+        public void IsNotOfTypeTest10()
+        {
+            object o = "String";
+
+            Condition.Requires(o).SuppressExceptionsForTest().IsNotOfType(typeof(object));
         }
     }
 }

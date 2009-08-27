@@ -116,5 +116,13 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
                 Assert.IsTrue(ex.Message.Contains("qwe i xyz"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling IsNotNull on null should succeed when exceptions are suppressed.")]
+        public void IsNotNullTest9()
+        {
+            object o = null;
+            Condition.Requires(o).SuppressExceptionsForTest().IsNotNull();
+        }
     }
 }

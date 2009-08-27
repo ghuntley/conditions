@@ -40,17 +40,16 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling IsOfType on null reference should fail.")]
-        public void IsOfTypeTest0()
+        public void IsOfTypeTest00()
         {
             object o = null;
 
-            // Null objects are not checked, so check must always succeed.
             Condition.Requires(o).IsOfType(typeof(EventArgs));
         }
 
         [TestMethod]
         [Description("Calling IsOfType on a down-casted object tested to be the down-casted type should pass.")]
-        public void IsOfTypeTest1()
+        public void IsOfTypeTest01()
         {
             object o = "String";
 
@@ -59,7 +58,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsOfType on a down-casted object tested to be the real type should pass.")]
-        public void IsOfTypeTest2()
+        public void IsOfTypeTest02()
         {
             object o = "String";
 
@@ -68,7 +67,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsOfType on a object tested to be it's parent type should pass.")]
-        public void IsOfTypeTest3()
+        public void IsOfTypeTest03()
         {
             string s = "String";
 
@@ -77,7 +76,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsOfType on a object tested to be it's own type should pass.")]
-        public void IsOfTypeTest4()
+        public void IsOfTypeTest04()
         {
             string s = "String";
 
@@ -86,7 +85,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsOfType on a System.Object tested to be System.Object should pass.")]
-        public void IsOfTypeTest5()
+        public void IsOfTypeTest05()
         {
             object o = new object();
 
@@ -96,7 +95,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsOfType on a down-casted object tested to be a non comparable type should fail.")]
-        public void IsOfTypeTest6()
+        public void IsOfTypeTest06()
         {
             object o = "String";
 
@@ -106,7 +105,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsOfType on a object tested to be a non comparable type should fail.")]
-        public void IsOfTypeTest7()
+        public void IsOfTypeTest07()
         {
             string s = "String";
 
@@ -115,7 +114,7 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
 
         [TestMethod]
         [Description("Calling IsOfType on an object implementing ICollection tested to implement ICollection should pass.")]
-        public void IsOfTypeTest8()
+        public void IsOfTypeTest08()
         {
             ICollection o = new Collection<int>();
 
@@ -125,11 +124,20 @@ namespace CuttingEdge.Conditions.UnitTests.TypeTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsOfType on an enum tested to implement ICollection should fail with an ArgumentException.")]
-        public void IsOfTypeTest9()
+        public void IsOfTypeTest09()
         {
             object day = DayOfWeek.Monday;
 
             Condition.Requires(day).IsOfType(typeof(ICollection));
+        }
+
+        [TestMethod]
+        [Description("Calling IsOfType on null reference should succeed when exceptions are suppressed.")]
+        public void IsOfTypeTest10()
+        {
+            object o = null;
+
+            Condition.Requires(o).SuppressExceptionsForTest().IsOfType(typeof(EventArgs));
         }
     }
 }

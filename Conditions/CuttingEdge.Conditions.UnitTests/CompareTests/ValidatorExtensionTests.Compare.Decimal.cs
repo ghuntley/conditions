@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on Decimal x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDecimalInRangeTest08()
+        {
+            Decimal a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsDecimalInRange
 
         #region IsDecimalNotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on Decimal x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDecimalNotInRangeTest08()
+        {
+            Decimal a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsDecimalNotInRange
 
         #region IsDecimalGreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on Decimal x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsDecimalGreaterThanTest06()
+        {
+            Decimal a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsDecimalGreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on Decimal x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDecimalNotGreaterThanTest06()
+        {
+            Decimal a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsDecimalNotGreaterThan
 
         #region IsDecimalGreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on Decimal x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsDecimalGreaterOrEqualTest06()
+        {
+            Decimal a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsDecimalGreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on Decimal x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDecimalNotGreaterOrEqualTest06()
+        {
+            Decimal a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsDecimalNotGreaterOrEqual
 
         #region IsDecimalLessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on Decimal x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDecimalLessThanTest06()
+        {
+            Decimal a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsDecimalLessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on Decimal x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsDecimalNotLessThanTest06()
+        {
+            Decimal a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsDecimalNotLessThan
 
         #region IsDecimalLessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on Decimal x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsDecimalLessOrEqualTest06()
+        {
+            Decimal a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsDecimalLessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on Decimal x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsDecimalNotLessOrEqualTest06()
+        {
+            Decimal a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsDecimalEqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on Decimal x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsDecimalEqualToTest06()
+        {
+            Decimal a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsDecimalEqualTo
 
         #region IsDecimalNotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on Decimal x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsDecimalNotEqualToTest06()
+        {
+            Decimal a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsDecimalNotEqualTo

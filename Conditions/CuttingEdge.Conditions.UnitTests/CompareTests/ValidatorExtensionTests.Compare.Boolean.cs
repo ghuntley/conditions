@@ -36,7 +36,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsTrue on Boolean x with 'x == true' should pass.")]
-        public void IsTrueTest1()
+        public void IsTrueTest01()
         {
             bool b = true;
             Condition.Requires(b).IsTrue();
@@ -45,7 +45,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsTrue on Boolean x with 'x == false' should fail.")]
-        public void IsTrueTest2()
+        public void IsTrueTest02()
         {
             bool b = false;
             Condition.Requires(b).IsTrue();
@@ -53,7 +53,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsTrue on Boolean? x with 'x == true' should pass.")]
-        public void IsTrueTest3()
+        public void IsTrueTest03()
         {
             bool? b = true;
             Condition.Requires(b).IsTrue();
@@ -62,7 +62,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsTrue on Boolean? x with 'x == false' should fail.")]
-        public void IsTrueTest4()
+        public void IsTrueTest04()
         {
             bool? b = false;
             Condition.Requires(b).IsTrue();
@@ -71,7 +71,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling IsTrue on Boolean? x with 'x == null' should fail.")]
-        public void IsTrueTest5()
+        public void IsTrueTest05()
         {
             bool? b = null;
             Condition.Requires(b).IsTrue();
@@ -79,7 +79,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsTrue on Boolean x with 'x == true' and conditionDescription should pass.")]
-        public void IsTrueTest6()
+        public void IsTrueTest06()
         {
             bool b = true;
             Condition.Requires(b).IsTrue(string.Empty);
@@ -87,7 +87,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsTrue on Boolean? x with 'x == true' and conditionDescription should pass.")]
-        public void IsTrueTest7()
+        public void IsTrueTest07()
         {
             bool? b = true;
             Condition.Requires(b).IsTrue(string.Empty);
@@ -95,7 +95,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling a failing IsTrue on Boolean should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsTrueTest8()
+        public void IsTrueTest08()
         {
             bool b = false;
             try
@@ -111,7 +111,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling a failing IsTrue on Boolean? should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsTrueTest9()
+        public void IsTrueTest09()
         {
             bool? b = false;
             try
@@ -125,13 +125,21 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsTrue on Boolean x with 'x == false' should succeed when exceptions are suppressed.")]
+        public void IsTrueTest10()
+        {
+            bool b = false;
+            Condition.Requires(b).SuppressExceptionsForTest().IsTrue();
+        }
+
         #endregion // IsTrue
 
         #region IsFalse
 
         [TestMethod]
         [Description("Calling IsFalse on Boolean x with 'x == false' should pass.")]
-        public void IsFalseTest1()
+        public void IsFalseTest01()
         {
             bool b = false;
             Condition.Requires(b).IsFalse();
@@ -140,7 +148,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsFalse on Boolean x with 'x == true' should fail.")]
-        public void IsFalseTest2()
+        public void IsFalseTest02()
         {
             bool b = true;
             Condition.Requires(b).IsFalse();
@@ -148,7 +156,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsFalse on Boolean? x with 'x == false' should pass.")]
-        public void IsFalseTest3()
+        public void IsFalseTest03()
         {
             bool? b = false;
             Condition.Requires(b).IsFalse();
@@ -157,7 +165,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsFalse on Boolean? x with 'x == true' should fail.")]
-        public void IsFalseTest4()
+        public void IsFalseTest04()
         {
             bool? b = true;
             Condition.Requires(b).IsFalse();
@@ -166,7 +174,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling IsFalse on Boolean? x with 'x == null' should fail.")]
-        public void IsFalseTest5()
+        public void IsFalseTest05()
         {
             bool? b = null;
             Condition.Requires(b).IsFalse();
@@ -174,7 +182,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsFalse on Boolean x with 'x == false' and conditionDescription should pass.")]
-        public void IsFalseTest6()
+        public void IsFalseTest06()
         {
             bool b = false;
             Condition.Requires(b).IsFalse(string.Empty);
@@ -182,7 +190,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling IsFalse on Boolean? x with 'x == false' and conditionDescription should pass.")]
-        public void IsFalseTest7()
+        public void IsFalseTest07()
         {
             bool? b = false;
             Condition.Requires(b).IsFalse(string.Empty);
@@ -190,7 +198,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling a failing IsFalse on Boolean should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsFalseTest8()
+        public void IsFalseTest08()
         {
             bool b = true;
             try
@@ -206,7 +214,7 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
 
         [TestMethod]
         [Description("Calling a failing IsFalse on Boolean? should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsFalseTest9()
+        public void IsFalseTest09()
         {
             bool? b = true;
             try
@@ -218,6 +226,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("qwe b xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsFalse on Boolean x with 'x == true' should succeed when exceptions are suppressed.")]
+        public void IsFalseTest10()
+        {
+            bool b = true;
+            Condition.Requires(b).SuppressExceptionsForTest().IsFalse();
         }
 
         #endregion // IsFalse

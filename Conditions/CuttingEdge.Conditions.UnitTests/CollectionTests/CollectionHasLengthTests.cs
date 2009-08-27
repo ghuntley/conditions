@@ -163,5 +163,15 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 Assert.IsTrue(ex.Message.Contains("the given list should have 1 element"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling HasLength(0) with a collection containing one element should succeed when exceptions are suppressed.")]
+        public void CollectionHasLengthTest13()
+        {
+            // HashSet only implements generic ICollection<T>, no ICollection.
+            HashSet<int> set = new HashSet<int> { 1 };
+
+            Condition.Requires(set).SuppressExceptionsForTest().HasLength(0);
+        }
     }
 }

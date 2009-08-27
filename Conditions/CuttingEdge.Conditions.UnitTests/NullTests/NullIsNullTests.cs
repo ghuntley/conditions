@@ -37,7 +37,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
     {
         [TestMethod]
         [Description("Calling IsNull on null should pass.")]
-        public void IsNullTest1()
+        public void IsNullTest01()
         {
             object o = null;
             Condition.Requires(o).IsNull();
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNull on a reference should fail.")]
-        public void IsNullTest2()
+        public void IsNullTest02()
         {
             object o = new object();
             Condition.Requires(o).IsNull();
@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
 
         [TestMethod]
         [Description("Calling IsNull on a null Nullable<T> should pass.")]
-        public void IsNullTest3()
+        public void IsNullTest03()
         {
             int? i = null;
             Condition.Requires(i).IsNull();
@@ -63,7 +63,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNull on a set Nullable<T> should fail.")]
-        public void IsNullTest4()
+        public void IsNullTest04()
         {
             int? i = 3;
             Condition.Requires(i).IsNull();
@@ -72,7 +72,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling IsNull on an object containing an enum should fail with ArgumentException.")]
-        public void IsNullTest5()
+        public void IsNullTest05()
         {
             object i = DayOfWeek.Sunday;
             Condition.Requires(i).IsNull();
@@ -80,7 +80,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
 
         [TestMethod]
         [Description("Calling IsNull with conditionDescription parameter should pass.")]
-        public void IsNullTest6()
+        public void IsNullTest06()
         {
             object o = null;
             Condition.Requires(o).IsNull(string.Empty);
@@ -88,7 +88,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
 
         [TestMethod]
         [Description("Calling a failing IsNull should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsNullTest7()
+        public void IsNullTest07()
         {
             object o = new object();
             try
@@ -104,7 +104,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
 
         [TestMethod]
         [Description("Calling IsNull on Nullable<T> with conditionDescription parameter should pass.")]
-        public void IsNullTest8()
+        public void IsNullTest08()
         {
             int? i = null;
             Condition.Requires(i).IsNull(string.Empty);
@@ -112,7 +112,7 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
 
         [TestMethod]
         [Description("Calling a failing IsNull on Nullable<T> should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void IsNullTest9()
+        public void IsNullTest09()
         {
             int? i = 4;
             try
@@ -124,6 +124,14 @@ namespace CuttingEdge.Conditions.UnitTests.NullTests
             {
                 Assert.IsTrue(ex.Message.Contains("qwe i xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNull on a reference should succeed when exceptions are suppressed.")]
+        public void IsNullTest10()
+        {
+            object o = new object();
+            Condition.Requires(o).SuppressExceptionsForTest().IsNull();
         }
     }
 }

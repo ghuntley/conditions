@@ -152,5 +152,15 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 Assert.IsTrue(ex.Message.Contains("abc list def"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling IsShorterOrEqual(-1) with a collection containing no elements should succeed when exceptions are suppressed.")]
+        public void CollectionIsShorterOrEqualTest12()
+        {
+            // HashSet only implements generic ICollection<T>, no ICollection.
+            HashSet<int> set = new HashSet<int>();
+
+            Condition.Requires(set).SuppressExceptionsForTest().IsShorterOrEqual(-1);
+        }
     }
 }

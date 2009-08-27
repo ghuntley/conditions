@@ -245,5 +245,13 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 // We expect an exception to be thrown.
             }
         }
+
+        [TestMethod]
+        [Description("Calling Contains on an a null reference should succeed when exceptions are suppressed.")]
+        public void CollectionContainsTest17()
+        {
+            Collection<int> c = null;
+            Condition.Requires(c).SuppressExceptionsForTest().Contains(1);
+        }
     }
 }

@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on XXX x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsXXXInRangeTest08()
+        {
+            XXX a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsXXXInRange
 
         #region IsXXXNotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on XXX x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsXXXNotInRangeTest08()
+        {
+            XXX a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsXXXNotInRange
 
         #region IsXXXGreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on XXX x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsXXXGreaterThanTest06()
+        {
+            XXX a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsXXXGreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on XXX x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsXXXNotGreaterThanTest06()
+        {
+            XXX a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsXXXNotGreaterThan
 
         #region IsXXXGreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on XXX x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsXXXGreaterOrEqualTest06()
+        {
+            XXX a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsXXXGreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on XXX x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsXXXNotGreaterOrEqualTest06()
+        {
+            XXX a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsXXXNotGreaterOrEqual
 
         #region IsXXXLessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on XXX x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsXXXLessThanTest06()
+        {
+            XXX a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsXXXLessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on XXX x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsXXXNotLessThanTest06()
+        {
+            XXX a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsXXXNotLessThan
 
         #region IsXXXLessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on XXX x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsXXXLessOrEqualTest06()
+        {
+            XXX a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsXXXLessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on XXX x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsXXXNotLessOrEqualTest06()
+        {
+            XXX a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsXXXEqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on XXX x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsXXXEqualToTest06()
+        {
+            XXX a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsXXXEqualTo
 
         #region IsXXXNotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on XXX x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsXXXNotEqualToTest06()
+        {
+            XXX a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsXXXNotEqualTo

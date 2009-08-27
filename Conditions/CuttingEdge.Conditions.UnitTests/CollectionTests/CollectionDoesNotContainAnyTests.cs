@@ -293,5 +293,14 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // DoesNotContainAny should fail, because the value is not in the initial list.
             Condition.Requires(set).DoesNotContainAny(elements);
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotContainAny with a 'any' collection containing all elements of the tested collection should succeed when exceptions are suppressed.")]
+        public void CollectionDoesNotContainAnyTest22()
+        {
+            int[] c = { 1, 2, 3, 4 };
+            int[] any = { 1, 2, 3, 4 };
+            Condition.Requires(c).SuppressExceptionsForTest().DoesNotContainAny(any);
+        }
     }
 }

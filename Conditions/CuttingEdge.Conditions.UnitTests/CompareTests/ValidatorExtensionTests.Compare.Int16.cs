@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on Int16 x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt16InRangeTest08()
+        {
+            Int16 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsInt16InRange
 
         #region IsInt16NotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on Int16 x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt16NotInRangeTest08()
+        {
+            Int16 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsInt16NotInRange
 
         #region IsInt16GreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on Int16 x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsInt16GreaterThanTest06()
+        {
+            Int16 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsInt16GreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on Int16 x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt16NotGreaterThanTest06()
+        {
+            Int16 a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsInt16NotGreaterThan
 
         #region IsInt16GreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on Int16 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt16GreaterOrEqualTest06()
+        {
+            Int16 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsInt16GreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on Int16 x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt16NotGreaterOrEqualTest06()
+        {
+            Int16 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsInt16NotGreaterOrEqual
 
         #region IsInt16LessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on Int16 x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt16LessThanTest06()
+        {
+            Int16 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsInt16LessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on Int16 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt16NotLessThanTest06()
+        {
+            Int16 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsInt16NotLessThan
 
         #region IsInt16LessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on Int16 x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt16LessOrEqualTest06()
+        {
+            Int16 a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsInt16LessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on Int16 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt16NotLessOrEqualTest06()
+        {
+            Int16 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsInt16EqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on Int16 x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsInt16EqualToTest06()
+        {
+            Int16 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsInt16EqualTo
 
         #region IsInt16NotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on Int16 x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsInt16NotEqualToTest06()
+        {
+            Int16 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsInt16NotEqualTo

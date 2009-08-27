@@ -115,5 +115,15 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 Assert.IsTrue(ex.Message.Contains("the given list should not have 0 elements"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotHaveLength(0) with an non-generic collection containing no elements should succeed when exceptions are suppressed.")]
+        public void CollectionDoesNotHaveLengthTest08()
+        {
+            // Queue only implements ICollection, no generic ICollection<T>
+            Queue queue = new Queue();
+
+            Condition.Requires(queue).SuppressExceptionsForTest().DoesNotHaveLength(0);
+        }
     }
 }

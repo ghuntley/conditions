@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on Int32 x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt32InRangeTest08()
+        {
+            Int32 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsInt32InRange
 
         #region IsInt32NotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on Int32 x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt32NotInRangeTest08()
+        {
+            Int32 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsInt32NotInRange
 
         #region IsInt32GreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on Int32 x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsInt32GreaterThanTest06()
+        {
+            Int32 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsInt32GreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on Int32 x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt32NotGreaterThanTest06()
+        {
+            Int32 a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsInt32NotGreaterThan
 
         #region IsInt32GreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on Int32 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt32GreaterOrEqualTest06()
+        {
+            Int32 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsInt32GreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on Int32 x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt32NotGreaterOrEqualTest06()
+        {
+            Int32 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsInt32NotGreaterOrEqual
 
         #region IsInt32LessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on Int32 x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt32LessThanTest06()
+        {
+            Int32 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsInt32LessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on Int32 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt32NotLessThanTest06()
+        {
+            Int32 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsInt32NotLessThan
 
         #region IsInt32LessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on Int32 x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt32LessOrEqualTest06()
+        {
+            Int32 a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsInt32LessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on Int32 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt32NotLessOrEqualTest06()
+        {
+            Int32 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsInt32EqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on Int32 x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsInt32EqualToTest06()
+        {
+            Int32 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsInt32EqualTo
 
         #region IsInt32NotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on Int32 x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsInt32NotEqualToTest06()
+        {
+            Int32 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsInt32NotEqualTo

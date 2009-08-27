@@ -37,7 +37,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
     {
         [TestMethod]
         [Description("Calling HasLength on string x with 'x.Length = expected length' should pass.")]
-        public void HasLengthTest1()
+        public void HasLengthTest01()
         {
             string a = "test";
             Condition.Requires(a).HasLength(4);
@@ -46,7 +46,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling HasLength on string x with 'x.Length != expected length' should fail.")]
-        public void HasLengthTest2()
+        public void HasLengthTest02()
         {
             string a = "test";
             Condition.Requires(a).HasLength(3);
@@ -54,7 +54,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling HasLength on string x with 'x.Length = expected length' should pass.")]
-        public void HasLengthTest3()
+        public void HasLengthTest03()
         {
             string a = String.Empty;
             Condition.Requires(a).HasLength(0);
@@ -63,7 +63,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Description("Calling HasLength on string x with 'x.Length != expected length' should fail.")]
-        public void HasLengthTest4()
+        public void HasLengthTest04()
         {
             string a = String.Empty;
             Condition.Requires(a).HasLength(1);
@@ -71,7 +71,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling HasLength on string x with 'null = expected length' should pass.")]
-        public void HasLengthTest5()
+        public void HasLengthTest05()
         {
             string a = null;
             // A null value will never be found
@@ -81,7 +81,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling HasLength on string x with 'null != expected length' should fail.")]
-        public void HasLengthTest6()
+        public void HasLengthTest06()
         {
             string a = null;
             // A null value will never be found
@@ -90,7 +90,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling HasLength with conditionDescription parameter should pass.")]
-        public void HasLengthTest7()
+        public void HasLengthTest07()
         {
             string a = string.Empty;
             Condition.Requires(a).HasLength(0, string.Empty);
@@ -98,7 +98,7 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
 
         [TestMethod]
         [Description("Calling a failing HasLength should throw an Exception with an exception message that contains the given parameterized condition description argument.")]
-        public void HasLengthTest8()
+        public void HasLengthTest08()
         {
             string a = null;
             try
@@ -110,6 +110,14 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
             {
                 Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling HasLength on string x with 'x.Length != expected length' should succeed when exceptions are suppressed.")]
+        public void HasLengthTest09()
+        {
+            string a = String.Empty;
+            Condition.Requires(a).SuppressExceptionsForTest().HasLength(1);
         }
     }
 }

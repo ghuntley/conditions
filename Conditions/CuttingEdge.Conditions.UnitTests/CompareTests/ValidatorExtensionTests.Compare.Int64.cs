@@ -108,6 +108,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsInRange on Int64 x with 'lower bound > x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt64InRangeTest08()
+        {
+            Int64 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsInRange(Two, Four);
+        }
+
         #endregion // IsInt64InRange
 
         #region IsInt64NotInRange
@@ -179,6 +187,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotInRange on Int64 x with 'lower bound = x < upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt64NotInRangeTest08()
+        {
+            Int64 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotInRange(Two, Four);
+        }
+
         #endregion // IsInt64NotInRange
 
         #region IsInt64GreaterThan
@@ -231,6 +247,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterThan on Int64 x with 'lower bound < x' should succeed when exceptions are suppressed.")]
+        public void IsInt64GreaterThanTest06()
+        {
+            Int64 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterThan(Two);
         }
 
         #endregion // IsInt64GreaterThan
@@ -286,6 +310,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterThan on Int64 x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt64NotGreaterThanTest06()
+        {
+            Int64 a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterThan(Two);
+        }
+
         #endregion // IsInt64NotGreaterThan
 
         #region IsInt64GreaterOrEqual
@@ -337,6 +369,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsGreaterOrEqual on Int64 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt64GreaterOrEqualTest06()
+        {
+            Int64 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsGreaterOrEqual(Two);
         }
 
         #endregion // IsInt64GreaterOrEqual
@@ -393,6 +433,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotGreaterOrEqual on Int64 x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt64NotGreaterOrEqualTest06()
+        {
+            Int64 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotGreaterOrEqual(Two);
+        }
+
         #endregion // IsInt64NotGreaterOrEqual
 
         #region IsInt64LessThan
@@ -445,6 +493,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessThan on Int64 x with 'x = upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt64LessThanTest06()
+        {
+            Int64 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessThan(Two);
         }
 
         #endregion // IsInt64LessThan
@@ -500,6 +556,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessThan on Int64 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt64NotLessThanTest06()
+        {
+            Int64 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessThan(Two);
+        }
+
         #endregion // IsInt64NotLessThan
 
         #region IsInt64LessOrEqual
@@ -551,6 +615,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsLessOrEqual on Int64 x with 'x > upper bound' should succeed when exceptions are suppressed.")]
+        public void IsInt64LessOrEqualTest06()
+        {
+            Int64 a = Three;
+            Condition.Requires(a).SuppressExceptionsForTest().IsLessOrEqual(Two);
         }
 
         #endregion // IsInt64LessOrEqual
@@ -607,6 +679,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsNotLessOrEqual on Int64 x with 'lower bound > x' should succeed when exceptions are suppressed.")]
+        public void IsInt64NotLessOrEqualTest06()
+        {
+            Int64 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotLessOrEqual(Two);
+        }
+
         #endregion // IsNotLessOrEqual
 
         #region IsInt64EqualTo
@@ -661,6 +741,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             }
         }
 
+        [TestMethod]
+        [Description("Calling IsEqualTo on Int64 x with 'x < other' should succeed when exceptions are suppressed.")]
+        public void IsInt64EqualToTest06()
+        {
+            Int64 a = One;
+            Condition.Requires(a).SuppressExceptionsForTest().IsEqualTo(Two);
+        }
+
         #endregion // IsInt64EqualTo
 
         #region IsInt64NotEqualTo
@@ -712,6 +800,14 @@ namespace CuttingEdge.Conditions.UnitTests.CompareTests
             {
                 Assert.IsTrue(ex.Message.Contains("abc a xyz"));
             }
+        }
+
+        [TestMethod]
+        [Description("Calling IsNotEqualTo on Int64 x with 'x = other' should succeed when exceptions are suppressed.")]
+        public void IsInt64NotEqualToTest06()
+        {
+            Int64 a = Two;
+            Condition.Requires(a).SuppressExceptionsForTest().IsNotEqualTo(Two);
         }
 
         #endregion // IsInt64NotEqualTo

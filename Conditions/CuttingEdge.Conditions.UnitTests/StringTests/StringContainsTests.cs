@@ -139,5 +139,14 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
                 Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling Contains on string x (\"test\") with 'x Contains null' should succeed when exceptions are suppressed.")]
+        public void ContainsTest11()
+        {
+            string a = "test";
+            // A null value will never be found
+            Condition.Requires(a).SuppressExceptionsForTest().Contains(null);
+        }
     }
 }

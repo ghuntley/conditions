@@ -197,5 +197,19 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
         {
             Condition.Ensures(3).Evaluate(null);
         }
+
+        [TestMethod]
+        [Description("Calling Evaluate with boolen 'false' should succeed when exceptions are suppressed.")]
+        public void EvaluateTest18()
+        {
+            Condition.Requires(3).SuppressExceptionsForTest().Evaluate(false);
+        }
+
+        [TestMethod]
+        [Description("Calling Evaluate with lambda 'null' should succeed when exceptions are suppressed.")]
+        public void EvaluateTest19()
+        {
+            Condition.Requires(3).SuppressExceptionsForTest().Evaluate(null);
+        }
     }
 }

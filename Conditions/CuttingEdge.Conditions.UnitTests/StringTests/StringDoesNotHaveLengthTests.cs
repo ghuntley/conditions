@@ -120,5 +120,13 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
                 Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotHaveLength on string x with 'x.Length = expected length' should succeed when exceptions are suppressed.")]
+        public void DoesNotHaveLengthTest10()
+        {
+            string a = "test";
+            Condition.Requires(a).SuppressExceptionsForTest().DoesNotHaveLength(4);
+        }
     }
 }

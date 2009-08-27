@@ -28,25 +28,13 @@ using System.Collections;
 namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 {
     /// <summary>
-    /// Helper class that implements <see cref="IEnumerable"/> and can be used to simulate an empty or non
-    /// empty collection.
+    /// Helper class that implements <see cref="IEnumerable"/> and can be used to simulate an non-empty 
+    /// collection.
     /// </summary>
-    internal sealed class IsEmptyTestEnumerable : IEnumerable
+    internal sealed class NonEmptyTestEnumerable : IEnumerable
     {
-        private readonly bool empty;
-
-        public IsEmptyTestEnumerable(bool thisCollectionIsEmpty)
-        {
-            this.empty = thisCollectionIsEmpty;
-        }
-
         public IEnumerator GetEnumerator()
         {
-            if (this.empty)
-            {
-                yield break;
-            }
-
             // Return one element
             yield return null;
         }

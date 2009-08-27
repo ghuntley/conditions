@@ -83,5 +83,13 @@ namespace CuttingEdge.Conditions.UnitTests.StringTests
                 Assert.IsTrue(ex.Message.Contains("qwe a xyz"));
             }
         }
+
+        [TestMethod]
+        [Description("Calling IsNotEmpty on string x with 'x == String.Empty' should succeed when exceptions are suppressed.")]
+        public void IsStringNotEmptyTest6()
+        {
+            string s = String.Empty;
+            Condition.Requires(s).SuppressExceptionsForTest().IsNotEmpty();
+        }
     }
 }

@@ -300,5 +300,14 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
             // DoesNotContainAll should fail, because the value is not in the initial list.
             Condition.Requires(set).DoesNotContainAll(elements);
         }
+
+        [TestMethod]
+        [Description("Calling DoesNotContainAll on a null collection with a null reference as 'any' collection should succeed when exceptions are suppressed.")]
+        public void CollectionDoesNotContainAllTest22()
+        {
+            Collection<int> c = null;
+            int[] elements = null;
+            Condition.Requires(c).SuppressExceptionsForTest().DoesNotContainAll(elements);
+        }
     }
 }

@@ -377,5 +377,14 @@ namespace CuttingEdge.Conditions.UnitTests.CollectionTests
                 Assert.IsInstanceOfType(ex, typeof(ArgumentException));
             }
         }
+
+        [TestMethod]
+        [Description("Calling ContainsAny on a null collection with a null reference as 'any' collection should succeed when exceptions are suppressed.")]
+        public void CollectionContainsAnyTest28()
+        {
+            Collection<int> c = null;
+            int[] elements = null;
+            Condition.Requires(c).SuppressExceptionsForTest().ContainsAny(elements);
+        }
     }
 }

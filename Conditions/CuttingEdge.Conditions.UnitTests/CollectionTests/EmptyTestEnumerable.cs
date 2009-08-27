@@ -23,31 +23,18 @@
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+using System.Collections;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace CuttingEdge.Conditions.UnitTests
+namespace CuttingEdge.Conditions.UnitTests.CollectionTests
 {
-    [TestClass]
-    public class ConditionValidatorTests
+    /// <summary>
+    /// Helper class that implements <see cref="IEnumerable"/> and can be used to simulate an empty collection.
+    /// </summary>
+    internal sealed class EmptyTestEnumerable : IEnumerable
     {
-        [TestMethod]
-        [Description("Checks whether the methods that are overridden from System.Object work as expected.")]
-        public void OverriddenMethodsTest()
+        public IEnumerator GetEnumerator()
         {
-            var validator = Condition.Requires(3);
-
-            validator.ToString();
-
-            validator.GetHashCode();
-
-            validator.GetType();
-
-            validator.Equals(null);
+            yield break;
         }
     }
 }
