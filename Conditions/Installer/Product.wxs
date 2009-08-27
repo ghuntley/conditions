@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
 /*
  * CuttingEdge.Conditions
@@ -7,12 +7,7 @@
  * Project      :   Installer
  * Created on   :   9.24.08 Matt Valerio
  * Copyright    :   Copyright © 2008 S. van Deursen
- * License      :   LGPL
- *                  This program is free software; you can redistribute it and/or 
- *                  modify it under the terms of the GNU Lesser General Public
- *                  License as published by the Free Software Foundation;
- *                  See the GNU Lesser General Public License 
- *                  (http://www.gnu.org/copyleft/lesser.html) for more details.
+ * License      :   MIT
  */
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
@@ -127,7 +122,7 @@
 
     <!-- TODO: Add Icon elements here -->
     
-    <!-- Point the UI to the LGPL license file -->
+    <!-- Point the UI to the MIT license file -->
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
     
     <!-- Use the WiX UI with pages for license acceptance and a feature tree -->

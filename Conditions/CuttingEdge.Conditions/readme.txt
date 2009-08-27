@@ -1,4 +1,6 @@
-﻿This project contains the CuttingEdge.Conditions library. It enables developers to validate pre- and 
+﻿Please see the license.txt for the license.
+
+This project contains the CuttingEdge.Conditions library. It enables developers to validate pre- and 
 postconditions in a fluent manner. Following blog posts describe more about the library:
 	Introduction to CuttingEdge.Conditions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=38
 	Requirements and Design decisions: http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=36

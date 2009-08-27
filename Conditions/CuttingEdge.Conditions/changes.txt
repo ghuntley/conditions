@@ -2,7 +2,7 @@
 
 Version vNext
 	General description:
-		TODO
+		TODO: Important change: The license is changed from LGPL to MIT.
 		
 	Bug Fixes:
 		-StackOverflowException was thrown when self-referencing collections were supplied for work item 10509.
