@@ -195,8 +195,10 @@ namespace CuttingEdge.Conditions
         internal static void LambdaXShouldHoldForValue<T>(ConditionValidator<T> validator, LambdaExpression lambda,
             string conditionDescription)
         {
+            string lambdaDefinition = lambda != null && lambda.Body != null ? lambda.Body.ToString() : "null";
+
             string condition = GetFormattedConditionMessage(validator, SR.LambdaXShouldHoldForValue,
-                conditionDescription, validator.ArgumentName, lambda.Body.ToString());
+                conditionDescription, validator.ArgumentName, lambdaDefinition);
 
             string additionalMessage = GetActualValueMessage(validator);
             ConstraintViolationType violationType = GetEnumViolationOrDefault<T>();

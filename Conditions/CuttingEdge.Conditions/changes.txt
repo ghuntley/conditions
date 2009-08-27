@@ -5,6 +5,11 @@ Version vNext
 		TODO: Important change: The license is changed from LGPL to MIT.
 		
 	Bug Fixes:
+		-Evaluate(null) threw a NullReferenceException for work item 10545.
+		 When the ValidationExtensions.Evaluate<T>(Expression<Func<T, bool>>) overload was called with a null
+		 reference for the Expression argument, the method threw a NullReferenceException, while we expected
+		 an ArgumentException or PostconditionException. The code was fixed and two unit tests are added to
+		 prevent regression.
 		-StackOverflowException was thrown when self-referencing collections were supplied for work item 10509.
 		 When building an exception message, the library uses the supplied parameters of the validation
 		 methods. The parameter was transformed to a string representation, which uses recursive calls to 

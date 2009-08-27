@@ -181,5 +181,21 @@ namespace CuttingEdge.Conditions.UnitTests.EvaluationTests
                 Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        [Description("Calling Evaluate with lambda 'null' should fail with an ArgumentException.")]
+        public void EvaluateTest16()
+        {
+            Condition.Requires(3).Evaluate(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(PostconditionException))]
+        [Description("Calling Evaluate with lambda 'null' should fail with an PostconditionException.")]
+        public void EvaluateTest17()
+        {
+            Condition.Ensures(3).Evaluate(null);
+        }
     }
 }
