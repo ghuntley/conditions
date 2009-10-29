@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq.Expressions;
 
@@ -195,7 +196,7 @@ namespace CuttingEdge.Conditions
         internal static void LambdaXShouldHoldForValue<T>(ConditionValidator<T> validator, LambdaExpression lambda,
             string conditionDescription)
         {
-            string lambdaDefinition = lambda != null && lambda.Body != null ? lambda.Body.ToString() : "null";
+            string lambdaDefinition = GetLambdaDefinition(lambda);
 
             string condition = GetFormattedConditionMessage(validator, SR.LambdaXShouldHoldForValue,
                 conditionDescription, validator.ArgumentName, lambdaDefinition);
@@ -830,6 +831,18 @@ namespace CuttingEdge.Conditions
                 // use the unformatted description as condition.
                 return conditionDescription;
             }
+        }
+
+        private static string GetLambdaDefinition(LambdaExpression lambda)
+        {
+            if (lambda == null)
+            {
+                return "null";
+            }
+
+            Debug.Assert(lambda.Body != null, "It should be impossible to create a lambda without a body.");
+
+            return lambda.Body.ToString();
         }
     }
 }
