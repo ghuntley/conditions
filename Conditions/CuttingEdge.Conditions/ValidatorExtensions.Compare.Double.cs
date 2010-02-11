@@ -31,6 +31,350 @@ namespace CuttingEdge.Conditions
     public static partial class ValidatorExtensions
     {
         /// <summary>
+        /// Checks whether the given value is a valid number. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNaN(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (!double.IsNaN(value))
+            {
+                Throw.ValueShouldBeANumber(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is a valid number. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNaN(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (!double.IsNaN(value))
+            {
+                Throw.ValueShouldBeANumber(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is a not valid number. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotNaN(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (double.IsNaN(value))
+            {
+                Throw.ValueShouldNotBeANumber(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is a not valid number. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a valid number, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotNaN(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (double.IsNaN(value))
+            {
+                Throw.ValueShouldNotBeANumber(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsInfinity(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (!double.IsInfinity(value))
+            {
+                Throw.ValueShouldBeInfinity(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsInfinity(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (!double.IsInfinity(value))
+            {
+                Throw.ValueShouldBeInfinity(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotInfinity(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (double.IsInfinity(value))
+            {
+                Throw.ValueShouldNotBeInfinity(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotInfinity(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (double.IsInfinity(value))
+            {
+                Throw.ValueShouldNotBeInfinity(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is negative infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNegativeInfinity(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (!double.IsNegativeInfinity(value))
+            {
+                Throw.ValueShouldBeNegativeInfinity(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is negative infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNegativeInfinity(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (!double.IsNegativeInfinity(value))
+            {
+                Throw.ValueShouldBeNegativeInfinity(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not negative infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotNegativeInfinity(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (double.IsNegativeInfinity(value))
+            {
+                Throw.ValueShouldNotBeNegativeInfinity(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not negative infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is negative infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotNegativeInfinity(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (double.IsNegativeInfinity(value))
+            {
+                Throw.ValueShouldNotBeNegativeInfinity(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is positive infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsPositiveInfinity(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (!double.IsPositiveInfinity(value))
+            {
+                Throw.ValueShouldBePositiveInfinity(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is positive infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsPositiveInfinity(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (!double.IsPositiveInfinity(value))
+            {
+                Throw.ValueShouldBePositiveInfinity(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not positive infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotPositiveInfinity(this ConditionValidator<double> validator)
+        {
+            double value = validator.Value;
+
+            if (double.IsPositiveInfinity(value))
+            {
+                Throw.ValueShouldNotBePositiveInfinity(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not positive infinity. An exception is thrown otherwise.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is positive infinity, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<double> IsNotPositiveInfinity(this ConditionValidator<double> validator,
+            string conditionDescription)
+        {
+            double value = validator.Value;
+
+            if (double.IsPositiveInfinity(value))
+            {
+                Throw.ValueShouldNotBePositiveInfinity(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
         /// Checks whether the given value is between <paramref name="minValue"/> and 
         /// <paramref name="maxValue"/> (including those values). An exception is thrown otherwise.
         /// </summary>

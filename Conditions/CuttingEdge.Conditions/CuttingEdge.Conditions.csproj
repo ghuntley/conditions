@@ -88,11 +88,6 @@
     <None Include="ConditionsClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="changes.txt" />
-    <Content Include="license.txt" />
-    <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="ExceptionMessages.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

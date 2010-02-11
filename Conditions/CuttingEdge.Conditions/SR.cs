@@ -98,6 +98,7 @@ namespace CuttingEdge.Conditions
         internal const string TheActualValueIs1CharacterLong = "TheActualValueIs1CharacterLong";
         internal const string TheActualValueIsXCharactersLong = "TheActualValueIsXCharactersLong";
 
+        internal const string ValueShouldBeANumber = "ValueShouldBeANumber";
         internal const string ValueShouldBeBetweenXAndY = "ValueShouldBeBetweenXAndY";
         internal const string ValueShouldBeEqualToX = "ValueShouldBeEqualToX";
         internal const string ValueShouldBeFalse = "ValueShouldBeFalse";
@@ -110,6 +111,7 @@ namespace CuttingEdge.Conditions
         internal const string ValueShouldBeTrue = "ValueShouldBeTrue";
         internal const string ValueShouldBeUnequalToX = "ValueShouldBeUnequalToX";
         internal const string ValueShouldBeValid = "ValueShouldBeValid";
+        internal const string ValueShouldNotBeANumber = "ValueShouldNotBeANumber";
         internal const string ValueShouldNotBeBetweenXAndY = "ValueShouldNotBeBetweenXAndY";
         internal const string ValueShouldNotBeGreaterThanOrEqualToX = "ValueShouldNotBeGreaterThanOrEqualToX";
         internal const string ValueShouldNotBeGreaterThanX = "ValueShouldNotBeGreaterThanX";
@@ -117,6 +119,13 @@ namespace CuttingEdge.Conditions
         internal const string ValueShouldNotBeSmallerThanX = "ValueShouldNotBeSmallerThanX";
         internal const string ValueShouldNotBeNull = "ValueShouldNotBeNull";
         internal const string ValueShouldNotBeOfTypeX = "ValueShouldNotBeOfTypeX";
+        
+        internal const string ValueShouldBeInfinity = "ValueShouldBeInfinity";
+        internal const string ValueShouldNotBeInfinity = "ValueShouldNotBeInfinity";
+        internal const string ValueShouldBeNegativeInfinity = "ValueShouldBeNegativeInfinity";
+        internal const string ValueShouldNotBeNegativeInfinity = "ValueShouldNotBeNegativeInfinity";
+        internal const string ValueShouldBePositiveInfinity = "ValueShouldBePositiveInfinity";
+        internal const string ValueShouldNotBePositiveInfinity = "ValueShouldNotBePositiveInfinity";
 
         private static readonly ResourceManager resource =
             new ResourceManager(typeof(SR).Namespace + ".ExceptionMessages", typeof(SR).Assembly);

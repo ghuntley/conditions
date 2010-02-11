@@ -482,6 +482,70 @@ namespace CuttingEdge.Conditions
             validator.ThrowException(condition);
         }
 
+        internal static void ValueShouldBeANumber<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeANumber,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldNotBeANumber<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeANumber,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldBeInfinity<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeInfinity,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldNotBeInfinity<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeInfinity,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldBeNegativeInfinity<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBeNegativeInfinity,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldNotBeNegativeInfinity<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBeNegativeInfinity,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldBePositiveInfinity<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldBePositiveInfinity,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void ValueShouldNotBePositiveInfinity<T>(ConditionValidator<T> validator, string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.ValueShouldNotBePositiveInfinity,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
         internal static void CollectionShouldBeEmpty<T>(ConditionValidator<T> validator, string conditionDescription)
         {
             string condition = GetFormattedConditionMessage(validator, SR.CollectionShouldBeEmpty,

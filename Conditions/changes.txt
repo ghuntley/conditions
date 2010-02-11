@@ -1,5 +1,15 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
+Version 1.1.0.10041 (v1.1) 2010-02-10
+	General description:
+		This second stable release adds checks for NaN, infinity, negative infinity, positive infinity on the
+		types System.Double and System.Single.		
+
+	Code changes:
+		-32 new methods added on Single and Double for checking NaN, Infinity, NegativeInfinity and Positive-
+		 Infinity.
+
+
 Version 1.0.4.0 (v1.0) 2009-08-27
 	General description:
 		This first stable release has had a major face lift and several minor bug fixes. The API has changed 

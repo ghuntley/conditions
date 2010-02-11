@@ -72,6 +72,8 @@
     <Compile Include="ExtendabilityTests.cs" />
     <Compile Include="NullTests\NullIsNotNullTests.cs" />
     <Compile Include="NullTests\NullIsNullTests.cs" />
+    <Compile Include="NumericTests\NumericTests.Double.cs" />
+    <Compile Include="NumericTests\NumericTests.Single.cs" />
     <Compile Include="PostConditionExceptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringResourcesTests.cs" />
