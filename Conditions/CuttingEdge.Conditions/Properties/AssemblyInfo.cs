@@ -15,6 +15,7 @@
 */
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
@@ -54,3 +55,7 @@ using System.Runtime.InteropServices;
 
 [assembly: CLSCompliant(true)]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
+
+[module: SuppressMessage("Microsoft.Naming", "CA1703:ResourceStringsShouldBeSpelledCorrectly", 
+    Scope = "resource", Target = "CuttingEdge.Conditions.ExceptionMessages.resources",
+    MessageId = "Postcondition", Justification = "Postcondition is actually a word.")]

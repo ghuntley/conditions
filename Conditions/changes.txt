@@ -1,5 +1,14 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
+Version vNext
+	General description:
+	
+	Code Changes:
+		-Reevaluated the use of FxCop and added the SuppressMessageAttribute to the code. Originally these 
+		 excludes were added in the FxCop file, but adding the attributes to code is more maintainable and 
+		 discoverable.
+
+
 Version 1.1.0.10041 (v1.1) 2010-02-10
 	General description:
 		This second stable release adds checks for NaN, infinity, negative infinity, positive infinity on the

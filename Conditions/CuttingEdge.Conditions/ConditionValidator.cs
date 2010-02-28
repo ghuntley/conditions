@@ -29,6 +29,7 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CuttingEdge.Conditions
 {
@@ -175,8 +176,13 @@ namespace CuttingEdge.Conditions
     {
         /// <summary>Gets the value of the argument.</summary>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
-        // NOTE: We chose to make the Value a public field, so the Extension methods can use it, 
-        // without we have to worry about extra method calls.
+        [SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields", Justification =
+            "We chose to make the Value a public field, so the Extension methods can use it, without we " +
+            "have to worry about extra method calls.")]
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes",
+            Justification = "The rule is correct. We tried to make ConditionValidator<T> immutable, but " +
+            "the validated type T can indeed be mutable (a collection for example). However, for us it's " +
+            "enough to be sure that the value or the reference to the value won't change.")]
         public readonly T Value;
 
         private readonly string argumentName;
@@ -239,6 +245,11 @@ namespace CuttingEdge.Conditions
         /// <returns>The <see cref="System.Type"/> instance that represents the exact runtime 
         /// type of the current instance.</returns>
         [EditorBrowsable(EditorBrowsableState.Never)] // see top of page for note on this attribute.
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = 
+            "This FxCop warning is valid, but this method is used to be able to attach an " + 
+            "EditorBrowsableAttrubute to the GetType method, which will hide the method when the user " +
+            "browses the methods of the ConditionValidator class with IntelliSense. The GetType method has " +
+            "no value for the user who will only use this class for validation.")]
         public new Type GetType()
         {
             return base.GetType();

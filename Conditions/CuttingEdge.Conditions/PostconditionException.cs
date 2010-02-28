@@ -24,6 +24,7 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 namespace CuttingEdge.Conditions
@@ -32,6 +33,9 @@ namespace CuttingEdge.Conditions
     /// The exception that is thrown when a method's postcondition is not valid.
     /// </summary>
     [Serializable]
+    [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly",
+        MessageId = "Postcondition", Justification = "Postcondition is actually a word. " + 
+        "See: http://en.wikipedia.org/wiki/Postcondition.")]
     public sealed class PostconditionException : Exception
     {
         /// <summary>Initializes a new instance of the <see cref="PostconditionException"/> class.</summary>
