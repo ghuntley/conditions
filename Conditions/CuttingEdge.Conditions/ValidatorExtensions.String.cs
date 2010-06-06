@@ -31,6 +31,90 @@ namespace CuttingEdge.Conditions
     public static partial class ValidatorExtensions
     {
         /// <summary>
+        /// Checks whether the given value is <b>null</b> (Nothing in Visual Basic), empty, or consists only 
+        /// of white-space characters.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not <b>null</b>, not empty and does not consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not <b>null</b>, not empty and does not consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<string> IsNullOrWhiteSpace(this ConditionValidator<string> validator)
+        {
+            if (!StringIsNullOrWhiteSpace(validator.Value))
+            {
+                Throw.StringShouldBeNullOrWhiteSpace(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is <b>null</b> (Nothing in Visual Basic), empty, or consists only 
+        /// of white-space characters.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not <b>null</b>, not empty and does not consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is not <b>null</b>, not empty and does not consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<string> IsNullOrWhiteSpace(this ConditionValidator<string> validator,
+            string conditionDescription)
+        {
+            if (!StringIsNullOrWhiteSpace(validator.Value))
+            {
+                Throw.StringShouldBeNullOrWhiteSpace(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not <b>null</b> (Nothing in Visual Basic), not empty, and does 
+        /// not consists only of white-space characters.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty or consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the length of the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is <b>null</b>, empty or or consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<string> IsNotNullOrWhiteSpace(this ConditionValidator<string> validator)
+        {
+            if (StringIsNullOrWhiteSpace(validator.Value))
+            {
+                Throw.StringShouldNotBeNullOrWhiteSpace(validator, null);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
+        /// Checks whether the given value is not <b>null</b> (Nothing in Visual Basic), not empty, and does 
+        /// not consists only of white-space characters.
+        /// </summary>
+        /// <param name="validator">The <see cref="ConditionValidator{T}"/> that holds the value that has to be checked.</param>
+        /// <param name="conditionDescription">
+        /// The description of the condition that should hold. The string may hold the placeholder '{0}' for 
+        /// the <see cref="ConditionValidator{T}.ArgumentName">ArgumentName</see>.
+        /// </param>
+        /// <returns>The specified <paramref name="validator"/> instance.</returns>
+        /// <exception cref="ArgumentException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is empty or consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is a null reference, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Requires{T}(T,string)">Requires</see> extension method.</exception>
+        /// <exception cref="PostconditionException">Thrown when the length of the <see cref="ConditionValidator{T}.Value">Value</see> of the specified <paramref name="validator"/> is <b>null</b>, empty or or consists only of white-space characters, while the specified <paramref name="validator"/> is created using the <see cref="Condition.Ensures{T}(T,string)">Ensures</see> extension method.</exception>
+        public static ConditionValidator<string> IsNotNullOrWhiteSpace(this ConditionValidator<string> validator,
+            string conditionDescription)
+        {
+            if (StringIsNullOrWhiteSpace(validator.Value))
+            {
+                Throw.StringShouldNotBeNullOrWhiteSpace(validator, conditionDescription);
+            }
+
+            return validator;
+        }
+
+        /// <summary>
         /// Checks whether the given value is shorter in length than <paramref name="maxLength"/>.
         /// An exception is thrown otherwise. A null reference is considered to have a length of 0.
         /// </summary>
@@ -1009,6 +1093,22 @@ namespace CuttingEdge.Conditions
             }
 
             return validator;
+        }
+
+        private static bool StringIsNullOrWhiteSpace(string value)
+        {
+            if (value != null)
+            {
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (!char.IsWhiteSpace(value[i]))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

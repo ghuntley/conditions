@@ -266,6 +266,24 @@ namespace CuttingEdge.Conditions
             validator.ThrowException(condition, additionalMessage, violationType);
         }
 
+        internal static void StringShouldBeNullOrWhiteSpace(ConditionValidator<string> validator,
+            string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldBeNullOrWhiteSpace,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
+        internal static void StringShouldNotBeNullOrWhiteSpace(ConditionValidator<string> validator,
+            string conditionDescription)
+        {
+            string condition = GetFormattedConditionMessage(validator, SR.StringShouldNotBeNullOrWhiteSpace,
+                conditionDescription, validator.ArgumentName);
+
+            validator.ThrowException(condition);
+        }
+
         internal static void StringShouldHaveLength(ConditionValidator<string> validator, int length,
             string conditionDescription)
         {

@@ -77,6 +77,7 @@ namespace CuttingEdge.Conditions
         internal const string StringShouldBeLongerThan1Character = "StringShouldBeLongerThan1Character";
         internal const string StringShouldBeLongerThanXCharacters = "StringShouldBeLongerThanXCharacters";
         internal const string StringShouldBeNullOrEmpty = "StringShouldBeNullOrEmpty";
+        internal const string StringShouldBeNullOrWhiteSpace = "StringShouldBeNullOrWhiteSpace";
         internal const string StringShouldBeShorterOrEqualTo1Character = "StringShouldBeShorterOrEqualTo1Character";
         internal const string StringShouldBeShorterOrEqualToXCharacters = "StringShouldBeShorterOrEqualToXCharacters";
         internal const string StringShouldBeShorterThan1Character = "StringShouldBeShorterThan1Character";
@@ -87,6 +88,7 @@ namespace CuttingEdge.Conditions
         internal const string StringShouldEndWithX = "StringShouldEndWithX";
         internal const string StringShouldNotBeEmpty = "StringShouldNotBeEmpty";
         internal const string StringShouldNotBeNullOrEmpty = "StringShouldNotBeNullOrEmpty";
+        internal const string StringShouldNotBeNullOrWhiteSpace = "StringShouldNotBeNullOrWhiteSpace";
         internal const string StringShouldNotBe1CharacterLong = "StringShouldNotBe1CharacterLong";
         internal const string StringShouldNotBeXCharactersLong = "StringShouldNotBeXCharactersLong";
         internal const string StringShouldNotContainX = "StringShouldNotContainX";

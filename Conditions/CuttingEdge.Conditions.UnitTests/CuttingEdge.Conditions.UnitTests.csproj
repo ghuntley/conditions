@@ -88,7 +88,9 @@
     <Compile Include="StringTests\StringIsLongerThanTests.cs" />
     <Compile Include="StringTests\StringIsNotEmptyTests.cs" />
     <Compile Include="StringTests\StringIsNotNullOrEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNotNullOrWhiteSpaceTests.cs" />
     <Compile Include="StringTests\StringIsNullOrEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNullOrWhiteSpaceTests.cs" />
     <Compile Include="StringTests\StringIsShorterOrEqualTests.cs" />
     <Compile Include="StringTests\StringIsLongerOrEqualTests.cs" />
     <Compile Include="StringTests\StringIsShorterThanTests.cs" />

@@ -231,6 +231,9 @@
   <data name="StringShouldBeNullOrEmpty" xml:space="preserve">
     <value>{0} should be null or an empty string</value>
   </data>
+  <data name="StringShouldBeNullOrWhiteSpace" xml:space="preserve">
+    <value>{0} should be null, empty or consists only of white-space characters.</value>
+  </data>
   <data name="StringShouldBeShorterOrEqualTo1Character" xml:space="preserve">
     <value>{0} should be shorter or equal to 1 character</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="StringShouldNotBeNullOrEmpty" xml:space="preserve">
     <value>{0} should not be null or an empty string</value>
+  </data>
+  <data name="StringShouldNotBeNullOrWhiteSpace" xml:space="preserve">
+    <value>{0} should not be null, and empty string or consists only of white-space characters.</value>
   </data>
   <data name="StringShouldNotBeXCharactersLong" xml:space="preserve">
     <value>{0} should not be {1} characters long</value>
