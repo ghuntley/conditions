@@ -24,30 +24,28 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace CuttingEdge.Conditions.UnitTests
+namespace CuttingEdge.Conditions
 {
-    [TestClass]
-    public class ConditionValidatorTests
+    /// <summary>
+    /// The RequiresValidator can be used for precondition checks.
+    /// </summary>
+    /// <typeparam name="T">The type of the argument to be validated</typeparam>
+    /// <typeparam name="TException">The exception type to throw in case of a failure.</typeparam>
+    internal sealed class RequiresWithCustomExceptionValidator<T, TException> : RequiresValidator<T>
+        where TException : Exception
     {
-        [TestMethod]
-        [Description("Checks whether the methods that are overridden from System.Object work as expected.")]
-        public void OverriddenMethodsTest()
+        internal RequiresWithCustomExceptionValidator(string argumentName, T value)
+            : base(argumentName, value)
         {
-            var validator = Condition.Requires(3);
+        }
 
-            validator.ToString();
+        internal override Exception BuildExceptionBasedOnViolationType(ConstraintViolationType type,
+            string message)
+        {
+            var constructor = AlternativeExceptionHelper<TException>.Constructor;
 
-            validator.GetHashCode();
-
-            validator.GetType();
-
-            validator.Equals(null);
+            return (Exception)constructor.Invoke(new object[] { message });
         }
     }
 }

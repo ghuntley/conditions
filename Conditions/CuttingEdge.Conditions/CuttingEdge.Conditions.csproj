@@ -55,11 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlternativeExceptionCondition.cs" />
+    <Compile Include="AlternativeExceptionHelper.cs" />
     <Compile Include="CollectionHelpers.cs" />
     <Compile Include="Condition.cs" />
     <Compile Include="ConstraintViolationType.enum.cs" />
     <Compile Include="DefaultComparer.cs" />
     <Compile Include="EnsuresValidator.cs" />
+    <Compile Include="RequiresWithCustomExceptionValidator.cs" />
     <Compile Include="StringificationExtensions.cs" />
     <Compile Include="RequiresValidator.cs" />
     <Compile Include="SR.cs" />

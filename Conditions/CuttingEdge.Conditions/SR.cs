@@ -34,7 +34,7 @@ namespace CuttingEdge.Conditions
     /// </summary>
     internal static class SR
     {
-        internal const string OtherwiseSpecifiedTypeXIsNotSupported = "OtherwiseSpecifiedTypeXIsNotSupported";
+        internal const string ExceptionTypeIsInvalid = "ExceptionTypeIsInvalid";
 
         internal const string CollectionContainsCurrently1Element = "CollectionContainsCurrently1Element";
         internal const string CollectionContainsCurrentlyXElements = "CollectionContainsCurrentlyXElements";

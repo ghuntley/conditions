@@ -45,6 +45,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlternativeExceptionConditionTests.cs" />
     <Compile Include="CollectionTests\CollectionContainsAllTests.cs" />
     <Compile Include="CollectionTests\CollectionContainsAnyTests.cs" />
     <Compile Include="CollectionTests\CollectionContainsTests.cs" />
@@ -116,7 +117,6 @@
     <Compile Include="UseCases\NullTestUseCases.cs" />
     <Compile Include="UseCases\TypeTestUseCases.cs" />
     <Compile Include="UseCases\UseCaseTestHelper.cs" />
-    <Compile Include="ConditionValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CuttingEdge.Conditions\CuttingEdge.Conditions.csproj">

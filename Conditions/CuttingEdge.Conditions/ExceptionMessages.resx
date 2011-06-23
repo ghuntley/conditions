@@ -198,11 +198,11 @@
   <data name="CollectionShouldNotContainXOrMoreElements" xml:space="preserve">
     <value>{0} should not contain {1} or more elements</value>
   </data>
+  <data name="ExceptionTypeIsInvalid" xml:space="preserve">
+    <value>The specified type {0} is not supported. The type must be concrete and have a public constructor with a single string argument.</value>
+  </data>
   <data name="LambdaXShouldHoldForValue" xml:space="preserve">
     <value>'{1}' should hold for {0}</value>
-  </data>
-  <data name="OtherwiseSpecifiedTypeXIsNotSupported" xml:space="preserve">
-    <value>The specified type {0} is not supported. The type be concrete and have a public constructor with a single string argument.</value>
   </data>
   <data name="PostconditionFailed" xml:space="preserve">
     <value>Postcondition failed.</value>

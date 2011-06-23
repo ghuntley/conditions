@@ -32,10 +32,34 @@ namespace CuttingEdge.Conditions
     /// The RequiresValidator can be used for precondition checks.
     /// </summary>
     /// <typeparam name="T">The type of the argument to be validated</typeparam>
-    internal sealed class RequiresValidator<T> : ConditionValidator<T>
+    internal class RequiresValidator<T> : ConditionValidator<T>
     {
         internal RequiresValidator(string argumentName, T value) : base(argumentName, value)
         {
+        }
+
+        internal virtual Exception BuildExceptionBasedOnViolationType(ConstraintViolationType type, 
+            string message)
+        {
+            switch (type)
+            {
+                case ConstraintViolationType.OutOfRangeViolation:
+                    return new ArgumentOutOfRangeException(this.ArgumentName, message);
+
+                case ConstraintViolationType.InvalidEnumViolation:
+                    string enumMessage = this.BuildInvalidEnumArgumentExceptionMessage(message);
+                    return new InvalidEnumArgumentException(enumMessage);
+
+                default:
+                    if (this.Value != null)
+                    {
+                        return new ArgumentException(message, this.ArgumentName);
+                    }
+                    else
+                    {
+                        return new ArgumentNullException(this.ArgumentName, message);
+                    }
+            }
         }
 
         /// <summary>Throws an exception.</summary>
@@ -64,29 +88,6 @@ namespace CuttingEdge.Conditions
             else
             {
                 return condition + ".";
-            }
-        }
-
-        private Exception BuildExceptionBasedOnViolationType(ConstraintViolationType type, string message)
-        {
-            switch (type)
-            {
-                case ConstraintViolationType.OutOfRangeViolation:
-                    return new ArgumentOutOfRangeException(this.ArgumentName, message);
-
-                case ConstraintViolationType.InvalidEnumViolation:
-                    string enumMessage = this.BuildInvalidEnumArgumentExceptionMessage(message);
-                    return new InvalidEnumArgumentException(enumMessage);
-
-                default:
-                    if (this.Value != null)
-                    {
-                        return new ArgumentException(message, this.ArgumentName);
-                    }
-                    else
-                    {
-                        return new ArgumentNullException(this.ArgumentName, message);
-                    }
             }
         }
 

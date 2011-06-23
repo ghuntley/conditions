@@ -4,6 +4,15 @@ Version vNext
 	General description:
 	
 	Code Changes:
+
+
+Version 1.2.0.11174 (v1.2) 2011-06-23
+	General description:
+		Condition.WithExceptionOnFailure method added and IsNullOrWhitSpace validation methods added.
+	
+	Code Changes:
+		-New Condition.WithExceptionOnFailure<TException>() method was added to allow changing the type of
+		 exception that was thrown.
 	    -AllowPartiallyTrustedCallers attribute added to assembly.
 		-Reevaluated the use of FxCop and added the SuppressMessageAttribute to the code. Originally these 
 		 excludes were added in the FxCop file, but adding the attributes to code is more maintainable and 

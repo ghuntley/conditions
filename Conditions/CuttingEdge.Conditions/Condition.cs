@@ -24,9 +24,7 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CuttingEdge.Conditions
 {
@@ -44,7 +42,7 @@ namespace CuttingEdge.Conditions
         /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
         /// <paramref name="value"/> and "value" as argument name.</returns>
         /// <example>
-        /// The following example shows how to use the <b>Requires</b> extension method.
+        /// The following example shows how to use the <b>Requires</b> method.
         /// <code><![CDATA[
         /// using CuttingEdge.Conditions;
         /// 
@@ -81,7 +79,7 @@ namespace CuttingEdge.Conditions
         /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
         /// <paramref name="value"/> and <paramref name="argumentName"/>.</returns>
         /// <example>
-        /// The following example shows how to use the <b>Requires</b> extension method.
+        /// The following example shows how to use the <b>Requires</b> method.
         /// <code><![CDATA[
         /// using CuttingEdge.Conditions;
         /// 
@@ -140,7 +138,7 @@ namespace CuttingEdge.Conditions
         /// <returns>A new <see cref="ConditionValidator{T}">ConditionValidator</see> containing the 
         /// <paramref name="value"/> and <paramref name="argumentName"/>.</returns>
         /// <example>
-        /// The following example shows a way to use the <b>Ensures</b> extension method. Shown is an 
+        /// The following example shows a way to use the <b>Ensures</b> method. Shown is an 
         /// <b>IObjectBuilder</b> interface which contract states that the <b>BuildObject</b> method should 
         /// never return <b>null</b>. That contract, however, is not enforced by the compiler or the runtime.
         /// To allow this contract to be validated, the <b>ObjectBuilderValidator</b> class is a decorator for
@@ -195,6 +193,65 @@ namespace CuttingEdge.Conditions
         public static ConditionValidator<T> Ensures<T>(T value, string argumentName)
         {
             return new EnsuresValidator<T>(argumentName, value);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="AlternativeExceptionCondition" /> that allows you to specify the exception
+        /// type that has to be thrown in case a a validation fails.
+        /// </summary>
+        /// <typeparam name="TException">The type of the exception to throw.</typeparam>
+        /// <returns>A new <see cref="AlternativeExceptionCondition" />.</returns>
+        /// <example>
+        /// The following example shows how to use the <b>WithExceptionOnFailure</b> method.
+        /// <code><![CDATA[
+        /// using CuttingEdge.Conditions;
+        /// 
+        /// public class Point
+        /// {
+        ///     private readonly int x;
+        ///     private readonly int y;
+        ///     
+        ///     public Point(int x, int y)
+        ///     {
+        ///         // Throws an InvalidOperationException when x is less than 0
+        ///         Condition.WithExceptionOnFailure<InvalidOperationException>().Requires(x, "x")
+        ///             .IsGreaterOrEqual(0)
+        ///             .IsLessThan(100);
+        ///         
+        ///         this.x = x;
+        ///         this.y = y;
+        ///     }
+        ///     
+        ///     public int X { get { return this.x; } }
+        ///     public int Y { get { return this.y; } }
+        /// }
+        /// ]]></code>
+        /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
+        /// </example>
+        /// <exception cref="ArgumentException">
+        /// Thrown when the supplied <typeparamref name="TException"/> is abstract or does not contain a
+        /// public constructor with a single parameter of type <see cref="string"/>.</exception>
+        [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification =
+            "By using a generic type we can limit the used types to Exceptions by applying a type constraint.")]
+        public static AlternativeExceptionCondition WithExceptionOnFailure<TException>()
+            where TException : Exception
+        {
+            var condition = AlternativeExceptionHelper<TException>.Condition;
+
+            if (condition == null)
+            {
+                ThrowInvalidExceptionType(typeof(TException));
+            }
+
+            return condition;
+        }
+
+        [SuppressMessage("Microsoft.Usage", "CA2208:InstantiateArgumentExceptionsCorrectly", Justification =
+            "The ParamName equals the name of the generic type of the WithExceptionOnFailure method.")]
+        private static void ThrowInvalidExceptionType(Type exceptionType)
+        {
+            throw new ArgumentException(SR.GetString(SR.ExceptionTypeIsInvalid, exceptionType), 
+                "TException");
         }
     }
 }
