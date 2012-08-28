@@ -1,10 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions", "CuttingEdge.Conditions\CuttingEdge.Conditions.csproj", "{914B3EA8-2D78-4B1D-BA98-575817EB20F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.UnitTests", "CuttingEdge.Conditions.UnitTests\CuttingEdge.Conditions.UnitTests.csproj", "{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{24EEDF66-CE38-4A6C-830A-58BD036474CD}"
 	ProjectSection(SolutionItems) = preProject
 		changes.txt = changes.txt
@@ -12,11 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.txt = readme.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions", "CuttingEdge.Conditions\CuttingEdge.Conditions.csproj", "{914B3EA8-2D78-4B1D-BA98-575817EB20F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.UnitTests", "CuttingEdge.Conditions.UnitTests\CuttingEdge.Conditions.UnitTests.csproj", "{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/TFS02
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs02
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = CuttingEdge.Conditions.UnitTests\\CuttingEdge.Conditions.UnitTests.csproj
 		SccProjectName1 = CuttingEdge.Conditions.UnitTests
