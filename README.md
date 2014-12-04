@@ -1,6 +1,15 @@
 ![Icon](https://i.imgur.com/XSacNPD.png?2)
 ## Conditions
 
+Conditions is cross platform portable class library helps developers to write pre- and postcondition validations in a fluent manner. Writing these validations is easy and it improves the readability and maintainability of code.
+
+## Supported Platforms
+* .NET 4.5 (We are now a Portable Class Library)
+* Mono 
+* Xamarin.iOS
+* Xamarin.Android
+* Xamarin.Mac
+
 ## Installation
 
 Installation is done via NuGet:
