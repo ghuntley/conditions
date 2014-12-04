@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CollectionContainsCurrently1Element" xml:space="preserve">
+    <value>{0} contains currently 1 element.</value>
+  </data>
+  <data name="CollectionContainsCurrentlyXElements" xml:space="preserve">
+    <value>{0} contains currently {1} elements.</value>
+  </data>
+  <data name="CollectionIsCurrentlyANullReference" xml:space="preserve">
+    <value>{0} is currently a null reference.</value>
+  </data>
+  <data name="CollectionShouldBeEmpty" xml:space="preserve">
+    <value>{0} should be empty</value>
+  </data>
+  <data name="CollectionShouldContain1Element" xml:space="preserve">
+    <value>{0} should contain 1 element</value>
+  </data>
+  <data name="CollectionShouldContainAllOfX" xml:space="preserve">
+    <value>{0} should contain all of {1}</value>
+  </data>
+  <data name="CollectionShouldContainAtLeastOneOfX" xml:space="preserve">
+    <value>{0} should contain at least one of {1}</value>
+  </data>
+  <data name="CollectionShouldContainLessThan1Element" xml:space="preserve">
+    <value>{0} should contain less than 1 element</value>
+  </data>
+  <data name="CollectionShouldContainLessThanXElements" xml:space="preserve">
+    <value>{0} should contain less than {1} elements</value>
+  </data>
+  <data name="CollectionShouldContainMoreThan1Element" xml:space="preserve">
+    <value>{0} should contain more than 1 element</value>
+  </data>
+  <data name="CollectionShouldContainMoreThanXElements" xml:space="preserve">
+    <value>{0} should contain more than {1} elements</value>
+  </data>
+  <data name="CollectionShouldContainX" xml:space="preserve">
+    <value>{0} should contain {1}</value>
+  </data>
+  <data name="CollectionShouldContainXElements" xml:space="preserve">
+    <value>{0} should contain {1} elements</value>
+  </data>
+  <data name="CollectionShouldContainXOrLessElements" xml:space="preserve">
+    <value>{0} should contain {1} or less elements</value>
+  </data>
+  <data name="CollectionShouldContainXOrMoreElements" xml:space="preserve">
+    <value>{0} should contain {1} or more elements</value>
+  </data>
+  <data name="CollectionShouldNotBeEmpty" xml:space="preserve">
+    <value>{0} should not be empty</value>
+  </data>
+  <data name="CollectionShouldNotContain1Element" xml:space="preserve">
+    <value>{0} should not contain 1 element</value>
+  </data>
+  <data name="CollectionShouldNotContainAllOfX" xml:space="preserve">
+    <value>{0} should not contain all of {1}</value>
+  </data>
+  <data name="CollectionShouldNotContainAnyOfX" xml:space="preserve">
+    <value>{0} should not contain any of {1}</value>
+  </data>
+  <data name="CollectionShouldNotContainLessThan1Element" xml:space="preserve">
+    <value>{0} should not contain more than 1 element</value>
+  </data>
+  <data name="CollectionShouldNotContainLessThanXElements" xml:space="preserve">
+    <value>{0} should not contain less than {1} elements</value>
+  </data>
+  <data name="CollectionShouldNotContainMoreThan1Element" xml:space="preserve">
+    <value>{0} should not contain more than 1 element</value>
+  </data>
+  <data name="CollectionShouldNotContainMoreThanXElements" xml:space="preserve">
+    <value>{0} should not contain more than {1} elements</value>
+  </data>
+  <data name="CollectionShouldNotContainX" xml:space="preserve">
+    <value>{0} should not contain {1}</value>
+  </data>
+  <data name="CollectionShouldNotContainXElements" xml:space="preserve">
+    <value>{0} should not contain {1} elements</value>
+  </data>
+  <data name="CollectionShouldNotContainXOrLessElements" xml:space="preserve">
+    <value>{0} should not contain {1} or less elements</value>
+  </data>
+  <data name="CollectionShouldNotContainXOrMoreElements" xml:space="preserve">
+    <value>{0} should not contain {1} or more elements</value>
+  </data>
+  <data name="ExceptionTypeIsInvalid" xml:space="preserve">
+    <value>The specified type {0} is not supported. The type must be concrete and have a public constructor with a single string argument.</value>
+  </data>
+  <data name="LambdaXShouldHoldForValue" xml:space="preserve">
+    <value>'{1}' should hold for {0}</value>
+  </data>
+  <data name="PostconditionFailed" xml:space="preserve">
+    <value>Postcondition failed.</value>
+  </data>
+  <data name="PostconditionXFailed" xml:space="preserve">
+    <value>Postcondition '{0}' failed.</value>
+  </data>
+  <data name="StringShouldBe1CharacterLong" xml:space="preserve">
+    <value>{0} should be 1 character long</value>
+  </data>
+  <data name="StringShouldBeEmpty" xml:space="preserve">
+    <value>{0} should be an empty string</value>
+  </data>
+  <data name="StringShouldBeLongerOrEqualTo1Character" xml:space="preserve">
+    <value>{0} should be longer or equal to 1 character</value>
+  </data>
+  <data name="StringShouldBeLongerOrEqualToXCharacters" xml:space="preserve">
+    <value>{0} should be longer or equal to {1} characters</value>
+  </data>
+  <data name="StringShouldBeLongerThan1Character" xml:space="preserve">
+    <value>{0} should be longer than 1 character</value>
+  </data>
+  <data name="StringShouldBeLongerThanXCharacters" xml:space="preserve">
+    <value>{0} should be longer than {1} characters</value>
+  </data>
+  <data name="StringShouldBeNullOrEmpty" xml:space="preserve">
+    <value>{0} should be null or an empty string</value>
+  </data>
+  <data name="StringShouldBeNullOrWhiteSpace" xml:space="preserve">
+    <value>{0} should be null, empty or consists only of white-space characters.</value>
+  </data>
+  <data name="StringShouldBeShorterOrEqualTo1Character" xml:space="preserve">
+    <value>{0} should be shorter or equal to 1 character</value>
+  </data>
+  <data name="StringShouldBeShorterOrEqualToXCharacters" xml:space="preserve">
+    <value>{0} should be shorter or equal to {1} characters</value>
+  </data>
+  <data name="StringShouldBeShorterThan1Character" xml:space="preserve">
+    <value>{0} should be shorter than 1 character</value>
+  </data>
+  <data name="StringShouldBeShorterThanXCharacters" xml:space="preserve">
+    <value>{0} should be shorter than {1} characters</value>
+  </data>
+  <data name="StringShouldBeXCharactersLong" xml:space="preserve">
+    <value>{0} should be {1} characters long</value>
+  </data>
+  <data name="StringShouldContainX" xml:space="preserve">
+    <value>{0} should contain {1}</value>
+  </data>
+  <data name="StringShouldEndWithX" xml:space="preserve">
+    <value>{0} should end with {1}</value>
+  </data>
+  <data name="StringShouldNotBe1CharacterLong" xml:space="preserve">
+    <value>{0} should not be 1 character long</value>
+  </data>
+  <data name="StringShouldNotBeEmpty" xml:space="preserve">
+    <value>{0} should not be an empty string</value>
+  </data>
+  <data name="StringShouldNotBeNullOrEmpty" xml:space="preserve">
+    <value>{0} should not be null or an empty string</value>
+  </data>
+  <data name="StringShouldNotBeNullOrWhiteSpace" xml:space="preserve">
+    <value>{0} should not be null, and empty string or consists only of white-space characters.</value>
+  </data>
+  <data name="StringShouldNotBeXCharactersLong" xml:space="preserve">
+    <value>{0} should not be {1} characters long</value>
+  </data>
+  <data name="StringShouldNotContainX" xml:space="preserve">
+    <value>{0} should not contain {1}</value>
+  </data>
+  <data name="StringShouldNotEndWithX" xml:space="preserve">
+    <value>{0} should not end with {1}</value>
+  </data>
+  <data name="StringShouldNotStartWithX" xml:space="preserve">
+    <value>{0} should not start with {1}</value>
+  </data>
+  <data name="StringShouldStartWithX" xml:space="preserve">
+    <value>{0} should start with {1}</value>
+  </data>
+  <data name="TheActualValueIs1CharacterLong" xml:space="preserve">
+    <value>The actual value is 1 character long.</value>
+  </data>
+  <data name="TheActualValueIsX" xml:space="preserve">
+    <value>The actual value is {1}.</value>
+  </data>
+  <data name="TheActualValueIsXCharactersLong" xml:space="preserve">
+    <value>The actual value is {1} characters long.</value>
+  </data>
+  <data name="ValueShouldBeANumber" xml:space="preserve">
+    <value>{0} should be a number</value>
+  </data>
+  <data name="ValueShouldBeBetweenXAndY" xml:space="preserve">
+    <value>{0} should be between {1} and {2}</value>
+  </data>
+  <data name="ValueShouldBeEqualToX" xml:space="preserve">
+    <value>{0} should be equal to {1}</value>
+  </data>
+  <data name="ValueShouldBeFalse" xml:space="preserve">
+    <value>{0} should be false</value>
+  </data>
+  <data name="ValueShouldBeGreaterThanOrEqualToX" xml:space="preserve">
+    <value>{0} should be greater than or equal to {1}</value>
+  </data>
+  <data name="ValueShouldBeGreaterThanX" xml:space="preserve">
+    <value>{0} should be greater than {1}</value>
+  </data>
+  <data name="ValueShouldBeInfinity" xml:space="preserve">
+    <value>{0} should be infinity</value>
+  </data>
+  <data name="ValueShouldBeNegativeInfinity" xml:space="preserve">
+    <value>{0} should be negative infinity</value>
+  </data>
+  <data name="ValueShouldBeNull" xml:space="preserve">
+    <value>{0} should be null</value>
+  </data>
+  <data name="ValueShouldBeOfTypeX" xml:space="preserve">
+    <value>{0} should be of type {1}</value>
+  </data>
+  <data name="ValueShouldBePositiveInfinity" xml:space="preserve">
+    <value>{0} should be positive infinity</value>
+  </data>
+  <data name="ValueShouldBeSmallerThanOrEqualToX" xml:space="preserve">
+    <value>{0} should be smaller than or equal to {1}</value>
+  </data>
+  <data name="ValueShouldBeSmallerThanX" xml:space="preserve">
+    <value>{0} should be smaller than {1}</value>
+  </data>
+  <data name="ValueShouldBeTrue" xml:space="preserve">
+    <value>{0} should be true</value>
+  </data>
+  <data name="ValueShouldBeUnequalToX" xml:space="preserve">
+    <value>{0} should be unequal to {1}</value>
+  </data>
+  <data name="ValueShouldBeValid" xml:space="preserve">
+    <value>{0} should be valid</value>
+  </data>
+  <data name="ValueShouldNotBeANumber" xml:space="preserve">
+    <value>{0} should not be a number</value>
+  </data>
+  <data name="ValueShouldNotBeBetweenXAndY" xml:space="preserve">
+    <value>{0} should not be between {1} and {2}</value>
+  </data>
+  <data name="ValueShouldNotBeGreaterThanOrEqualToX" xml:space="preserve">
+    <value>{0} should not be greater than or equal to {1}</value>
+  </data>
+  <data name="ValueShouldNotBeGreaterThanX" xml:space="preserve">
+    <value>{0} should not be greater than {1}</value>
+  </data>
+  <data name="ValueShouldNotBeInfinity" xml:space="preserve">
+    <value>{0} should not be infinity</value>
+  </data>
+  <data name="ValueShouldNotBeNegativeInfinity" xml:space="preserve">
+    <value>{0} should not be negative infinity</value>
+  </data>
+  <data name="ValueShouldNotBeNull" xml:space="preserve">
+    <value>{0} should not be null</value>
+  </data>
+  <data name="ValueShouldNotBeOfTypeX" xml:space="preserve">
+    <value>{0} should not be of type {1}</value>
+  </data>
+  <data name="ValueShouldNotBePositiveInfinity" xml:space="preserve">
+    <value>{0} should not be positive infinity</value>
+  </data>
+  <data name="ValueShouldNotBeSmallerThanOrEqualToX" xml:space="preserve">
+    <value>{0} should not be smaller than or equal to {1}</value>
+  </data>
+  <data name="ValueShouldNotBeSmallerThanX" xml:space="preserve">
+    <value>{0} should not be smaller than {1}</value>
+  </data>
+</root>

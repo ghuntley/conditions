@@ -1,58 +1,63 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{24EEDF66-CE38-4A6C-830A-58BD036474CD}"
 	ProjectSection(SolutionItems) = preProject
-		changes.txt = changes.txt
-		license.txt = license.txt
-		readme.txt = readme.txt
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		Conditions.nuspec = Conditions.nuspec
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions", "CuttingEdge.Conditions\CuttingEdge.Conditions.csproj", "{914B3EA8-2D78-4B1D-BA98-575817EB20F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conditions", "Conditions\Conditions.csproj", "{FCC65B26-94A6-4750-9DCD-088694F194A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingEdge.Conditions.UnitTests", "CuttingEdge.Conditions.UnitTests\CuttingEdge.Conditions.UnitTests.csproj", "{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conditions.Tests", "Conditions.Tests\Conditions.Tests.csproj", "{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs02
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CuttingEdge.Conditions.UnitTests\\CuttingEdge.Conditions.UnitTests.csproj
-		SccProjectName1 = CuttingEdge.Conditions.UnitTests
-		SccLocalPath1 = CuttingEdge.Conditions.UnitTests
-		SccProjectUniqueName2 = CuttingEdge.Conditions\\CuttingEdge.Conditions.csproj
-		SccProjectName2 = CuttingEdge.Conditions
-		SccLocalPath2 = CuttingEdge.Conditions
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
 		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
 		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{914B3EA8-2D78-4B1D-BA98-575817EB20F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|x64.ActiveCfg = Release|Any CPU
+		{FCC65B26-94A6-4750-9DCD-088694F194A3}.Release|x86.ActiveCfg = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|ARM.ActiveCfg = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|x64.ActiveCfg = Release|Any CPU
 		{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+  For more info on this file format visit http://docs.nuget.org/docs/reference/nuspec-reference.
+-->
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Conditions</id>
+    <version>$version$</version>
+    <owners>ghuntley</owners>
+    <authors>ghuntley, S. van Deursen</authors>
+    <title>Conditions</title>
+    <description>Conditions is cross platform portable class library helps developers to write pre- and postcondition validations in a fluent manner. Writing these validations is easy and it improves the readability and maintainability of code.</description>
+    <language>en-US</language>
+    <iconUrl>https://i.imgur.com/XSacNPD.png?2</iconUrl>
+    <projectUrl>https://github.com/ghuntley/conditions</projectUrl>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>Conditions Runtime Validation Checks PCL Xamarin iPhone Android Windows Phone</tags>
+  </metadata>
+  <files>
+    <file src="..\src\Conditions\bin\Release\Conditions.dll" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10" />
+    <file src="..\src\Conditions\*.cs" target="src" />
+  </files>
+</package>

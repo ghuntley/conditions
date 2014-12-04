@@ -1,10 +1,27 @@
 ﻿Version [Version Number] ([Friendly Version Number]) [Release Date]
 
-Version vNext
+Version 2.0 04/12/2014
 	General description:
-	
-	Code Changes:
+        - CuttingEdge.Conditions has been forked to become just Conditions. The original author was no longer
+          maintaining nor uses the project: https://conditions.codeplex.com/workitem/20064
 
+        - The library is now a portable class library and cross-platform support by default is in.
+
+        - Automatic CI builds and NuGet deployments via AppVeyor is in.
+
+	Code Changes:
+        - CuttingEdge.Conditions namespace flatterned to just Conditions.
+
+        - Condition.WithExceptionOnFailure<T>().X is not included in this release but will be included in
+          a subsquent release. If you want help bring it back open a pull request which resolves the failing
+          test "WithExceptionOnFailure_WithValidExceptionType2_ThrowsSpecifiedExceptionOnValidationFailure"
+
+        - Exceptions are no longer serializable as the attribute has been retired by Microsoft with recommendation
+          that unless you are doing remoting then it is not needed.
+
+        - InvalidEnumArgumentException was retired by Microsoft and thus the library now returns ArgumentException
+          instead as per MSDN recommendations.
+ 
 
 Version 1.2.0.11174 (v1.2) 2011-06-23
 	General description:
@@ -34,7 +51,7 @@ Version 1.0.4.0 (v1.0) 2009-08-27
 	General description:
 		This first stable release has had a major face lift and several minor bug fixes. The API has changed 
 		considerably and therefore this release is both binary and code incompatible with the previous beta. 
-		Great change is the possibility to run CuttingEdge.Conditions on machines that do not have .NET 3.5 
+		Great change is the possibility to run Conditions on machines that do not have .NET 3.5 
 		installed. While the assembly itself is still dependent on System.Core (.NET 3.5), users can safely 
 		add it to their .NET 2.0 projects (as long as the C# 3.0 or VB9 compilers are used).
 		
@@ -58,7 +75,7 @@ Version 1.0.4.0 (v1.0) 2009-08-27
 		 that did not use default equality. The behavior is now fixed, but it comes with some costs. Using
 		 those methods on ordered sets (like HashSet<T> and SortedList<T>) is now slower than before.
 		-The internal CollectionHelper class had a dependency on the .NET 3.5 type HashSet<T>. This dependency
-		 is removed and it's now more likely that CuttingEdge.Conditions can be used in .NET 2.0 projects.
+		 is removed and it's now more likely that Conditions can be used in .NET 2.0 projects.
 		 You'd still need C# 3.0 though. The library has now only one method that you can not call without
 		 .NET 3.5 installed: the Evaluate(Expression<Func<T, bool>>) method.
 		
@@ -174,13 +191,13 @@ Version 1.0.2.0 (v1.0 beta 2) 2008-12-20
 		 see: http://www.codeplex.com/conditions/WorkItem/View.aspx?WorkItemId=7469
 		 
 	Changes to project and solutions:
-		-Unused references removed from CuttingEdge.Conditions project.
+		-Unused references removed from Conditions project.
 		 The only references that are used by the project are System and System.Core. Others are removed.
 		 
-		-Release build of CuttingEdge.Conditions project doesn't build a .pdb file anymore.
+		-Release build of Conditions project doesn't build a .pdb file anymore.
 		 Loosing the .pdb file enables developers to have a local copy of the project on their machine, and
-		 include the release build of CuttingEdge.Conditions.dll to their own project, without jumping into
-		 CuttingEdge.Conditions' source code every time a precondition validation failed.
+		 include the release build of Conditions.dll to their own project, without jumping into
+		 Conditions' source code every time a precondition validation failed.
 
 
 Version 1.0.1.0 (v1.0 beta 1) 2008-07-11

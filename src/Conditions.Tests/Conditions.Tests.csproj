@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5E3699BE-95DA-439D-BDFD-63DC76F56A3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Conditions.Tests</RootNamespace>
+    <AssemblyName>Conditions.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <WarningsAsErrors>108, 114, 162, 168, 169, 219, 472, 649, 665</WarningsAsErrors>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlternativeExceptionConditionTests.cs" />
+    <Compile Include="CollectionTests\CollectionContainsAllTests.cs" />
+    <Compile Include="CollectionTests\CollectionContainsAnyTests.cs" />
+    <Compile Include="CollectionTests\CollectionContainsTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotContainAllTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotContainAnyTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotContainTests.cs" />
+    <Compile Include="CollectionTests\CollectionDoesNotHaveLengthTests.cs" />
+    <Compile Include="CollectionTests\CollectionHasLengthTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsEmptyTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsLongerOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsLongerThanTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotEmptyTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotLongerOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotLongerThanTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotShorterOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsNotShorterThanTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsShorterOrEqualTests.cs" />
+    <Compile Include="CollectionTests\CollectionIsShorterThanTests.cs" />
+    <Compile Include="CollectionTests\EmptyTestEnumerable.cs" />
+    <Compile Include="CollectionTests\NonEmptyTestEnumerable.cs" />
+    <Compile Include="CollectionTests\OddEqualityComparer.cs" />
+    <Compile Include="EntryPointTests\EntryPointEnsuresTests.cs" />
+    <Compile Include="EntryPointTests\EntryPointRequiresTests.cs" />
+    <Compile Include="ExtendabilityExtensions.cs" />
+    <Compile Include="ExtendabilityTests.cs" />
+    <Compile Include="NullTests\NullIsNotNullTests.cs" />
+    <Compile Include="NullTests\NullIsNullTests.cs" />
+    <Compile Include="NumericTests\NumericTests.Double.cs" />
+    <Compile Include="NumericTests\NumericTests.Single.cs" />
+    <Compile Include="PostConditionExceptionTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringResourcesTests.cs" />
+    <Compile Include="StringTests\StringContainsTests.cs" />
+    <Compile Include="StringTests\StringDoesNotContainTests.cs" />
+    <Compile Include="StringTests\StringDoesNotEndWithTests.cs" />
+    <Compile Include="StringTests\StringDoesNotHaveLengthTests.cs" />
+    <Compile Include="StringTests\StringDoesNotStartWithTests.cs" />
+    <Compile Include="StringTests\StringEndsWithTests.cs" />
+    <Compile Include="StringTests\StringHasLengthTests.cs" />
+    <Compile Include="StringTests\StringIsEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsLongerThanTests.cs" />
+    <Compile Include="StringTests\StringIsNotEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNotNullOrEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNotNullOrWhiteSpaceTests.cs" />
+    <Compile Include="StringTests\StringIsNullOrEmptyTests.cs" />
+    <Compile Include="StringTests\StringIsNullOrWhiteSpaceTests.cs" />
+    <Compile Include="StringTests\StringIsShorterOrEqualTests.cs" />
+    <Compile Include="StringTests\StringIsLongerOrEqualTests.cs" />
+    <Compile Include="StringTests\StringIsShorterThanTests.cs" />
+    <Compile Include="StringTests\StringStartsWithTests.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="TypeTests\TypeIsNotOfTypeTests.cs" />
+    <Compile Include="TypeTests\TypeIsOfTypeTests.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Boolean.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Byte.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.DateTime.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Decimal.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Double.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int16.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int32.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Int64.cs" />
+    <Compile Include="CompareTests\ValidatorExtensionTests.Compare.Single.cs" />
+    <Compile Include="EvaluationTests\EvaluationEvaluateTests.cs" />
+    <Compile Include="SelfTests.cs" />
+    <None Include="App.config" />
+    <None Include="CompareTests\ValidatorExtensionTests.Compare.Base.cs" />
+    <Compile Include="UnitTestTraceListener.cs" />
+    <Compile Include="UseCases\NullTestUseCases.cs" />
+    <Compile Include="UseCases\TypeTestUseCases.cs" />
+    <Compile Include="UseCases\UseCaseTestHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Conditions\Conditions.csproj">
+      <Project>{fcc65b26-94a6-4750-9dcd-088694f194a3}</Project>
+      <Name>Conditions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

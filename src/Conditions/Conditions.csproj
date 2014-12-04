@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCC65B26-94A6-4750-9DCD-088694F194A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Conditions</RootNamespace>
+    <AssemblyName>Conditions</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AlternativeExceptionCondition.cs" />
+    <Compile Include="AlternativeExceptionHelper.cs" />
+    <Compile Include="CollectionHelpers.cs" />
+    <Compile Include="Condition.cs" />
+    <Compile Include="ConditionValidator.cs" />
+    <Compile Include="ConstraintViolationType.enum.cs" />
+    <Compile Include="DefaultComparer.cs" />
+    <Compile Include="EnsuresValidator.cs" />
+    <Compile Include="ExceptionMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PostconditionException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequiresValidator.cs" />
+    <Compile Include="RequiresWithCustomExceptionValidator.cs" />
+    <Compile Include="SR.cs" />
+    <Compile Include="StringificationExtensions.cs" />
+    <Compile Include="Throw.cs" />
+    <Compile Include="ValidatorExtensions.Collection.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Boolean.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Byte.cs" />
+    <Compile Include="ValidatorExtensions.Compare.DateTime.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Decimal.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Double.cs" />
+    <Compile Include="ValidatorExtensions.Compare.IComparable.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Int16.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Int32.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Int64.cs" />
+    <Compile Include="ValidatorExtensions.Compare.Single.cs" />
+    <Compile Include="ValidatorExtensions.cs" />
+    <Compile Include="ValidatorExtensions.Evaluation.cs" />
+    <Compile Include="ValidatorExtensions.Null.cs" />
+    <Compile Include="ValidatorExtensions.String.cs" />
+    <Compile Include="ValidatorExtensions.Type.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionMessages.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
