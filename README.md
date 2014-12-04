@@ -1,5 +1,5 @@
 ![Icon](https://i.imgur.com/XSacNPD.png?2)
-## Conditions
+## Conditions [![Build status](https://ci.appveyor.com/api/projects/status/09c4fnv2ov54vpwm?svg=true)](https://ci.appveyor.com/project/ghuntley/conditions)
 
 Conditions is cross platform portable class library helps developers to write pre- and postcondition validations in a fluent manner. Writing these validations is easy and it improves the readability and maintainability of code.
 
