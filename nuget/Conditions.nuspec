@@ -8,7 +8,7 @@
     <id>Conditions</id>
     <version>$version$</version>
     <owners>ghuntley</owners>
-    <authors>ghuntley, S. van Deursen</authors>
+    <authors>Geoffrey Huntley, S. van Deursen</authors>
     <title>Conditions</title>
     <description>Conditions is cross platform portable class library helps developers to write pre- and postcondition validations in a fluent manner. Writing these validations is easy and it improves the readability and maintainability of code.</description>
     <language>en-US</language>
