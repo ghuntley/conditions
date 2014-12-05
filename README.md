@@ -16,9 +16,10 @@ Installation is done via NuGet:
 
     Install-Package Conditions
 
+
 ## Usage
 
-A particular validation is executed immediately when it's method is called, and therefore all checks are executed in the order in which they are written:
+Class documentation is available at https://ghuntley.github.io/conditions
 
     public ICollection GetData(Nullable<int> id, string xml, IEnumerable<int> col)
     {
@@ -61,6 +62,10 @@ A particular validation is executed immediately when it's method is called, and 
         
         // Do multiplication
     }
+    
+A particular validation is executed immediately when it's method is called, and therefore all checks are executed in the order in which they are written:
+
 ## With thanks to
-* <a href="http://www.cuttingedge.it/">S. van Deursen</a> who is the original author of "<a href="https://conditions.codeplex.com/">CuttingEdge.Conditions</a>" from which this project was forked from.
 * The icon "<a href="http://thenounproject.com/term/tornado/2706/" target="_blank">Tornado</a>" designed by <a href="http://thenounproject.com/adamwhitcroft/" target="_blank">Adam Whitcroft</a> from The Noun Project.
+* With thanks to <a href="http://www.forgedoc.com/">ForgeDoc</a> for providing an open source license which is used to generate the class documentation.
+* <a href="http://www.cuttingedge.it/">S. van Deursen</a> who is the original author of "<a href="https://conditions.codeplex.com/">CuttingEdge.Conditions</a>" from which this project was forked from.
