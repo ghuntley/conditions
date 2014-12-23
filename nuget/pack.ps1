@@ -9,4 +9,4 @@ $content = $content -replace '\$version\$',$versionStr
 
 $content | Out-File $root\nuget\Conditions.compiled.nuspec
 
-& $root\NuGet\NuGet.exe pack $root\nuget\Conditions.compiled.nuspec
+& $root\NuGet\NuGet.exe pack $root\nuget\Conditions.compiled.nuspec -Symbols
