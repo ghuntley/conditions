@@ -1,7 +1,7 @@
 ![Icon](https://i.imgur.com/XSacNPD.png?2)
 ## Conditions [![Build status](https://ci.appveyor.com/api/projects/status/09c4fnv2ov54vpwm?svg=true)](https://ci.appveyor.com/project/ghuntley/conditions)
 
-Conditions is a cross platform portable class library that helps developers to write pre- and postcondition validations in a fluent manner. Writing these validations is easy and it improves the readability and maintainability of code.
+Conditions is a cross platform portable class library that helps developers write pre- and postcondition validations in a fluent manner. Writing these validations is easy and it improves the readability and maintainability of code.
 
 ## Supported Platforms
 * .NET 4.5 (We are now a Portable Class Library)
