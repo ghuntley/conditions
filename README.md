@@ -19,8 +19,6 @@ Installation is done via NuGet:
 
 ## Usage
 
-Class documentation is available at https://ghuntley.github.io/conditions
-
     public ICollection GetData(Nullable<int> id, string xml, IEnumerable<int> col)
     {
         // Check all preconditions:
