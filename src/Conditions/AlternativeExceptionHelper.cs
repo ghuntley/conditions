@@ -27,9 +27,20 @@ namespace Conditions
                 return null;
             }
 
-            //return typeof(TException).GetConstructor(new[] { typeof(string) });
-            return typeof (TException).GetTypeInfo().DeclaredConstructors.First();
+            return typeof(TException).GetTypeInfo().DeclaredConstructors
+                .Where(IsUsableConstructor).FirstOrDefault();
         }
+
+        /// <summary>
+        /// Returns true if the constructor is public and has exactly one parameter of type string.
+        /// </summary>
+        private static bool IsUsableConstructor(ConstructorInfo ctor)
+        {
+            return ctor.Attributes.HasFlag(MethodAttributes.Public) &&
+                ctor.GetParameters().Length == 1 &&
+                ctor.GetParameters().First().ParameterType == typeof(string);
+        }
+
         /// <summary>Allows creating validators for a specific exception type.</summary>
         private sealed class AlternativeExceptionConditionInternal : AlternativeExceptionCondition
         {

@@ -206,20 +206,20 @@ namespace Conditions
         /// <exception cref="ArgumentException">
         /// Thrown when the supplied <typeparamref name="TException"/> is abstract or does not contain a
         /// public constructor with a single parameter of type <see cref="string"/>.</exception>
-        //[SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification =
-        //    "By using a generic type we can limit the used types to Exceptions by applying a type constraint.")]
-        //public static AlternativeExceptionCondition WithExceptionOnFailure<TException>()
-        //    where TException : Exception
-        //{
-        //    var condition = AlternativeExceptionHelper<TException>.Condition;
+        [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification =
+            "By using a generic type we can limit the used types to Exceptions by applying a type constraint.")]
+        public static AlternativeExceptionCondition WithExceptionOnFailure<TException>()
+            where TException : Exception
+        {
+            var condition = AlternativeExceptionHelper<TException>.Condition;
 
-        //    if (condition == null)
-        //    {
-        //        ThrowInvalidExceptionType(typeof (TException));
-        //    }
+            if (condition == null)
+            {
+                ThrowInvalidExceptionType(typeof (TException));
+            }
 
-        //    return condition;
-        //}
+            return condition;
+        }
 
         [SuppressMessage("Microsoft.Usage", "CA2208:InstantiateArgumentExceptionsCorrectly", Justification =
             "The ParamName equals the name of the generic type of the WithExceptionOnFailure method.")]
