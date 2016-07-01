@@ -65,6 +65,28 @@ public static int[] Multiply(int[] left, int[] right)
     
 A particular validation is executed immediately when it's method is called, and therefore all checks are executed in the order in which they are written:
 
+## C# 6
+C# 6 compiler provides easier way for accessing extension methods. With `using static Condition;` you have no longer to prefix `Requried` and `Ensures` methods with name of `Condition` static class. 
+
+For example:
+
+```csharp
+namespace Foo
+{
+    using static Condition; 
+    
+    public class Bar
+    {
+        public void Buzz(object arg)
+        {
+            Required(arg).IsNotNull();
+        }
+    }    
+}
+```
+
+You can add C#6 features to your project by installing [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers/) nuget.
+
 ## With thanks to
 * The icon "<a href="http://thenounproject.com/term/tornado/2706/" target="_blank">Tornado</a>" designed by <a href="http://thenounproject.com/adamwhitcroft/" target="_blank">Adam Whitcroft</a> from The Noun Project.
 * With thanks to <a href="http://www.forgedoc.com/">ForgeDoc</a> for providing an open source license which is used to generate the class documentation.

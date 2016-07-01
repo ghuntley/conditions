@@ -96,6 +96,7 @@
     <Compile Include="EntryPointTests\EntryPointRequiresTests.cs" />
     <Compile Include="ExtendabilityExtensions.cs" />
     <Compile Include="ExtendabilityTests.cs" />
+    <Compile Include="FluentUsageTests.cs" />
     <Compile Include="NullTests\NullIsNotNullTests.cs" />
     <Compile Include="NullTests\NullIsNullTests.cs" />
     <Compile Include="NumericTests\NumericTests.Double.cs" />

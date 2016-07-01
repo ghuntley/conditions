@@ -25,7 +25,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [Description("Calling Evaluate on integer x with boolean 'false' should fail.")]
         public void EvaluateTest03()
         {
@@ -34,7 +34,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [Description("Calling the Evaluate overload with the description on integer x with boolean 'false' should fail."
             )]
         public void EvaluateTest04()
@@ -53,7 +53,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [Description("Calling Evaluate on integer x (3) with expression '(x) => (x == 4)' should fail.")]
         public void EvaluateTest06()
         {
@@ -78,7 +78,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         [Description(
             "Calling Evaluate on null object x with expression '(x) => (x != null)' should fail with ArgumentNullException."
             )]
@@ -89,7 +89,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         [Description(
             "Calling Evaluate on null object x with expression '(x) => (x == 3)' should fail with ArgumentNullException."
             )]
@@ -100,7 +100,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         [Description("Calling Evaluate on null object x with boolean 'false' should fail with ArgumentNullException.")]
         public void EvaluateTest11()
         {
@@ -109,7 +109,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (System.ArgumentException))]
+        [ExpectedException(typeof(System.ArgumentException))]
         [Description("Calling Evaluate on enum x with boolean 'false' should fail with InvalidEnumArgumentException.")]
         public void EvaluateTest12()
         {
@@ -118,7 +118,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (System.ArgumentException))]
+        [ExpectedException(typeof(System.ArgumentException))]
         [Description(
             "Calling Evaluate on enum x with expression 'x => false' should fail with InvalidEnumArgumentException.")]
         public void EvaluateTest13()
@@ -170,7 +170,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [Description("Calling Evaluate with lambda 'null' should fail with an ArgumentException.")]
         public void EvaluateTest16()
         {
@@ -178,7 +178,7 @@ namespace Conditions.Tests.EvaluationTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (PostconditionException))]
+        [ExpectedException(typeof(PostconditionException))]
         [Description("Calling Evaluate with lambda 'null' should fail with an PostconditionException.")]
         public void EvaluateTest17()
         {

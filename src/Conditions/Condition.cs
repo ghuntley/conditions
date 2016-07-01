@@ -31,7 +31,7 @@ namespace Conditions
         ///         set
         ///         {
         ///             // Throws an ArgumentOutOfRangeException when value is less than 0
-        ///             Condition.Requires(value).IsGreaterOrEqual(0);
+        ///             value.Requires().IsGreaterOrEqual(0);
         ///             this.age = value;
         ///         }
         ///     }
@@ -39,7 +39,7 @@ namespace Conditions
         /// ]]></code>
         /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static ConditionValidator<T> Requires<T>(T value)
+        public static ConditionValidator<T> Requires<T>(this T value)
         {
             return new RequiresValidator<T>("value", value);
         }
@@ -81,7 +81,7 @@ namespace Conditions
         /// ]]></code>
         /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static ConditionValidator<T> Requires<T>(T value, string argumentName)
+        public static ConditionValidator<T> Requires<T>(this T value, string argumentName)
         {
             return new RequiresValidator<T>(argumentName, value);
         }
@@ -98,7 +98,7 @@ namespace Conditions
         /// For an example of the usage of <b>Ensures</b> see the <see cref="Condition.Ensures{T}(T,string)"/> 
         /// overload.
         /// </example>
-        public static ConditionValidator<T> Ensures<T>(T value)
+        public static ConditionValidator<T> Ensures<T>(this T value)
         {
             return new EnsuresValidator<T>("value", value);
         }
@@ -165,7 +165,7 @@ namespace Conditions
         /// ]]></code>
         /// See the <see cref="ConditionValidator{T}"/> class for more code examples.
         /// </example>
-        public static ConditionValidator<T> Ensures<T>(T value, string argumentName)
+        public static ConditionValidator<T> Ensures<T>(this T value, string argumentName)
         {
             return new EnsuresValidator<T>(argumentName, value);
         }
@@ -215,7 +215,7 @@ namespace Conditions
 
             if (condition == null)
             {
-                ThrowInvalidExceptionType(typeof (TException));
+                ThrowInvalidExceptionType(typeof(TException));
             }
 
             return condition;
